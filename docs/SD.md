@@ -81,3 +81,21 @@ The public **HTML site** is deployed by **GitHub Actions** when changes are **pu
 ## BR-012 — Publish content guards
 
 Before social or webpage publish, content must pass validation: `status` **DONE**, non-empty **`title`**, **`description`**, **`tags`**, and at least one image or video in the project folder. Cross-platform social text uses the **lowest** limits: **500** characters (Threads) and **30** tags (Instagram). See [`docs/publish-content-guards.md`](publish-content-guards.md) and `scripts/validate-publish.mjs`.
+
+---
+
+## BR-013 — Local publish script
+
+A **local script** (Node) will post repair content to **Facebook**, **Instagram**, and **Threads** using `.env` tokens, after validation and explicit owner publish approval. Image-first; video deferred. See **T-00007**.
+
+---
+
+## BR-014 — Business information document
+
+Canonical business facts for copy and SEO live in [`docs/business-info.md`](business-info.md), maintained with the owner. See **T-00008**.
+
+---
+
+## BR-015 — Website rebuild (analysis then build)
+
+The public site may be **rebuilt** for stronger visuals and SEO. Work starts with **analysis and direction** ([`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md)); **no HTML implementation** until the owner approves a brief and explicitly requests build. See **T-00009**.
