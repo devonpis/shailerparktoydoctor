@@ -1,26 +1,28 @@
 /**
- * Skill categories: plush, electrical, mechanical, paintjob
+ * Skill categories: plush, electronic, mechanical, paintjob
  */
 (function (global) {
-  const SKILL_IDS = ['plush', 'electrical', 'mechanical', 'paintjob'];
+  const SKILL_IDS = ['plush', 'electronic', 'mechanical', 'paintjob'];
 
   const SKILLS = {
     plush: { label: 'Plush' },
-    electrical: { label: 'Electrical' },
+    electronic: { label: 'Electronic' },
     mechanical: { label: 'Mechanical' },
     paintjob: { label: 'Paint' },
   };
 
   const SKILL_EMOJI = {
     plush: '🧸',
-    electrical: '⚡',
+    electronic: '⚡',
     mechanical: '🔧',
     paintjob: '🖌️',
   };
 
   function normalizeSkills(skills) {
     if (!Array.isArray(skills)) return [];
-    return skills.filter((id) => SKILL_IDS.includes(id));
+    return skills
+      .map((id) => (id === 'electrical' ? 'electronic' : id))
+      .filter((id) => SKILL_IDS.includes(id));
   }
 
   function skillIconHtml(skillId) {
@@ -82,10 +84,10 @@
 
   function filterBarHtml(activeSkill) {
     const active = activeSkill || 'all';
-    const allBtn = `<button type="button" class="skill-filter${active === 'all' ? ' is-active' : ''}" data-skill="all" aria-pressed="${active === 'all'}">All</button>`;
+    const allBtn = `<button type="button" class="skill-filter skill-filter--all${active === 'all' ? ' is-active' : ''}" data-skill="all" aria-pressed="${active === 'all'}">All</button>`;
     const skillBtns = SKILL_IDS.map((id) => {
       const on = active === id;
-      return `<button type="button" class="skill-filter${on ? ' is-active' : ''}" data-skill="${id}" aria-pressed="${on}">${skillIconHtml(id)}<span>${SKILLS[id].label}</span></button>`;
+      return `<button type="button" class="skill-filter skill-filter--${id}${on ? ' is-active' : ''}" data-skill="${id}" aria-pressed="${on}">${skillIconHtml(id)}<span>${SKILLS[id].label}</span></button>`;
     }).join('');
     return `<div class="skill-filters" role="group" aria-label="Filter by skill">${allBtn}${skillBtns}</div>`;
   }

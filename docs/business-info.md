@@ -15,7 +15,7 @@ Agents use this for web content **only when you request HTML or copy work**. Do 
 
 - 🛠️ Giving old toys new life  
 - 🧸 Plush cleaning & sewing repairs  
-- 🤖 Electrical & mechanical fixes  
+- 🤖 Electronic & mechanical fixes  
 - 🎨 Anime figure & scale model paint jobs  
 
 **Purpose / mission** (from site copy, paraphrased)
@@ -110,7 +110,7 @@ Bring cherished toys and small electronics back to life at an affordable price �
 |---------|--------|
 | **Toy restoration** | Giving old toys new life — general repair and restoration |
 | **Plush** | Cleaning, sewing, stuffed-toy repairs |
-| **Electrical & mechanical** | Electronic toys, small appliances, gadgets |
+| **Electronic & mechanical** | Electronic toys, small appliances, gadgets |
 | **Figures & models** | Anime figures, scale models — paint / restoration work |
 
 ### Brand personas (“Our Doctors”)
@@ -120,7 +120,7 @@ Use on site and marketing as friendly specialists (images on current `index.html
 | Persona | Focus | Site asset |
 |---------|--------|------------|
 | **Dr. Fluffy** | Plush cleaning, sewing, stuffed toys | `images/DrFluffy.jpg` |
-| **Dr. Electronics** | Electronic toys, small electrical / mechanical appliances | `images/DrElectronic.jpg` |
+| **Dr. Electronics** | Electronic toys, small electronic / mechanical appliances | `images/DrElectronic.jpg` |
 | **Dr. Hobby** | Anime figures, scale models, paint / hobby restoration | *Owner will add image later; then use on rebuild* |
 
 **Dr. Hobby** maps to anime figure & scale model paint jobs; include alongside Dr. Fluffy and Dr. Electronics on the rebuilt site.

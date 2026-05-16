@@ -235,7 +235,7 @@ Reviews live on **Google Maps** ([listing](https://maps.app.goo.gl/Yx6zSEhhyDuv6
 
 Superseded by [Home page sections](#home-page-sections-owner-2026-05-16) for order; still useful for copy:
 
-- **Services lineup** — four pillars: plush, electrical/mechanical, figures/collectibles, paint  
+- **Services lineup** — four pillars: plush, electronic/mechanical, figures/collectibles, paint  
 - **Trust** — Google Maps rating snippet → Testimonials  
 - **How to enquire** — photos + description → quote → drop-off or mail-in  
 

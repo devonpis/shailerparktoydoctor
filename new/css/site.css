@@ -11,6 +11,18 @@
   --lobster-outline-color: color-mix(in srgb, var(--primary) 22%, #fff);
   --block-padding-left: 1.25rem;
   --block-padding-right: 0.75rem;
+  --skill-plush-bg: #ffd6dc;
+  --skill-plush-fg: #c62828;
+  --skill-plush-solid: #c62828;
+  --skill-electronic-bg: #d4e8ff;
+  --skill-electronic-fg: #1565c0;
+  --skill-electronic-solid: #1565c0;
+  --skill-mechanical-bg: #d4f0dc;
+  --skill-mechanical-fg: #2e7d32;
+  --skill-mechanical-solid: #2e7d32;
+  --skill-paintjob-bg: #fff3bf;
+  --skill-paintjob-fg: #b8860b;
+  --skill-paintjob-solid: #9a7209;
 }
 
 *,
@@ -695,14 +707,63 @@ h5 {
   transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
 }
 
-.skill-filter:hover {
+.skill-filter--all:hover:not(.is-active) {
   border-color: var(--primary);
   color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 14%, #fff);
 }
 
-.skill-filter.is-active {
+.skill-filter--all.is-active {
   background: var(--primary);
   border-color: var(--primary);
+  color: #fff;
+}
+
+.skill-filter--plush:hover:not(.is-active) {
+  background: var(--skill-plush-bg);
+  border-color: var(--skill-plush-solid);
+  color: var(--skill-plush-fg);
+}
+
+.skill-filter--plush.is-active {
+  background: var(--skill-plush-solid);
+  border-color: var(--skill-plush-solid);
+  color: #fff;
+}
+
+.skill-filter--electronic:hover:not(.is-active) {
+  background: var(--skill-electronic-bg);
+  border-color: var(--skill-electronic-solid);
+  color: var(--skill-electronic-fg);
+}
+
+.skill-filter--electronic.is-active {
+  background: var(--skill-electronic-solid);
+  border-color: var(--skill-electronic-solid);
+  color: #fff;
+}
+
+.skill-filter--mechanical:hover:not(.is-active) {
+  background: var(--skill-mechanical-bg);
+  border-color: var(--skill-mechanical-solid);
+  color: var(--skill-mechanical-fg);
+}
+
+.skill-filter--mechanical.is-active {
+  background: var(--skill-mechanical-solid);
+  border-color: var(--skill-mechanical-solid);
+  color: #fff;
+}
+
+.skill-filter--paintjob:hover:not(.is-active) {
+  background: var(--skill-paintjob-bg);
+  border-color: var(--skill-paintjob-solid);
+  color: var(--skill-paintjob-fg);
+}
+
+.skill-filter--paintjob.is-active {
+  background: var(--skill-paintjob-solid);
+  border-color: var(--skill-paintjob-solid);
   color: #fff;
 }
 
@@ -739,23 +800,23 @@ h5 {
 }
 
 .skill-badge--icon-only.skill-badge--plush {
-  background: #ffd6dc;
-  color: #c62828;
+  background: var(--skill-plush-bg);
+  color: var(--skill-plush-fg);
 }
 
-.skill-badge--icon-only.skill-badge--electrical {
-  background: #d4e8ff;
-  color: #1565c0;
+.skill-badge--icon-only.skill-badge--electronic {
+  background: var(--skill-electronic-bg);
+  color: var(--skill-electronic-fg);
 }
 
 .skill-badge--icon-only.skill-badge--mechanical {
-  background: #d4f0dc;
-  color: #2e7d32;
+  background: var(--skill-mechanical-bg);
+  color: var(--skill-mechanical-fg);
 }
 
 .skill-badge--icon-only.skill-badge--paintjob {
-  background: #fff3bf;
-  color: #b8860b;
+  background: var(--skill-paintjob-bg);
+  color: var(--skill-paintjob-fg);
 }
 
 .skill-badge--icon-only .skill-icon--emoji {
@@ -780,23 +841,23 @@ h5 {
 }
 
 .skill-badge--detail.skill-badge--plush {
-  background: #ffd6dc;
-  color: #c62828;
+  background: var(--skill-plush-bg);
+  color: var(--skill-plush-fg);
 }
 
-.skill-badge--detail.skill-badge--electrical {
-  background: #d4e8ff;
-  color: #1565c0;
+.skill-badge--detail.skill-badge--electronic {
+  background: var(--skill-electronic-bg);
+  color: var(--skill-electronic-fg);
 }
 
 .skill-badge--detail.skill-badge--mechanical {
-  background: #d4f0dc;
-  color: #2e7d32;
+  background: var(--skill-mechanical-bg);
+  color: var(--skill-mechanical-fg);
 }
 
 .skill-badge--detail.skill-badge--paintjob {
-  background: #fff3bf;
-  color: #b8860b;
+  background: var(--skill-paintjob-bg);
+  color: var(--skill-paintjob-fg);
 }
 
 .skill-badge--detail .skill-icon--emoji {
