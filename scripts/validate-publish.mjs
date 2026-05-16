@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildHashtagLine } from './lib/hashtag.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -104,9 +105,7 @@ function validateConfig(config, dir) {
     );
   }
 
-  const hashtagPreview = Array.isArray(config.tags)
-    ? config.tags.map((t) => `#${String(t).trim().replace(/\s+/g, '')}`).join(' ')
-    : '';
+  const hashtagPreview = buildHashtagLine(config.tags);
   const captionWithTags = [description, hashtagPreview].filter(Boolean).join('\n\n');
   if (captionWithTags.length > LIMITS.descriptionMaxChars) {
     errors.push(

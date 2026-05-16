@@ -37,6 +37,27 @@ export function pickPrimaryImage(dir) {
   throw new Error('No project image found (before, after, hero, or WIP-###).');
 }
 
+/** Story order for carousels: before → WIP sequence → hero → after. */
+export function listPublishImagePaths(dir) {
+  const names = listProjectImages(dir);
+  const rank = (name) => {
+    const lower = name.toLowerCase();
+    if (lower.startsWith('before')) return [0, 0, name];
+    const wip = lower.match(/^wip-(\d+)/i);
+    if (wip) return [1, Number(wip[1]), name];
+    if (lower.startsWith('hero')) return [2, 0, name];
+    if (lower.startsWith('after')) return [3, 0, name];
+    return [4, 0, name];
+  };
+  return names
+    .sort((a, b) => {
+      const ra = rank(a);
+      const rb = rank(b);
+      return ra[0] - rb[0] || ra[1] - rb[1] || ra[2].localeCompare(rb[2]);
+    })
+    .map((n) => path.join(dir, n));
+}
+
 /** Base URL must be the HTTPS directory that already contains the image file. */
 export function publicImageUrl(publicBaseUrl, imageFileName) {
   const base = publicBaseUrl.replace(/\/$/, '');
