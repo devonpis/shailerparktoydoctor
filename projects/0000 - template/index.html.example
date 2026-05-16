@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- Copy to projects/<folder>/index.html when status is DONE. See docs/website-go-live.md -->
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <title><!-- projectName --> — Shailer Park Toy Doctor</title>
+    <meta name="description" content="<!-- shortened description, ~160 chars -->" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: { DEFAULT: '#4caac9', dark: '#3a8fa8', light: '#e8f6fa' },
+              secondary: { DEFAULT: '#f5a623', light: '#fff4e0' },
+            },
+            fontFamily: {
+              display: ['Lobster', 'cursive'],
+              sans: ['Nunito', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-sans text-gray-800 bg-gray-50">
+    <header class="border-b-2 border-gray-800 bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+        <a href="/new/" class="font-display text-2xl text-primary">Shailer Park Toy Doctor</a>
+        <nav class="flex flex-wrap items-center gap-4 font-semibold text-sm">
+          <a href="/new/projects/">Projects</a>
+          <a href="/new/testimonials.html">Testimonials</a>
+          <a href="/new/contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <p class="mb-6">
+        <a href="/new/projects/" class="text-primary font-semibold hover:underline">← All projects</a>
+      </p>
+
+      <!-- Hero: first of hero.*, after.*, before.*, WIP-001.* -->
+      <img
+        src="/projects/<!-- folder encoded -->/hero-or-after.jpg"
+        alt="<!-- projectName -->"
+        class="w-full max-h-[480px] object-cover rounded-xl border-2 border-gray-800"
+      />
+
+      <header class="mt-8">
+        <h1 class="font-display text-3xl md:text-4xl text-gray-900"><!-- title (slogan) --></h1>
+        <p class="mt-2 text-xl font-semibold text-primary"><!-- projectName --></p>
+        <p class="mt-1 text-gray-500"><!-- endDate AU, e.g. 6 May 2026 --></p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <!-- tags as chips -->
+        </div>
+        <p class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+          <!-- optional: facebookUrl, instagramUrl, threadUrl, youtubeUrl -->
+        </p>
+      </header>
+
+      <p class="mt-8 text-lg text-gray-700 leading-relaxed"><!-- description (short summary) --></p>
+
+      <!-- Before/after: omit if none; skip image already used as hero -->
+      <!-- WIP grid: WIP-001, WIP-002, … -->
+
+      <!-- YouTube iframes if youtubeUrl / youtubeShortUrl -->
+
+      <section class="mt-12 prose prose-gray max-w-3xl">
+        <h2 class="font-display text-2xl text-primary">The repair</h2>
+        <p><!-- repairDetails --></p>
+        <h2 class="font-display text-2xl text-primary mt-10">About this item</h2>
+        <p><!-- itemDetails --></p>
+      </section>
+
+      <section class="mt-12 bg-primary text-white text-center py-10 rounded-xl border-2 border-gray-800">
+        <a
+          href="/new/contact.html"
+          class="inline-block bg-white text-gray-900 font-semibold px-8 py-3 rounded-lg border-2 border-gray-800"
+          >Send photos for a quote</a
+        >
+      </section>
+    </main>
+
+    <footer class="border-t-2 border-gray-800 bg-white mt-12">
+      <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-600">
+        <p class="mt-4 font-semibold">
+          <a href="/new/projects/" class="text-primary">Projects</a>
+          <span class="text-gray-400 mx-2">·</span>
+          <a href="/new/testimonials.html" class="text-primary">Testimonials</a>
+          <span class="text-gray-400 mx-2">·</span>
+          <a href="/new/contact.html" class="text-primary">Contact</a>
+        </p>
+        <p class="mt-4 text-gray-500">© 2026 Shailer Park Toy Doctor</p>
+      </div>
+    </footer>
+  </body>
+</html>
