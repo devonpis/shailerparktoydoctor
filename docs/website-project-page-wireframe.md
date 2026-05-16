@@ -58,6 +58,8 @@ Desktop wireframe (mobile = same order, stacked full-width):
 ├─────────────────────────────────────────────────────────────┤
 │  SHORT SUMMARY — description (shortened on-page if needed)   │
 ├─────────────────────────────────────────────────────────────┤
+│  CUSTOMER REVIEW — googleReview (if set; under summary)      │
+├─────────────────────────────────────────────────────────────┤
 │  BEFORE / AFTER — two images (side-by-side md+, stack sm)    │
 ├─────────────────────────────────────────────────────────────┤
 │  WIP GALLERY — WIP-001 … WIP-n (grid, chronological)         │
@@ -101,6 +103,7 @@ Desktop wireframe (mobile = same order, stacked full-width):
 | `startDate` | Internal / publish workflow | Not shown on public page v1 | — |
 | `tags` | Topics | Chips + search | Search / filter |
 | `description` | Short blurb | Summary paragraph | — |
+| `googleReview` | Optional Google review for this repair | Blockquote under summary (author, stars, text; link name if `profileUrl`) | — |
 | `repairDetails`, `itemDetails` | Long copy | Full story | — |
 | `youtubeUrl`, `youtubeShortUrl` | Video | Embeds + links under tags | — |
 | `facebookUrl`, `instagramUrl`, `threadUrl` | Social | Links under tags | — |

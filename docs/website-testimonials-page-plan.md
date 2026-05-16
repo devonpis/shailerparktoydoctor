@@ -36,21 +36,51 @@
 
 **Conclusion:** For this repo (static site, no CI), **hybrid + link to Maps** is the right default. Full auto-fetch of all 32 reviews is not practical without API cost or a paid widget.
 
-### Maintaining testimonials (on demand — no auto-sync)
+### Maintaining testimonials (manual paste — no auto-sync)
 
-The site does **not** fetch reviews in real time. When you want the static page updated, ask the agent explicitly, for example:
+The site does **not** fetch reviews in real time. **Paste the review text in chat** (most reliable). Example commands:
 
-- `refresh testimonials from Google`
-- `update testimonials page — add this review: …` (paste text)
+- `add google review to 0003` — then paste reviewer name, text, optional [Google profile URL](https://www.google.com/maps/contrib/…), optional date
+- `add google review` — paste only; **testimonials page only** (no project link)
 - `update the review count on testimonials` (e.g. if no longer 32)
 
-**Agent will:**
+Do **not** rely on `refresh testimonials from Google` alone — Maps HTML is not a dependable source for full review text.
 
-1. Read your [Google Maps listing](https://maps.app.goo.gl/Yx6zSEhhyDuv6geB8) or use text you provide (pasting is most reliable).
-2. Edit `new/testimonials.html` (after **T-00016** cutover: `testimonials.html` at site root) — rating line, quote cards, contributor links.
-3. Show you the diff; **commit and push** only after you approve.
+#### Workflow A — review for a specific repair (recommended)
 
-Keep the **Read all reviews on Google Maps** button for the full live list; keep **3–6 featured quotes** on the page and refresh those on demand (e.g. when you get a standout review or every few months).
+When a customer’s Google review clearly belongs to a project (e.g. Donald Duck wind-up):
+
+| Step | Where | What |
+|------|--------|------|
+| 1 | `projects/<folder>/config.json` | Set **`googleReview`** (source of truth) — see schema below |
+| 2 | `projects/<folder>/index.html` | Blockquote **under the short summary** (`description`), matching wireframe |
+| 3 | `new/testimonials.html` | Append a **featured quote card** (same text; link author to `profileUrl` if set). Optionally note “Repair: …” linking to `webpageUrl` when live |
+
+**`googleReview` in `config.json`:**
+
+```json
+"googleReview": {
+  "author": "Customer Name",
+  "rating": 5,
+  "text": "Paste the review exactly as on Google (trim only if too long for layout).",
+  "date": "2026-05-16",
+  "profileUrl": "https://www.google.com/maps/contrib/…",
+  "featuredOnTestimonials": true
+}
+```
+
+Use **`null`** when there is no review for that project. Omit `profileUrl` / `date` if unknown. Set **`featuredOnTestimonials": false`** to keep the review on the project page only (not on the global testimonials page).
+
+#### Workflow B — general review (no project)
+
+Examples: Guitar Hero guitars, TV remote — not tied to one repair folder.
+
+1. Append quote card to `new/testimonials.html` only.
+2. Do **not** add `googleReview` to a project `config.json`.
+
+**Agent:** show diff for all touched files; **commit and push** only after you approve.
+
+Keep the **Read all reviews on Google Maps** button for the full live list; keep **3–6 featured quotes** on the testimonials page and add more on demand.
 
 ---
 

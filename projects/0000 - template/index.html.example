@@ -70,6 +70,20 @@
 
       <p class="mt-8 text-lg text-gray-700 leading-relaxed"><!-- description (short summary) --></p>
 
+      <!-- If googleReview is set in config.json: blockquote under summary -->
+      <!--
+      <blockquote class="mt-8 border-l-4 border-primary pl-6 py-2 bg-white rounded-r-xl">
+        <p class="text-amber-500 text-sm mb-2" aria-hidden="true">★★★★★</p>
+        <p class="text-gray-700 leading-relaxed italic"><!-- googleReview.text --></p>
+        <footer class="mt-3 text-sm font-semibold text-primary not-italic">
+          <a href="<!-- googleReview.profileUrl if set -->" rel="noopener noreferrer" target="_blank"
+            ><!-- googleReview.author --></a
+          >
+          <span class="text-gray-500 font-normal"> — Google review</span>
+        </footer>
+      </blockquote>
+      -->
+
       <!-- Before/after: omit if none; skip image already used as hero -->
       <!-- WIP grid: WIP-001, WIP-002, … -->
 

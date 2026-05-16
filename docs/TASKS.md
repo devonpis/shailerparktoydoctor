@@ -34,6 +34,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00020 | Done | Website rebuild: testimonials page (build) | BR-006, BR-015 |
 | T-00021 | Done | Website rebuild: testimonials page (plan) | BR-015 |
 | T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
+| T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
 
 ---
 
@@ -219,6 +220,17 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 ---
 
+## T-00023 — Google reviews: manual paste workflow
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-015 |
+| **Outcome** | Documented paste-in workflow ([`website-testimonials-page-plan.md`](website-testimonials-page-plan.md), README, wireframe). Template `googleReview` in [`projects/0000 - template/config.json`](../projects/0000%20-%20template/config.json) and story-page example block. Testimonials page notes `add google review` commands; auto-fetch from Maps deferred (unreliable on static site). |
+| **Depends on** | T-00020, T-00021 |
+| **Out of scope** | Applying a specific pasted review until owner provides text + project id |
+
+---
 
 ## T-00016 — Website rebuild: promote `new/` to root (cutover)
 
