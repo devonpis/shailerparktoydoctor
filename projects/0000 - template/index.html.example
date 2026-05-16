@@ -34,13 +34,12 @@
 
       <h1><!-- title (slogan) --></h1>
       <h2 class="project-subtitle"><!-- projectName --></h2>
-      <p class="project-meta"><!-- endDate AU, e.g. 6 May 2026 --></p>
       <div id="project-skills-root"></div>
       <ul class="project-tags">
         <!-- <li class="project-tag">tag</li> -->
       </ul>
-      <div id="project-social-root"></div>
 
+      <p class="project-meta"><!-- endDate AU, e.g. 6 May 2026 --></p>
       <p class="project-lead"><!-- description (short summary) --></p>
 
       <!-- If googleReview is set in config.json: blockquote under summary -->
@@ -80,6 +79,5 @@
     <script src="/new/js/site-chrome.js" defer></script>
     <script src="/new/js/skills.js" defer></script>
     <script src="/new/js/project-page-skills.js" defer></script>
-    <script src="/new/js/project-page-social.js" defer></script>
   </body>
 </html>

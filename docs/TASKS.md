@@ -35,6 +35,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00021 | Done | Website rebuild: testimonials page (plan) | BR-015 |
 | T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 | T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
+| T-00024 | Todo | Website rebuild: SEO metadata completeness | BR-015 |
 
 ---
 
@@ -233,6 +234,20 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 ---
 
+## T-00024 — Website rebuild: SEO metadata completeness
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-015 |
+| **Goal** | Close gaps vs [`website-design-brief.md`](website-design-brief.md) SEO checklist and [`website-project-page-wireframe.md`](website-project-page-wireframe.md) per-page SEO — so every **indexable** page has correct `<title>`, meta description, canonical, HTTPS Open Graph, and structured data where specified. |
+| **Checklist** | **Marketing (`/new/` until cutover):** add `link rel="canonical"` and `og:title`, `og:description`, `og:image`, `og:url`, `og:type` on home, projects index, testimonials, contact (contact already has `LocalBusiness` JSON-LD — add same on home); keep `noindex` on preview until **T-00016**. **Project stories:** ensure template [`index.html.example`](../projects/0000%20-%20template/index.html.example) includes full OG block like [0003 Donald Duck](../projects/0003%20-%20Donald%20Duck/index.html); add `og:type` on story pages; verify title `{projectName} — Shailer Park Toy Doctor` and description ≤ ~160 chars for each DONE page. **Sitemap:** remove `/new/*` URLs (conflicts with `robots.txt` `Disallow: /new/`); list only public URLs; add production marketing paths after cutover. **Cutover (with T-00016):** remove `noindex` from marketing pages; canonicals and OG URLs use `https://sptoydoctor.com.au/` paths (not `/new/`). **Legacy root** (`index.html`, `contact.html`, `reviews.html`): fix `lang="en-AU"`, HTTPS Open Graph URLs, or archive at cutover. **Accessibility/SEO:** one primary `<h1>` per page (header site title vs page headline); image `alt` from project titles on story/gallery images. |
+| **Depends on** | T-00012, T-00017, T-00019 |
+| **Related** | T-00013 (sitemap), T-00016 (cutover + de-index preview), T-00022 (contact JSON-LD pattern) |
+| **Out of scope** | Paid SEO tools; auto-generated meta from AI; changing project copy for keyword stuffing |
+
+---
+
 ## T-00016 — Website rebuild: promote `new/` to root (cutover)
 
 | Field | Value |
@@ -241,6 +256,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-006, BR-015 |
 | **Goal** | After owner confirms the preview site: move `new/*` to site root (or equivalent promote); remove or archive legacy root HTML (`index.html`, `contact.html`, `reviews.html`, `index_bk.html`); drop preview banners and `noindex` on marketing pages; point nav/sitemap at production URLs; update `webpageUrl` in project configs; regenerate `sitemap.xml`. |
 | **Depends on** | T-00018, T-00020, T-00022 (and T-00013 for story pages as needed); explicit owner approval for cutover. |
+| **Related** | T-00024 (complete SEO metadata; remove `noindex` and fix canonicals/OG at cutover) |
 | **Out of scope** | Publishing social posts; changing project `status` to DONE. |
 
 ---
