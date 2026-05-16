@@ -105,3 +105,9 @@ Canonical business facts for copy and SEO live in [`docs/business-info.md`](busi
 ## BR-015 — Website rebuild (analysis then build)
 
 The public site may be **rebuilt** for stronger visuals and SEO. Work starts with **analysis and direction** ([`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md)); **no HTML implementation** until the owner approves a brief and explicitly requests build. See **T-00009**.
+
+---
+
+## BR-017 — Migrate legacy site repairs into `projects/`
+
+Repair stories and gallery items currently embedded in [`index.html`](../index.html) (and assets under [`images/`](../images/)) should be extracted into `projects/<id> - <name>/` with `config.json` + images using the repo’s project conventions. Existing folders **0001–0003** are not replaced without owner review. See **T-00011**.

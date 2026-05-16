@@ -22,6 +22,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00008 | Done | Collect business info doc for future web content / SEO | BR-014 |
 | T-00009 | In progress | Website rebuild — analysis & direction (discuss before build) | BR-006, BR-015 |
 | T-00010 | Done | New project + end-to-end publish validation | BR-013, BR-016 |
+| T-00011 | Todo | Extract legacy site repairs into `projects/` | BR-017 |
 
 ---
 
@@ -107,3 +108,17 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-013, BR-016 |
 | **Outcome** | **0003** Illco Donald Duck: `validate-publish` OK; push → site images; live publish to FB/IG/Threads with 6-image carousel, YouTube links in caption, `itemDetails`/`repairDetails`; permalinks in `config.json`. **0002** Venom config prepared (WIP, client approval pending). Script hardening: carousel publish, safe hashtags, `delete-social.mjs`, IG container polling, Threads caption without hashtags. IG delete via API needs `instagram_manage_contents` (documented); old 0003 single-image post removed manually. |
 | **Depends on** | T-00007 (script), `.env` tokens, owner content and approval for go-live. |
+
+---
+
+## T-00011 — Extract legacy site repairs into `projects/`
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-017 |
+| **Goal** | Backfill `projects/` from content already on the live homepage ([`index.html`](../index.html)), without changing HTML unless owner later requests it. |
+| **Source** | **Full stories** (h3 + image + paragraph): Rocky Balboa, Vintage Giant Smurf, Childhood Toy Train, Teddy Bear with Love. **Gallery** (“Other Patients”): dog, duggee, guitar, lightsaber, stormtrooper, vintage bear, Tomy car (×2), Anpanman reading pen — shorter captions only. |
+| **Scope** | For each repair: create `projects/0004 - …` (next free id); copy/link images from `images/` into folder (`hero` or `after` + optional `before` if added later); draft `config.json` (`title`, `description` ≤500 for social, `itemDetails` / `repairDetails`, `tags`, `status` **WIP** until owner sets **DONE**). Run `validate-publish.mjs` when content is complete. **Do not** overwrite **0001–0003**; dedupe if a site story matches an existing project. |
+| **Out of scope** | Auto-publish to social; editing `index.html` to point at new folders (→ **T-00009** rebuild). Optional: one-off script `scripts/import-site-projects.mjs` for repeatability. |
+| **Related** | T-00009 (wire DONE projects into new site), T-00008 (`business-info.md` for tone/tags). |

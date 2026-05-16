@@ -106,6 +106,7 @@ Slug could come from project folder id + name, e.g. `0001-saielle-willow-tree`.
 | **T-00008** | Business copy, SEO keywords, tone |
 | **T-00007** | Local publish script (social) — separate from site deploy |
 | **T-00002** | Deploy path documented |
+| **T-00011** | Migrate homepage repair stories into `projects/` before or during rebuild |
 
 ---
 
