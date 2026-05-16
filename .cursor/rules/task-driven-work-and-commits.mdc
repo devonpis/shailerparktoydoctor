@@ -1,0 +1,38 @@
+---
+description: Work from docs/TASKS.md; trace to docs/SD.md; commits reference T-00001-style IDs
+alwaysApply: true
+---
+
+# Task-driven work and commit linkage
+
+## Sources of truth
+
+- **Requirements:** [`docs/SD.md`](../../docs/SD.md) (`BR-xxx`).
+- **Backlog / execution order:** [`docs/TASKS.md`](../../docs/TASKS.md) — task IDs are **`T-` + five zero-padded digits** (e.g. `T-00001`, `T-00042`).
+
+## Before doing engineering work
+
+1. Identify which **`T-#####`** task is in scope (or add a row in `docs/TASKS.md` and, if needed, a **`BR-xxx`** in `docs/SD.md`).
+2. Prefer **one task per slice** of work; avoid mixing unrelated goals in the same change set without separate tasks.
+3. If the user’s request does not match any task, **propose** a new task + requirement line **or** ask them which `T-#####` to use.
+
+## While working
+
+- Keep edits aligned with the active task’s description and linked `BR-xxx`.
+- When scope changes, update `docs/TASKS.md` (and `docs/SD.md` if business intent changed).
+
+## Task status
+
+- Set the task to **`In progress`** while actively implementing (optional but encouraged).
+- Set to **`Done`** when the task’s outcome is achieved; use the same commit as the fix when possible.
+
+## Commits (with owner approval)
+
+Git commits still require **explicit human confirmation** (see *human confirmation* rule).
+
+When proposing or creating a commit:
+
+- Put the task ID at the start of the subject line, e.g. `T-00003: add project index script`.
+- If one commit covers multiple tasks (rare), use `T-00003 T-00004: …` or split commits.
+
+Do **not** commit **only** doc/task bookkeeping without a real **`T-#####`** unless the user labels it (e.g. maintenance task).

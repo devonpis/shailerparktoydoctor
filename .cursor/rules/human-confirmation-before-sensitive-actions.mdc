@@ -1,0 +1,42 @@
+---
+description: Require explicit human confirmation before publish, secrets, git commit, or git push
+alwaysApply: true
+---
+
+# Human confirmation before sensitive actions
+
+The repository owner must **explicitly approve** before the agent performs any of the following.
+
+## Publishing: explicit command first, then preview, then “yes”
+
+Do **not** start a **publish workflow** (drafting go-live copy for posting, preparing platform-specific payloads, or changing the public site to promote a repair) unless the user has issued an **explicit publish instruction** that names the project and the target, in the same spirit as:
+
+- `publish 0001 to facebook`
+- `publish 0001 to webpage`
+- `publish 0001 to social media` *(all social channels in scope for that run — state which in the preview)*
+- `publish 0001 to social media and webpage`
+
+Casual messages (“0001 is ready”, “we should post this”) **do not** count. If intent sounds like publishing but wording is not explicit, **stop** and ask them to say it like the examples above.
+
+**After** such a command: output a **preview summary** (project id/folder, targets, `status`, which URL fields are empty vs already set, caption/media notes, `DONE` check) and **wait for a clear confirm** before executing anything that goes live.
+
+## Blocked without a clear “yes”
+
+Do **not** run or complete these unless the user has just **confirmed in the same conversation** (e.g. “yes, publish”, “approved, commit and push”), **in addition to** any requirement above:
+
+1. **Publishing** — posting or scheduling content to Facebook, Threads, Instagram, or any other social channel; uploading media or captions on behalf of the business; or any action that makes repair content public outside this repo. **Only** after the **explicit publish command** + **preview** flow in the previous section. Also respect the *project lifecycle* rule: a project’s `config.json` must have **`status`** exactly **`"DONE"`** before that project is promoted on social or on the public website.
+2. **Git commit** — `git commit`, or any step that creates a commit. Proposed messages should lead with a **five-digit task ID** (`T-00001` … `T-99999`) from [`docs/TASKS.md`](docs/TASKS.md) (see *task-driven work* rule).
+3. **Git push** — `git push`, or opening/updating a PR if that would publish branch state the user did not intend.
+4. **Secrets / API keys** — writing or embedding API keys, tokens, passwords, or other credentials into the repo (including `.env`, config files, scripts, docs, or example values that contain real secrets); configuring GitHub Actions secrets or similar from the agent; or pasting full secret values into chat output unnecessarily. **Prepare placeholders only** (e.g. `YOUR_API_KEY_HERE`) until the user explicitly approves adding real values—and prefer telling the user to paste secrets locally or via host UI rather than putting them in tracked files.
+
+## What to do instead
+
+- **Prepare only (outside an explicit publish command):** help with `config.json`, images, drafts in chat, site structure, etc. — **do not** treat that as approval to publish.
+- **After an explicit publish command:** **preview summary first**, then **stop and ask** for confirmation before any go-live step.
+- **Default:** if intent is ambiguous, treat as **not approved** and ask one short question.
+
+## Wording
+
+Ask a direct yes/no (or numbered) question, for example: “Ready to commit as `T-00003: short summary`?” / “Should I push to `origin`?” / “Approve posting this to Instagram with the draft below?” / “OK to add this API key to `.env` (untracked) / GitHub Actions?”
+
+Do not infer approval from general project goals; require an explicit answer to that specific action.

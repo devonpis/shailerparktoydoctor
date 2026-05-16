@@ -1,0 +1,58 @@
+---
+description: Project lifecycle, DONE gate, URL bookkeeping, explicit publish, no HTML edits unless requested
+alwaysApply: true
+---
+
+# Project lifecycle and publish guards
+
+Use the repository **README**, section *Project management*, for the full workflow. When working inside `**/projects/**/config.json` or publishing repair content:
+
+## Explicit publish commands only
+
+Do **not** begin a publish-oriented workflow (preview for go-live, posting, or promoting a project on the **public** site) until the user says so in an **explicit** form, e.g.:
+
+- `publish 0001 to facebook`
+- `publish 0001 to webpage`
+- `publish 0001 to social media` *(then list intended platforms in the preview — e.g. Facebook, Instagram, Threads)*
+- `publish 0001 to social media and webpage`
+
+**Then:** show a **preview summary** and get **confirmation** before any public action (see the *human confirmation* rule). “Ready to post” chit-chat is **not** a trigger.
+
+## No HTML work unless you ask
+
+Do **not** **create** or **edit** any **`*.html`** files (site pages, repair pages, `index.html`, `contact.html`, snippets, etc.) unless the user **explicitly** asks for HTML / site-page work in that conversation.
+
+That includes drive-by fixes (typos, meta tags, nav links, formatting) — **skip them** unless the request is clearly about changing HTML.
+
+**Allowed** examples:
+
+- They include **`webpage`** in an approved `publish <id> to …` flow (after preview + confirm), **or**
+- A direct request such as “change `contact.html`”, “fix the menu in `index.html`”, “create the HTML page for 0001”, “add project 0001 to the website”.
+
+Otherwise stick to `config.json`, README, rules, captions-in-chat, or non-HTML files. If unsure, **ask** before touching `*.html`.
+
+## Status (owner-controlled)
+
+- The **`status`** field is **set only by the human** (e.g. `WIP`, `DONE`). Never infer `DONE` from images or narrative alone.
+- **`DONE` gate:** Do **not** publish a project to **any** social channel (Facebook, Threads, Instagram, etc.) and do **not** add or update the **public website** so this project becomes visible to visitors, unless that project’s `config.json` has **`status` exactly `"DONE"`**.
+  - If `status` is missing or not `DONE`, **stop** and ask the user to confirm when the project is `DONE` before publishing or going live on the site.
+
+## URLs record what is already live
+
+Per-project `config.json` URL fields (`facebookUrl`, `instagramUrl`, `threadUrl`, `youtubeUrl`, `youtubeShortUrl`, `webpageUrl`):
+
+- **`null`** (or absent) → nothing recorded for that channel yet.
+- **Non-null URL** → treat as **already published / linked** for that channel. **Do not** create a second post there without **explicit** user instruction (e.g. “repost anyway”).
+- After the user approves publishing and a post exists: **update** the matching field with the final permalink.
+- **YouTube:** If the user manually uploads a video, **update** `youtubeUrl` and/or `youtubeShortUrl` when they provide the link (no new upload by the agent unless they ask and approve).
+
+## Public project page and links
+
+- **`webpageUrl`** — When a dedicated repair page exists on the main site, store its canonical URL here. Site markup should use **`facebookUrl`**, **`instagramUrl`**, **`threadUrl`**, **YouTube fields**, and **`webpageUrl`** as **`href` targets** where each is non-null — but **do not create or edit `*.html`** to add that unless the user explicitly requested HTML work (see *No HTML work unless you ask*).
+- Changing **HTML/CSS/JS** so a **non–`DONE`** project becomes visible on the public site counts as violating the **`DONE` gate** above.
+
+## Order of operations
+
+1. Human uses an **explicit** `publish <id> to …` instruction (and sets **`status`** to `"DONE"` when they want promotion allowed).
+2. Agent replies with a **preview summary**; human **confirms** (see *human confirmation* rule).
+3. After go-live, **persist** returned permalinks in `config.json` (commits still need separate confirmation).

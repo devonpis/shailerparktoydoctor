@@ -1,1 +1,6 @@
 .DS_Store
+
+# Local Meta / API tokens (see docs/meta-local-api-setup.md)
+.env
+.env.local
+.env.*.local
