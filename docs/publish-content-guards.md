@@ -97,8 +97,8 @@ Meta fetches **`image_url` over HTTPS**. This repo serves project media from the
 | Step | Action |
 |------|--------|
 | 1 | Add/update images under `projects/<id> - <name>/` and push **`main`**. |
-| 2 | Wait for deploy (~1 min after Actions shows success). |
-| 3 | Publish with `node scripts/publish-social.mjs <id> --use-site [--image after] [--wait-for-site]`. |
+| 2 | Publish with `node scripts/publish-social.mjs <id> --use-site --wait-for-site` — polls until **all** project images are reachable on the site (5s interval, 5 min default timeout). |
+| 3 | Optional: `--image after` for which file to post; `--wait-for-site 600` for a longer timeout. |
 
 Public URL pattern: `https://sptoydoctor.com.au/projects/{encoded-folder}/{file}` — see [`github-pages-deploy.md`](github-pages-deploy.md).
 

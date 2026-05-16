@@ -6,11 +6,11 @@
  *   node scripts/publish-social.mjs <project-id> --dry-run
  *   node scripts/publish-social.mjs <project-id> --target facebook|instagram|threads|all
  *   node scripts/publish-social.mjs <project-id> --target instagram --use-site --image after
- *   node scripts/publish-social.mjs <project-id> --target all --use-site --wait-for-site
+ *   node scripts/publish-social.mjs <project-id> --target all --use-site --wait-for-site [maxSeconds]
  *   node scripts/publish-social.mjs <project-id> --target all --public-base-url https://example.com/path/to/folder
  *
  * Instagram & Threads need a public HTTPS image_url. Facebook uploads local files directly.
- * For IG/Threads: push project images on main first (GitHub Pages), wait ~1 min, then use --use-site.
+ * For IG/Threads: push project images on main first (GitHub Pages), then --use-site --wait-for-site to poll until live.
  */
 
 import fs from 'node:fs';
@@ -25,6 +25,10 @@ import {
   projectSitePublicBase,
   projectSiteImageUrl,
 } from './lib/site-image-url.mjs';
+import {
+  isUrlReachable,
+  waitForProjectImagesOnSite,
+} from './lib/wait-for-site-images.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -56,7 +60,8 @@ function parseArgs(argv) {
     else if (a === '--use-site') flags.useSite = true;
     else if (a === '--wait-for-site') {
       const next = argv[i + 1];
-      flags.waitForSite = next && /^\d+$/.test(next) ? Number(argv[++i]) : 60;
+      // Optional max seconds (default 300). Poll every 5s until all project images return HTTP OK.
+      flags.waitForSite = next && /^\d+$/.test(next) ? Number(argv[++i]) : 300;
     } else if (a === '--target') flags.target = argv[++i];
     else if (a === '--image') flags.imageStem = argv[++i];
     else if (a === '--public-base-url') flags.publicBaseUrl = argv[++i];
@@ -65,7 +70,7 @@ function parseArgs(argv) {
   }
   if (!positional[0]) {
     throw new Error(
-      'Usage: node scripts/publish-social.mjs <project-id> [--dry-run] [--target …] [--use-site] [--wait-for-site [seconds]] [--image after|hero|before|auto] [--public-base-url URL] [--write-config] [--force]'
+      'Usage: node scripts/publish-social.mjs <project-id> [--dry-run] [--target …] [--use-site] [--wait-for-site [maxSeconds]] [--image after|hero|before|auto] [--public-base-url URL] [--write-config] [--force]'
     );
   }
   if (!TARGETS.includes(flags.target)) {
@@ -186,16 +191,6 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function assertImageReachable(imageUrl) {
-  const res = await fetch(imageUrl, { method: 'HEAD', redirect: 'follow' });
-  if (!res.ok) {
-    throw new Error(
-      `Image not reachable (${res.status}): ${imageUrl}\n` +
-        'Push project files to main, wait for GitHub Pages (~1 min), then retry (or use --wait-for-site).'
-    );
-  }
-}
-
 function resolvePublicBaseUrl(flags, env, projectFolderName) {
   if (flags.publicBaseUrl) return flags.publicBaseUrl;
   if (flags.useSite) {
@@ -281,12 +276,25 @@ async function main() {
     process.exit(0);
   }
 
-  if (flags.waitForSite > 0 && needsPublicUrl) {
-    console.log(`Waiting ${flags.waitForSite}s for GitHub Pages to serve the image…`);
-    await sleep(flags.waitForSite * 1000);
-  }
-  if (needsPublicUrl && publicImage) {
-    await assertImageReachable(publicImage);
+  if (needsPublicUrl && publicBaseUrl) {
+    if (flags.waitForSite > 0) {
+      await waitForProjectImagesOnSite({
+        dir,
+        projectFolderName,
+        siteBase,
+        publicBaseUrl,
+        useSite: flags.useSite,
+        maxWaitSeconds: flags.waitForSite,
+      });
+    } else if (publicImage) {
+      const ok = await isUrlReachable(publicImage);
+      if (!ok) {
+        throw new Error(
+          `Image not reachable: ${publicImage}\n` +
+            'Push to main and use --wait-for-site to poll until all project images are live.'
+        );
+      }
+    }
   }
 
   env = loadEnv();

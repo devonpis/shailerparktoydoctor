@@ -86,7 +86,7 @@ Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-
 | `tags` | Topic labels (**1–30**); appended as hashtags on social (see [`docs/publish-content-guards.md`](docs/publish-content-guards.md)) |
 | Images / video | `before`, `after`, `hero`, `WIP-###`, or video files in the project folder |
 
-Before any publish, run: `node scripts/validate-publish.mjs <project-id>` — must exit **0**. For social (after explicit `publish …` + confirm in chat): push `main` so project images are on **sptoydoctor.com.au**, wait ~1 min, then `node scripts/publish-social.mjs <project-id> --use-site` for Instagram/Threads (`--image after` optional; Facebook can run without `--use-site`).
+Before any publish, run: `node scripts/validate-publish.mjs <project-id>` — must exit **0**. For social (after explicit `publish …` + confirm in chat): push `main`, then `node scripts/publish-social.mjs <project-id> --use-site --wait-for-site` for Instagram/Threads (polls until all project images are live; `--image after` optional; Facebook can run without `--use-site`).
 
 ### `status` (you set this)
 

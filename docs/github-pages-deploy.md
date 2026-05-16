@@ -66,8 +66,7 @@ Example: [`…/0001%20-%20Saielle%20of%20the%20Willow%20Tree/after.jpeg`](https:
 **Order for IG/Threads image posts:**
 
 1. Commit and **push** `main` (includes new/updated images under `projects/…`).
-2. Wait for **pages-build-deployment** to finish, then ~**1 minute** so the CDN serves the file.
-3. Run `node scripts/publish-social.mjs <id> --target instagram|threads|all --use-site` (optional `--image after`, `--wait-for-site`).
+2. Run `node scripts/publish-social.mjs <id> --target instagram|threads|all --use-site --wait-for-site` — polls every **5s** until **all** project images (`before`, `after`, `hero`, `WIP-*`) return HTTP OK (default max **5 min**; override with `--wait-for-site 600`).
 
 Facebook Page posts can upload the **local file** and do not require the site URL first.
 
