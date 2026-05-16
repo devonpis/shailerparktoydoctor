@@ -166,7 +166,7 @@ Folder name stays `{id} - {name}` (e.g. `0003 - Donald Duck`) — matches repo a
 | **T-00015** | Webpage go-live workflow doc |
 | **T-00017** | ~~Scaffold `new/`~~ — **Done** |
 | **T-00018** | UI style polish (Prepbox, hamburger, responsive) |
-| **T-00019** | Project story page wireframe & plan |
+| ~~**T-00019**~~ | ~~Project story page wireframe~~ — **Done** ([`website-project-page-wireframe.md`](website-project-page-wireframe.md)) |
 | **T-00020** | Testimonials page (hybrid + legacy quotes) |
 | **T-00016** | Cutover `new/` → root (after build slices) |
 

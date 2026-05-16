@@ -30,7 +30,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00016 | Todo | Website rebuild: promote `new/` to root (cutover) | BR-006, BR-015 |
 | T-00017 | Done | Website rebuild: scaffold sections & structure (`new/`) | BR-006, BR-015 |
 | T-00018 | Todo | Website rebuild: UI style polish (Prepbox, responsive) | BR-006, BR-015 |
-| T-00019 | Todo | Website rebuild: project story page wireframe & plan | BR-015 |
+| T-00019 | Done | Website rebuild: project story page wireframe & plan | BR-015 |
 | T-00020 | Todo | Website rebuild: testimonials page (hybrid + content) | BR-006, BR-015 |
 
 ---
@@ -126,7 +126,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 |-------|-------|
 | **Status** | Todo |
 | **Requirements** | BR-015 |
-| **Goal** | `data/projects-index.json` schema (+ optional `featured` for home); repair `index.html` template under `projects/0000 - template/`; sitemap/robots pattern. Gallery index lives at **`projects/index.html`** (marketing), not inside each project folder. |
+| **Goal** | `data/projects-index.json` schema (`projectName`, `title`, `thumbnail` with hero→after→before→WIP rule, `url`, `endDate`, `tags`); repair `index.html` template per wireframe; sitemap/robots. Gallery at **`projects/index.html`**. Update gallery JS to search **`projectName`** + tags. |
 | **Depends on** | T-00009 (stack); brief helpful but not required for schema/template. |
 | **Blocks** | T-00019 (wireframe), T-00020 (gallery data); template build after wireframe |
 
@@ -171,12 +171,12 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-015 |
-| **Goal** | Planning doc (section in brief or [`docs/website-project-page-wireframe.md`](website-project-page-wireframe.md)): layout for `projects/<folder>/index.html` — hero, before/after/WIP gallery, story text from `config.json`, tags, CTA to contact, prev/next or back to Projects index; mobile layout. Informs **T-00013** template. |
+| **Outcome** | [`docs/website-project-page-wireframe.md`](website-project-page-wireframe.md) — `title` = slogan, `projectName` = tile name, `endDate` only; thumbnail order; links under tags; gallery index schema; mobile v1. |
 | **Depends on** | T-00012 |
 | **Blocks** | T-00013 (HTML template should match wireframe) |
-| **Example** | First implementation target: **0003** Donald Duck when DONE |
+| **Example** | First implementation: **0003** Donald Duck |
 
 ---
 

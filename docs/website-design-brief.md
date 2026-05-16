@@ -130,7 +130,7 @@ Preview paths use **`/new/`** prefix until **T-00016** cutover; production URLs 
 |----------------|-----------|---------|
 | `/` | *(via logo)* | Home — see [Home sections](#home-page-sections-owner-2026-05-16) |
 | `/projects/` | **Projects** | **Gallery index** — all DONE projects as tiles (React + JSON); links to story pages |
-| `/projects/<folder>/` | — | Single repair story (`index.html` inside each DONE folder; folder name unchanged) |
+| `/projects/<folder>/` | — | Single repair story (`index.html` per DONE folder) — wireframe: [`website-project-page-wireframe.md`](website-project-page-wireframe.md) |
 | `/testimonials.html` | **Testimonials** | Google reviews |
 | `/contact.html` | **Contact** | NAP, enquiry flow, SMS preferred, no walk-in |
 
