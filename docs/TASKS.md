@@ -29,7 +29,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00015 | Done | Website rebuild: webpage go-live workflow (docs) | BR-004, BR-015 |
 | T-00016 | Todo | Website rebuild: promote `new/` to root (cutover) | BR-006, BR-015 |
 | T-00017 | Done | Website rebuild: scaffold sections & structure (`new/`) | BR-006, BR-015 |
-| T-00018 | Todo | Website rebuild: UI style polish (Prepbox, responsive) | BR-006, BR-015 |
+| T-00018 | Done | Website rebuild: UI style polish (Prepbox, responsive) | BR-006, BR-015 |
 | T-00019 | Done | Website rebuild: project story page wireframe & plan | BR-015 |
 | T-00020 | Done | Website rebuild: testimonials page (build) | BR-006, BR-015 |
 | T-00021 | Done | Website rebuild: testimonials page (plan) | BR-015 |
@@ -162,9 +162,10 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-006, BR-015 |
 | **Goal** | Apply Prepbox block styling across `new/` pages: typography, borders, section rhythm, hero/services blocks; **mobile hamburger** nav; social icon styling; responsive pass (~375px+). **Owner:** final **colour tweaks** (e.g. secondary accent `#f5a623`) decided here, not in brief. |
+| **Outcome** | Legacy-aligned `site.css` (primary `#4caac9`, Lobster/Nunito, h2 bands, block padding on prose); shared `includes/` + `site-chrome.js` on all `/new/` pages and project template; home patient stories + doctors/skills; skill filters on gallery; platform social icons; responsive hero, stacked nav ≤500px; Donald Duck story page styled. |
 | **Depends on** | T-00012, T-00017 |
 | **Out of scope** | Project story HTML (T-00013); contact Maps content (**T-00022**); cutover (T-00016) |
 

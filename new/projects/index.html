@@ -2,72 +2,39 @@
 <html lang="en-AU">
   <head>
     <meta charset="utf-8" />
-    <title>Projects — Shailer Park Toy Doctor (preview)</title>
+    <title>Projects — Shailer Park Toy Doctor</title>
+    <meta
+      name="description"
+      content="Completed toy repair stories from Shailer Park Toy Doctor — photos, videos, and how each patient was fixed."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/new/css/site.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: { DEFAULT: '#4caac9', dark: '#3a8fa8', light: '#e8f6fa' },
-            },
-            fontFamily: {
-              display: ['Lobster', 'cursive'],
-              sans: ['Nunito', 'system-ui', 'sans-serif'],
-            },
-          },
-        },
-      };
-    </script>
   </head>
-  <body class="font-sans text-gray-800 bg-gray-50">
-    <div class="bg-secondary-light border-b-2 border-gray-800 text-center py-2 text-sm font-semibold">
-      Preview — gallery at <code class="text-xs">/new/projects/</code>; story folders at
-      <code class="text-xs">/projects/&lt;name&gt;/</code>
-    </div>
-    <header class="border-b-2 border-gray-800 bg-white">
-      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
-        <a href="/new/" class="font-display text-2xl text-primary">Shailer Park Toy Doctor</a>
-        <nav class="flex flex-wrap items-center gap-4 font-semibold text-sm">
-          <a href="/new/projects/" class="text-primary">Projects</a>
-          <a href="/new/testimonials.html">Testimonials</a>
-          <a href="/new/contact.html">Contact</a>
-          <span class="flex gap-3 text-primary">
-            <a href="https://www.facebook.com/profile.php?id=61589652126144" aria-label="Facebook" rel="noopener noreferrer" target="_blank">FB</a>
-            <a href="https://www.instagram.com/sptoydoctor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank">IG</a>
-            <a href="https://www.threads.com/@sptoydoctor" aria-label="Threads" rel="noopener noreferrer" target="_blank">Th</a>
-            <a href="https://www.youtube.com/@SpToyDoctor" aria-label="YouTube" rel="noopener noreferrer" target="_blank">YT</a>
-          </span>
-        </nav>
-      </div>
-    </header>
-    <main class="max-w-6xl mx-auto px-4 py-16">
-      <h1 class="font-display text-4xl text-primary mb-2">Projects</h1>
-      <p class="text-gray-600 mb-8">DONE repairs only. Click a card for the full story.</p>
+  <body data-active-page="projects">
+    <div id="site-header"></div>
+
+    <main class="page-main">
+      <h1>Projects</h1>
+      <p>
+        Browse toys we have finished repairing. Each card opens the full story — photos, videos, and what we
+        did to bring it back to life.
+      </p>
       <div id="projects-root"></div>
     </main>
-    <footer class="border-t-2 border-gray-800 bg-white mt-12">
-      <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-600">
-        <p class="mt-4 font-semibold">
-          <a href="/new/projects/" class="text-primary">Projects</a>
-          <span class="text-gray-400 mx-2">·</span>
-          <a href="/new/testimonials.html" class="text-primary">Testimonials</a>
-          <span class="text-gray-400 mx-2">·</span>
-          <a href="/new/contact.html" class="text-primary">Contact</a>
-        </p>
-        <p class="mt-4 text-gray-500">© 2026 Shailer Park Toy Doctor</p>
-      </div>
-    </footer>
-    <script type="module" src="/new/js/projects-gallery.js"></script>
+
+    <div id="site-footer"></div>
+
+    <script src="/new/js/brand-text.js" defer></script>
+    <script src="/new/js/site-chrome.js" defer></script>
+    <script src="/new/js/skills.js" defer></script>
+    <script src="/new/js/projects-gallery.js" defer></script>
   </body>
 </html>
