@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>Testimonials — Shailer Park Toy Doctor (preview)</title>
+    <meta
+      name="description"
+      content="32 five-star Google reviews for Shailer Park Toy Doctor — toy repair in Shailer Park, Brisbane."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -20,6 +24,7 @@
           extend: {
             colors: {
               primary: { DEFAULT: '#4caac9', dark: '#3a8fa8', light: '#e8f6fa' },
+              secondary: { DEFAULT: '#f5a623', light: '#fff4e0' },
             },
             fontFamily: {
               display: ['Lobster', 'cursive'],
@@ -32,29 +37,66 @@
   </head>
   <body class="font-sans text-gray-800 bg-gray-50">
     <div class="bg-secondary-light border-b-2 border-gray-800 text-center py-2 text-sm font-semibold">
-      Preview — full quotes on <a href="/reviews.html" class="text-primary underline">legacy reviews page</a> (static copy)
+      Preview — <a href="/reviews.html" class="text-primary underline">legacy reviews page</a> at site root
     </div>
-    <header class="border-b-2 border-gray-800 bg-white">
+
+    <header class="border-b-2 border-gray-800 bg-white sticky top-0 z-10">
       <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
-        <a href="/new/" class="font-display text-2xl text-primary">Shailer Park Toy Doctor</a>
+        <a href="/new/" class="font-display text-2xl text-primary shrink-0">Shailer Park Toy Doctor</a>
         <nav class="flex flex-wrap items-center gap-4 font-semibold text-sm">
-          <a href="/new/projects/">Projects</a>
+          <a href="/new/projects/" class="hover:text-primary">Projects</a>
           <a href="/new/testimonials.html" class="text-primary">Testimonials</a>
-          <a href="/new/contact.html">Contact</a>
+          <a href="/new/contact.html" class="hover:text-primary">Contact</a>
+          <span class="hidden sm:inline text-gray-300">|</span>
           <span class="flex gap-3 text-primary">
-            <a href="https://www.facebook.com/profile.php?id=61589652126144" aria-label="Facebook" rel="noopener noreferrer" target="_blank">FB</a>
-            <a href="https://www.instagram.com/sptoydoctor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank">IG</a>
-            <a href="https://www.threads.com/@sptoydoctor" aria-label="Threads" rel="noopener noreferrer" target="_blank">Th</a>
-            <a href="https://www.youtube.com/@SpToyDoctor" aria-label="YouTube" rel="noopener noreferrer" target="_blank">YT</a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61589652126144"
+              class="hover:text-primary-dark"
+              aria-label="Facebook"
+              rel="noopener noreferrer"
+              target="_blank"
+              >FB</a
+            >
+            <a
+              href="https://www.instagram.com/sptoydoctor/"
+              class="hover:text-primary-dark"
+              aria-label="Instagram"
+              rel="noopener noreferrer"
+              target="_blank"
+              >IG</a
+            >
+            <a
+              href="https://www.threads.com/@sptoydoctor"
+              class="hover:text-primary-dark"
+              aria-label="Threads"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Th</a
+            >
+            <a
+              href="https://www.youtube.com/@SpToyDoctor"
+              class="hover:text-primary-dark"
+              aria-label="YouTube"
+              rel="noopener noreferrer"
+              target="_blank"
+              >YT</a
+            >
           </span>
         </nav>
       </div>
     </header>
-    <main class="max-w-6xl mx-auto px-4 py-16">
+
+    <main class="max-w-6xl mx-auto px-4 py-12 md:py-16">
       <h1 class="font-display text-4xl text-primary">What our customers say</h1>
-      <p class="mt-4 text-lg">
-        <strong>32 Google reviews</strong>, all 5 stars.
-      </p>
+      <p class="mt-2 text-sm text-gray-500 italic">From Google Reviews</p>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <p class="text-amber-500 text-2xl tracking-wide" aria-label="5 out of 5 stars">★★★★★</p>
+        <p class="text-lg font-semibold">
+          <strong>32 Google reviews</strong>, all 5 stars
+        </p>
+      </div>
+
       <p class="mt-6">
         <a
           href="https://maps.app.goo.gl/Yx6zSEhhyDuv6geB8"
@@ -64,19 +106,125 @@
           >Read all reviews on Google Maps</a
         >
       </p>
-      <p class="mt-10 text-gray-600 max-w-2xl">
-        v1 uses this <strong>hybrid</strong> pattern (rating + Maps link). Longer quotes can be copied from the legacy
-        page like today, or we can add a map embed later — see design brief.
+
+      <div class="mt-12 space-y-8">
+        <article class="border-2 border-gray-800 rounded-xl p-6 md:p-8 bg-white">
+          <p class="text-amber-500 text-lg mb-3" aria-hidden="true">★★★★★</p>
+          <p class="text-gray-700 leading-relaxed">
+            Took two Guitar Hero guitars that had battery leak and weren't working. Tried to fix it myself and
+            almost did more damage than good! Found the Toy Doctor and glad I did — she assessed, quoted and
+            repaired within 1 week at an amazing price. When asked what made her start this business, she said
+            it's her way of reducing waste. Too many toys end up in landfill. If you have broken toys you want
+            brought back to life, I highly recommend contacting her.
+          </p>
+          <p class="mt-4 font-semibold text-primary">
+            <a
+              href="https://www.google.com/maps/contrib/100098137340497860541"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="hover:underline"
+              >Mark Lakisoe</a
+            >
+            <span class="text-gray-500 font-normal text-sm"> — Google review</span>
+          </p>
+        </article>
+
+        <article class="border-2 border-gray-800 rounded-xl p-6 md:p-8 bg-white">
+          <p class="text-amber-500 text-lg mb-3" aria-hidden="true">★★★★★</p>
+          <p class="text-gray-700 leading-relaxed">
+            Really great toy doctor! She can repair all sorts of electronic devices. Helped me with a TV remote,
+            clock and pepper grinder. I found she is highly educated in electronic engineering with experience
+            in Hong Kong and Australia. She is keen on rescuing electronic stuff — I highly recommend trying
+            here before sending things to the bin.
+          </p>
+          <p class="mt-4 font-semibold text-primary">
+            <a
+              href="https://www.google.com/maps/contrib/114704427028872991012"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="hover:underline"
+              >Hikaru Button</a
+            >
+            <span class="text-gray-500 font-normal text-sm"> — Google review</span>
+          </p>
+        </article>
+
+        <article class="border-2 border-gray-800 rounded-xl p-6 md:p-8 bg-white">
+          <p class="text-amber-500 text-lg mb-3" aria-hidden="true">★★★★★</p>
+          <p class="text-gray-700 leading-relaxed">
+            I'm so glad I found this Toy Doctor — what a great service. She fixed my old portable CD/DVD player;
+            the volume was broken and I wouldn't be able to replace it. Now it's working thanks to her.
+          </p>
+          <p class="mt-4 font-semibold text-primary">
+            <a
+              href="https://www.google.com/maps/contrib/109712609960970676722"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="hover:underline"
+              >Michelle Cowan</a
+            >
+            <span class="text-gray-500 font-normal text-sm"> — Google review</span>
+          </p>
+        </article>
+      </div>
+
+      <p class="mt-10 text-sm text-gray-500 max-w-2xl">
+        Excerpts shown with permission of the authors (public Google reviews). New reviews appear on Google first —
+        use the button above for the full list. This site does not auto-sync reviews (see
+        <a href="#fetching-reviews" class="text-primary underline">below</a>).
       </p>
+
+      <section id="fetching-reviews" class="mt-8 border-t border-gray-200 pt-8 text-sm text-gray-600 max-w-2xl">
+        <h2 class="font-semibold text-gray-800 mb-2">Can the website fetch reviews automatically?</h2>
+        <p>
+          <strong>Not easily on this static site.</strong> Google does not offer a free widget that lists all review
+          text on your own page. The
+          <a
+            href="https://developers.google.com/maps/documentation/places/web-service/details"
+            class="text-primary underline"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Places API</a
+          >
+          can return a few reviews but needs a Google Cloud project, billing, and ongoing maintenance. Third-party
+          widgets (e.g. Elfsight) are another paid option. Our approach: highlight the rating here and link to
+          Google Maps for the live list.
+        </p>
+      </section>
     </main>
+
     <footer class="border-t-2 border-gray-800 bg-white mt-12">
       <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-600">
+        <p class="font-display text-lg text-primary">Shailer Park Toy Doctor</p>
+        <p class="mt-2">6 Thistlerow Street, Shailer Park QLD 4128 — appointment only</p>
+        <p class="mt-1">
+          <a href="mailto:sptoydoctor@gmail.com" class="text-primary">sptoydoctor@gmail.com</a>
+          · (61) 0424 653 833 (SMS preferred)
+        </p>
+        <p class="mt-4 flex flex-wrap gap-3">
+          <a
+            href="https://www.facebook.com/profile.php?id=61589652126144"
+            class="text-primary"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Facebook</a
+          >
+          <a href="https://www.instagram.com/sptoydoctor/" class="text-primary" rel="noopener noreferrer" target="_blank"
+            >Instagram</a
+          >
+          <a href="https://www.threads.com/@sptoydoctor" class="text-primary" rel="noopener noreferrer" target="_blank"
+            >Threads</a
+          >
+          <a href="https://www.youtube.com/@SpToyDoctor" class="text-primary" rel="noopener noreferrer" target="_blank"
+            >YouTube</a
+          >
+        </p>
         <p class="mt-4 font-semibold">
-          <a href="/new/projects/" class="text-primary">Projects</a>
+          <a href="/new/projects/" class="text-primary hover:underline">Projects</a>
           <span class="text-gray-400 mx-2">·</span>
-          <a href="/new/testimonials.html" class="text-primary">Testimonials</a>
+          <a href="/new/testimonials.html" class="text-primary hover:underline">Testimonials</a>
           <span class="text-gray-400 mx-2">·</span>
-          <a href="/new/contact.html" class="text-primary">Contact</a>
+          <a href="/new/contact.html" class="text-primary hover:underline">Contact</a>
         </p>
         <p class="mt-4 text-gray-500">© 2026 Shailer Park Toy Doctor</p>
       </div>

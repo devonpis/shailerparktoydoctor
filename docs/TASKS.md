@@ -31,7 +31,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00017 | Done | Website rebuild: scaffold sections & structure (`new/`) | BR-006, BR-015 |
 | T-00018 | Todo | Website rebuild: UI style polish (Prepbox, responsive) | BR-006, BR-015 |
 | T-00019 | Done | Website rebuild: project story page wireframe & plan | BR-015 |
-| T-00020 | Todo | Website rebuild: testimonials page (build) | BR-006, BR-015 |
+| T-00020 | Done | Website rebuild: testimonials page (build) | BR-006, BR-015 |
 | T-00021 | Done | Website rebuild: testimonials page (plan) | BR-015 |
 | T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 
@@ -199,11 +199,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-006, BR-015 |
-| **Goal** | Implement `new/testimonials.html` per **T-00021** plan. |
-| **Depends on** | T-00021; T-00018 helpful for shared chrome |
-| **Out of scope** | Paid review widgets; Places API |
+| **Outcome** | [`new/testimonials.html`](../new/testimonials.html) — 32× 5★, Maps CTA, three legacy quote cards with Google contributor links; short note on why reviews are not auto-fetched. |
+| **Depends on** | T-00021 |
+| **Out of scope** | Places API / paid widgets (documented in plan) |
 
 ---
 
