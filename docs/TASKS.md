@@ -20,9 +20,13 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00006 | Done | Publish content guards (validation script, limits, rules) | BR-005, BR-012 |
 | T-00007 | Done | Local publish script (Facebook, Instagram, Threads) | BR-001, BR-010, BR-012, BR-013 |
 | T-00008 | Done | Collect business info doc for future web content / SEO | BR-014 |
-| T-00009 | In progress | Website rebuild — analysis & direction (discuss before build) | BR-006, BR-015 |
+| T-00009 | Done | Website rebuild — analysis & direction (stack agreed) | BR-006, BR-015 |
 | T-00010 | Done | New project + end-to-end publish validation | BR-013, BR-016 |
 | T-00011 | Done | Extract legacy site repairs into `projects/` | BR-017 |
+| T-00012 | Todo | Website rebuild: visual design + SEO brief | BR-015 |
+| T-00013 | Todo | Website rebuild: site artifacts (JSON, templates, sitemap) | BR-015 |
+| T-00014 | Todo | Website rebuild: marketing pages + repairs gallery | BR-006, BR-015 |
+| T-00015 | Todo | Website rebuild: webpage go-live workflow (docs) | BR-004, BR-015 |
 
 ---
 
@@ -92,11 +96,59 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | In progress |
+| **Status** | Done |
 | **Requirements** | BR-006, BR-015 |
-| **Outcome** | [`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md) — current state, options A/B/C, SEO/visual questions. |
-| **Next** | Discuss direction in chat; agree brief; **no HTML** until owner approves build. |
-| **Related** | T-00007 (publish script), T-00008 (business-info) |
+| **Outcome** | [`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md) — baseline audit; **approach A agreed**: static HTML, Tailwind CDN, React CDN for `/repairs/` gallery only; **no** compile/bundle/CI build; repair pages in `projects/<folder>/index.html`; folder names `0001 - Name` unchanged. Options B/C not chosen. |
+| **Follow-up** | T-00012 (brief) → T-00013 (artifacts) → T-00014 (build, owner says **build the site**) + T-00015 (workflow doc). |
+| **Related** | T-00007, T-00008, T-00011 |
+
+---
+
+## T-00012 — Website rebuild: visual design + SEO brief
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-015 |
+| **Goal** | Owner answers visual direction questions; agent produces [`docs/website-design-brief.md`](website-design-brief.md) (mood, hero, colours, homepage repair count, reviews/CTA placement). |
+| **Blocked by** | Owner input (see [visual questions](website-rebuild-analysis.md#visual-direction-questions-for-you) in analysis doc). |
+| **Blocks** | T-00014 |
+
+---
+
+## T-00013 — Website rebuild: site artifacts (JSON, templates, sitemap)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-015 |
+| **Goal** | Committed scaffolding (no marketing HTML yet): `data/repairs-index.json` example/schema; `projects/0000 - template/index.html.example` (or doc snippet) for DONE repair pages; root `sitemap.xml` + `robots.txt` pattern documented. |
+| **Depends on** | T-00009 (stack); brief helpful but not required for schema/template. |
+| **Blocks** | T-00014 (implementation uses these) |
+
+---
+
+## T-00014 — Website rebuild: marketing pages + repairs gallery
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-006, BR-015 |
+| **Goal** | New static site: home, contact, reviews (and optional how-it-works); `repairs/index.html` + `js/repairs-gallery.js` (React + htm via CDN); Tailwind CDN; shared header/footer; `lang="en-AU"`, LocalBusiness schema, HTTPS OG. Replace or cut over legacy `index.html` per brief. |
+| **Depends on** | T-00012 (approved brief), T-00013 (artifacts); owner explicitly says **build the site**. |
+| **Out of scope** | Automated generator; CI build; Astro/Next. |
+
+---
+
+## T-00015 — Website rebuild: webpage go-live workflow (docs)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-004, BR-015 |
+| **Goal** | Short doc (README section or `docs/website-go-live.md`): when `status` is DONE, add `projects/<folder>/index.html`, update `data/repairs-index.json`, set `webpageUrl`, regenerate sitemap; WIP must not have public `index.html`. |
+| **Depends on** | T-00009; can complete in parallel with T-00012 / T-00013. |
+| **Related** | T-00007 (`--use-site` image paths unchanged) |
 
 ---
 
@@ -118,4 +170,4 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Done |
 | **Requirements** | BR-017 |
 | **Outcome** | [`scripts/import-site-projects.mjs`](../scripts/import-site-projects.mjs) created **0004–0015** from [`index.html`](../index.html): four full patient stories + eight gallery items. Images copied from `images/` as `hero` (0014 also `after` for Tomy2). Full stories have shortened `description` (≤500) + full text in `repairDetails`. All imported as **`status: WIP`** with placeholder dates `2024-01-01` — owner should review copy, set real dates, add `before`/WIP photos if needed, then set **DONE** before publish. **0001–0003** untouched. |
-| **Related** | T-00009 (wire DONE projects into new site), T-00008 (`business-info.md` for tone/tags). |
+| **Related** | T-00014 (wire DONE projects into new site), T-00008 (`business-info.md` for tone/tags). |

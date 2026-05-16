@@ -104,7 +104,7 @@ Canonical business facts for copy and SEO live in [`docs/business-info.md`](busi
 
 ## BR-015 — Website rebuild (analysis then build)
 
-The public site may be **rebuilt** for stronger visuals and SEO. Work starts with **analysis and direction** ([`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md)); **no HTML implementation** until the owner approves a brief and explicitly requests build. See **T-00009**.
+The public site may be **rebuilt** for stronger visuals and SEO. **Analysis and stack direction** are complete ([`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md), **T-00009**). **No HTML implementation** until the owner approves a design brief (**T-00012**) and explicitly requests build (**T-00014**). Follow-up: **T-00012**–**T-00015**.
 
 ---
 
