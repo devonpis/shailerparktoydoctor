@@ -21,7 +21,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00007 | Done | Local publish script (Facebook, Instagram, Threads) | BR-001, BR-010, BR-012, BR-013 |
 | T-00008 | Done | Collect business info doc for future web content / SEO | BR-014 |
 | T-00009 | In progress | Website rebuild — analysis & direction (discuss before build) | BR-006, BR-015 |
-| T-00010 | Todo | New project + end-to-end publish validation | BR-013, BR-016 |
+| T-00010 | In progress | New project + end-to-end publish validation | BR-013, BR-016 |
 
 ---
 
@@ -105,7 +105,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | In progress |
 | **Requirements** | BR-013, BR-016 |
 | **Goal** | Prove the full repair → publish pipeline on a **new** project (not 0001). |
 | **Steps** | 1) Copy `projects/0000 - template` → `projects/0002 - …` (or next id). 2) Add images (`before`, `after`, `hero`, …), fill `title`, `description`, `tags`; owner sets `status` to **DONE**. 3) `node scripts/validate-publish.mjs 0002` → exit 0. 4) Commit + push `main`; run `publish-social.mjs` with `--use-site --wait-for-site` (dry-run first). 5) After explicit `publish 0002 to …` + confirm in chat, live post to chosen targets; `--write-config` permalinks. 6) Record any script/doc fixes in this task. |
