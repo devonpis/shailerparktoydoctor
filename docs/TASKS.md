@@ -19,6 +19,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00003 | Todo | Optional: generate site/project index from `projects/**/config.json` | BR-002, BR-004 |
 | T-00004 | Todo | Repair story webpage template / section when owner requests HTML | BR-001, BR-002, BR-006 |
 | T-00005 | Done | Meta local API: token & `.env` setup guide (FB / IG / Threads) | BR-007, BR-010 |
+| T-00006 | Done | Publish content guards (validation script, limits, rules) | BR-005, BR-012 |
 
 ---
 
@@ -69,3 +70,13 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Done |
 | **Requirements** | BR-007, BR-010 |
 | **Outcome** | [`docs/meta-local-api-setup.md`](meta-local-api-setup.md), root [`.env.example`](../.env.example), `.env` entries in [`.gitignore`](../.gitignore). |
+
+---
+
+## T-00006 — Publish content guards
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-005, BR-012 |
+| **Outcome** | [`docs/publish-content-guards.md`](publish-content-guards.md), `scripts/validate-publish.mjs`, `.cursor/rules/publish-content-guards.mdc`, `title` in project config template. |

@@ -75,3 +75,9 @@ Social posting (Facebook Page, Instagram, Threads) may use **Meta’s official A
 ## BR-011 — Static site via GitHub Actions
 
 The public **HTML site** is deployed by **GitHub Actions** when changes are **pushed** to the configured branch. Updating the live webpage is done by editing site files (when explicitly requested), committing, and pushing — not via the Meta Graph API.
+
+---
+
+## BR-012 — Publish content guards
+
+Before social or webpage publish, content must pass validation: `status` **DONE**, non-empty **`title`**, **`description`**, **`tags`**, and at least one image or video in the project folder. Cross-platform social text uses the **lowest** limits: **500** characters (Threads) and **30** tags (Instagram). See [`docs/publish-content-guards.md`](publish-content-guards.md) and `scripts/validate-publish.mjs`.

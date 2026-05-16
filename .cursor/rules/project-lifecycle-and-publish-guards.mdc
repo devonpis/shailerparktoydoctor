@@ -55,4 +55,5 @@ Per-project `config.json` URL fields (`facebookUrl`, `instagramUrl`, `threadUrl`
 
 1. Human uses an **explicit** `publish <id> to …` instruction (and sets **`status`** to `"DONE"` when they want promotion allowed).
 2. Agent replies with a **preview summary**; human **confirms** (see *human confirmation* rule).
-3. After go-live, **persist** returned permalinks in `config.json` (commits still need separate confirmation).
+3. **Content validation** must pass first — run `node scripts/validate-publish.mjs <id>` (see *publish content guards* rule and [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md)).
+4. After go-live, **persist** returned permalinks in `config.json` (commits still need separate confirmation).

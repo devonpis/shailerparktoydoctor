@@ -1,0 +1,42 @@
+---
+description: Before publish preview — validate config, media, caption length, tags
+alwaysApply: true
+---
+
+# Publish content guards
+
+Before any **publish preview** or go-live step for **social media** or **webpage**, run content validation and **stop** if it fails.
+
+## Run validation
+
+```bash
+node scripts/validate-publish.mjs <project-id-or-folder>
+```
+
+Example: `node scripts/validate-publish.mjs 0001`
+
+Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md).
+
+## Required (config + folder)
+
+- `status` === `"DONE"`
+- `title` — non-empty, ≤ **500** characters
+- `description` — non-empty, ≤ **500** characters (shared social caption; **Threads** is the binding limit)
+- `tags` — array, **1–30** strings (no `#` in JSON); **30** = Instagram hashtag cap
+- **Media** — at least one of: `before` / `after` / `hero` / `WIP-###` image, or video (`.mp4`, `.mov`, `.webm`)
+
+Also check **description + appended hashtags** ≤ **500** characters total.
+
+## Tags across Facebook, Instagram, Threads
+
+- One `tags` array in `config.json` is the source of truth.
+- **Instagram:** hashtags go in **caption** (max **30**).
+- **Threads:** hashtags are text inside the **500**-character post.
+- **Facebook:** hashtags go in post **message** (same caption string).
+- There is no shared Meta “tags” API field for all three — build caption/message from `description` + `tags`.
+
+## Preview summary must include
+
+After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **description length** (x/500), **tag count**, **media files** listed, and validation **OK** or list failures.
+
+If validation fails, **do not** proceed to publish; report failures and ask the user to fix `config.json` or add media.

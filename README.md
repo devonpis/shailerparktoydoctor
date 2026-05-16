@@ -56,7 +56,7 @@ mindmap
 | [`config.json`](config.json) | Business-level links (site, social profiles). |
 | [`docs/SD.md`](docs/SD.md) | **Specification & design** — business requirements (`BR-xxx`). |
 | [`docs/TASKS.md`](docs/TASKS.md) | **Task list** (`T-00001` … five-digit IDs); work and commits map here. |
-| [`docs/meta-local-api-setup.md`](docs/meta-local-api-setup.md) | **Meta API (local):** App ID, App Secret, tokens, `.env` — Facebook / Instagram / Threads. |
+| [`docs/publish-content-guards.md`](docs/publish-content-guards.md) | **Publish checks:** caption 500 chars, tags 1–30, media, validation script. |
 | [`projects/0000 - template/`](projects/0000%20-%20template/) | Copy fields / structure for new repairs; [`config.json`](projects/0000%20-%20template/config.json) lists all keys. |
 | `projects/<id> - <name>/` | One repair: `config.json` + images in the same folder. **Filenames are descriptive** — see [Project image filenames](#project-image-filenames). Example: [`0001 - Saielle of the Willow Tree`](projects/0001%20-%20Saielle%20of%20the%20Willow%20Tree/). |
 | Site files | e.g. [`index.html`](index.html), [`css/style.css`](css/style.css), [`CNAME`](CNAME) — static site source. |
@@ -74,6 +74,17 @@ mindmap
 ## Project management (config + publishing)
 
 Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-%20template/config.json) (see template keys). This file is the **single source of truth** for promotion state.
+
+### Content fields (required before publish)
+
+| Field | Purpose |
+|-------|---------|
+| `title` | Headline for webpage and social (≤ **500** chars) |
+| `description` | Story / caption body (≤ **500** chars for cross-platform social) |
+| `tags` | Topic labels (**1–30**); appended as hashtags on social (see [`docs/publish-content-guards.md`](docs/publish-content-guards.md)) |
+| Images / video | `before`, `after`, `hero`, `WIP-###`, or video files in the project folder |
+
+Before any publish, run: `node scripts/validate-publish.mjs <project-id>` — must exit **0**.
 
 ### `status` (you set this)
 

@@ -18,7 +18,7 @@ Do **not** start a **publish workflow** (drafting go-live copy for posting, prep
 
 Casual messages (“0001 is ready”, “we should post this”) **do not** count. If intent sounds like publishing but wording is not explicit, **stop** and ask them to say it like the examples above.
 
-**After** such a command: output a **preview summary** (project id/folder, targets, `status`, which URL fields are empty vs already set, caption/media notes, `DONE` check) and **wait for a clear confirm** before executing anything that goes live.
+**After** such a command: run `node scripts/validate-publish.mjs <id>`; if it fails, **stop** and report errors (see *publish content guards*). Then output a **preview summary** (project id/folder, targets, `status`, which URL fields are empty vs already set, title, description length, tags, media list, caption limits) and **wait for a clear confirm** before executing anything that goes live.
 
 ## Blocked without a clear “yes”
 
