@@ -161,10 +161,14 @@ Folder name stays `{id} - {name}` (e.g. `0003 - Donald Duck`) — matches repo a
 | Task | Work |
 |------|------|
 | ~~**T-00009**~~ | ~~Analysis & stack~~ — **Done** |
-| **T-00012** | Draft brief with **Prepbox** — owner **approve brief** |
-| **T-00013** | `repairs-index` example, repair `index.html` template, sitemap/robots |
+| ~~**T-00012**~~ | ~~Brief~~ — **Done** (approved) |
+| **T-00013** | `projects-index` schema, repair `index.html` template (after **T-00019** wireframe), sitemap/robots |
 | **T-00015** | Webpage go-live workflow doc |
-| **T-00014** | Build site (after brief + artifacts; owner says **build the site**); first repair page e.g. **0003** |
+| **T-00017** | ~~Scaffold `new/`~~ — **Done** |
+| **T-00018** | UI style polish (Prepbox, hamburger, responsive) |
+| **T-00019** | Project story page wireframe & plan |
+| **T-00020** | Testimonials page (hybrid + legacy quotes) |
+| **T-00016** | Cutover `new/` → root (after build slices) |
 
 ---
 

@@ -1,6 +1,6 @@
 # Website design + SEO brief (T-00012)
 
-**Status:** Draft — **owner template choice: Prepbox (#33)**. **IA / home layout** agreed in planning (2026-05-16). Approve this brief before **T-00014** full build.
+**Status:** **Approved** (owner, 2026-05-16). **T-00012** Done. Implementation tracked as **T-00017**–**T-00020** (see [`TASKS.md`](TASKS.md)).
 
 **References:** [`website-rebuild-analysis.md`](website-rebuild-analysis.md) · [`business-info.md`](business-info.md) · [`website-template-shortlist.md`](website-template-shortlist.md)
 
@@ -282,8 +282,8 @@ Superseded by [Home page sections](#home-page-sections-owner-2026-05-16) for ord
 
 ## Approval
 
-- [ ] Owner approves this brief (reply **“approve brief”** or edit this file).  
-- [ ] Then explicit **“build the site”** for T-00014.
+- [x] Owner approves this brief (**2026-05-16**).  
+- [x] Build work split: **T-00017** (scaffold, done) · **T-00018** (UI polish) · **T-00019** (project page wireframe) · **T-00020** (testimonials).
 
 ---
 
@@ -295,3 +295,4 @@ Superseded by [Home page sections](#home-page-sections-owner-2026-05-16) for ord
 | 2026-05-16 | Brand **colour tokens** + **Lobster/Nunito** (replace Prepbox palette and fonts) |
 | 2026-05-16 | **IA planning:** nav, home sections, `/projects/` gallery, testimonials, footer recommendation, responsive |
 | 2026-05-16 | Footer text links confirmed; hybrid testimonials; Dr. Hobby placeholder image; featured placeholders; `new/repairs/` → `new/projects/` |
+| 2026-05-16 | **Brief approved**; T-00014 closed; build split into T-00017–T-00020 |

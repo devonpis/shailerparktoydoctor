@@ -23,11 +23,15 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00009 | Done | Website rebuild — analysis & direction (stack agreed) | BR-006, BR-015 |
 | T-00010 | Done | New project + end-to-end publish validation | BR-013, BR-016 |
 | T-00011 | Done | Extract legacy site repairs into `projects/` | BR-017 |
-| T-00012 | In progress | Website rebuild: visual design + SEO brief | BR-015 |
+| T-00012 | Done | Website rebuild: visual design + SEO brief | BR-015 |
 | T-00013 | Todo | Website rebuild: site artifacts (JSON, templates, sitemap) | BR-015 |
-| T-00014 | In progress | Website rebuild: marketing pages + repairs gallery (`new/`) | BR-006, BR-015 |
+| T-00014 | Done | Website rebuild: initial `new/` scaffold (split → T-00017–20) | BR-006, BR-015 |
 | T-00015 | Todo | Website rebuild: webpage go-live workflow (docs) | BR-004, BR-015 |
 | T-00016 | Todo | Website rebuild: promote `new/` to root (cutover) | BR-006, BR-015 |
+| T-00017 | Done | Website rebuild: scaffold sections & structure (`new/`) | BR-006, BR-015 |
+| T-00018 | Todo | Website rebuild: UI style polish (Prepbox, responsive) | BR-006, BR-015 |
+| T-00019 | Todo | Website rebuild: project story page wireframe & plan | BR-015 |
+| T-00020 | Todo | Website rebuild: testimonials page (hybrid + content) | BR-006, BR-015 |
 
 ---
 
@@ -100,7 +104,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Done |
 | **Requirements** | BR-006, BR-015 |
 | **Outcome** | [`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md) — baseline audit; **approach A agreed**: static HTML, Tailwind CDN, React CDN for `/repairs/` gallery only; **no** compile/bundle/CI build; repair pages in `projects/<folder>/index.html`; folder names `0001 - Name` unchanged. Options B/C not chosen. |
-| **Follow-up** | T-00012 (brief) → T-00013 (artifacts) → T-00014 (build, owner says **build the site**) + T-00015 (workflow doc). |
+| **Follow-up** | T-00012 (brief) → T-00013 (artifacts) → T-00017–20 (`new/` build slices) → T-00016 (cutover) + T-00015 (workflow doc). |
 | **Related** | T-00007, T-00008, T-00011 |
 
 ---
@@ -109,12 +113,10 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | In progress |
+| **Status** | Done |
 | **Requirements** | BR-015 |
-| **Goal** | Owner answers visual direction questions; picks template; agent maintains [`docs/website-design-brief.md`](website-design-brief.md) (mood, colours, IA, home sections, SEO). |
-| **In progress** | **Prepbox (#33)**; **IA planned 2026-05-16** — nav (logo, Projects, Testimonials, Contact, social icons); home (about/mission, Our Doctors ×3, 3 featured tiles + Projects CTA); footer recommendation; responsive. |
-| **Blocked by** | Owner **“approve brief”**; open: testimonials static vs embed, footer text links, which 3 featured projects, Dr. Hobby image. |
-| **Blocks** | T-00014 |
+| **Outcome** | Owner **approved brief** (2026-05-16). [`docs/website-design-brief.md`](website-design-brief.md) — Prepbox (#33), brand colours/fonts, IA (nav, home sections, `/projects/` gallery, hybrid testimonials, footer links, responsive). |
+| **Blocks** | T-00017–T-00020 (implementation slices) |
 
 ---
 
@@ -126,21 +128,67 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-015 |
 | **Goal** | `data/projects-index.json` schema (+ optional `featured` for home); repair `index.html` template under `projects/0000 - template/`; sitemap/robots pattern. Gallery index lives at **`projects/index.html`** (marketing), not inside each project folder. |
 | **Depends on** | T-00009 (stack); brief helpful but not required for schema/template. |
-| **Blocks** | T-00014 (implementation uses these) |
+| **Blocks** | T-00019 (wireframe), T-00020 (gallery data); template build after wireframe |
 
 ---
 
-## T-00014 — Website rebuild: marketing pages + repairs gallery
+## T-00014 — Website rebuild: initial `new/` scaffold (umbrella)
 
 | Field | Value |
 |-------|-------|
-| **Status** | In progress |
+| **Status** | Done |
 | **Requirements** | BR-006, BR-015 |
-| **Goal** | Static site under **`new/`** per brief: shared header (logo→home, Projects, Testimonials, Contact, social icons); home sections (about/mission, Our Doctors, 3 featured + CTA); `new/projects/index.html` gallery + JSON; `testimonials.html`, `contact.html`; mobile-first Tailwind; schema/OG. **Do not** edit root legacy HTML until **T-00016**. |
-| **Depends on** | T-00012 (approved brief), T-00013 (artifacts); owner **build the site**. |
-| **Out of scope** | Automated generator; CI build; Astro/Next; root cutover (T-00016). |
-| **Progress** | `new/projects/`, `testimonials.html`, home sections (mission, doctors, 3 placeholders), footer links; gallery uses `projects-index.json`. Prepbox polish + schema still TODO. |
-| **Build checklist** | [ ] Header + hamburger + social icons · [ ] Home: mission, doctors, 3 tiles, Projects CTA · [ ] `/new/projects/` gallery · [ ] Testimonials page · [ ] Contact · [ ] Compact footer · [ ] Responsive pass |
+| **Outcome** | First pass under `new/` (commits `cd70da5`, `1567df7`). Work **split** into **T-00017–T-00020** for remaining build. |
+| **Superseded by** | T-00017 (structure), T-00018 (polish), T-00019 (project page plan), T-00020 (testimonials) |
+
+---
+
+## T-00017 — Website rebuild: scaffold sections & structure (`new/`)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-006, BR-015 |
+| **Outcome** | Preview site skeleton: shared header/footer pattern; home (hero, mission, Our Doctors, 3 featured placeholders, Projects CTA); `new/projects/` + `projects-index.json` + gallery script; `testimonials.html`, `contact.html` stubs. |
+| **Depends on** | T-00012 |
+| **Related** | T-00018–T-00020 refine each area |
+
+---
+
+## T-00018 — Website rebuild: UI style polish (Prepbox, responsive)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-006, BR-015 |
+| **Goal** | Apply Prepbox block styling across `new/` pages: typography, borders, section rhythm, hero/services blocks; **mobile hamburger** nav; social icon styling (not just text abbreviations); responsive pass (~375px+); contact page layout polish. |
+| **Depends on** | T-00012, T-00017 |
+| **Out of scope** | Project story HTML (T-00013 / T-00019); cutover (T-00016) |
+
+---
+
+## T-00019 — Website rebuild: project story page wireframe & plan
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-015 |
+| **Goal** | Planning doc (section in brief or [`docs/website-project-page-wireframe.md`](website-project-page-wireframe.md)): layout for `projects/<folder>/index.html` — hero, before/after/WIP gallery, story text from `config.json`, tags, CTA to contact, prev/next or back to Projects index; mobile layout. Informs **T-00013** template. |
+| **Depends on** | T-00012 |
+| **Blocks** | T-00013 (HTML template should match wireframe) |
+| **Example** | First implementation target: **0003** Donald Duck when DONE |
+
+---
+
+## T-00020 — Website rebuild: testimonials page (hybrid + content)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-006, BR-015 |
+| **Goal** | Finish `new/testimonials.html`: hybrid pattern (32× 5★, Maps CTA per brief); migrate selected quotes from legacy [`reviews.html`](../reviews.html); optional map iframe; match polished header/footer from T-00018. |
+| **Depends on** | T-00012; T-00018 helpful for shared chrome |
+| **Out of scope** | Paid third-party review widgets; Places API |
 
 ---
 
@@ -151,7 +199,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Todo |
 | **Requirements** | BR-006, BR-015 |
 | **Goal** | After owner confirms the preview site: move `new/*` to site root (or equivalent promote); remove or archive legacy root HTML (`index.html`, `contact.html`, `reviews.html`, `index_bk.html`); drop preview banners and `noindex` on marketing pages; point nav/sitemap at production URLs; update `webpageUrl` in project configs; regenerate `sitemap.xml`. |
-| **Depends on** | T-00014 (preview complete), explicit owner approval for cutover. |
+| **Depends on** | T-00018, T-00020 (and T-00013 for story pages as needed); explicit owner approval for cutover. |
 | **Out of scope** | Publishing social posts; changing project `status` to DONE. |
 
 ---
@@ -162,7 +210,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 |-------|-------|
 | **Status** | Todo |
 | **Requirements** | BR-004, BR-015 |
-| **Goal** | Short doc (README section or `docs/website-go-live.md`): when `status` is DONE, add `projects/<folder>/index.html`, update `data/repairs-index.json`, set `webpageUrl`, regenerate sitemap; WIP must not have public `index.html`. |
+| **Goal** | Short doc (README section or `docs/website-go-live.md`): when `status` is DONE, add `projects/<folder>/index.html`, update `data/projects-index.json`, set `webpageUrl`, regenerate sitemap; WIP must not have public `index.html`. |
 | **Depends on** | T-00009; can complete in parallel with T-00012 / T-00013. |
 | **Related** | T-00007 (`--use-site` image paths unchanged) |
 
@@ -186,4 +234,4 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Done |
 | **Requirements** | BR-017 |
 | **Outcome** | [`scripts/import-site-projects.mjs`](../scripts/import-site-projects.mjs) created **0004–0015** from [`index.html`](../index.html): four full patient stories + eight gallery items. Images copied from `images/` as `hero` (0014 also `after` for Tomy2). Full stories have shortened `description` (≤500) + full text in `repairDetails`. All imported as **`status: WIP`** with placeholder dates `2024-01-01` — owner should review copy, set real dates, add `before`/WIP photos if needed, then set **DONE** before publish. **0001–0003** untouched. |
-| **Related** | T-00014 (wire DONE projects into new site), T-00008 (`business-info.md` for tone/tags). |
+| **Related** | T-00017–T-00020 (wire DONE projects into new site), T-00008 (`business-info.md` for tone/tags). |
