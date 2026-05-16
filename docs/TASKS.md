@@ -33,7 +33,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00019 | Done | Website rebuild: project story page wireframe & plan | BR-015 |
 | T-00020 | Todo | Website rebuild: testimonials page (build) | BR-006, BR-015 |
 | T-00021 | Done | Website rebuild: testimonials page (plan) | BR-015 |
-| T-00022 | Todo | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
+| T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 
 ---
 
@@ -211,11 +211,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-006, BR-015 |
-| **Goal** | Rebuild `new/contact.html` per [`docs/website-contact-page-plan.md`](website-contact-page-plan.md): same copy as legacy [`contact.html`](../contact.html), fix email link, add responsive **Google Maps iframe** + “Open in Google Maps” link. |
+| **Outcome** | [`new/contact.html`](../new/contact.html) — legacy intro + NAP, photos-for-quote note, appointment-only; two-column layout with Maps iframe + goo.gl fallback; `LocalBusiness` JSON-LD; shared `/new/` chrome. |
 | **Depends on** | T-00012, T-00017 |
-| **Related** | T-00018 (styling) |
+| **Related** | T-00018 (further polish) |
 
 ---
 

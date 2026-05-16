@@ -169,7 +169,7 @@ Folder name stays `{id} - {name}` (e.g. `0003 - Donald Duck`) — matches repo a
 | ~~**T-00019**~~ | ~~Project story page wireframe~~ — **Done** ([`website-project-page-wireframe.md`](website-project-page-wireframe.md)) |
 | ~~**T-00021**~~ | ~~Testimonials page plan~~ — **Done** |
 | **T-00020** | Testimonials page build |
-| **T-00022** | Contact page (legacy copy + Maps embed) |
+| ~~**T-00022**~~ | ~~Contact page~~ — **Done** (`new/contact.html`) |
 | **T-00016** | Cutover `new/` → root (after build slices) |
 
 ---
