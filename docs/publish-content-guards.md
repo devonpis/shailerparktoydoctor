@@ -90,8 +90,26 @@ If hashtags would push the caption over 500 characters, **shorten `description` 
 
 ---
 
+## Instagram / Threads: host images on the live site first
+
+Meta fetches **`image_url` over HTTPS**. This repo serves project media from the **same GitHub Pages site** as the main pages:
+
+| Step | Action |
+|------|--------|
+| 1 | Add/update images under `projects/<id> - <name>/` and push **`main`**. |
+| 2 | Wait for deploy (~1 min after Actions shows success). |
+| 3 | Publish with `node scripts/publish-social.mjs <id> --use-site [--image after] [--wait-for-site]`. |
+
+Public URL pattern: `https://sptoydoctor.com.au/projects/{encoded-folder}/{file}` — see [`github-pages-deploy.md`](github-pages-deploy.md).
+
+**Facebook** can still use the local file upload path (no site URL required).
+
+---
+
 ## Related
 
 - [`README.md`](../README.md) — project management, image filenames  
 - [`docs/meta-local-api-setup.md`](meta-local-api-setup.md) — API tokens  
-- `scripts/validate-publish.mjs` — automated checks
+- [`docs/github-pages-deploy.md`](github-pages-deploy.md) — push → live URLs  
+- `scripts/validate-publish.mjs` — automated checks  
+- `scripts/publish-social.mjs` — `--use-site`, `--wait-for-site`

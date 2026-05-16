@@ -55,6 +55,22 @@ For a repair project, **webpage publish** means:
 
 Social channels use the **Meta local API** (see [`meta-local-api-setup.md`](meta-local-api-setup.md)), not GitHub Pages.
 
+### Project images on the live site (Instagram / Threads)
+
+Files under `projects/<folder>/` in this repo are served at:
+
+`https://sptoydoctor.com.au/projects/<url-encoded-folder>/<filename>`
+
+Example: [`…/0001%20-%20Saielle%20of%20the%20Willow%20Tree/after.jpeg`](https://sptoydoctor.com.au/projects/0001%20-%20Saielle%20of%20the%20Willow%20Tree/after.jpeg)
+
+**Order for IG/Threads image posts:**
+
+1. Commit and **push** `main` (includes new/updated images under `projects/…`).
+2. Wait for **pages-build-deployment** to finish, then ~**1 minute** so the CDN serves the file.
+3. Run `node scripts/publish-social.mjs <id> --target instagram|threads|all --use-site` (optional `--image after`, `--wait-for-site`).
+
+Facebook Page posts can upload the **local file** and do not require the site URL first.
+
 ---
 
 ## Troubleshooting

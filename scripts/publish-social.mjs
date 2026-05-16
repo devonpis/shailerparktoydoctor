@@ -5,11 +5,12 @@
  * Usage:
  *   node scripts/publish-social.mjs <project-id> --dry-run
  *   node scripts/publish-social.mjs <project-id> --target facebook|instagram|threads|all
- *   node scripts/publish-social.mjs <project-id> --target all --public-base-url https://example.com/path/to/images
- *   node scripts/publish-social.mjs <project-id> --target all --write-config
+ *   node scripts/publish-social.mjs <project-id> --target instagram --use-site --image after
+ *   node scripts/publish-social.mjs <project-id> --target all --use-site --wait-for-site
+ *   node scripts/publish-social.mjs <project-id> --target all --public-base-url https://example.com/path/to/folder
  *
  * Instagram & Threads need a public HTTPS image_url. Facebook uploads local files directly.
- * Use --public-base-url when images are already hosted (e.g. on your site).
+ * For IG/Threads: push project images on main first (GitHub Pages), wait ~1 min, then use --use-site.
  */
 
 import fs from 'node:fs';
@@ -18,7 +19,12 @@ import { fileURLToPath } from 'node:url';
 import { validateProject } from './validate-publish.mjs';
 import { loadEnv, requireEnv } from './lib/load-env.mjs';
 import { buildCaption } from './lib/caption.mjs';
-import { pickPrimaryImage, publicImageUrl } from './lib/project-media.mjs';
+import { pickImage, publicImageUrl } from './lib/project-media.mjs';
+import {
+  DEFAULT_SITE_BASE_URL,
+  projectSitePublicBase,
+  projectSiteImageUrl,
+} from './lib/site-image-url.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -32,20 +38,34 @@ const URL_FIELDS = {
 
 function parseArgs(argv) {
   const positional = [];
-  const flags = { dryRun: false, writeConfig: false, force: false, target: 'all', publicBaseUrl: null };
+  const flags = {
+    dryRun: false,
+    writeConfig: false,
+    force: false,
+    target: 'all',
+    publicBaseUrl: null,
+    useSite: false,
+    waitForSite: 0,
+    imageStem: 'auto',
+  };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--dry-run') flags.dryRun = true;
     else if (a === '--write-config') flags.writeConfig = true;
     else if (a === '--force') flags.force = true;
-    else if (a === '--target') flags.target = argv[++i];
+    else if (a === '--use-site') flags.useSite = true;
+    else if (a === '--wait-for-site') {
+      const next = argv[i + 1];
+      flags.waitForSite = next && /^\d+$/.test(next) ? Number(argv[++i]) : 60;
+    } else if (a === '--target') flags.target = argv[++i];
+    else if (a === '--image') flags.imageStem = argv[++i];
     else if (a === '--public-base-url') flags.publicBaseUrl = argv[++i];
     else if (a.startsWith('--')) throw new Error(`Unknown flag: ${a}`);
     else positional.push(a);
   }
   if (!positional[0]) {
     throw new Error(
-      'Usage: node scripts/publish-social.mjs <project-id> [--dry-run] [--target facebook|instagram|threads|all] [--public-base-url URL] [--write-config] [--force]'
+      'Usage: node scripts/publish-social.mjs <project-id> [--dry-run] [--target …] [--use-site] [--wait-for-site [seconds]] [--image after|hero|before|auto] [--public-base-url URL] [--write-config] [--force]'
     );
   }
   if (!TARGETS.includes(flags.target)) {
@@ -166,6 +186,25 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+async function assertImageReachable(imageUrl) {
+  const res = await fetch(imageUrl, { method: 'HEAD', redirect: 'follow' });
+  if (!res.ok) {
+    throw new Error(
+      `Image not reachable (${res.status}): ${imageUrl}\n` +
+        'Push project files to main, wait for GitHub Pages (~1 min), then retry (or use --wait-for-site).'
+    );
+  }
+}
+
+function resolvePublicBaseUrl(flags, env, projectFolderName) {
+  if (flags.publicBaseUrl) return flags.publicBaseUrl;
+  if (flags.useSite) {
+    const siteBase = env?.SITE_BASE_URL?.trim() || DEFAULT_SITE_BASE_URL;
+    return projectSitePublicBase(siteBase, projectFolderName);
+  }
+  return null;
+}
+
 function writeConfigUrls(configPath, config, urls) {
   for (const [field, value] of Object.entries(urls)) {
     config[field] = value;
@@ -185,9 +224,17 @@ async function main() {
   const configPath = path.join(dir, 'config.json');
   const projectFolderName = path.basename(dir);
   const caption = buildCaption(config);
-  const imagePath = pickPrimaryImage(dir);
+  const imagePath = pickImage(dir, flags.imageStem);
   const imageName = path.basename(imagePath);
   const targets = resolveTargets(flags.target);
+
+  let env = {};
+  try {
+    env = loadEnv();
+  } catch {
+    /* .env only required for live API calls */
+  }
+  const publicBaseUrl = resolvePublicBaseUrl(flags, env, projectFolderName);
 
   const existing = {};
   for (const t of targets) {
@@ -199,7 +246,7 @@ async function main() {
   console.log(`Image: ${imageName}`);
   console.log(`Caption length: ${caption.length}`);
   console.log(`Targets: ${targets.join(', ')}`);
-  if (flags.publicBaseUrl) console.log(`Public image base: ${flags.publicBaseUrl}`);
+  if (publicBaseUrl) console.log(`Public image base: ${publicBaseUrl}`);
 
   for (const [t, url] of Object.entries(existing)) {
     if (!flags.force) {
@@ -209,20 +256,22 @@ async function main() {
   }
 
   const needsPublicUrl = targets.some((t) => t === 'instagram' || t === 'threads');
-  if (needsPublicUrl && !flags.publicBaseUrl) {
+  if (needsPublicUrl && !publicBaseUrl) {
     console.error(
-      'Instagram and Threads require --public-base-url (HTTPS) pointing at the folder that contains the image file.'
+      'Instagram and Threads need a public image URL. Use --use-site (after push to main) or --public-base-url.'
     );
     console.error(
-      `Example: --public-base-url https://sptoydoctor.com.au/projects/${encodeURIComponent(projectFolderName)}`
+      `Example: git push origin main && node scripts/publish-social.mjs ${projectArg} --use-site --wait-for-site`
     );
     process.exit(1);
   }
 
-  const publicImage =
-    flags.publicBaseUrl && needsPublicUrl
-      ? publicImageUrl(flags.publicBaseUrl, imageName)
-      : null;
+  const siteBase = env.SITE_BASE_URL?.trim() || DEFAULT_SITE_BASE_URL;
+  const publicImage = needsPublicUrl
+    ? flags.useSite
+      ? projectSiteImageUrl(siteBase, projectFolderName, imageName)
+      : publicImageUrl(publicBaseUrl, imageName)
+    : null;
 
   if (flags.dryRun) {
     console.log('\n--- DRY RUN (no API calls) ---');
@@ -232,7 +281,15 @@ async function main() {
     process.exit(0);
   }
 
-  const env = loadEnv();
+  if (flags.waitForSite > 0 && needsPublicUrl) {
+    console.log(`Waiting ${flags.waitForSite}s for GitHub Pages to serve the image…`);
+    await sleep(flags.waitForSite * 1000);
+  }
+  if (needsPublicUrl && publicImage) {
+    await assertImageReachable(publicImage);
+  }
+
+  env = loadEnv();
   const graphVersion = env.META_GRAPH_API_VERSION || 'v25.0';
   const results = {};
 

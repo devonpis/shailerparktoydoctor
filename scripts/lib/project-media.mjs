@@ -11,6 +11,17 @@ export function listProjectImages(dir) {
     .sort();
 }
 
+/** Pick by stem: after, hero, before, or auto (hero → after → before → WIP). */
+export function pickImage(dir, stem = 'auto') {
+  if (stem === 'auto') return pickPrimaryImage(dir);
+  const names = listProjectImages(dir);
+  const hit = names.find((n) => n.toLowerCase().startsWith(stem.toLowerCase()));
+  if (!hit) {
+    throw new Error(`No image matching "${stem}" in ${path.basename(dir)} (${names.join(', ') || 'none'}).`);
+  }
+  return path.join(dir, hit);
+}
+
 /** Primary image for social: hero → after → before → lowest WIP */
 export function pickPrimaryImage(dir) {
   const names = listProjectImages(dir);
