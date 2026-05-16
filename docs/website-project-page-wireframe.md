@@ -107,7 +107,7 @@ Desktop wireframe (mobile = same order, stacked full-width):
 | `webpageUrl` | Canonical URL | `<link rel="canonical">` when set | Tile `url` target |
 | `status` | Gate | Must be `DONE` | Only `DONE` in gallery index |
 
-**SEO `<title>` / OG:** prefer `{projectName} — Shailer Park Toy Doctor` or `{title} — {projectName}` (T-00013: use `projectName` in `<title>` if slogan alone is too cryptic).
+**SEO `<title>` / OG (owner):** **`{projectName} — Shailer Park Toy Doctor`** only (slogan `title` stays on-page as `h1`, not in `<title>`).
 
 ---
 
@@ -179,7 +179,7 @@ Example IDs for 0003:
 
 | Element | Source |
 |---------|--------|
-| `<title>` | `{projectName} — Shailer Park Toy Doctor` (or `{title} \| {projectName}` if slogan helps search) |
+| `<title>` | **`{projectName} — Shailer Park Toy Doctor`** |
 | `meta description` | Shortened `description` (≤ ~160 chars) |
 | `link rel="canonical"` | `webpageUrl` or `https://sptoydoctor.com.au/projects/<folder>/` |
 | `og:title`, `og:description`, `og:image` | `projectName`, summary, **thumbnail URL** (priority chain above) |
@@ -274,3 +274,4 @@ WIP folders stay **out** of the JSON so they never appear as tiles.
 |------|--------|
 | 2026-05-16 | Initial wireframe; owner: two-level nav, ← All projects, summary from description, full story = repairDetails + itemDetails, YouTube embeds |
 | 2026-05-16 | title = slogan, projectName = tile/filter name; endDate only; thumbnail order hero→after→before→WIP; links under tags; gallery index explained; mobile v1 |
+| 2026-05-16 | `<title>` = projectName only (owner) |

@@ -31,7 +31,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00017 | Done | Website rebuild: scaffold sections & structure (`new/`) | BR-006, BR-015 |
 | T-00018 | Todo | Website rebuild: UI style polish (Prepbox, responsive) | BR-006, BR-015 |
 | T-00019 | Done | Website rebuild: project story page wireframe & plan | BR-015 |
-| T-00020 | Todo | Website rebuild: testimonials page (hybrid + content) | BR-006, BR-015 |
+| T-00020 | Todo | Website rebuild: testimonials page (build) | BR-006, BR-015 |
+| T-00021 | Done | Website rebuild: testimonials page (plan) | BR-015 |
+| T-00022 | Todo | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 
 ---
 
@@ -161,9 +163,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 |-------|-------|
 | **Status** | Todo |
 | **Requirements** | BR-006, BR-015 |
-| **Goal** | Apply Prepbox block styling across `new/` pages: typography, borders, section rhythm, hero/services blocks; **mobile hamburger** nav; social icon styling (not just text abbreviations); responsive pass (~375px+); contact page layout polish. |
+| **Goal** | Apply Prepbox block styling across `new/` pages: typography, borders, section rhythm, hero/services blocks; **mobile hamburger** nav; social icon styling; responsive pass (~375px+). **Owner:** final **colour tweaks** (e.g. secondary accent `#f5a623`) decided here, not in brief. |
 | **Depends on** | T-00012, T-00017 |
-| **Out of scope** | Project story HTML (T-00013 / T-00019); cutover (T-00016) |
+| **Out of scope** | Project story HTML (T-00013); contact Maps content (**T-00022**); cutover (T-00016) |
 
 ---
 
@@ -180,17 +182,43 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 ---
 
-## T-00020 — Website rebuild: testimonials page (hybrid + content)
+## T-00021 — Website rebuild: testimonials page (plan)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-015 |
+| **Outcome** | [`docs/website-testimonials-page-plan.md`](website-testimonials-page-plan.md) — hybrid (32× 5★, Maps CTA, 2–4 legacy quotes); optional map embed. |
+| **Depends on** | T-00012 |
+| **Blocks** | T-00020 |
+| **Owner optional** | Which quotes to keep; add Maps iframe on testimonials page or CTA only. |
+
+---
+
+## T-00020 — Website rebuild: testimonials page (build)
 
 | Field | Value |
 |-------|-------|
 | **Status** | Todo |
 | **Requirements** | BR-006, BR-015 |
-| **Goal** | Finish `new/testimonials.html`: hybrid pattern (32× 5★, Maps CTA per brief); migrate selected quotes from legacy [`reviews.html`](../reviews.html); optional map iframe; match polished header/footer from T-00018. |
-| **Depends on** | T-00012; T-00018 helpful for shared chrome |
-| **Out of scope** | Paid third-party review widgets; Places API |
+| **Goal** | Implement `new/testimonials.html` per **T-00021** plan. |
+| **Depends on** | T-00021; T-00018 helpful for shared chrome |
+| **Out of scope** | Paid review widgets; Places API |
 
 ---
+
+## T-00022 — Website rebuild: contact page (legacy + Maps embed)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-006, BR-015 |
+| **Goal** | Rebuild `new/contact.html` per [`docs/website-contact-page-plan.md`](website-contact-page-plan.md): same copy as legacy [`contact.html`](../contact.html), fix email link, add responsive **Google Maps iframe** + “Open in Google Maps” link. |
+| **Depends on** | T-00012, T-00017 |
+| **Related** | T-00018 (styling) |
+
+---
+
 
 ## T-00016 — Website rebuild: promote `new/` to root (cutover)
 
@@ -199,7 +227,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Todo |
 | **Requirements** | BR-006, BR-015 |
 | **Goal** | After owner confirms the preview site: move `new/*` to site root (or equivalent promote); remove or archive legacy root HTML (`index.html`, `contact.html`, `reviews.html`, `index_bk.html`); drop preview banners and `noindex` on marketing pages; point nav/sitemap at production URLs; update `webpageUrl` in project configs; regenerate `sitemap.xml`. |
-| **Depends on** | T-00018, T-00020 (and T-00013 for story pages as needed); explicit owner approval for cutover. |
+| **Depends on** | T-00018, T-00020, T-00022 (and T-00013 for story pages as needed); explicit owner approval for cutover. |
 | **Out of scope** | Publishing social posts; changing project `status` to DONE. |
 
 ---

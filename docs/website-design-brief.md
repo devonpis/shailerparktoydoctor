@@ -131,8 +131,8 @@ Preview paths use **`/new/`** prefix until **T-00016** cutover; production URLs 
 | `/` | *(via logo)* | Home — see [Home sections](#home-page-sections-owner-2026-05-16) |
 | `/projects/` | **Projects** | **Gallery index** — all DONE projects as tiles (React + JSON); links to story pages |
 | `/projects/<folder>/` | — | Single repair story (`index.html` per DONE folder) — wireframe: [`website-project-page-wireframe.md`](website-project-page-wireframe.md) |
-| `/testimonials.html` | **Testimonials** | Google reviews |
-| `/contact.html` | **Contact** | NAP, enquiry flow, SMS preferred, no walk-in |
+| `/testimonials.html` | **Testimonials** | Plan: [`website-testimonials-page-plan.md`](website-testimonials-page-plan.md) (**T-00021**); build **T-00020** |
+| `/contact.html` | **Contact** | Legacy contact copy + **Google Maps embed** — [`website-contact-page-plan.md`](website-contact-page-plan.md) (**T-00022**) |
 
 **Why `/projects/` for the gallery:** Matches owner language (“Projects”). Coexists with story URLs: `projects/index.html` is the index; `projects/0003 - Donald Duck/` is a subfolder. No separate `/repairs/` path in the rebuilt site.
 
@@ -263,10 +263,12 @@ Superseded by [Home page sections](#home-page-sections-owner-2026-05-16) for ord
 
 ## Owner decisions still open (optional)
 
-1. **Secondary accent** `#f5a623` — keep or change?  
-2. **Testimonials:** v1 **hybrid** (see [Testimonials page](#testimonials-page)); map iframe or static quotes optional later.  
+1. ~~**Secondary accent**~~ — decide in **T-00018** (UI style polish).  
+2. **Testimonials:** plan **T-00021**; build **T-00020** — optional: which legacy quotes to keep; map embed on testimonials page?  
 3. **Featured three** on home: **placeholders** until owner picks real projects (`featured` in JSON later).  
 4. **Dr. Hobby** image — **reuse `DrFluffy.jpg`** until owner supplies dedicated asset.  
+
+**Decided:** Story page `<title>` = **`projectName`** only (see wireframe).
 
 **Decided (2026-05-16):**
 
@@ -283,7 +285,7 @@ Superseded by [Home page sections](#home-page-sections-owner-2026-05-16) for ord
 ## Approval
 
 - [x] Owner approves this brief (**2026-05-16**).  
-- [x] Build work split: **T-00017** (scaffold, done) · **T-00018** (UI polish) · **T-00019** (project page wireframe) · **T-00020** (testimonials).
+- [x] Build work split: **T-00017**–**T-00019** · **T-00021** (testimonials plan) · **T-00020** (testimonials build) · **T-00022** (contact + Maps).
 
 ---
 
