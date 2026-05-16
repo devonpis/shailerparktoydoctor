@@ -11,7 +11,8 @@ function Gallery({ projects }) {
     if (!q) return projects;
     return projects.filter(
       (r) =>
-        r.title.toLowerCase().includes(q) ||
+        (r.projectName && r.projectName.toLowerCase().includes(q)) ||
+        (r.title && r.title.toLowerCase().includes(q)) ||
         (r.tags && r.tags.some((t) => t.toLowerCase().includes(q)))
     );
   }, [projects, query]);
@@ -39,9 +40,17 @@ function Gallery({ projects }) {
               href=${r.url}
               className="block border-2 border-gray-800 rounded-xl overflow-hidden bg-white hover:shadow-lg transition-shadow"
             >
-              <img src=${r.hero} alt=${r.title} className="w-full h-48 object-cover" loading="lazy" />
+              <img
+                src=${r.thumbnail || r.hero}
+                alt=${r.projectName || r.title}
+                className="w-full h-48 object-cover"
+                loading="lazy"
+              />
               <div className="p-4">
-                <h2 className="font-display text-xl text-primary">${r.title}</h2>
+                <h2 className="font-display text-xl text-primary">${r.projectName || r.title}</h2>
+                ${r.title && r.projectName
+                  ? html`<p className="text-sm text-gray-600 mt-1 font-sans line-clamp-2">${r.title}</p>`
+                  : ''}
                 <p className="text-sm text-gray-500 mt-1 font-sans">${r.endDate || ''}</p>
               </div>
             </a>
