@@ -204,8 +204,8 @@ Use on site and marketing as friendly specialists (images on current `index.html
 
 | Item | Notes |
 |------|--------|
-| **Colours** | `#4caac9` (site accent), warning text `#da4444` for exclusions |
-| **Fonts** | Lobster (headings), Nunito (body) |
+| **Colours** | Primary `#4caac9`; see [`website-design-brief.md`](website-design-brief.md) for full rebuild palette (replaces Prepbox defaults) |
+| **Fonts** | Lobster (headings), Nunito (body) — **keep on rebuild**; replace Prepbox template fonts |
 | **Logo / favicon** | `favicon.ico`, `icon.png` |
 | **Photo style** | Polaroid-style cards; before/after/WIP in `projects/` |
 | **Characters** | Dr. Fluffy, Dr. Electronics, Dr. Hobby (`images/DrFluffy.jpg`, `images/DrElectronic.jpg`) |

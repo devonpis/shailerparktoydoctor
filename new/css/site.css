@@ -1,0 +1,5 @@
+/* Toy Doctor — extras beyond Tailwind CDN (new site under /new/) */
+
+html {
+  scroll-behavior: smooth;
+}

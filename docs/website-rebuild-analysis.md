@@ -73,7 +73,7 @@ This is **not** a judgement of quality — it documents the baseline for rebuild
 | **Tooling** | **No** npm build, Vite, Webpack, Astro, Eleventy, Tailwind CLI, Babel, or local “compile” |
 | **CSS** | [Tailwind CDN](https://cdn.tailwindcss.com) (+ optional hand-written `css/site.css`) |
 | **JS** | Plain `.js` only; **React via CDN** (e.g. [esm.sh](https://esm.sh)) for `/repairs/` gallery only — optional [htm](https://esm.sh/htm@3) for readable templates **without** a bundler |
-| **Marketing pages** | Static HTML (start from a free template e.g. [Dindin Local Services](https://local-services.dindind.dev/)) |
+| **Marketing pages** | Static HTML from **Prepbox** Tailwind template ([FreeStack #33](https://freestacktemplates.io/tailwind/prepbox-ecommerce-vibrant_block-template)) — see [`website-design-brief.md`](website-design-brief.md) |
 | **Repair stories** | One **static** `projects/<id> - <name>/index.html` per **DONE** project (same folder as `config.json` + images; filled from config + template) |
 | **Repair gallery** | `repairs/index.html` + `js/repairs-gallery.js` reads **`data/repairs-index.json`** — entries link to `/projects/<folder>/` (no duplicate `repairs/<slug>/` tree) |
 | **Source of truth** | `projects/<id> - <name>/` holds **config**, **images**, and **public story HTML**; social publish `--use-site` image URLs unchanged (`/projects/<folder>/hero.jpg`) |
@@ -158,7 +158,7 @@ Folder name stays `{id} - {name}` (e.g. `0003 - Donald Duck`) — matches repo a
 | Task | Work |
 |------|------|
 | ~~**T-00009**~~ | ~~Analysis & stack~~ — **Done** |
-| **T-00012** | Visual Q&A → [`docs/website-design-brief.md`](website-design-brief.md) |
+| **T-00012** | Draft brief with **Prepbox** — owner **approve brief** |
 | **T-00013** | `repairs-index` example, repair `index.html` template, sitemap/robots |
 | **T-00015** | Webpage go-live workflow doc |
 | **T-00014** | Build site (after brief + artifacts; owner says **build the site**); first repair page e.g. **0003** |

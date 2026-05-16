@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <title>Repairs — Shailer Park Toy Doctor (preview)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/new/css/site.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: { DEFAULT: '#4caac9', dark: '#3a8fa8', light: '#e8f6fa' },
+            },
+            fontFamily: {
+              display: ['Lobster', 'cursive'],
+              sans: ['Nunito', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-sans text-gray-800 bg-gray-50">
+    <div class="bg-secondary-light border-b-2 border-gray-800 text-center py-2 text-sm font-semibold">
+      Preview repair gallery — stories live under <code class="text-xs">/projects/</code>
+    </div>
+    <header class="border-b-2 border-gray-800 bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+        <a href="/new/" class="font-display text-2xl text-primary">Shailer Park Toy Doctor</a>
+        <nav class="flex flex-wrap gap-4 font-semibold text-sm">
+          <a href="/new/">Home</a>
+          <a href="/new/repairs/" class="text-primary">Repairs</a>
+          <a href="/new/contact.html">Contact</a>
+          <a href="/new/reviews.html">Reviews</a>
+        </nav>
+      </div>
+    </header>
+    <main class="max-w-6xl mx-auto px-4 py-16">
+      <h1 class="font-display text-4xl text-primary mb-2">Repair gallery</h1>
+      <p class="text-gray-600 mb-8">DONE projects only. Click a card for the full story.</p>
+      <div id="repairs-root"></div>
+    </main>
+    <script type="module" src="/new/js/repairs-gallery.js"></script>
+  </body>
+</html>
