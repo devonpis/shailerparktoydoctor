@@ -1,6 +1,6 @@
 # Shailer Park Toy Doctor — project hub
 
-Static site and publishing workflow for **Shailer Park Toy Doctor** (toy repair / restoration). Business URLs live in the repo root [`config.json`](config.json) (e.g. `webpageUrl` **https://sptoydoctor.com.au/**).
+Static site and publishing workflow for **Shailer Park Toy Doctor** (toy repair / restoration). Business URLs and contact details: [`docs/business-info.md`](docs/business-info.md) (e.g. **https://sptoydoctor.com.au/**).
 
 **AI agent entry point:** start here → **[`docs/SD.md`](docs/SD.md)** (requirements) + **[`docs/TASKS.md`](docs/TASKS.md)** (backlog) → per-repair **[`projects/0000 - template/config.json`](projects/0000%20-%20template/config.json)**. Cursor rules under [`.cursor/rules/`](.cursor/rules/) cover **task-driven commits**, **human confirmation** (publish, secrets, commit, push), and **project lifecycle** (`DONE` gate, URL bookkeeping, **no `*.html` edits unless you ask for HTML work**).
 
@@ -18,7 +18,7 @@ mindmap
     Site
       Static HTML/CSS
       GitHub-hosted deploy
-      Live URL in config.json
+      URLs in business-info.md
     Content model
       projects/ folder
       One folder per repair
@@ -53,12 +53,11 @@ mindmap
 
 | Path | Role |
 |------|------|
-| [`config.json`](config.json) | Business-level links (site, social profiles). |
 | [`docs/SD.md`](docs/SD.md) | **Specification & design** — business requirements (`BR-xxx`). |
+| [`docs/business-info.md`](docs/business-info.md) | **Business facts** for copy & SEO — contact, services, channel URLs (T-00008). |
 | [`docs/TASKS.md`](docs/TASKS.md) | **Task list** (`T-00001` … five-digit IDs); work and commits map here. |
 | [`docs/publish-content-guards.md`](docs/publish-content-guards.md) | **Publish checks:** caption 500 chars, tags 1–30, media, validation script. |
 | [`docs/github-pages-deploy.md`](docs/github-pages-deploy.md) | **Site deploy:** push `main` → GitHub Pages → sptoydoctor.com.au. |
-| [`docs/business-info.md`](docs/business-info.md) | **Business facts** for copy & SEO (T-00008, owner fills in). |
 | [`docs/website-rebuild-analysis.md`](docs/website-rebuild-analysis.md) | **Site rebuild** analysis & direction (T-00009, discuss before HTML). |
 | [`projects/0000 - template/`](projects/0000%20-%20template/) | Copy fields / structure for new repairs; [`config.json`](projects/0000%20-%20template/config.json) lists all keys. |
 | `projects/<id> - <name>/` | One repair: `config.json` + images in the same folder. **Filenames are descriptive** — see [Project image filenames](#project-image-filenames). Example: [`0001 - Saielle of the Willow Tree`](projects/0001%20-%20Saielle%20of%20the%20Willow%20Tree/). |

@@ -13,7 +13,7 @@ How the **live website** is published for **Shailer Park Toy Doctor**.
 | **Custom domain** | `sptoydoctor.com.au` — see [`CNAME`](../CNAME) in repo root |
 | **HTTPS** | Enforced by GitHub Pages |
 
-Root business links: [`config.json`](../config.json).
+Business site URL: **https://sptoydoctor.com.au/** — see [`business-info.md`](business-info.md) for all channel links.
 
 ---
 

@@ -60,9 +60,9 @@ Engineering work is planned in [`TASKS.md`](TASKS.md). Commits should **referenc
 
 ---
 
-## BR-009 — Business links (root `config.json`)
+## BR-009 — Business links
 
-Site-wide social and site URLs live in the repository root `config.json` (not per repair).
+Site-wide social and site URLs live in [`docs/business-info.md`](business-info.md) (not per repair). Per-repair permalinks stay in each `projects/…/config.json`.
 
 ---
 

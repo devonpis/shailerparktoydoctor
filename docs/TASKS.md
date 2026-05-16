@@ -21,7 +21,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00005 | Done | Meta local API: token & `.env` setup guide (FB / IG / Threads) | BR-007, BR-010 |
 | T-00006 | Done | Publish content guards (validation script, limits, rules) | BR-005, BR-012 |
 | T-00007 | Todo | Local publish script (Facebook, Instagram, Threads) | BR-001, BR-010, BR-012, BR-013 |
-| T-00008 | In progress | Collect business info doc for future web content / SEO | BR-014 |
+| T-00008 | Done | Collect business info doc for future web content / SEO | BR-014 |
 | T-00009 | In progress | Website rebuild — analysis & direction (discuss before build) | BR-006, BR-015 |
 
 ---
@@ -102,10 +102,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | In progress |
+| **Status** | Done |
 | **Requirements** | BR-014 |
-| **Outcome** | [`docs/business-info.md`](business-info.md) — owner fills contact, services, tone, SEO keywords, trust signals. |
-| **Next** | Owner completes tables and Q&A; mark **Done** when baseline is usable for copy/SEO. |
+| **Outcome** | [`docs/business-info.md`](business-info.md) — services, contact, enquiry flow, service area, Maps/reviews, personas, operations guidance; hours by appointment; ABN TBA; Dr. Hobby image deferred. |
 
 ---
 
