@@ -24,9 +24,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00010 | Done | New project + end-to-end publish validation | BR-013, BR-016 |
 | T-00011 | Done | Extract legacy site repairs into `projects/` | BR-017 |
 | T-00012 | Done | Website rebuild: visual design + SEO brief | BR-015 |
-| T-00013 | Todo | Website rebuild: site artifacts (JSON, templates, sitemap) | BR-015 |
+| T-00013 | Done | Website rebuild: site artifacts (JSON, templates, sitemap) | BR-015 |
 | T-00014 | Done | Website rebuild: initial `new/` scaffold (split → T-00017–20) | BR-006, BR-015 |
-| T-00015 | Todo | Website rebuild: webpage go-live workflow (docs) | BR-004, BR-015 |
+| T-00015 | Done | Website rebuild: webpage go-live workflow (docs) | BR-004, BR-015 |
 | T-00016 | Todo | Website rebuild: promote `new/` to root (cutover) | BR-006, BR-015 |
 | T-00017 | Done | Website rebuild: scaffold sections & structure (`new/`) | BR-006, BR-015 |
 | T-00018 | Todo | Website rebuild: UI style polish (Prepbox, responsive) | BR-006, BR-015 |
@@ -126,11 +126,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-015 |
-| **Goal** | `data/projects-index.json` schema (`projectName`, `title`, `thumbnail` with hero→after→before→WIP rule, `url`, `endDate`, `tags`); repair `index.html` template per wireframe; sitemap/robots. Gallery at **`projects/index.html`**. Update gallery JS to search **`projectName`** + tags. |
-| **Depends on** | T-00009 (stack); brief helpful but not required for schema/template. |
-| **Blocks** | T-00019 (wireframe), T-00020 (gallery data); template build after wireframe |
+| **Outcome** | [`website-go-live.md`](website-go-live.md) workflow; `data/` + `new/data/projects-index.json` (schema with `projectName`, `thumbnail`); [`projects/0000 - template/index.html.example`](../projects/0000%20-%20template/index.html.example); **0003** story [`index.html`](../projects/0003%20-%20Donald%20Duck/index.html); `sitemap.xml`, `robots.txt`; gallery JS uses `projectName` + `thumbnail`. |
+| **Depends on** | T-00009, T-00019 |
+| **Related** | T-00016 updates story nav links at cutover |
 
 ---
 
@@ -236,11 +236,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-004, BR-015 |
-| **Goal** | Short doc (README section or `docs/website-go-live.md`): when `status` is DONE, add `projects/<folder>/index.html`, update `data/projects-index.json`, set `webpageUrl`, regenerate sitemap; WIP must not have public `index.html`. |
-| **Depends on** | T-00009; can complete in parallel with T-00012 / T-00013. |
-| **Related** | T-00007 (`--use-site` image paths unchanged) |
+| **Outcome** | [`docs/website-go-live.md`](website-go-live.md) — checklist, `projects-index.json` schema, social vs site, preview vs cutover paths. Linked from README. |
+| **Depends on** | T-00009 |
+| **Related** | T-00007 (`--use-site` image paths unchanged), T-00013 |
 
 ---
 
