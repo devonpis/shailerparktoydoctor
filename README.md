@@ -86,7 +86,7 @@ Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-
 | `tags` | Topic labels (**1–30**); appended as hashtags on social (see [`docs/publish-content-guards.md`](docs/publish-content-guards.md)) |
 | Images / video | `before`, `after`, `hero`, `WIP-###`, or video files in the project folder |
 
-Before any publish, run: `node scripts/validate-publish.mjs <project-id>` — must exit **0**.
+Before any publish, run: `node scripts/validate-publish.mjs <project-id>` — must exit **0**. For social (after explicit `publish …` + confirm in chat): `node scripts/publish-social.mjs <project-id> --dry-run` then run without `--dry-run` (Instagram/Threads need `--public-base-url` for a hosted image).
 
 ### `status` (you set this)
 

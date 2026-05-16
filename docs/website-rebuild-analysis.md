@@ -104,9 +104,7 @@ Slug could come from project folder id + name, e.g. `0001-saielle-willow-tree`.
 | Task | Relationship |
 |------|----------------|
 | **T-00008** | Business copy, SEO keywords, tone |
-| **T-00003** | Optional index from `config.json` — overlaps repair list |
-| **T-00004** | Per-repair HTML template — subset of rebuild |
-| **T-00007** | Social publish script — separate from site deploy |
+| **T-00007** | Local publish script (social) — separate from site deploy |
 | **T-00002** | Deploy path documented |
 
 ---

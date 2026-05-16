@@ -16,11 +16,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 |----|--------|-------|-------------|
 | T-00001 | Done | PM system: SD, tasks, agent rules | BR-008 |
 | T-00002 | Done | Document GitHub Pages deploy + static site publish path | BR-001, BR-011 |
-| T-00003 | Todo | Optional: generate site/project index from `projects/**/config.json` | BR-002, BR-004 |
-| T-00004 | Todo | Repair story webpage template / section when owner requests HTML | BR-001, BR-002, BR-006 |
 | T-00005 | Done | Meta local API: token & `.env` setup guide (FB / IG / Threads) | BR-007, BR-010 |
 | T-00006 | Done | Publish content guards (validation script, limits, rules) | BR-005, BR-012 |
-| T-00007 | Todo | Local publish script (Facebook, Instagram, Threads) | BR-001, BR-010, BR-012, BR-013 |
+| T-00007 | In progress | Local publish script (Facebook, Instagram, Threads) | BR-001, BR-010, BR-012, BR-013 |
 | T-00008 | Done | Collect business info doc for future web content / SEO | BR-014 |
 | T-00009 | In progress | Website rebuild — analysis & direction (discuss before build) | BR-006, BR-015 |
 
@@ -43,26 +41,6 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Done |
 | **Requirements** | BR-001, BR-011 |
 | **Outcome** | [`docs/github-pages-deploy.md`](github-pages-deploy.md) — Pages from `main`, workflow `pages-build-deployment`, custom domain `sptoydoctor.com.au`. |
-
----
-
-## T-00003 — Project index from config (optional)
-
-| Field | Value |
-|-------|-------|
-| **Status** | Todo |
-| **Requirements** | BR-002, BR-004 |
-| **Notes** | Script or build step to list repairs from JSON; respect `status` and URLs for links. |
-
----
-
-## T-00004 — Repair story webpage template
-
-| Field | Value |
-|-------|-------|
-| **Status** | Todo |
-| **Requirements** | BR-001, BR-002, BR-006 |
-| **Notes** | Only implement when owner asks for HTML; use `config.json` URLs as `href`s. May merge into T-00009 rebuild. |
 
 ---
 
@@ -90,11 +68,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | In progress |
 | **Requirements** | BR-001, BR-010, BR-012, BR-013 |
-| **Scope** | Node script(s) under `scripts/` reading `.env` + `projects/<id>/config.json`; run `validate-publish.mjs` first; post **images** to Facebook Page, Instagram, Threads; write back permalinks to `config.json` after owner confirm. |
+| **Scope** | [`scripts/publish-social.mjs`](../scripts/publish-social.mjs) — `.env` + `projects/<id>/config.json`; runs `validate-publish.mjs` first; post **images** to Facebook, Instagram, Threads; optional `--write-config` for permalinks. |
 | **Out of scope (for now)** | Video publish to social; automated webpage deploy (still commit + push). |
-| **Depends on** | Tokens in `.env`; explicit `publish <id> to …` + preview + confirm. |
+| **Depends on** | Tokens in `.env`; explicit `publish <id> to …` + preview + confirm in chat before running without `--dry-run`. |
 
 ---
 
@@ -116,4 +94,4 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-006, BR-015 |
 | **Outcome** | [`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md) — current state, options A/B/C, SEO/visual questions. |
 | **Next** | Discuss direction in chat; agree brief; **no HTML** until owner approves build. |
-| **Related** | T-00004, T-00003, T-00008 |
+| **Related** | T-00007 (publish script), T-00008 (business-info) |
