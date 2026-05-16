@@ -21,6 +21,25 @@
       .catch(() => ({}));
   }
 
+  function enrichProject(project, config) {
+    const merged = withSkills(project, config);
+    return {
+      ...merged,
+      endDate: merged.endDate || config.endDate || '',
+    };
+  }
+
+  /** Latest repair date first; tie-break by project id/folder descending. */
+  function sortLatestFirst(projects) {
+    return [...projects].sort((a, b) => {
+      const dateCmp = (b.endDate || '').localeCompare(a.endDate || '');
+      if (dateCmp !== 0) return dateCmp;
+      return String(b.id || b.folder || '').localeCompare(String(a.id || a.folder || ''), undefined, {
+        numeric: true,
+      });
+    });
+  }
+
   function renderCard(project) {
     const name = escapeHtml(project.projectName || project.title || 'Project');
     const img = escapeHtml(project.thumbnail || project.hero || '');
@@ -79,11 +98,10 @@
     .then((res) => res.json())
     .then((projects) =>
       Promise.all(
-        projects.map((project) =>
-          loadConfig(project).then((config) => withSkills(project, config))
-        )
+        projects.map((project) => loadConfig(project).then((config) => enrichProject(project, config)))
       )
     )
+    .then(sortLatestFirst)
     .then(mount)
     .catch(() => {
       root.innerHTML = '<p class="gallery-empty">Could not load projects.</p>';
