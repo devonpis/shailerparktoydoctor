@@ -86,7 +86,13 @@ Before social or webpage publish, content must pass validation: `status` **DONE*
 
 ## BR-013 — Local publish script
 
-A **local script** (Node) will post repair content to **Facebook**, **Instagram**, and **Threads** using `.env` tokens, after validation and explicit owner publish approval. Image-first; video deferred. See **T-00007**.
+A **local script** (Node) posts repair content to **Facebook**, **Instagram**, and **Threads** using `.env` tokens, after validation and explicit owner publish approval. Image-first; video deferred. Implemented: **T-00007** (`scripts/publish-social.mjs`). Live proof on a new project: **T-00010**.
+
+---
+
+## BR-016 — End-to-end publish validation (new project)
+
+The owner (or agent with approval) runs the full flow on at least one **new** repair folder: create project from template, pass `validate-publish.mjs`, push images to the live site, dry-run then live `publish-social.mjs`, and persist permalinks in `config.json`. See **T-00010**.
 
 ---
 
