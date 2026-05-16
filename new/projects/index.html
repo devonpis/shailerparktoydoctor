@@ -2,7 +2,7 @@
 <html lang="en-AU">
   <head>
     <meta charset="utf-8" />
-    <title>Contact — Shailer Park Toy Doctor (preview)</title>
+    <title>Projects — Shailer Park Toy Doctor (preview)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -20,7 +20,6 @@
           extend: {
             colors: {
               primary: { DEFAULT: '#4caac9', dark: '#3a8fa8', light: '#e8f6fa' },
-              secondary: { DEFAULT: '#f5a623', light: '#fff4e0' },
             },
             fontFamily: {
               display: ['Lobster', 'cursive'],
@@ -33,15 +32,16 @@
   </head>
   <body class="font-sans text-gray-800 bg-gray-50">
     <div class="bg-secondary-light border-b-2 border-gray-800 text-center py-2 text-sm font-semibold">
-      Preview — <a href="/contact.html" class="text-primary underline">legacy contact page</a> unchanged at site root
+      Preview — gallery at <code class="text-xs">/new/projects/</code>; story folders at
+      <code class="text-xs">/projects/&lt;name&gt;/</code>
     </div>
     <header class="border-b-2 border-gray-800 bg-white">
       <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
         <a href="/new/" class="font-display text-2xl text-primary">Shailer Park Toy Doctor</a>
         <nav class="flex flex-wrap items-center gap-4 font-semibold text-sm">
-          <a href="/new/projects/">Projects</a>
+          <a href="/new/projects/" class="text-primary">Projects</a>
           <a href="/new/testimonials.html">Testimonials</a>
-          <a href="/new/contact.html" class="text-primary">Contact</a>
+          <a href="/new/contact.html">Contact</a>
           <span class="flex gap-3 text-primary">
             <a href="https://www.facebook.com/profile.php?id=61589652126144" aria-label="Facebook" rel="noopener noreferrer" target="_blank">FB</a>
             <a href="https://www.instagram.com/sptoydoctor/" aria-label="Instagram" rel="noopener noreferrer" target="_blank">IG</a>
@@ -52,13 +52,9 @@
       </div>
     </header>
     <main class="max-w-6xl mx-auto px-4 py-16">
-      <h1 class="font-display text-4xl text-primary">Contact</h1>
-      <p class="mt-4 max-w-xl">Send a description and photos by email or SMS for a quote. No walk-in — appointment only.</p>
-      <ul class="mt-8 space-y-2 font-semibold">
-        <li>Email: <a href="mailto:sptoydoctor@gmail.com" class="text-primary">sptoydoctor@gmail.com</a></li>
-        <li>Phone / SMS: (61) 0424 653 833 <span class="font-normal text-gray-600">(SMS preferred)</span></li>
-        <li>6 Thistlerow Street, Shailer Park QLD 4128</li>
-      </ul>
+      <h1 class="font-display text-4xl text-primary mb-2">Projects</h1>
+      <p class="text-gray-600 mb-8">DONE repairs only. Click a card for the full story.</p>
+      <div id="projects-root"></div>
     </main>
     <footer class="border-t-2 border-gray-800 bg-white mt-12">
       <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-600">
@@ -72,5 +68,6 @@
         <p class="mt-4 text-gray-500">© 2026 Shailer Park Toy Doctor</p>
       </div>
     </footer>
+    <script type="module" src="/new/js/projects-gallery.js"></script>
   </body>
 </html>

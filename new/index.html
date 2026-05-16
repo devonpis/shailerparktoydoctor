@@ -42,15 +42,20 @@
       <a href="/" class="text-primary underline">sptoydoctor.com.au</a>
     </div>
 
-    <header class="border-b-2 border-gray-800 bg-white">
+    <header class="border-b-2 border-gray-800 bg-white sticky top-0 z-10">
       <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
-        <a href="/new/" class="font-display text-2xl text-primary">Shailer Park Toy Doctor</a>
-        <nav class="flex flex-wrap gap-4 font-semibold text-sm">
-          <a href="/new/" class="text-primary">Home</a>
-          <a href="/new/repairs/" class="hover:text-primary">Repairs</a>
+        <a href="/new/" class="font-display text-2xl text-primary shrink-0">Shailer Park Toy Doctor</a>
+        <nav class="flex flex-wrap items-center gap-4 font-semibold text-sm">
+          <a href="/new/projects/" class="hover:text-primary">Projects</a>
+          <a href="/new/testimonials.html" class="hover:text-primary">Testimonials</a>
           <a href="/new/contact.html" class="hover:text-primary">Contact</a>
-          <a href="/new/reviews.html" class="hover:text-primary">Reviews</a>
-          <a href="/" class="text-gray-500">Legacy site</a>
+          <span class="hidden sm:inline text-gray-300">|</span>
+          <span class="flex gap-3 text-primary">
+            <a href="https://www.facebook.com/profile.php?id=61589652126144" class="hover:text-primary-dark" aria-label="Facebook" rel="noopener noreferrer" target="_blank">FB</a>
+            <a href="https://www.instagram.com/sptoydoctor/" class="hover:text-primary-dark" aria-label="Instagram" rel="noopener noreferrer" target="_blank">IG</a>
+            <a href="https://www.threads.com/@sptoydoctor" class="hover:text-primary-dark" aria-label="Threads" rel="noopener noreferrer" target="_blank">Th</a>
+            <a href="https://www.youtube.com/@SpToyDoctor" class="hover:text-primary-dark" aria-label="YouTube" rel="noopener noreferrer" target="_blank">YT</a>
+          </span>
         </nav>
       </div>
     </header>
@@ -72,37 +77,105 @@
               >Send photos for a quote</a
             >
             <a
-              href="/new/repairs/"
+              href="/new/projects/"
               class="inline-block bg-white hover:bg-gray-100 font-semibold px-6 py-3 rounded-lg border-2 border-gray-800"
-              >See repairs</a
+              >See projects</a
             >
           </div>
         </div>
       </section>
 
       <section class="max-w-6xl mx-auto px-4 py-16">
-        <h2 class="font-display text-3xl text-primary mb-8">What we fix</h2>
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <div class="border-2 border-gray-800 rounded-xl p-6 bg-white">
-            <h3 class="font-display text-xl">Plush</h3>
-            <p class="mt-2 text-sm text-gray-600">Cleaning, re-stuffing, sewing, eyes and noses</p>
-          </div>
-          <div class="border-2 border-gray-800 rounded-xl p-6 bg-white">
-            <h3 class="font-display text-xl">Mechanical</h3>
-            <p class="mt-2 text-sm text-gray-600">Gears, motors, switches, wiring</p>
-          </div>
-          <div class="border-2 border-gray-800 rounded-xl p-6 bg-secondary-light">
-            <h3 class="font-display text-xl">Figures</h3>
-            <p class="mt-2 text-sm text-gray-600">Collectibles and display pieces</p>
-          </div>
-          <div class="border-2 border-gray-800 rounded-xl p-6 bg-white">
-            <h3 class="font-display text-xl">Paint</h3>
-            <p class="mt-2 text-sm text-gray-600">Anime figures and scale models</p>
+        <h2 class="font-display text-3xl text-primary mb-6">About us / our mission</h2>
+        <div class="prose prose-gray max-w-3xl text-gray-700 space-y-4">
+          <p>
+            Do you or your kids have a beloved toy or small electronic that is no longer working properly?
+            Before it goes to landfill — at Toy Doctor we bring cherished toys back to life at a fraction of
+            the cost of buying new, so families keep what they love and send less plastic and e-waste to
+            landfill.
+          </p>
+          <p>
+            <strong>Do you know …</strong> Almost 90% of faulty electronics can be repaired and saved from
+            becoming e-waste. The fix is often simple — poor contacts or a damaged component — but too costly
+            for many shops. We aim to make repair affordable so people try fixing before replacing.
+          </p>
+          <p class="text-warning text-sm">
+            <em>We cannot repair mobile phones, computers, tablets or laptops — please use a specialist for those.</em>
+          </p>
+        </div>
+      </section>
+
+      <section class="bg-white border-y-2 border-gray-800 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="font-display text-3xl text-primary mb-8 text-center">Our Doctors</h2>
+          <div class="grid gap-8 md:grid-cols-3">
+            <article class="text-center border-2 border-gray-800 rounded-xl p-6 bg-gray-50">
+              <img
+                src="/images/DrElectronic.jpg"
+                alt=""
+                class="w-32 h-32 mx-auto rounded-full object-cover border-2 border-gray-800"
+              />
+              <h3 class="font-display text-xl mt-4">Dr. Electronics</h3>
+              <p class="mt-2 text-sm text-gray-600">Electronic toys and small electrical appliances</p>
+            </article>
+            <article class="text-center border-2 border-gray-800 rounded-xl p-6 bg-gray-50">
+              <img
+                src="/images/DrFluffy.jpg"
+                alt=""
+                class="w-32 h-32 mx-auto rounded-full object-cover border-2 border-gray-800"
+              />
+              <h3 class="font-display text-xl mt-4">Dr. Fluffy</h3>
+              <p class="mt-2 text-sm text-gray-600">Plush and stuffed toys</p>
+            </article>
+            <article class="text-center border-2 border-gray-800 rounded-xl p-6 bg-gray-50">
+              <img
+                src="/images/DrFluffy.jpg"
+                alt=""
+                class="w-32 h-32 mx-auto rounded-full object-cover border-2 border-gray-800"
+              />
+              <h3 class="font-display text-xl mt-4">Dr. Hobby</h3>
+              <p class="mt-2 text-sm text-gray-600">Anime figures, scale models, paint &amp; hobby restoration</p>
+              <p class="mt-1 text-xs text-gray-400">(Photo placeholder)</p>
+            </article>
           </div>
         </div>
-        <p class="mt-10 text-sm text-gray-500">
-          Prepbox layout and full pages — T-00014. Brand colours and fonts applied.
-        </p>
+      </section>
+
+      <section class="max-w-6xl mx-auto px-4 py-16">
+        <h2 class="font-display text-3xl text-primary mb-8">Featured projects</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="border-2 border-dashed border-gray-400 rounded-xl overflow-hidden bg-gray-100">
+            <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">Placeholder</div>
+            <div class="p-4">
+              <h3 class="font-display text-lg text-gray-500">Project highlight 1</h3>
+              <p class="text-xs text-gray-400 mt-1">Story page coming soon</p>
+            </div>
+          </div>
+          <div class="border-2 border-dashed border-gray-400 rounded-xl overflow-hidden bg-gray-100">
+            <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">Placeholder</div>
+            <div class="p-4">
+              <h3 class="font-display text-lg text-gray-500">Project highlight 2</h3>
+              <p class="text-xs text-gray-400 mt-1">Story page coming soon</p>
+            </div>
+          </div>
+          <div class="border-2 border-dashed border-gray-400 rounded-xl overflow-hidden bg-gray-100">
+            <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">Placeholder</div>
+            <div class="p-4">
+              <h3 class="font-display text-lg text-gray-500">Project highlight 3</h3>
+              <p class="text-xs text-gray-400 mt-1">Story page coming soon</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-primary border-y-2 border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 py-12 text-center">
+          <a
+            href="/new/projects/"
+            class="inline-block bg-white hover:bg-gray-100 text-gray-900 font-semibold px-8 py-4 rounded-lg border-2 border-gray-800 text-lg"
+            >View all projects</a
+          >
+        </div>
       </section>
     </main>
 
@@ -114,6 +187,20 @@
           <a href="mailto:sptoydoctor@gmail.com" class="text-primary">sptoydoctor@gmail.com</a>
           · (61) 0424 653 833 (SMS preferred)
         </p>
+        <p class="mt-4 flex flex-wrap gap-3">
+          <a href="https://www.facebook.com/profile.php?id=61589652126144" class="text-primary" rel="noopener noreferrer" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/sptoydoctor/" class="text-primary" rel="noopener noreferrer" target="_blank">Instagram</a>
+          <a href="https://www.threads.com/@sptoydoctor" class="text-primary" rel="noopener noreferrer" target="_blank">Threads</a>
+          <a href="https://www.youtube.com/@SpToyDoctor" class="text-primary" rel="noopener noreferrer" target="_blank">YouTube</a>
+        </p>
+        <p class="mt-4 font-semibold">
+          <a href="/new/projects/" class="text-primary hover:underline">Projects</a>
+          <span class="text-gray-400 mx-2">·</span>
+          <a href="/new/testimonials.html" class="text-primary hover:underline">Testimonials</a>
+          <span class="text-gray-400 mx-2">·</span>
+          <a href="/new/contact.html" class="text-primary hover:underline">Contact</a>
+        </p>
+        <p class="mt-4 text-gray-500">© 2026 Shailer Park Toy Doctor</p>
       </div>
     </footer>
   </body>

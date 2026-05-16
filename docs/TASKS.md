@@ -111,9 +111,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 |-------|-------|
 | **Status** | In progress |
 | **Requirements** | BR-015 |
-| **Goal** | Owner answers visual direction questions; picks template direction from [`docs/website-template-shortlist.md`](website-template-shortlist.md); agent produces [`docs/website-design-brief.md`](website-design-brief.md) (mood, hero, colours, homepage repair count, reviews/CTA placement). |
-| **In progress** | Owner selected **Prepbox (#33)**; draft [`website-design-brief.md`](website-design-brief.md) ready for approval. |
-| **Blocked by** | Owner **“approve brief”**; optional tweaks (teal vs Prepbox palette, reviews placement). |
+| **Goal** | Owner answers visual direction questions; picks template; agent maintains [`docs/website-design-brief.md`](website-design-brief.md) (mood, colours, IA, home sections, SEO). |
+| **In progress** | **Prepbox (#33)**; **IA planned 2026-05-16** — nav (logo, Projects, Testimonials, Contact, social icons); home (about/mission, Our Doctors ×3, 3 featured tiles + Projects CTA); footer recommendation; responsive. |
+| **Blocked by** | Owner **“approve brief”**; open: testimonials static vs embed, footer text links, which 3 featured projects, Dr. Hobby image. |
 | **Blocks** | T-00014 |
 
 ---
@@ -124,7 +124,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 |-------|-------|
 | **Status** | Todo |
 | **Requirements** | BR-015 |
-| **Goal** | Committed scaffolding (no marketing HTML yet): `data/repairs-index.json` example/schema; `projects/0000 - template/index.html.example` (or doc snippet) for DONE repair pages; root `sitemap.xml` + `robots.txt` pattern documented. |
+| **Goal** | `data/projects-index.json` schema (+ optional `featured` for home); repair `index.html` template under `projects/0000 - template/`; sitemap/robots pattern. Gallery index lives at **`projects/index.html`** (marketing), not inside each project folder. |
 | **Depends on** | T-00009 (stack); brief helpful but not required for schema/template. |
 | **Blocks** | T-00014 (implementation uses these) |
 
@@ -136,10 +136,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 |-------|-------|
 | **Status** | In progress |
 | **Requirements** | BR-006, BR-015 |
-| **Goal** | New static site under **`new/`** only (preview at `/new/`): home, contact, reviews; `new/repairs/index.html` + `new/js/repairs-gallery.js` (React + htm via CDN); `new/data/repairs-index.json`; Tailwind CDN; shared header/footer; `lang="en-AU"`, LocalBusiness schema, HTTPS OG. Prepbox-inspired layout with Toy Doctor brand tokens. **Do not** edit root `index.html`, `contact.html`, `reviews.html` until **T-00016** cutover after owner approval. |
-| **Depends on** | T-00012 (approved brief), T-00013 (artifacts); owner explicitly says **build the site**. |
+| **Goal** | Static site under **`new/`** per brief: shared header (logo→home, Projects, Testimonials, Contact, social icons); home sections (about/mission, Our Doctors, 3 featured + CTA); `new/projects/index.html` gallery + JSON; `testimonials.html`, `contact.html`; mobile-first Tailwind; schema/OG. **Do not** edit root legacy HTML until **T-00016**. |
+| **Depends on** | T-00012 (approved brief), T-00013 (artifacts); owner **build the site**. |
 | **Out of scope** | Automated generator; CI build; Astro/Next; root cutover (T-00016). |
-| **Progress** | Scaffold: `new/index.html`, `new/contact.html`, `new/reviews.html`, `new/repairs/`, gallery script, example index entry for 0003. Full Prepbox sections + schema still TODO. |
+| **Progress** | `new/projects/`, `testimonials.html`, home sections (mission, doctors, 3 placeholders), footer links; gallery uses `projects-index.json`. Prepbox polish + schema still TODO. |
+| **Build checklist** | [ ] Header + hamburger + social icons · [ ] Home: mission, doctors, 3 tiles, Projects CTA · [ ] `/new/projects/` gallery · [ ] Testimonials page · [ ] Contact · [ ] Compact footer · [ ] Responsive pass |
 
 ---
 

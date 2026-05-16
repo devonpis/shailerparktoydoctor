@@ -104,7 +104,14 @@ Canonical business facts for copy and SEO live in [`docs/business-info.md`](busi
 
 ## BR-015 — Website rebuild (analysis then build)
 
-The public site may be **rebuilt** for stronger visuals and SEO. **Analysis and stack direction** are complete ([`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md), **T-00009**). **No HTML implementation** until the owner approves a design brief (**T-00012**) and explicitly requests build (**T-00014**). Follow-up: **T-00012**–**T-00015**.
+The public site may be **rebuilt** for stronger visuals and SEO. **Analysis and stack direction** are complete ([`docs/website-rebuild-analysis.md`](website-rebuild-analysis.md), **T-00009**). **Information architecture** (nav, home sections, footer pattern) is captured in [`docs/website-design-brief.md`](website-design-brief.md) (**T-00012**, owner planning 2026-05-16). **No further HTML implementation** beyond agreed preview work until the owner approves the brief (**T-00012**) and explicitly requests build (**T-00014**). Follow-up: **T-00012**–**T-00016**.
+
+**Rebuild must include (when built):**
+
+- **Global nav:** brand/logo → home; **Projects** (tile index of DONE repairs); **Testimonials** (Google reviews); **Contact**; **social icons** (Facebook, Instagram, Threads, YouTube — URLs from [`business-info.md`](business-info.md)).
+- **Home:** combined **About us / our mission** (legacy “About us” + “Do You Know”); **Our Doctors** (Dr. Fluffy, Dr. Electronics, Dr. Hobby); **three featured project tiles** linking to story pages + full-width CTA to Projects index.
+- **Responsive:** mobile-first layout; usable nav and readable sections on small screens.
+- **Staging:** build under `new/` until cutover (**T-00016**); legacy root marketing HTML untouched until then.
 
 ---
 

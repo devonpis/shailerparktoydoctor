@@ -4,26 +4,26 @@ import htm from 'https://esm.sh/htm@3';
 
 const html = htm.bind(React.createElement);
 
-function Gallery({ repairs }) {
+function Gallery({ projects }) {
   const [query, setQuery] = useState('');
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return repairs;
-    return repairs.filter(
+    if (!q) return projects;
+    return projects.filter(
       (r) =>
         r.title.toLowerCase().includes(q) ||
         (r.tags && r.tags.some((t) => t.toLowerCase().includes(q)))
     );
-  }, [repairs, query]);
+  }, [projects, query]);
 
   return html`
     <div className="space-y-6">
       <div>
-        <label className="block text-sm font-semibold text-gray-500 mb-2" for="repair-search"
-          >Search repairs</label
+        <label className="block text-sm font-semibold text-gray-500 mb-2" for="project-search"
+          >Search projects</label
         >
         <input
-          id="repair-search"
+          id="project-search"
           type="search"
           placeholder="e.g. plush, Donald Duck, wind-up"
           className="w-full max-w-md border-2 border-gray-800 rounded-lg px-4 py-2 font-sans"
@@ -49,17 +49,17 @@ function Gallery({ repairs }) {
         )}
       </div>
       ${filtered.length === 0 &&
-      html`<p className="font-sans text-gray-500">No repairs match your search.</p>`}
+      html`<p className="font-sans text-gray-500">No projects match your search.</p>`}
     </div>
   `;
 }
 
 async function main() {
-  const rootEl = document.getElementById('repairs-root');
+  const rootEl = document.getElementById('projects-root');
   if (!rootEl) return;
-  const res = await fetch('/new/data/repairs-index.json');
-  const repairs = await res.json();
-  createRoot(rootEl).render(html`<${Gallery} repairs=${repairs} />`);
+  const res = await fetch('/new/data/projects-index.json');
+  const projects = await res.json();
+  createRoot(rootEl).render(html`<${Gallery} projects=${projects} />`);
 }
 
 main().catch(console.error);

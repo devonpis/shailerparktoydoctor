@@ -75,7 +75,7 @@ This is **not** a judgement of quality — it documents the baseline for rebuild
 | **JS** | Plain `.js` only; **React via CDN** (e.g. [esm.sh](https://esm.sh)) for `/repairs/` gallery only — optional [htm](https://esm.sh/htm@3) for readable templates **without** a bundler |
 | **Marketing pages** | Static HTML from **Prepbox** Tailwind template ([FreeStack #33](https://freestacktemplates.io/tailwind/prepbox-ecommerce-vibrant_block-template)) — see [`website-design-brief.md`](website-design-brief.md) |
 | **Repair stories** | One **static** `projects/<id> - <name>/index.html` per **DONE** project (same folder as `config.json` + images; filled from config + template) |
-| **Repair gallery** | `repairs/index.html` + `js/repairs-gallery.js` reads **`data/repairs-index.json`** — entries link to `/projects/<folder>/` (no duplicate `repairs/<slug>/` tree) |
+| **Projects gallery** | `projects/index.html` + `js/projects-gallery.js` (or equivalent) reads **`data/projects-index.json`** — tile index at `/projects/`; story pages at `/projects/<folder>/` |
 | **Source of truth** | `projects/<id> - <name>/` holds **config**, **images**, and **public story HTML**; social publish `--use-site` image URLs unchanged (`/projects/<folder>/hero.jpg`) |
 | **Scaling** | No generator script required; add HTML + JSON entry per DONE repair (agent can assist). Accept more copy-paste as catalog grows. |
 
@@ -84,17 +84,18 @@ This is **not** a judgement of quality — it documents the baseline for rebuild
 ### File layout (target)
 
 ```
-index.html, contact.html, reviews.html, …
+index.html, contact.html, testimonials.html, …
 css/site.css                              optional extras
-repairs/index.html                        gallery (React CDN + Tailwind CDN)
-js/repairs-gallery.js                     fetch + filter/grid
-data/repairs-index.json                   DONE repairs: folder name, title, tags, hero path, page URL
+projects/index.html                       gallery index (React CDN + Tailwind CDN) — all DONE tiles
+js/projects-gallery.js                    fetch + filter/grid (name TBD; preview used repairs-gallery.js)
+data/projects-index.json                  DONE repairs: folder, title, tags, hero, url, featured (optional)
 projects/<id> - <name>/
   config.json                             metadata (existing)
   hero.jpg, before.jpg, …                 images (existing)
   index.html                              public repair story (add when DONE / go-live on site)
-projects/index.html                       optional redirect or link to /repairs/ (TBD at build)
 ```
+
+**Preview (T-00014):** same structure under `new/` until **T-00016** cutover. See [`website-design-brief.md`](website-design-brief.md) for nav and home layout.
 
 **Public repair URL:** `https://sptoydoctor.com.au/projects/<folder>/`  
 Example: `https://sptoydoctor.com.au/projects/0003%20-%20Donald%20Duck/`  
@@ -128,15 +129,17 @@ Answer in chat or edit this section:
 
 ---
 
-## Sitemap (proposal)
+## Sitemap (owner IA, 2026-05-16)
 
 ```
-/                     Home — services, trust, latest repairs
-/contact/             Contact & hours
-/reviews/             Testimonials (or merged into home)
-/repairs/             Gallery of DONE projects (React + JSON; links into projects/)
+/                     Home — hero, about/mission, Our Doctors, 3 featured projects, CTA → Projects
+/projects/            Gallery index (all DONE projects as tiles)
 /projects/<folder>/   Single repair story (`index.html` inside each DONE project folder)
+/testimonials.html    Google reviews (static vs embed — owner TBD)
+/contact.html         Contact & enquiry
 ```
+
+Global header: logo → home; **Projects**, **Testimonials**, **Contact**; social icons (Facebook, Instagram, Threads, YouTube). **Mobile-first** responsive layout. Details: [`website-design-brief.md`](website-design-brief.md).
 
 Folder name stays `{id} - {name}` (e.g. `0003 - Donald Duck`) — matches repo and publish scripts. **Owner (2026-05-16):** keep this format for now (no slug-only / kebab renames); rely on page `title` / meta / `h1` for SEO.
 
