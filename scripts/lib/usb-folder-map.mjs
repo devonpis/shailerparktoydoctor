@@ -1,0 +1,92 @@
+/**
+ * USB subfolder name → projects/ directory (T-00028).
+ * Uncaptured repairs: 0078–0090. Interactive_Reading_toys → 0038.
+ */
+
+/** @type {Record<string, string>} */
+export const USB_FOLDER_TO_PROJECT_DIR = {
+  bear_pillow: '0076 - Froggie pillow',
+  Bob_n_Spud: '0062 - Bob and Spud',
+  Bowling_machine: '0046 - Bowing machine',
+  Brown_ribbon_dog: '0079 - Brown ribbon dog',
+  bunny: '0016 - Bunny cuddling toy',
+  Bunny_towel: '0016 - Bunny cuddling toy',
+  Capybara_Plush: '0080 - Capybara Plush',
+  Cece: '0039 - Cece doll',
+  Dinotronic: '0035 - DinoTronic',
+  Dog: '0081 - Dog',
+  dusley: '0009 - Hey Duggee Interactive',
+  eggPlant_cushion: '0034 - Eggplant Restuff',
+  Elephant_Towel: '0082 - Elephant Towel',
+  Elvis_dog: '0052 - Singing Elvis Dog',
+  Firetruck_rideOn: '0058 - Ride on Car',
+  Footy_duck: '0030 - Lauging little duck',
+  giraffe: '0019 - Giraffe teddy',
+  giraffe_MusicBox: '0067 - Ms Buns Rabbit w Music Box',
+  Godfy: '0078 - Godfy',
+  Hemish_bear: '0025 - Hamish',
+  Homer: '0055 - Santa Homer',
+  Husky: '0045 - Mimi Keel toys Husky',
+  Interactive_Reading_toys: '0038 - Hallmarks Reading buddy',
+  JellyCats: '0074 - Jellycat rabbits',
+  Jellycat_flower_ear: '0037 - JellyCat Rabbit',
+  Kota_Triceratop: '0053 - Kota Dino',
+  Lucy_dog: '0066 - Lucy dog',
+  Lulla_doll: '0042 - Lulla doll',
+  Mattel_dolls: '0027 - Mattel dolls',
+  Mickey_Goofy: '0031 - Mickey n goofy',
+  Monkey: '0021 - Monkey restuffing',
+  My_Pal_Robot: '0018 - Moving Robot',
+  Paddington_Bear: '0084 - Paddington Bear',
+  Panda: '0085 - Panda',
+  PJ_Teddy: '0083 - PJ Teddy',
+  pink_ribbon_bear: '0089 - pink ribbon bear',
+  polar_bear: '0090 - polar bear',
+  Pokemon_EPet: '0022 - Pokemon pets',
+  Reindeer: '0051 - Harold singing Reindeer',
+  RideOn_blue: '0058 - Ride on Car',
+  RideOn_outdoor: '0058 - Ride on Car',
+  Robot: '0018 - Moving Robot',
+  Santa_clock: '0064 - Bob the builder Clock',
+  Santa_vintage: '0048 - christmas Figures',
+  Teddy_musicbox: '0020 - Music box teddy bear',
+  Trucks: '0041 - Tonka Trucks and Friends',
+  Tumbling_tiger: '0086 - Tumbling tiger',
+  Vintage_bear_straw: '0028 - Vintage 5 Joint Teddy Bear',
+  Vintage_yellow_bear: '0028 - Vintage 5 Joint Teddy Bear',
+  White_horse: '0044 - Kosen White horse',
+  witch: '0032 - Witch toy',
+  // Woody / Woody_2 / Woody_n_Buzz = separate clients (0050, 0091, 0092)
+  Woody: '0050 - Woody Robot',
+  Woody_2: '0091 - Woody 2',
+  Woody_n_Buzz: '0092 - Woody n Buzz',
+  xmas_train: '0040 - Xmas train',
+  Yellow_teddy: '0087 - Yellow teddy',
+  anime_figure: '0088 - anime figure',
+  brown_bear: '0036 - snoring bear',
+};
+
+/** Nested paths under a top-level USB folder → project dir. */
+export const USB_NESTED_TO_PROJECT_DIR = {
+  'Bob_n_Spud/Yoshi': '0057 - Yoshi',
+  'Bob_n_Spud/Kangaroo': '0059 - Kangaroo',
+};
+
+/** Scaffolded from USB; not in timesheet CSV (T-00028). */
+export const USB_NEW_PROJECT_IDS = [
+  '0078',
+  '0079',
+  '0080',
+  '0081',
+  '0082',
+  '0083',
+  '0084',
+  '0085',
+  '0086',
+  '0087',
+  '0088',
+  '0089',
+  '0090',
+  '0091',
+  '0092',
+];

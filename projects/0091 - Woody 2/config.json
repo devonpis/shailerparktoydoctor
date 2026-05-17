@@ -1,0 +1,20 @@
+{
+  "isTemplate": false,
+  "projectName": "Woody 2",
+  "title": "",
+  "startDate": "2025-11-01",
+  "endDate": "2025-11-13",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [],
+  "skills": [],
+  "description": "Repair project (USB ingest — not in timesheet CSV).",
+  "itemDetails": "USB folder: Woody_2. Scaffolded 2026-05-17.",
+  "repairDetails": "Scaffolded for USB ingest (not in timesheet CSV). Photos pending copy from USB.\n\nSee T-00028 / T-00030 for rename and product details.",
+  "googleReview": null
+}
