@@ -39,6 +39,28 @@ When one caption is reused across **Facebook, Instagram, and Threads**, this rep
 
 ---
 
+## Social carousel: image count and priority
+
+| Item | Value |
+|------|-------|
+| **Max images** | **10** per post (`SOCIAL_CAROUSEL_MAX` in [`scripts/lib/project-media.mjs`](../scripts/lib/project-media.mjs)) |
+| **Webpage** | Unlimited — story `index.html` can show every image |
+| **Selection** (when folder has &gt; 10) | Keep **hero**, **before**, **after** (each if present), then **WIP-001**, **WIP-002**, … until the cap; **drop highest-numbered WIP** first |
+| **Carousel display order** | Story order: **before → WIP sequence → hero → after** (not the selection order above) |
+| **Single-image post** | `publish-social.mjs --image after` (or `hero` / `before`) — bypasses the cap |
+| **Preview / dry-run** | Lists **included** vs **omitted** filenames when truncation applies |
+| **Smart pick (&gt; 10)** | Default **`--pick-images auto`**: **OpenAI vision** if `OPENAI_API_KEY` in `.env`, else **local heuristic** (sharp clarity/size/role). Override: `--pick-images vision`, `heuristic`, or `rules` / `--no-ai` |
+
+Implemented in [`scripts/lib/select-social-images.mjs`](../scripts/lib/select-social-images.mjs); rule fallback in `selectImagesForSocial()`. `validate-publish.mjs` warns when the folder has more than 10 images.
+
+```bash
+node scripts/publish-social.mjs 0027 --dry-run              # auto pick when >10
+node scripts/publish-social.mjs 0027 --dry-run --pick-images vision
+node scripts/publish-social.mjs 0027 --dry-run --no-ai      # rules only
+```
+
+---
+
 ## Do `tags` work on all three platforms?
 
 | Platform | How `tags` are used |

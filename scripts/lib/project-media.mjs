@@ -37,6 +37,9 @@ export function pickPrimaryImage(dir) {
   throw new Error('No project image found (before, after, hero, or WIP-###).');
 }
 
+/** Max images per unified FB / IG / Threads carousel in this repo. */
+export const SOCIAL_CAROUSEL_MAX = 10;
+
 /** Story order for carousels: before → WIP sequence → hero → after. */
 export function listPublishImagePaths(dir) {
   const names = listProjectImages(dir);
@@ -56,6 +59,37 @@ export function listPublishImagePaths(dir) {
       return ra[0] - rb[0] || ra[1] - rb[1] || ra[2].localeCompare(rb[2]);
     })
     .map((n) => path.join(dir, n));
+}
+
+const SOCIAL_SELECTION_STEMS = ['hero', 'before', 'after'];
+
+/**
+ * Pick up to `max` images for social carousel.
+ * Selection priority: hero → before → after → WIP-### (numeric).
+ * Returned paths are re-sorted in story order (before → WIP → hero → after).
+ */
+export function selectImagesForSocial(dir, max = SOCIAL_CAROUSEL_MAX) {
+  const storyOrder = listPublishImagePaths(dir);
+  if (storyOrder.length <= max) {
+    return { included: storyOrder, omitted: [] };
+  }
+
+  const pickedSet = new Set();
+
+  for (const stem of SOCIAL_SELECTION_STEMS) {
+    if (pickedSet.size >= max) break;
+    const hit = storyOrder.find((p) => path.basename(p).toLowerCase().startsWith(stem));
+    if (hit) pickedSet.add(hit);
+  }
+
+  for (const wip of storyOrder) {
+    if (pickedSet.size >= max) break;
+    if (/^wip-/i.test(path.basename(wip))) pickedSet.add(wip);
+  }
+
+  const included = storyOrder.filter((p) => pickedSet.has(p));
+  const omitted = storyOrder.filter((p) => !pickedSet.has(p));
+  return { included, omitted };
 }
 
 /** Base URL must be the HTTPS directory that already contains the image file. */

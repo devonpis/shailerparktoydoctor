@@ -35,8 +35,15 @@ Also check **description + appended hashtags** ≤ **500** characters total.
 - **Facebook:** hashtags go in post **message** (same caption string).
 - There is no shared Meta “tags” API field for all three — build caption/message from `description` + `tags`.
 
+## Social carousel (max 10 images)
+
+- **Cap:** **10** images per unified FB / IG / Threads carousel (`SOCIAL_CAROUSEL_MAX`).
+- **When the folder has more than 10 images:** default **`--pick-images auto`** — **vision** (OpenAI, `OPENAI_API_KEY`) or **heuristic** scoring picks the best 10; falls back to **rules** (hero → before → after → WIP) on failure or `--no-ai`. Preview must show **selection method**, **included/omitted**, and any **notes** per omitted file.
+- **Webpage** publish is **not** capped.
+- **`--image after`** (etc.) = single-image post, no cap logic.
+
 ## Preview summary must include
 
-After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **description length** (x/500), **tag count**, **media files** listed, and validation **OK** or list failures.
+After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **description length** (x/500), **tag count**, **included** social images (x/10), **omitted** images when truncation applies, and validation **OK** or list failures.
 
 If validation fails, **do not** proceed to publish; report failures and ask the user to fix `config.json` or add media.

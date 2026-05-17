@@ -9,19 +9,20 @@
  *   node scripts/publish-social.mjs <project-id> --dry-run
  *   node scripts/publish-social.mjs <project-id> --target all --use-site --wait-for-site
  *   node scripts/publish-social.mjs <project-id> --target instagram --use-site --image after
+ *   node scripts/publish-social.mjs <project-id> --dry-run --pick-images vision
+ *
+ * When a folder has more than 10 images, --pick-images auto (default) uses OpenAI vision
+ * if OPENAI_API_KEY is set, else local heuristic scoring; use --pick-images rules to skip.
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateProject } from './validate-publish.mjs';
-import { loadEnv, requireEnv } from './lib/load-env.mjs';
+import { loadEnv, requireEnv, tryLoadEnv } from './lib/load-env.mjs';
 import { buildCaption } from './lib/caption.mjs';
-import {
-  listPublishImagePaths,
-  pickImage,
-  publicImageUrl,
-} from './lib/project-media.mjs';
+import { pickImage, publicImageUrl, SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
+import { selectImagesForSocialPublish } from './lib/select-social-images.mjs';
 import {
   DEFAULT_SITE_BASE_URL,
   projectSitePublicBase,
@@ -40,6 +41,7 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const TARGETS = ['facebook', 'instagram', 'threads', 'all'];
+const PICK_MODES = ['auto', 'vision', 'heuristic', 'rules'];
 const URL_FIELDS = {
   facebook: 'facebookUrl',
   instagram: 'instagramUrl',
@@ -57,10 +59,13 @@ function parseArgs(argv) {
     useSite: false,
     waitForSite: 0,
     imageStem: null,
+    pickImages: 'auto',
   };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--dry-run') flags.dryRun = true;
+    else if (a === '--no-ai') flags.pickImages = 'rules';
+    else if (a === '--pick-images') flags.pickImages = argv[++i];
     else if (a === '--write-config') flags.writeConfig = true;
     else if (a === '--force') flags.force = true;
     else if (a === '--use-site') flags.useSite = true;
@@ -75,11 +80,14 @@ function parseArgs(argv) {
   }
   if (!positional[0]) {
     throw new Error(
-      'Usage: node scripts/publish-social.mjs <project-id> [--dry-run] [--target …] [--use-site] [--wait-for-site [maxSeconds]] [--image after|hero|before] [--public-base-url URL] [--write-config] [--force]'
+      'Usage: node scripts/publish-social.mjs <project-id> [--dry-run] [--target …] [--use-site] [--wait-for-site [maxSeconds]] [--image after|hero|before] [--pick-images auto|vision|heuristic|rules] [--no-ai] [--public-base-url URL] [--write-config] [--force]'
     );
   }
   if (!TARGETS.includes(flags.target)) {
     throw new Error(`--target must be one of: ${TARGETS.join(', ')}`);
+  }
+  if (!PICK_MODES.includes(flags.pickImages)) {
+    throw new Error(`--pick-images must be one of: ${PICK_MODES.join(', ')}`);
   }
   return { projectArg: positional[0], flags };
 }
@@ -89,13 +97,17 @@ function resolveTargets(target) {
   return [target];
 }
 
-function resolveImagePaths(dir, imageStem) {
-  if (imageStem != null) return [pickImage(dir, imageStem)];
-  const all = listPublishImagePaths(dir);
-  if (!all.length) {
-    throw new Error('No project images found (before, after, hero, or WIP-###).');
+async function resolveImagesForPublish(dir, config, imageStem, pickMode, env) {
+  if (imageStem != null) {
+    return {
+      included: [pickImage(dir, imageStem)],
+      omitted: [],
+      method: 'single',
+      summary: null,
+      notes: {},
+    };
   }
-  return all;
+  return selectImagesForSocialPublish(dir, config, { pickMode, env });
 }
 
 async function getPageAccessToken(graphVersion, userToken, pageId) {
@@ -151,17 +163,25 @@ async function main() {
   const { dir, config } = validation;
   const configPath = path.join(dir, 'config.json');
   const projectFolderName = path.basename(dir);
-  const imagePaths = resolveImagePaths(dir, flags.imageStem);
+  let env = tryLoadEnv();
+  const pickResult = await resolveImagesForPublish(
+    dir,
+    config,
+    flags.imageStem,
+    flags.pickImages,
+    env
+  );
+  const {
+    included: imagePaths,
+    omitted: omittedImages,
+    method: pickMethod,
+    summary: pickSummary,
+    notes: pickNotes,
+  } = pickResult;
   const caption = buildCaption(config);
   const threadsCaption = buildCaption(config, { includeHashtags: false });
   let targets = resolveTargets(flags.target);
 
-  let env = {};
-  try {
-    env = loadEnv();
-  } catch {
-    /* optional until live publish */
-  }
   const publicBaseUrl = resolvePublicBaseUrl(flags, env, projectFolderName);
   const siteBase = env.SITE_BASE_URL?.trim() || DEFAULT_SITE_BASE_URL;
 
@@ -172,9 +192,30 @@ async function main() {
   }
 
   console.log(`Project: ${projectFolderName}`);
-  console.log(
-    `Images (${imagePaths.length}): ${imagePaths.map((p) => path.basename(p)).join(', ')}`
-  );
+  const includedNames = imagePaths.map((p) => path.basename(p)).join(', ');
+  if (flags.imageStem != null) {
+    console.log(`Images (1, --image ${flags.imageStem}): ${includedNames}`);
+  } else {
+    const total = imagePaths.length + omittedImages.length;
+    console.log(
+      `Images for social (${imagePaths.length}/${total}, max ${SOCIAL_CAROUSEL_MAX}): ${includedNames}`
+    );
+    if (pickMethod && pickMethod !== 'all' && pickMethod !== 'single') {
+      console.log(`Selection method: ${pickMethod}`);
+    }
+    if (pickSummary) console.log(`Selection: ${pickSummary}`);
+    if (omittedImages.length) {
+      console.log(
+        `Omitted (${omittedImages.length}): ${omittedImages.map((p) => path.basename(p)).join(', ')}`
+      );
+      const withNotes = omittedImages.filter((p) => pickNotes?.[path.basename(p)]);
+      if (withNotes.length) {
+        for (const p of withNotes) {
+          console.log(`  - ${path.basename(p)}: ${pickNotes[path.basename(p)]}`);
+        }
+      }
+    }
+  }
   console.log(`Caption length: ${caption.length} (Threads without hashtags: ${threadsCaption.length})`);
   console.log(`Targets: ${targets.join(', ')}`);
   if (publicBaseUrl) console.log(`Public image base: ${publicBaseUrl}`);
@@ -209,7 +250,19 @@ async function main() {
     console.log(caption);
     console.log('\nThreads text (no hashtags):');
     console.log(threadsCaption);
-    console.log(`\nLocal images:\n${imagePaths.map((p) => `  ${p}`).join('\n')}`);
+    console.log(`\nIncluded (${imagePaths.length}):\n${imagePaths.map((p) => `  ${path.basename(p)}`).join('\n')}`);
+    if (pickMethod && pickMethod !== 'all' && pickMethod !== 'single') {
+      console.log(`\nSelection method: ${pickMethod}`);
+    }
+    if (pickSummary) console.log(`Selection: ${pickSummary}`);
+    if (omittedImages.length) {
+      console.log(`\nOmitted (${omittedImages.length}):`);
+      for (const p of omittedImages) {
+        const base = path.basename(p);
+        const note = pickNotes?.[base];
+        console.log(note ? `  ${base} — ${note}` : `  ${base}`);
+      }
+    }
     if (publicImageUrls?.length) {
       console.log(`\nPublic URLs:\n${publicImageUrls.map((u) => `  ${u}`).join('\n')}`);
     }

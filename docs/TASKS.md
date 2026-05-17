@@ -37,7 +37,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
 | T-00024 | Todo | Website rebuild: SEO metadata completeness | BR-015 |
 | T-00025 | Done | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
-| T-00026 | Todo | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
+| T-00026 | Done | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
 | T-00027 | Done | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
 | T-00028 | Todo | USB photos: analyse, match projects, copy and rename | BR-022 |
 | T-00029 | Todo | Review ambiguous timesheet imports (e.g. Sandy, client rows) | BR-023 |
@@ -323,7 +323,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-020, BR-012 |
 | **Goal** | When a project has more images than the **cross-platform social cap**, publish only up to the limit using **hero → before → after → WIP** priority. **Webpage** publish remains unlimited. |
 | **Cap** | **10** images per carousel (lowest of FB / IG / Threads for this repo’s unified flow; see BR-020). Centralize constant in [`scripts/lib/social-publish.mjs`](../scripts/lib/social-publish.mjs) / [`scripts/lib/project-media.mjs`](../scripts/lib/project-media.mjs). |

@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildHashtagLine } from './lib/hashtag.mjs';
+import { SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -102,6 +103,10 @@ function validateConfig(config, dir) {
   if (images.length === 0 && videos.length === 0) {
     errors.push(
       'No publishable media: add before/after/hero/WIP images or a video (.mp4, .mov, .webm).'
+    );
+  } else if (images.length > SOCIAL_CAROUSEL_MAX) {
+    warnings.push(
+      `Folder has ${images.length} images; social carousel uses at most ${SOCIAL_CAROUSEL_MAX} (hero → before → after → WIP). Webpage gallery is unlimited.`
     );
   }
 

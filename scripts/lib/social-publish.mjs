@@ -1,9 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { SOCIAL_CAROUSEL_MAX } from './project-media.mjs';
 
-const MAX_CAROUSEL_ITEMS = 10;
-
-export { MAX_CAROUSEL_ITEMS };
+export { SOCIAL_CAROUSEL_MAX as MAX_CAROUSEL_ITEMS };
 
 async function graphGet(url, params) {
   const u = new URL(url);
@@ -55,11 +54,11 @@ async function waitForIgContainer(graphVersion, containerId, userToken, label) {
 }
 
 function capCarouselItems(imagePaths) {
-  if (imagePaths.length <= MAX_CAROUSEL_ITEMS) return imagePaths;
+  if (imagePaths.length <= SOCIAL_CAROUSEL_MAX) return imagePaths;
   console.warn(
-    `Carousel capped at ${MAX_CAROUSEL_ITEMS} images (had ${imagePaths.length}); Instagram limit.`
+    `Carousel capped at ${SOCIAL_CAROUSEL_MAX} images (had ${imagePaths.length}); use selectImagesForSocial() upstream.`
   );
-  return imagePaths.slice(0, MAX_CAROUSEL_ITEMS);
+  return imagePaths.slice(0, SOCIAL_CAROUSEL_MAX);
 }
 
 async function uploadFacebookUnpublishedPhoto({ graphVersion, pageId, pageToken, imagePath }) {
