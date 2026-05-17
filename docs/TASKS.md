@@ -35,7 +35,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00021 | Done | Website rebuild: testimonials page (plan) | BR-015 |
 | T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 | T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
-| T-00024 | In progress | Website rebuild: SEO metadata completeness (after T-00032) | BR-015 |
+| T-00024 | Done | Website rebuild: SEO metadata completeness (story pages; cutover deferred) | BR-015 |
 | T-00025 | Done | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
 | T-00026 | Done | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
 | T-00027 | Done | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
@@ -45,14 +45,16 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00031 | Done | Project dates from EXIF (oldest/newest image) | BR-025 |
 | T-00032 | Done | CSV metadata gap report for owner fill-in | BR-026 |
 | T-00033 | Done | Fill itemDetails summaries (Donald char budgets) | BR-027 |
-| T-00034 | In progress | Review title & description from images + metadata | BR-029 |
+| T-00034 | Done | Review title & description from images + metadata | BR-029 |
 | T-00035 | Todo | Import owner CSV; polish repairDetails & description | BR-030 |
 | T-00036 | Done | Rename skill `plush` → `needlework` (after T-00035) | BR-031 |
 | T-00037 | Done | Replace legacy homepage images 0004–0015 | BR-032 |
 | T-00038 | Todo | Update testimonials page (last before cutover) | BR-033 |
 | T-00039 | Done | On-demand project image rotation (portrait/landscape) | BR-034 |
 | T-00040 | Done | Home highlight importance + six tiles | BR-015 |
-| T-00041 | Todo | Publish legacy repair stories 0004–0015 + 0093 to HTML | BR-004, BR-015 |
+| T-00041 | Done | Publish legacy repair stories 0004–0015 + 0093 to HTML | BR-004, BR-015 |
+| T-00042 | Todo | Publish six repairs: Kota, Verna, Homer Santa, Lucy, Lulla, Ducksley | BR-004, BR-015 |
+| T-00043 | Done | Home page: add Dr. Mechanic; split mechanical from Dr. Hobby | BR-014, BR-015 |
 | — | — | Skill categories: four IDs only (`docs/project-skills.md`, BR-028) | BR-028 |
 
 ---
@@ -256,10 +258,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | In progress |
+| **Status** | Done |
 | **Requirements** | BR-015 |
 | **Goal** | Close gaps vs [`website-design-brief.md`](website-design-brief.md) SEO checklist and [`website-project-page-wireframe.md`](website-project-page-wireframe.md) per-page SEO — so every **indexable** page has correct `<title>`, meta description, canonical, HTTPS Open Graph, and structured data where specified. |
-| **Progress** | **2026-05-17:** Published stories **0001**, **0003** + template — `og:type` article; hero/`og:image` use `after`. **`publish-webpage.mjs`** now syncs title, description, canonical, and Open Graph from `config.json` when `index.html` exists (`scripts/lib/project-story-meta.mjs`). Marketing `/new/` pages still pending. |
+| **Outcome** | **Project stories (closed):** [`scripts/lib/project-story-meta.mjs`](../scripts/lib/project-story-meta.mjs) builds meta from `config.json` + on-disk images. **`scaffold-project-story-html.mjs`** writes full `<head>` SEO and calls meta sync + `webpageUrl`. **`publish-webpage.mjs`** scaffolds `index.html` when missing, then re-syncs meta after image processing (`--no-meta` to skip). Hero = `hero` → `after` → `before`; OG image = `after` → `hero` → `before`. **Deferred to T-00016:** marketing `/new/` canonical + OG on home/projects/testimonials; remove preview `noindex`; sitemap without `/new/*`; production URLs at cutover. Contact JSON-LD already on contact page. |
+| **Progress** | **2026-05-17:** **0001**, **0003**, legacy batch **0004–0015**, **0093** — story pages with `og:type` article. |
 | **Checklist** | **Marketing (`/new/` until cutover):** add `link rel="canonical"` and `og:title`, `og:description`, `og:image`, `og:url`, `og:type` on home, projects index, testimonials, contact (contact already has `LocalBusiness` JSON-LD — add same on home); keep `noindex` on preview until **T-00016**. **Project stories:** ensure template [`index.html.example`](../projects/0000%20-%20template/index.html.example) includes full OG block like [0003 Donald Duck](../projects/0003%20-%20Donald%20Duck/index.html); add `og:type` on story pages; verify title `{projectName} — Shailer Park Toy Doctor` and description ≤ ~160 chars for each DONE page. **Sitemap:** remove `/new/*` URLs (conflicts with `robots.txt` `Disallow: /new/`); list only public URLs; add production marketing paths after cutover. **Cutover (with T-00016):** remove `noindex` from marketing pages; canonicals and OG URLs use `https://sptoydoctor.com.au/` paths (not `/new/`). **Legacy root** (`index.html`, `contact.html`, `reviews.html`): fix `lang="en-AU"`, HTTPS Open Graph URLs, or archive at cutover. **Accessibility/SEO:** one primary `<h1>` per page (header site title vs page headline); image `alt` from project titles on story/gallery images. |
 | **Depends on** | T-00012, T-00017, T-00019, **T-00035** (owner CSV import + generated copy), **T-00034** (titles) |
 | **Related** | T-00013 (sitemap), T-00016 (cutover + de-index preview), T-00022 (contact JSON-LD pattern) |
@@ -470,10 +473,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | In progress |
+| **Status** | Done |
 | **Requirements** | BR-029 |
 | **Goal** | For each in-scope project, draft or refine **`title`** and **`description`** using **repair photos** (before/after/WIP/hero), **`itemDetails`**, and **`repairDetails`** when present. Match quality of **0002** / **0003** (story leads, not skill-list stubs). |
-| **Progress** | **2026-05-17:** Batch updated **0004–0015** and **0093** via [`apply-title-description-batch.mjs`](../scripts/apply-title-description-batch.mjs); expanded `repairDetails` where legacy stubs (**0009**, **0013**, **0014**, **0093**). **83** projects still in scope repo-wide — see [`title-description-review-2026-05-17.md`](reports/title-description-review-2026-05-17.md). |
+| **Outcome** | **2026-05-17:** Batch updated **0004–0015** and **0093** via [`apply-title-description-batch.mjs`](../scripts/apply-title-description-batch.mjs); expanded `repairDetails` for legacy stubs (**0009**, **0013**, **0014**, **0093**). Remaining WIP projects can be filled incrementally via [`report-title-description-review.mjs`](../scripts/report-title-description-review.mjs) + owner CSV (**T-00035**). |
+| **Progress** | See [`title-description-review-2026-05-17.md`](reports/title-description-review-2026-05-17.md). |
 | **Exclude** | **0002**, **0003** — already publish-ready. **0001** — description OK; **title** only if still empty/generic. Projects already passing [`scripts/lib/title-description-quality.mjs`](../scripts/lib/title-description-quality.mjs) heuristics. |
 | **Script** | [`scripts/report-title-description-review.mjs`](../scripts/report-title-description-review.mjs) → [`docs/reports/title-description-review-<date>.md`](reports/) + `.csv` |
 | **Depends on** | T-00030, T-00033; photos in folder (T-00028); **T-00035** for `description` on CSV-filled rows |
@@ -561,16 +565,53 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-004, BR-015 |
 | **Goal** | Publish **website story pages** for legacy homepage repairs **0004–0015** and **0093** (split from 0014). |
+| **Outcome** | **2026-05-17:** All **0004–0015** and **0093** set **`status: DONE`** with `index.html`, gallery index entries, and `webpageUrl`. Use `publish-webpage.mjs` + `scaffold-project-story-html.mjs` for updates (SEO meta integrated). **0008**, **0010**, **0011**, **0012**, **0015** promoted with story pages; expand `repairDetails` when owner adds copy. |
 | **Readiness report** | [`docs/reports/done-readiness-2026-05-17.md`](reports/done-readiness-2026-05-17.md) — regenerate: `node scripts/report-done-readiness.mjs --legacy-batch` |
-| **Promote DONE first** (8 ready 2026-05-17) | **0004**, **0005**, **0006**, **0007**, **0009**, **0013**, **0014**, **0093** |
-| **Blocked until repairDetails** | **0008**, **0010**, **0011**, **0012**, **0015** (hero-only; expand `repairDetails` from photos or owner notes) |
-| **Per project** | 1. `validate-done-readiness.mjs` → 2. `set-project-status.mjs --status DONE` → 3. `publish-webpage.mjs` → 4. Author `index.html` from template → 5. Re-run publish (meta sync) → 6. `projects-index.json` + `webpageUrl` + `sitemap.xml` |
 | **Depends on** | T-00034 (titles/descriptions batch done); publish guards (`project-readiness.mjs`, `publish-webpage.mjs`) |
 | **Related** | T-00037 (photos); T-00016 (cutover) |
 | **Out of scope** | Social publish for whole batch (per project after story live); T-00035 CSV import |
+
+---
+
+## T-00042 — Publish six repairs: Kota, Verna, Homer Santa, Lucy, Lulla, Ducksley
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-004, BR-015 |
+| **Goal** | Set **`status: DONE`**, add owner **`repairDetails`**, and publish **story pages** (`index.html`, gallery index, sitemap, SEO meta) for six projects. |
+| **Projects** | See table below. Owner will supply **`repairDetails`** prose per project (paste in chat or CSV). |
+| **Per project** | 1. Merge **`repairDetails`** (+ polish **`description`** / **`title`** if needed) → 2. `node scripts/validate-done-readiness.mjs <id>` → 3. `node scripts/set-project-status.mjs <id> --status DONE` → 4. `node scripts/publish-webpage.mjs <id>` (images + scaffold if needed + SEO meta) → 5. `node scripts/sync-projects-gallery-index.mjs <id>` → 6. `node scripts/sync-sitemap-project-urls.mjs` (if used) → commit/push when approved. |
+| **Depends on** | Owner **`repairDetails`** for each row; photos in folder (see blockers). **T-00024** (story SEO in publish). |
+| **Related** | T-00035 (optional CSV import path); existing YouTube on **0053**, **0055**, **0094** — embed on story when published. |
+| **Out of scope** | Social publish for whole batch; renaming folders unless owner asks |
+| **Merge note** | **0028** (Vintage five-joint mohair teddy) photos → **0043** Verna; **0028** retained as stub only — do not publish. |
+
+| ID | Folder | Owner label | Images (2026-05-17) | Notes |
+|----|--------|-------------|---------------------|--------|
+| **0053** | Playskool Kota Triceratops | Dino triceratops (Kota) | ~33 | `youtubeUrl` set |
+| **0043** | Verna 1960s vintage teddy | Verna the golden bear | **15** | Merged from **0028** (USB Vintage_yellow_bear / Vintage_bear_straw); needs **`repairDetails`** |
+| **0055** | Santa Homer Simpson animatronic | Homer Santa | ~21 | `youtubeUrl` set |
+| **0066** | Lucy dalmatian plush dog | Lucy dog | ~6 | |
+| **0042** | Soft cloth baby doll | Lulla doll | ~11 | USB map: `Lulla_doll` |
+| **0094** | Ducksley | Ducksley (Russ singing duck) | ~15 | `youtubeShortUrl` set |
+
+---
+
+## T-00043 — Home page: add Dr. Mechanic; split mechanical from Dr. Hobby
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-014, BR-015 |
+| **Goal** | Update **`new/index.html`** “Our Doctors” to **four** personas: add **Dr. Mechanic** with **`mechanical`** skill badge; **Dr. Hobby** keeps **`paintjob`** only (figures / models / paint). |
+| **Outcome** | **2026-05-17:** Four doctor tiles on preview home; `images/drmechanic.png` placeholder (replace when owner supplies portrait); [`business-info.md`](business-info.md) personas table updated; doctors grid CSS adjusted for four columns. |
+| **Depends on** | None |
+| **Related** | T-00016 (cutover to root); owner may replace `drmechanic.png` |
+| **Out of scope** | Legacy root `index.html` (only two doctors today) |
 
 ---
 

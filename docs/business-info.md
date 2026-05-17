@@ -120,10 +120,11 @@ Use on site and marketing as friendly specialists (images on current `index.html
 | Persona | Focus | Site asset |
 |---------|--------|------------|
 | **Dr. Fluffy** | Plush cleaning, sewing, stuffed toys | `images/DrFluffy.jpg` |
-| **Dr. Electronics** | Electronic toys, small electronic / mechanical appliances | `images/DrElectronic.jpg` |
-| **Dr. Hobby** | Anime figures, scale models, paint / hobby restoration | *Owner will add image later; then use on rebuild* |
+| **Dr. Electronics** | Electronic toys, small electronic appliances | `images/DrElectronic.jpg` |
+| **Dr. Mechanic** | Gears, motors, wind-ups, joints, mechanical mechanisms | `images/drmechanic.png` (placeholder until owner supplies portrait) |
+| **Dr. Hobby** | Anime figures, scale models, paint / hobby restoration | `images/drhobby.png` |
 
-**Dr. Hobby** maps to anime figure & scale model paint jobs; include alongside Dr. Fluffy and Dr. Electronics on the rebuilt site.
+**Dr. Mechanic** covers the **mechanical** skill badge; **Dr. Hobby** covers **paint** (figures, models, touch-ups). Both appear on the rebuilt home page with Dr. Fluffy and Dr. Electronics.
 
 ### Positioning on current site
 

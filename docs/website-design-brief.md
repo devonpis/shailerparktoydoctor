@@ -152,7 +152,7 @@ Order top → bottom (hero and services blocks from Prepbox still apply above or
 |---|---------|----------------|
 | 1 | **Hero** | Tagline + dual CTA: quote → Contact; secondary → Projects |
 | 2 | **About us / our mission** | Merge legacy **About us** + **Do You Know** ([`index.html`](../index.html)); keep phone/laptop exclusion callout (`warning` colour) |
-| 3 | **Our Doctors** | Three personas: **Dr. Fluffy**, **Dr. Electronics**, **Dr. Hobby** ([`business-info.md`](business-info.md)); respect the “doctor” area visually (cards/grid; legacy uses `images/DrFluffy.jpg`, `images/DrElectronic.jpg`; **Dr. Hobby image TBD** — placeholder OK until owner supplies) |
+| 3 | **Our Doctors** | Four personas: **Dr. Fluffy**, **Dr. Electronics**, **Dr. Mechanic**, **Dr. Hobby** ([`business-info.md`](business-info.md)); skill badges per doctor (`needlework`, `electronic`, `mechanical`, `paintjob`); **Dr. Mechanic** portrait placeholder OK until owner supplies |
 | 4 | **Featured projects** | **Three** highlight tiles → each project’s story URL; owner picks which three (config flag or curated list in JSON until automation exists) |
 | 5 | **Projects CTA** | Full-width band/button → **Projects** index page |
 | 6 | *(optional)* | Services lineup, trust strip — from earlier brief; not removed unless owner says so |
@@ -274,7 +274,7 @@ Superseded by [Home page sections](#home-page-sections-owner-2026-05-16) for ord
 
 - **Teal primary + Lobster/Nunito** replace Prepbox colours and fonts.  
 - **Nav:** logo → home; Projects, Testimonials, Contact; social icons (FB, IG, Threads, YouTube).  
-- **Home:** About/mission (combined legacy sections); Our Doctors (×3); **3** featured project tiles + CTA to Projects.  
+- **Home:** About/mission (combined legacy sections); Our Doctors (×4); **3** featured project tiles + CTA to Projects.  
 - **Gallery path:** `/projects/` (not `/repairs/`).  
 - **Responsive / mobile-first** required.  
 - **Footer:** compact + `Projects · Testimonials · Contact` text links.  

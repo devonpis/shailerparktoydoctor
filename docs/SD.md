@@ -109,7 +109,7 @@ The public site may be **rebuilt** for stronger visuals and SEO. **Analysis and 
 **Rebuild must include (when built):**
 
 - **Global nav:** brand/logo → home; **Projects** (tile index of DONE repairs); **Testimonials** (Google reviews); **Contact**; **social icons** (Facebook, Instagram, Threads, YouTube — URLs from [`business-info.md`](business-info.md)).
-- **Home:** combined **About us / our mission** (legacy “About us” + “Do You Know”); **Our Doctors** (Dr. Fluffy, Dr. Electronics, Dr. Hobby); **three featured project tiles** linking to story pages + full-width CTA to Projects index.
+- **Home:** combined **About us / our mission** (legacy “About us” + “Do You Know”); **Our Doctors** (Dr. Fluffy, Dr. Electronics, Dr. Mechanic, Dr. Hobby); **three featured project tiles** linking to story pages + full-width CTA to Projects index.
 - **Responsive:** mobile-first layout; usable nav and readable sections on small screens.
 - **Staging:** build under `new/` until cutover (**T-00016**); legacy root marketing HTML untouched until then.
 
