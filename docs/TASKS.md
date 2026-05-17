@@ -38,7 +38,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00024 | Todo | Website rebuild: SEO metadata completeness | BR-015 |
 | T-00025 | Done | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
 | T-00026 | Todo | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
-| T-00027 | Todo | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
+| T-00027 | Done | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
 | T-00028 | Todo | USB photos: analyse, match projects, copy and rename | BR-022 |
 | T-00029 | Todo | Review ambiguous timesheet imports (e.g. Sandy, client rows) | BR-023 |
 
