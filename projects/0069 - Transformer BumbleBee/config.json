@@ -16,11 +16,11 @@
     "Bumblebee"
   ],
   "skills": [
-    "electronics",
+    "electronic",
     "mechanical"
   ],
-  "description": "repair - electronics and mechanical",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 03/04/2026. No repair photos yet.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Transformer BumbleBee — electronic and mechanical repair. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Transformer BumbleBee — electronics repair and mechanical repair.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

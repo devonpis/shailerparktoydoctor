@@ -17,11 +17,11 @@
     "doll"
   ],
   "skills": [
-    "sewing",
-    "electronics"
+    "plush",
+    "electronic"
   ],
-  "description": "repair - plush and mechanism",
-  "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Woody doll (Toy Story) — separate client/job from 0050. Pull-string / costume repair as needed.\n\nUSB folder Woody_2.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Woody doll Toy Story — sewing and electronics.",
+  "itemDetails": "Woody doll (Toy Story) is licensed Disney-Pixar character merchandise, with major pull-string and poseable versions produced over multiple film eras by approved toy partners. Woody remains one of the franchise's most collectible core characters.\n\nConstruction typically combines textile body and costume parts with molded plastic head/hands/boots, plus internal voice or pose mechanisms depending on release. Market value improves with film-accurate costume details, working voice features, and complete accessories such as hat and holster.",
+  "repairDetails": null,
   "googleReview": null
 }

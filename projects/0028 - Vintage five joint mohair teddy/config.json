@@ -17,12 +17,10 @@
     "vintage"
   ],
   "skills": [
-    "cleaning",
-    "restuffing",
-    "sewing"
+    "plush"
   ],
-  "description": "repair - vintage plush",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 30072025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Vintage mohair jointed teddy — clean and restuff.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Vintage five-joint mohair teddy — cleaning and refresh, restuffing, and sewing and fabric repair.",
+  "itemDetails": "A vintage five-joint mohair teddy belongs to the classic articulated bear tradition, usually inspired by early 20th-century German and British bear-making patterns. Five-joint construction (head, arms, legs) is a key hallmark for older collector-style teddy design.\n\nMaterials are commonly mohair pile on backing, with wood-wool or fiber stuffing in older examples and disk/cotter-pin joints for articulation. Market value can range widely, with maker attribution, age evidence, and originality of eyes/pads/stitching driving collector demand.",
+  "repairDetails": null,
   "googleReview": null
 }

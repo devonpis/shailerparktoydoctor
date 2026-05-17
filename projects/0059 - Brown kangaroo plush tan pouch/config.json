@@ -16,12 +16,10 @@
     "plush"
   ],
   "skills": [
-    "sewing",
-    "restuffing",
-    "cleaning"
+    "plush"
   ],
-  "description": "repair - plush restuffing",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 01/12/2025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Brown kangaroo with cream snout, belly pouch, and foot pads — restuff and tear repair (USB Bob_n_Spud/Kangaroo).\n\nT-00030 + fallback photo review — 2026-05-17.",
+  "description": "Brown kangaroo plush tan pouch — sewing and fabric repair, restuffing, and cleaning and refresh.",
+  "itemDetails": "This brown kangaroo plush with tan pouch is in the Australian souvenir-animal plush category, widely sold through tourism and gift channels for decades. Kangaroo plush designs are usually generic unless tags identify a specific wildlife brand or museum line.\n\nTypical materials are polyester faux-fur fabrics, polyester fill, and stitched details around muzzle, paws, and pouch. Market value is usually modest, but condition, symmetry, and any matching joey accessory can improve desirability for themed collectors.",
+  "repairDetails": null,
   "googleReview": null
 }

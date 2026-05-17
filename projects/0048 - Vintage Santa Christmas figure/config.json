@@ -17,12 +17,12 @@
     "figure"
   ],
   "skills": [
-    "electronics",
-    "mechanical",
-    "sewing"
+    "plush",
+    "electronic",
+    "mechanical"
   ],
-  "description": "repair - figure restoration",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 05/01/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Large vintage Santa figure — dome and mechanism restored.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Vintage Santa Christmas figure — electronics repair, mechanical repair, and sewing and fabric repair.",
+  "itemDetails": "A vintage Santa Christmas figure belongs to seasonal holiday decor traditions spanning department-store and giftware lines from the mid-20th century onward. These pieces may be static figurines or light/animated forms depending on maker and period.\n\nConstruction commonly includes plastic, resin, textile trim, and sometimes wire armatures or simple internal mechanisms. Market value is highly era- and condition-dependent, with older, well-preserved figures and clear maker marks drawing stronger holiday collector interest.",
+  "repairDetails": null,
   "googleReview": null
 }

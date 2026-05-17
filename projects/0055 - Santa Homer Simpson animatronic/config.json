@@ -17,12 +17,12 @@
     "Christmas"
   ],
   "skills": [
-    "mechanical",
-    "electronics",
-    "cleaning"
+    "plush",
+    "electronic",
+    "mechanical"
   ],
-  "description": "repair - animatronic",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 01/12/2025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Santa Homer animatronic — drive mechanism and clean.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Santa Homer Simpson animatronic — mechanical repair, electronics repair, and cleaning and refresh.",
+  "itemDetails": "Santa Homer Simpson animatronics are licensed seasonal tie-in collectibles combining The Simpsons branding with Christmas novelty motion toys. Most examples date to 2000s-era character-merch waves where pop-culture mascots were adapted into festive decor.\n\nTypical construction includes molded plastic components, textile Santa costume elements, and a battery-operated motor/sound assembly. Market value is strongest for clearly licensed, fully functional units with intact paint and costume parts, particularly in original packaging.",
+  "repairDetails": null,
   "googleReview": null
 }

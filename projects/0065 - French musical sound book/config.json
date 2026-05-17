@@ -17,10 +17,10 @@
     "sound book"
   ],
   "skills": [
-    "electronics"
+    "electronic"
   ],
-  "description": "repair - sound book electronics",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 01/04/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "French musical sound book — battery contacts. No photos.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "French musical sound book — electronics repair.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

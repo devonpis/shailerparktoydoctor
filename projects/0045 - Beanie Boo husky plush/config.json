@@ -19,11 +19,10 @@
     "Beanie Boo"
   ],
   "skills": [
-    "sewing",
-    "cleaning"
+    "plush"
   ],
-  "description": "repair - plush",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 2122025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Ty-style husky/wolf cub with large blue glitter eyes — tear and grooming repair. USB folder Husky.\n\nT-00030 + fallback photo review — 2026-05-17.",
+  "description": "Beanie Boo husky plush — sewing and cleaning.",
+  "itemDetails": "Ty Beanie Boo husky plush belongs to Ty's Beanie Boo line launched in 2009, recognized by oversized glitter-style eyes and named character releases. The line became a major modern collectible category with regular seasonal and retailer-exclusive drops.\n\nMaterials are typically polyester plush with polyester fill and Ty's branded heart/swing tags identifying character name and birthday. Secondary-market value varies by issue and rarity, with retired variants and tag-intact examples usually trading above common releases.",
+  "repairDetails": null,
   "googleReview": null
 }

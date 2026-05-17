@@ -16,10 +16,10 @@
     "jacket"
   ],
   "skills": [
-    "sewing"
+    "plush"
   ],
-  "description": "repair - textile",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 1012024.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Soft jacket repair/restoration (timesheet Woft — typo). No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Soft jacket repair — sewing and fabric repair.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

@@ -17,11 +17,10 @@
     "cloth"
   ],
   "skills": [
-    "sewing",
-    "cleaning"
+    "plush"
   ],
-  "description": "repair - doll restoration",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 30102025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Handmade-style cloth baby doll — cleaning and restoration.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Soft cloth baby doll — sewing and cleaning.",
+  "itemDetails": "This soft cloth baby doll is part of the rag-doll and first-baby-doll tradition widely sold in nursery and toddler lines from the 1980s onward. These dolls are designed for early comfort play and are typically non-fragile and machine-friendly.\n\nMaterials commonly include cotton/poly cloth bodies, yarn hair, embroidered faces, and polyester fiber fill. Market value is generally practical and sentimental unless the doll is traceable to a premium maker with identifiable tags and original accessories.",
+  "repairDetails": null,
   "googleReview": null
 }

@@ -44,6 +44,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00030 | Done | Project identity: product info, rename folder & metadata | BR-024 |
 | T-00031 | Todo | Project dates from EXIF (oldest/newest image) | BR-025 |
 | T-00032 | Todo | CSV metadata gap report for owner fill-in | BR-026 |
+| T-00033 | Done | Fill itemDetails summaries (Donald char budgets) | BR-027 |
+| T-00034 | Todo | Review title & description from images + metadata | BR-029 |
+| — | — | Skill categories: four IDs only (`docs/project-skills.md`, BR-028) | BR-028 |
 
 ---
 
@@ -417,6 +420,37 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Depends on** | T-00028 (images present); optional after T-00027 (JPEG EXIF retained) |
 | **Related** | T-00030; **T-00032** (CSV should use updated dates) |
 | **Out of scope** | Changing `status`; GPS/PII in reports; editing non-`config.json` files |
+
+---
+
+## T-00033 — Fill itemDetails product summaries (char budgets)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-027 |
+| **Goal** | Replace stub `itemDetails` (timesheet import, “Repair photos in repo”, empty) with **product/collectible** copy for the website “About this item” section — same style as **0003 Donald Duck**, within documented character budgets. |
+| **Budgets** | From **0003**: paragraphs **~375 / 294 / 330** (total ~1003). Tiers: **short** ≤200 (1 para, no photos), **standard** 2×≤300 (~600), **full** 3×≤400 (~1000). See [`scripts/lib/item-details-budget.mjs`](../scripts/lib/item-details-budget.mjs). |
+| **Script** | [`scripts/fill-project-item-details.mjs`](../scripts/fill-project-item-details.mjs) + [`scripts/lib/item-details-catalog.mjs`](../scripts/lib/item-details-catalog.mjs). Skips **0002, 0003** (already filled). |
+| **Depends on** | T-00030 (stable `projectName` / tags) |
+| **Related** | T-00032 (owner CSV may still refine prose); [`docs/website-go-live.md`](website-go-live.md) paragraph rules |
+| **Related polish** | [`scripts/polish-project-metadata.mjs`](../scripts/polish-project-metadata.mjs) — `description`; **`itemDetails`: `null` when no repair images**. **`repairDetails`:** [`scripts/apply-repair-details-policy.mjs`](../scripts/apply-repair-details-policy.mjs) — keep **0001–0003**, legacy homepage **0004–0015**, else **`null`**. |
+| **Out of scope** | Social captions with emoji/links (keep as-is when already written) |
+
+---
+
+## T-00034 — Review title & description from images + metadata
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-029 |
+| **Goal** | For each in-scope project, draft or refine **`title`** and **`description`** using **repair photos** (before/after/WIP/hero), **`itemDetails`**, and **`repairDetails`** when present. Match quality of **0002** / **0003** (story leads, not skill-list stubs). |
+| **Exclude** | **0002**, **0003** — already publish-ready. **0001** — description OK; **title** only if still empty/generic. Projects already passing [`scripts/lib/title-description-quality.mjs`](../scripts/lib/title-description-quality.mjs) heuristics. |
+| **Script** | [`scripts/report-title-description-review.mjs`](../scripts/report-title-description-review.mjs) → [`docs/reports/title-description-review-<date>.md`](reports/) + `.csv` |
+| **Depends on** | T-00030, T-00033; photos in folder (T-00028) |
+| **Related** | T-00032 (CSV gap export); [`docs/publish-content-guards.md`](publish-content-guards.md) (≤500 chars) |
+| **Out of scope** | Rewriting `itemDetails` / `repairDetails` (separate policies); auto-publish |
 
 ---
 

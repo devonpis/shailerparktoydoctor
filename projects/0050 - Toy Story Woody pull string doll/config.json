@@ -17,12 +17,12 @@
     "doll"
   ],
   "skills": [
-    "electronics",
-    "mechanical",
-    "cleaning"
+    "plush",
+    "electronic",
+    "mechanical"
   ],
-  "description": "repair - pull-string and cleaning",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 05/01/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Woody pull-string doll — sound box and spring (timesheet Woody Robot).\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Toy Story Woody pull-string doll — electronics repair, mechanical repair, and cleaning and refresh.",
+  "itemDetails": "Toy Story Woody pull-string dolls are licensed Pixar/Disney products, with major production by Thinkway Toys across multiple film generations. The pull-string voice format became iconic from the original 1995 Toy Story release onward.\n\nConstruction usually combines a soft body with molded plastic head/hands/boots, stitched costume textiles, and an internal voice pull-cord module. Collector value rises for screen-accurate versions with working voice units, original hat/accessories, and identifiable release-era tags.",
+  "repairDetails": null,
   "googleReview": null
 }

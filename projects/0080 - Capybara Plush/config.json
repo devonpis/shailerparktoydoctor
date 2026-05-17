@@ -16,11 +16,10 @@
     "capybara"
   ],
   "skills": [
-    "sewing",
-    "restuffing"
+    "plush"
   ],
-  "description": "repair - plush restuffing",
-  "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Capybara plush — head detached; restuff and reattach.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Capybara plush — sewing and restuffing.",
+  "itemDetails": "Capybara plush toys are part of a recent animal-trend wave that gained strong popularity in the 2020s through social media and lifestyle gift channels. Many releases are contemporary novelty plush from Asian and global gift brands.\n\nTypical materials are polyester plush and fiber fill with simplified embroidered facial styling. Market value is currently demand-led rather than rarity-led, with larger sizes and distinctive expression variants often selling better than generic small runs.",
+  "repairDetails": null,
   "googleReview": null
 }

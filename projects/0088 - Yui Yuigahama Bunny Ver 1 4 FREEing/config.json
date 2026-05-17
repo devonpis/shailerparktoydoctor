@@ -20,11 +20,10 @@
     "1/4 scale"
   ],
   "skills": [
-    "figure repair",
-    "gluing"
+    "paintjob"
   ],
-  "description": "repair - figure",
-  "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17. Confirmed via Lens/web: FREEing B-style 1/4 scale.",
-  "repairDetails": "Yui Yuigahama Bunny Ver (Oregairu) — FREEing 1/4 scale; detached bunny ear. Lens/web confirmed.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Yui Yuigahama Bunny Ver 1/4 FREEing — figure repair and gluing.",
+  "itemDetails": "Yui Yuigahama Bunny Ver. 1/4 by FREEing is a large-scale Japanese anime collectible figure from FREEing's B-style bunny line, based on the character from My Teen Romantic Comedy SNAFU (Oregairu). FREEing's 1/4 scale releases are known for oversized shelf presence and premium display orientation.\n\nThe figure is typically PVC/ABS construction with painted detail work, and many FREEing bunny releases include real fabric fishnet stockings as a signature mixed-material element. Market demand is collector-driven and can rise after production ends, with box condition, authenticity, and complete accessories strongly affecting resale.",
+  "repairDetails": null,
   "googleReview": null
 }

@@ -18,11 +18,26 @@
     paintjob: '🖌️',
   };
 
+  const SKILL_ALIASES = {
+    electrical: 'electronic',
+    electronics: 'electronic',
+    sewing: 'plush',
+    restuffing: 'plush',
+    cleaning: 'plush',
+    paint: 'paintjob',
+    gluing: 'paintjob',
+    'figure repair': 'paintjob',
+  };
+
   function normalizeSkills(skills) {
     if (!Array.isArray(skills)) return [];
-    return skills
-      .map((id) => (id === 'electrical' ? 'electronic' : id))
-      .filter((id) => SKILL_IDS.includes(id));
+    const out = [];
+    for (const raw of skills) {
+      const key = String(raw || '').trim().toLowerCase();
+      const id = SKILL_ALIASES[key] || key;
+      if (SKILL_IDS.includes(id) && !out.includes(id)) out.push(id);
+    }
+    return SKILL_IDS.filter((id) => out.includes(id));
   }
 
   function skillIconHtml(skillId) {

@@ -23,6 +23,7 @@ Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/pu
 - `title` — non-empty, ≤ **500** characters
 - `description` — non-empty, ≤ **500** characters (shared social caption; **Threads** is the binding limit)
 - `tags` — array, **1–30** strings (no `#` in JSON); **30** = Instagram hashtag cap
+- `skills` — if set: only `plush`, `electronic`, `mechanical`, `paintjob` ([`docs/project-skills.md`](../../docs/project-skills.md), **BR-028**)
 - **Media** — at least one of: `before` / `after` / `hero` / `WIP-###` image, or video (`.mp4`, `.mov`, `.webm`)
 
 Also check **description + appended hashtags** ≤ **500** characters total.

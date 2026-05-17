@@ -17,11 +17,10 @@
     "doll"
   ],
   "skills": [
-    "sewing",
-    "fabric repair"
+    "plush"
   ],
-  "description": "repair - plush doll",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 17102025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "CoComelon Cece doll — nose and dress repair.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "CoComelon Cece plush — sewing and fabric repair.",
+  "itemDetails": "CoComelon Cece plush is licensed preschool character merchandise from the CoComelon brand expansion that surged globally in the late 2010s and 2020s. Official plush releases are commonly distributed through major toy channels under licensed agreements.\n\nTypical materials are polyester plush fabric, embroidered facial features, and soft fill designed for toddler-safe handling. Market value is generally mass-retail range, though complete character sets in clean condition are preferred by parents and character collectors.",
+  "repairDetails": null,
   "googleReview": null
 }

@@ -16,11 +16,10 @@
     "Paddington"
   ],
   "skills": [
-    "sewing",
-    "cleaning"
+    "plush"
   ],
-  "description": "repair - plush",
-  "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Classic Paddington Bear plush (red coat, black hat).\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Paddington Bear — sewing and cleaning.",
+  "itemDetails": "Paddington Bear plush is licensed from Michael Bond's character first published in 1958, with long-running toy production by multiple official licensees such as Eden, Rainbow Designs, and others by region/era. Signature identifiers include duffle coat, hat, and often the marmalade tag motif.\n\nMaterials are typically polyester plush or mixed textile construction with dressed clothing components and embroidered facial features. Collector value varies widely by maker and era, with vintage licensed examples and complete outfit/accessory sets commanding stronger prices.",
+  "repairDetails": null,
   "googleReview": null
 }

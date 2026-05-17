@@ -17,12 +17,12 @@
     "animatronic"
   ],
   "skills": [
-    "mechanical",
-    "electronics",
-    "sewing"
+    "plush",
+    "electronic",
+    "mechanical"
   ],
-  "description": "repair - animatronic head",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 05/01/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Harold singing reindeer — head movement mechanism.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Harold singing reindeer — mechanical repair, electronics repair, and sewing and fabric repair.",
+  "itemDetails": "Harold singing reindeer is a seasonal novelty plush/animatronic style common in Christmas retail from the late 1990s onward. Named reindeer characters were often sold as countertop gifts with music and simple movement loops.\n\nTypical build uses polyester plush over a plastic internal frame with motorized head/body motion and a battery-powered sound board. Market value is usually modest outside holiday season, with functionality and cosmetic condition being the main resale factors.",
+  "repairDetails": null,
   "googleReview": null
 }

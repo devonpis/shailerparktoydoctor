@@ -16,10 +16,10 @@
     "plush"
   ],
   "skills": [
-    "sewing"
+    "plush"
   ],
-  "description": "repair - plush",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 12/04/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Companion Cat plush repair. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Companion Cat — sewing and fabric repair.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

@@ -17,12 +17,12 @@
     "dinosaur"
   ],
   "skills": [
-    "electronics",
-    "mechanical",
-    "cleaning"
+    "plush",
+    "electronic",
+    "mechanical"
   ],
-  "description": "repair - electronic dinosaur",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 25092025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Kenner Jurassic Park electronic T-Rex — sound and mechanism.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Jurassic Park electronic T-Rex — electronics repair, mechanical repair, and cleaning and refresh.",
+  "itemDetails": "Jurassic Park electronic T-Rex toys are tied to the franchise merchandise cycles that began in the 1990s and continued through reboots and collector reissues. Different makers released electronic dinosaur variants across Kenner/Hasbro-era and later lines.\n\nTypical builds use molded PVC/ABS shells, geared movement or jaw action, and battery-powered roar sound modules. Collector value is strongest for complete, functional figures with intact paint and battery compartments, especially when linked to specific film-era releases.",
+  "repairDetails": null,
   "googleReview": null
 }

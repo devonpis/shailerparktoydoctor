@@ -17,11 +17,10 @@
     "vintage"
   ],
   "skills": [
-    "sewing",
-    "joint replacement"
+    "plush"
   ],
-  "description": "repair - joint replacement",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 27/02/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Four jointed teddies — replace all limb/head joints. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Jointed teddy bears set of four — sewing and joint replacement.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

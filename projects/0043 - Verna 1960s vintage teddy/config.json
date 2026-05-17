@@ -17,12 +17,10 @@
     "1960s"
   ],
   "skills": [
-    "sewing",
-    "restuffing",
-    "cleaning"
+    "plush"
   ],
-  "description": "repair - vintage plush",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 28112025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "1960 Verna teddy — restoration per timesheet. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Verna 1960s vintage teddy — sewing and fabric repair, restuffing, and cleaning and refresh.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

@@ -17,11 +17,11 @@
     "game"
   ],
   "skills": [
-    "electronics",
+    "electronic",
     "mechanical"
   ],
-  "description": "repair - vintage electronic game",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 05/01/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Astro Wars tabletop game — switches and motor (USB Bowling_machine).\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Astro Wars electronic game — electronics repair and mechanical repair.",
+  "itemDetails": "Astro Wars is a classic early-1980s handheld electronic game, famously associated with Grandstand in the UK and related licensed variants in other markets. It belongs to the pre-NES tabletop/handheld era that used dedicated hardware rather than interchangeable cartridges.\n\nMost units use vacuum fluorescent display (VFD) technology, hard plastic shells, and discrete button controls powered by batteries or adapters. Collector demand is steady among retro electronics buyers, with screen brightness, sound output, and battery-compartment condition being key value drivers.",
+  "repairDetails": null,
   "googleReview": null
 }

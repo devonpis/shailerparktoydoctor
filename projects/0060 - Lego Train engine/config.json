@@ -16,8 +16,8 @@
     "train"
   ],
   "skills": [],
-  "description": "non-repairable",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 20/01/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "LEGO train engine — non-repairable per timesheet. No photos.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "LEGO train engine — assessed non-repairable for the reported fault.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

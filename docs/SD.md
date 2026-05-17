@@ -211,3 +211,29 @@ Implementation: **T-00031**. Feeds accurate rows into owner metadata CSV (**T-00
 ## BR-026 — Owner metadata gap CSV (fill-in workflow)
 
 After product naming (**T-00030**) and EXIF dates (**T-00031**), the owner (or partner) needs a single **CSV report** of projects missing or stub metadata: **`repairDetails`**, **`description`**, **`skills`**, **`tags`**, **`title`**, and related fields. The file must be safe to share (no client phone/email in rows), easy to open in Excel/Sheets, and structured so filled columns can be imported back into `config.json` in a follow-up step. Implementation: **T-00032**.
+
+---
+
+## BR-028 — Project skill categories (four IDs only)
+
+Each `projects/<id>/config.json` **`skills`** array must contain **only** site skill IDs:
+
+- `plush`
+- `electronic`
+- `mechanical`
+- `paintjob`
+
+One or more per project; empty `[]` allowed. No legacy granular values (`sewing`, `electronics`, `cleaning`, etc.) in committed JSON. Normalize with `node scripts/normalize-project-skills.mjs`; see [`docs/project-skills.md`](project-skills.md). Site badges/filters: [`new/js/skills.js`](../new/js/skills.js). `validate-publish.mjs` rejects unknown skill IDs.
+
+---
+
+## BR-029 — Review `title` and `description` from images + metadata
+
+After **T-00030** naming and **T-00033** `itemDetails`, many projects still have **auto-generated** `title` / `description` (skill-list stubs). Owner or agent should rewrite them using **repair photos**, **`itemDetails`**, and **`repairDetails`** (legacy **0004–0015** when present).
+
+- **`title`:** short headline (≤500 chars), not identical to `projectName` alone.
+- **`description`:** social/website lead (≤500 chars), not `ProjectName — sewing and cleaning` style stubs.
+- **Exclude** projects already publish-ready: **0002**, **0003** (and any future IDs flagged by the review report).
+- **0001:** description done; title may still need review.
+
+Report: `node scripts/report-title-description-review.mjs` → [`docs/reports/`](reports/). Implementation: **T-00034**.

@@ -16,11 +16,10 @@
     "panda"
   ],
   "skills": [
-    "sewing",
-    "cleaning"
+    "plush"
   ],
-  "description": "repair - plush",
-  "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Well-loved black-and-white giant panda plush. USB folder Panda.\n\nT-00030 + fallback photo review — 2026-05-17.",
+  "description": "Vintage giant panda plush — sewing and cleaning.",
+  "itemDetails": "A vintage giant panda plush belongs to wildlife-themed plush ranges that were especially popular in gift and zoo-shop channels from the 1970s through 1990s. Large panda forms were commonly produced as statement pieces in nursery and lounge decor.\n\nConstruction generally uses black-and-white synthetic fur panels with heavy fiber fill and reinforced seam areas due to size. Market value depends on maker identification and condition, while oversized dimensions can increase appeal but also limit resale due to shipping cost.",
+  "repairDetails": null,
   "googleReview": null
 }

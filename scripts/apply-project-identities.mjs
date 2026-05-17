@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { folderLabelFromProjectName } from './lib/normalize-project-name.mjs';
+import { normalizeSkills } from './lib/normalize-skills.mjs';
 import { T30_IDENTITIES, T30_SKIP_IDS } from './lib/t30-project-identities.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -47,17 +48,10 @@ for (const spec of T30_IDENTITIES) {
 
   config.projectName = spec.projectName;
   config.description = spec.description;
-  config.skills = spec.skills;
+  config.skills = normalizeSkills(spec.skills);
   config.tags = spec.tags;
   config.repairDetails = spec.repairDetails;
-  const stubItem =
-    !config.itemDetails ||
-    /USB folder|Scaffolded|pending copy/i.test(config.itemDetails);
-  if (stubItem && !config.itemDetails?.includes('Timesheet import')) {
-    config.itemDetails = `Repair photos in repo. Product identified T-00030 — ${new Date().toISOString().slice(0, 10)}.`;
-  } else if (!config.itemDetails?.includes('T-00030')) {
-    config.itemDetails = `${config.itemDetails}\n\nPhoto/product ID T-00030 — ${new Date().toISOString().slice(0, 10)}.`;
-  }
+  // itemDetails: filled by fill-project-item-details / polish-project-metadata (null if no photos)
 
   fs.writeFileSync(configPath, `${JSON.stringify(config, null, 2)}\n`);
 

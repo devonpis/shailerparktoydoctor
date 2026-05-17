@@ -16,11 +16,10 @@
     "doll"
   ],
   "skills": [
-    "sewing",
-    "cleaning"
+    "plush"
   ],
-  "description": "repair - textile doll",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 30082025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Kitchen witch doll — textile clean and repair.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Kitchen witch on broomstick — sewing and cleaning.",
+  "itemDetails": "Kitchen witch on broomstick figures are folk-decor collectibles associated with European-inspired kitchen good-luck traditions, widely sold in craft and gift markets from the 1960s onward. They are decorative hangers rather than mainstream play toys.\n\nConstruction usually combines cloth costume elements, soft stuffing, yarn hair, and a wire or wood support around the broom form. Value is typically modest and decor-driven, with handmade provenance or older regional craft production adding interest.",
+  "repairDetails": null,
   "googleReview": null
 }

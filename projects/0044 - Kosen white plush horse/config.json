@@ -17,11 +17,10 @@
     "plush"
   ],
   "skills": [
-    "sewing",
-    "restuffing"
+    "plush"
   ],
-  "description": "repair - plush and eyes",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 30112025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Kosen white plush horse — eye sockets and restuff.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Kosen white plush horse — sewing and restuffing.",
+  "itemDetails": "Kosen white plush horse is associated with Kosen (Koesen), the German plush maker established in 1912 and known for naturalistic animal design. Kosen pieces are often produced to a higher realism standard than mass-market plush lines.\n\nConstruction may include premium synthetic or natural-look pile fabrics, carefully shaped forms, and firm but soft stuffing for display-quality silhouette. Market value for Kosen is generally above standard gift plush, especially for clean, tagged, and retired models.",
+  "repairDetails": null,
   "googleReview": null
 }

@@ -17,11 +17,10 @@
     "plush"
   ],
   "skills": [
-    "sewing",
-    "restuffing"
+    "plush"
   ],
-  "description": "repair - plush",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 03/03/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Lucy dalmatian plush — leg reattach and restuff.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Lucy dalmatian plush dog — sewing and restuffing.",
+  "itemDetails": "Lucy dalmatian plush dog is a named dog plush in the classic pet-toy gift segment, commonly sold in toy stores and card/gift outlets from the 1990s onward. Dalmatian styling remains popular because of strong association with family character media and pet themes.\n\nTypical materials include polyester faux fur, fiber fill, and either safety eyes or embroidery for facial details. Value is usually sentimental and condition-led, with stronger pricing only when specific maker tags and original accessories are retained.",
+  "repairDetails": null,
   "googleReview": null
 }

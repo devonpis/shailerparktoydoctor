@@ -17,11 +17,11 @@
     "RC"
   ],
   "skills": [
-    "electronics",
+    "electronic",
     "mechanical"
   ],
-  "description": "repair - RC electronics",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 2012024.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Bandai Dino Megazord RC — wiring and motors.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Power Rangers Dino Megazord RC — electronics repair and mechanical repair.",
+  "itemDetails": "Power Rangers Dino Megazord RC toys come from the long-running licensed Power Rangers product ecosystem tied to Bandai-era and later reissue cycles. Dino-themed Megazord variants were strongest in the 1990s and 2000s collector memory, with radio-control spin-offs appearing in multiple regional toy lines.\n\nMost units use injection-molded ABS/PVC body parts, simple geared drivetrains, and a battery-powered RC control board. Market value depends heavily on completeness (controller, battery cover, decals), with boxed and fully functional examples attracting the strongest buyer interest.",
+  "repairDetails": null,
   "googleReview": null
 }

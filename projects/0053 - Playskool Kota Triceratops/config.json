@@ -17,12 +17,12 @@
     "Playskool"
   ],
   "skills": [
-    "electronics",
-    "mechanical",
-    "cleaning"
+    "plush",
+    "electronic",
+    "mechanical"
   ],
-  "description": "repair - animatronic ride-on",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 01/12/2025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Kota Triceratops ride-on — battery contacts, horns, PCB.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Playskool Kota Triceratops — electronics repair, mechanical repair, and cleaning and refresh.",
+  "itemDetails": "Playskool Kota My Triceratops is a large-scale interactive dinosaur toy released by Hasbro's Playskool line in the late 2000s (notably 2008). It is known as an oversized ride-on/interactive prehistoric toy from a short but memorable retail window.\n\nKota uses molded plastic structural parts with soft-touch outer covering, internal motors/electronics, and touch or button interactivity features. Collector value is helped by its scale and relative scarcity, but shipping size and mechanism condition heavily affect market pricing.",
+  "repairDetails": null,
   "googleReview": null
 }

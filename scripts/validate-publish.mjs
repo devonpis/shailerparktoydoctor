@@ -9,6 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildHashtagLine } from './lib/hashtag.mjs';
 import { SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
+import { CANONICAL_SKILL_IDS, normalizeSkills } from './lib/normalize-skills.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -79,6 +80,30 @@ function validateConfig(config, dir) {
     errors.push(
       `description exceeds ${LIMITS.descriptionMaxChars} characters (${description.length}) — Threads limit for shared captions.`
     );
+  }
+
+  if (config.skills != null) {
+    if (!Array.isArray(config.skills)) {
+      errors.push('skills must be an array.');
+    } else {
+      for (let i = 0; i < config.skills.length; i++) {
+        const s = config.skills[i];
+        if (!CANONICAL_SKILL_IDS.includes(s)) {
+          errors.push(
+            `skills[${i}] must be one of: ${CANONICAL_SKILL_IDS.join(', ')} (got ${JSON.stringify(s)}). See docs/project-skills.md.`
+          );
+        }
+      }
+      const normalized = normalizeSkills(config.skills);
+      if (
+        config.skills.length > 0 &&
+        JSON.stringify(config.skills) !== JSON.stringify(normalized)
+      ) {
+        warnings.push(
+          `skills should use canonical IDs only; run: node scripts/normalize-project-skills.mjs — would be ${JSON.stringify(normalized)}.`
+        );
+      }
+    }
   }
 
   if (!Array.isArray(config.tags) || config.tags.length < LIMITS.tagsMin) {

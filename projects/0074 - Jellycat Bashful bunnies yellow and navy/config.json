@@ -17,11 +17,10 @@
     "plush"
   ],
   "skills": [
-    "sewing",
-    "cleaning"
+    "plush"
   ],
-  "description": "repair - plush limb repair",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 30/4/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Pair of Jellycat Bashful bunnies — arm/leg reattach and clean.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Jellycat Bashful bunnies yellow and navy — sewing and cleaning.",
+  "itemDetails": "Jellycat Bashful bunnies in yellow and navy are from Jellycat London's flagship Bashful rabbit range, a highly recognizable modern plush line since the late 1990s. Colorway variation is a major part of Jellycat collecting, especially when shades retire.\n\nThese bunnies are typically polyester plush with soft fill and minimal embroidered features for a clean nursery look. Collector demand is healthy, and matching color pairs with tags can command stronger resale than single, heavily used examples.",
+  "repairDetails": null,
   "googleReview": null
 }

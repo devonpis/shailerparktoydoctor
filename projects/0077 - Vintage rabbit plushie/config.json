@@ -17,10 +17,10 @@
     "vintage"
   ],
   "skills": [
-    "cleaning"
+    "plush"
   ],
-  "description": "repair - plush cleaning",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 16/05/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Vintage rabbit plushie — cleaning. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Vintage rabbit plushie — cleaning and refresh.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

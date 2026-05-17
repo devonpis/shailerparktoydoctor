@@ -17,11 +17,10 @@
     "animatronic"
   ],
   "skills": [
-    "electronics",
-    "soldering"
+    "electronic"
   ],
-  "description": "repair - electronics",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 01/12/2025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Singing Elvis dog — motor control PCB.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Singing Elvis Christmas dog — electronics repair and soldering.",
+  "itemDetails": "A singing Elvis Christmas dog is a licensed-style holiday novelty combining pop-culture music branding with animatronic plush formats popular in the 2000s-2010s. Items in this category were often sold as seasonal gag gifts and collector decor pieces.\n\nConstruction typically uses plush textile shells over a plastic mechanism housing with a battery-powered speaker/motor module. Market value depends on verified licensing, working audio/motion, and cosmetic completeness, with boxed examples usually preferred by memorabilia buyers.",
+  "repairDetails": null,
   "googleReview": null
 }

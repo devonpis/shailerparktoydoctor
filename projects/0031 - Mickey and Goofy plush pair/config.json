@@ -17,12 +17,10 @@
     "Goofy"
   ],
   "skills": [
-    "cleaning",
-    "sewing",
-    "restuffing"
+    "plush"
   ],
-  "description": "repair - plush",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 29082025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Vintage Mickey and Goofy plush pair.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Mickey and Goofy plush pair — cleaning and refresh, sewing and fabric repair, and restuffing.",
+  "itemDetails": "This Mickey and Goofy plush pair is licensed Disney character merchandise from the long-running theme-park and retail plush ecosystem. Pairings of core Disney characters are common across 1990s to current-era releases from Disney Store and partner manufacturers.\n\nMost examples use polyester plush, embroidered facial features, and soft internal fill with occasional bean weighting. Market value improves when both characters are matching-era releases with original tags, as complete pairs are usually preferred over mixed loose singles.",
+  "repairDetails": null,
   "googleReview": null
 }

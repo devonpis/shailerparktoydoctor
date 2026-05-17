@@ -1,0 +1,36 @@
+---
+description: config.json skills must be plush, electronic, mechanical, or paintjob only
+globs: projects/**/config.json,scripts/**/*.mjs,docs/**/*.md
+alwaysApply: false
+---
+
+# Project skill categories (BR-028)
+
+When editing **`projects/*/config.json`** `skills` or scripts that set `skills`:
+
+## Allowed IDs only
+
+`skills` must be an array of **one or more** of these strings (or `[]` if none apply yet):
+
+| ID | Site label |
+|----|------------|
+| `plush` | Plush |
+| `electronic` | Electronic |
+| `mechanical` | Mechanical |
+| `paintjob` | Paint |
+
+**Not allowed** in JSON: `sewing`, `cleaning`, `electronics`, `restuffing`, `figure repair`, `gluing`, etc.
+
+## Before saving
+
+- Run or apply: `node scripts/normalize-project-skills.mjs` (or `normalizeSkills()` from [`scripts/lib/normalize-skills.mjs`](../../scripts/lib/normalize-skills.mjs)).
+- Full reference: [`docs/project-skills.md`](../../docs/project-skills.md).
+
+## Mapping (quick)
+
+- Fabric / plush / restuff / clean → **`plush`**
+- Wiring / battery / sound / solder → **`electronic`**
+- Gears / motors / wind-up / mechanical assembly → **`mechanical`**
+- Figure glue, resin, paint, finish → **`paintjob`**
+
+If you change the canonical list, update **`normalize-skills.mjs`**, **`new/js/skills.js`**, and **`docs/project-skills.md`** together.

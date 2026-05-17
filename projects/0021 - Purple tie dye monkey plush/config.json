@@ -16,11 +16,10 @@
     "plush"
   ],
   "skills": [
-    "sewing",
-    "restuffing"
+    "plush"
   ],
-  "description": "repair - plush restuffing",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 24032025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Purple tie-dye monkey plush — restuff limbs.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Purple tie-dye monkey plush — sewing and restuffing.",
+  "itemDetails": "This purple tie-dye monkey plush fits the bright novelty plush trend that expanded through mass retail and carnival-prize channels in the 2000s and 2010s. Tie-dye dye patterns and oversized limbs are common design cues in this segment.\n\nConstruction is typically polyester velour or minky outer fabric with polyester fill and embroidered facial details for child-safety compliance. Market value is usually low-to-mid gift-plush range unless the toy is linked to a branded character line with identifiable tags.",
+  "repairDetails": null,
   "googleReview": null
 }

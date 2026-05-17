@@ -17,11 +17,11 @@
     "Christmas"
   ],
   "skills": [
-    "mechanical",
-    "electronics"
+    "electronic",
+    "mechanical"
   ],
-  "description": "repair - animatronic",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 22/01/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Animatronic Santa — motor/gear service (USB Santa_clock mislabel).\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Animatronic Santa figure — mechanical repair and electronics repair.",
+  "itemDetails": "Animatronic Santa figures are a seasonal decor category sold widely through Christmas retail programs from the 1990s onward. They range from small shelf units to larger floor displays with synchronized music and motion.\n\nMost units combine textile costumes, molded hands/face parts, metal/plastic internal frame sections, and motorized sound modules. Collector demand is strongest for working movement cycles and intact costume trim, while non-functional units trade mainly as static decor.",
+  "repairDetails": null,
   "googleReview": null
 }

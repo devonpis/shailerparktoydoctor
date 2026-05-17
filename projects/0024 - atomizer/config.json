@@ -15,10 +15,10 @@
     "atomizer"
   ],
   "skills": [
-    "electronics"
+    "electronic"
   ],
-  "description": "repair - device",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 25062025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Atomizer repair per timesheet. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Atomizer — electronics repair.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

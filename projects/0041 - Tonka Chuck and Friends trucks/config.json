@@ -16,12 +16,12 @@
     "trucks"
   ],
   "skills": [
-    "electronics",
-    "mechanical",
-    "cleaning"
+    "plush",
+    "electronic",
+    "mechanical"
   ],
-  "description": "repair - toy electronics",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 23102025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Tonka Chuck and Friends truck set — electronics and movement.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Tonka Chuck and Friends trucks — electronics repair, mechanical repair, and cleaning and refresh.",
+  "itemDetails": "Tonka Chuck and Friends trucks are licensed preschool vehicles tied to the Chuck & Friends era under the Tonka/Hasbro umbrella in the early 2010s. These toys blend classic Tonka construction themes with animated character styling.\n\nMost versions use durable molded plastic bodies with rolling axles and occasional push-activated sounds or lights. Market demand is strongest for complete themed groups and working electronic examples, while loose singles usually stay in affordable collector ranges.",
+  "repairDetails": null,
   "googleReview": null
 }

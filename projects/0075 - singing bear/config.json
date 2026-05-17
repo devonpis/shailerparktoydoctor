@@ -17,11 +17,11 @@
     "sound"
   ],
   "skills": [
-    "electronics",
-    "sewing"
+    "plush",
+    "electronic"
   ],
-  "description": "repair - singing plush",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 02/05/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Singing bear per timesheet. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "singing bear — electronics repair and sewing and fabric repair.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }

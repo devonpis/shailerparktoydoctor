@@ -18,6 +18,7 @@ node scripts/validate-publish.mjs 0001
 | `title` | non-empty | non-empty |
 | `description` | non-empty | non-empty (this is the post/caption body) |
 | `tags` | non-empty array | non-empty array |
+| `skills` | if present: only `plush`, `electronic`, `mechanical`, `paintjob` ([`docs/project-skills.md`](project-skills.md)) | same |
 | Media | ≥1 image **or** video file in folder | same |
 
 **Media files** (in the project folder): `before.*`, `after.*`, `hero.*`, `WIP-*.*`, or `*.mp4` / `*.mov` / `*.webm`.

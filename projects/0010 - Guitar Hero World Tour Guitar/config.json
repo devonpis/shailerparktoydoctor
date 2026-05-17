@@ -15,11 +15,11 @@
     "GuitarHero",
     "controller"
   ],
-  "description": "repair - game controller",
-  "itemDetails": "Red Octane wireless Guitar Hero World Tour guitar controller for Microsoft Xbox 360 (model 95457.805; sunburst red-to-black metallic finish, white pickguard). Five coloured fret buttons (green/red/yellow/blue/orange), touch-sensitive neck slider strip (World Tour / GH5 era), strum bar, whammy bar, Star Power / Back button, Xbox guide-compatible D-pad cluster. 2.4 GHz wireless (receiver dongle not shown in hero). Manufacturer: Red Octane (Activision publishing era). Market: legacy rhythm-game peripheral; used sunburst units common on eBay. Note: game console, not a toy—electronics and switch repair typical.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Guitar Hero World Tour wireless guitar — frets/electronics.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Guitar Hero World Tour guitar — electronics repair and mechanical repair.",
+  "itemDetails": "Red Octane wireless Guitar Hero World Tour guitar controller for Microsoft Xbox 360 (model 95457.805; sunburst red-to-black metallic finish, white pickguard). Five coloured fret buttons (green/red/yellow/blue/orange), touch-sensitive neck slider strip (World Tour / GH5 era), strum bar, whammy bar, Star Power / Back button, Xbox guide-compatible D-pad cluster. 2.4 GHz wireless (receiver dongle not shown in hero). Manufacturer: Red Octane (Activision publishing era). Market: legacy rhythm-game peripheral; used sunburst units common on eBay. Note: game console, not a toy—electronics and switch repair typical.",
+  "repairDetails": "X-box Guitar hero console (legacy site gallery — short caption only; expand story when details are available).",
   "skills": [
-    "electronics",
+    "electronic",
     "mechanical"
   ]
 }

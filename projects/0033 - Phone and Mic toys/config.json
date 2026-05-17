@@ -17,10 +17,10 @@
     "mic"
   ],
   "skills": [
-    "electronics"
+    "electronic"
   ],
-  "description": "repair - toy electronics",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 9092025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Phone and mic toys per timesheet. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
+  "description": "Phone and Mic toys — electronics repair.",
+  "itemDetails": null,
+  "repairDetails": null,
   "googleReview": null
 }
