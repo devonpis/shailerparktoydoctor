@@ -162,3 +162,16 @@ Repair images under `projects/` should be **web-friendly** (reasonable file size
 **PNG** photos (common from phones/export) should be converted to **JPEG** with configurable quality; large existing JPEGs may be recompressed in place when over a size threshold. When a file is renamed (`hero.png` → `hero.jpg`), any **HTML** that references the old path (e.g. `projects/<folder>/index.html`, gallery JSON) must be **updated** to match.
 
 Recommended as an optional step **before** webpage go-live (see [`docs/website-go-live.md`](website-go-live.md)); **not** required for social-only publish if images already meet Meta size guidance. Implementation: **T-00027**.
+
+---
+
+## BR-022 — USB repair photos: analyse, match, copy, and rename
+
+The owner stores repair photos on **USB** (or another external volume) in camera export layout (often by date folder or `IMG_*` names). The repo must support a workflow to:
+
+1. **Scan** a given USB path (read-only on source; never modify originals on the stick).
+2. **Analyse** each image using **capture timestamp** (EXIF `DateTimeOriginal` / file mtime fallback) and **visual content** (e.g. before vs after vs in-progress vs hero-worthy) to suggest which **`projects/<id> - <name>/`** folder it belongs to, matched against existing `config.json` metadata (`projectName`, `startDate` / `endDate`, receive dates in `repairDetails` / timesheet imports).
+3. **Propose** destination filenames per [BR-002](../README.md#project-image-filenames): `before`, `after`, `hero`, `WIP-001`, … — respecting existing files in the target folder (next free WIP number, do not overwrite without explicit flag).
+4. **Copy** (default) or move (opt-in) into the matched project folder after owner review; **`--dry-run`** reports matches, role guesses, and planned names without writing.
+
+Conflicts (one photo fits multiple projects, ambiguous date window, missing project) must be **reported** for human decision. Must not copy unrelated personal photos or write customer PII into filenames. Prefer **agent-assisted** review for uncertain matches rather than silent wrong assignment. Implementation: **T-00028**.

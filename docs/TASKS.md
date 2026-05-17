@@ -39,6 +39,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00025 | Done | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
 | T-00026 | Todo | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
 | T-00027 | Todo | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
+| T-00028 | Todo | USB photos: analyse, match projects, copy and rename | BR-022 |
 
 ---
 
@@ -350,3 +351,22 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Depends on** | T-00013 (story pages exist); optional before T-00016 cutover |
 | **Related** | T-00026 (social cap is count, not bytes); T-00015 (go-live doc) |
 | **Out of scope** | Optimizing site-wide `images/` marketing assets unless owner extends scope; auto-run on git commit; changing publish caption logic |
+
+---
+
+## T-00028 — USB photos: analyse, match projects, copy and rename
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-022 |
+| **Goal** | Ingest repair photos from a **USB drive** (or folder path): detect which project each image belongs to, assign convention names (`before`, `after`, `hero`, `WIP-###`), and copy into the right `projects/<id> - <name>/` folder. |
+| **Inputs** | Owner supplies mount path (e.g. `/Volumes/USB_NAME` or `D:\`). Script scans recursively for image files (`.jpg`, `.jpeg`, `.png`, `.heic`, …). **Read-only** on USB; write only under `projects/`. |
+| **Matching** | **Timestamp:** EXIF capture time (fallback: file mtime), compared to each project’s `startDate`, `endDate`, and timesheet receive/repair windows in `config.json` / `repairDetails`. **Content:** classify or score images (before = damage/disassembly, after = finished, WIP = mid-repair, hero = best showcase) — vision model or documented heuristics; low-confidence matches flagged. **Name hints:** optional fuzzy match on folder names / `projectName` if USB uses job labels. |
+| **Output naming** | Copy to `before.jpg`, `after.jpeg`, `hero.jpeg`, `WIP-001.jpeg`, etc. per README; skip or increment if file already exists unless `--overwrite`. Preserve extension or normalize per T-00027 later. |
+| **Script / workflow** | e.g. `scripts/ingest-usb-photos.mjs <usb-path> [--dry-run] [--project 0027] [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--apply]` — default **dry-run** table: source path, date, guessed project, guessed role, target filename, confidence. **`--apply`** copies after owner reviews report (or separate confirm step in agent workflow). |
+| **Docs** | Short guide in `docs/` (USB ingest): mount path, dry-run first, how to fix wrong matches, link to image naming in README. |
+| **Privacy** | No customer names from USB paths in repo filenames; strip or ignore EXIF GPS if present; do not commit USB path or personal albums outside repair scope. |
+| **Depends on** | T-00025 (project folders exist); optional T-00027 after copy |
+| **Related** | T-00011 (legacy image copy patterns); `validate-publish.mjs` once images land |
+| **Out of scope** | Deleting or renaming files on the USB; auto-publish; building `index.html`; matching photos to projects with no `config.json`; ingesting non-repair personal media without owner filter |
