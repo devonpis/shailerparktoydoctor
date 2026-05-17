@@ -149,6 +149,8 @@ Images sit next to each project’s `config.json`. **The filename already states
 
 Use the same idea for new repairs: descriptive stem + optional WIP index. Extension can be `.jpg` / `.jpeg` / `.png` as exported.
 
+Before a **webpage** go-live, run `node scripts/optimize-project-images.mjs <id>` (see [`docs/website-go-live.md`](docs/website-go-live.md)) to compress large PNGs/JPEGs and fix HTML paths if filenames change.
+
 ---
 
 ## Intended repair → publish loop

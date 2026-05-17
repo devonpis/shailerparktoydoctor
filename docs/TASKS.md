@@ -340,12 +340,12 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-021 |
 | **Goal** | One toolchain to **compress and normalize** repair images under `projects/`, with a **batch** mode for existing folders and **on-demand** mode after new files are added. |
 | **Script** | e.g. `scripts/optimize-project-images.mjs` — `node scripts/optimize-project-images.mjs [--all \| <project-id-or-path>] [--dry-run] [--quality 85] [--max-width N]` (exact flags TBD). Loop convention files: `before`, `after`, `hero`, `WIP-###` (+ optional other gallery assets in the folder). |
-| **PNG → JPEG** | Convert `.png` publish images to `.jpg` (or `.jpeg`); remove or archive source PNG when successful (behaviour documented; default prefer **replace** with backup optional `--keep-originals`). |
-| **JPEG** | Re-encode when over size/dimension thresholds (configurable); skip when already small enough. |
+| **PNG → JPEG** | PNG **&gt; 500 KB** → `.jpg` at 90%; scale to **1024×1024** when oversized; **delete** source PNG after success. |
+| **Oversized raster** | JPEG / WebP / GIF **&gt; 500 KB** and **width or height &gt; 1024** → JPEG at 90%, scale to fit **1024×1024** (aspect preserved); delete source when extension changes. |
 | **HTML / JSON** | After rename, update references in that project’s `index.html` (and any generated snippet paths in `new/data/projects-index.json` **thumbnail** fields if they point at renamed files). Report files changed. |
 | **Workflow** | Document in [`docs/website-go-live.md`](website-go-live.md) as recommended **before** `publish … to webpage` (not required for social-only). README *Project management* — one-line pointer. |
 | **Dependency** | Add a Node image library (e.g. **sharp**) as a dev dependency; document install in script header or README. |

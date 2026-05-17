@@ -1,0 +1,11 @@
+{
+  "name": "shailerparktoydoctor",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "optimize-images": "node scripts/optimize-project-images.mjs --all"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

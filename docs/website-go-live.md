@@ -22,6 +22,22 @@ How to put a **DONE** repair on the public website. This is **separate from soci
 
 ## Checklist (per DONE repair)
 
+### 0. Optimize project images (recommended)
+
+Before authoring or updating the story page, run the image optimizer so gallery and social loads stay fast:
+
+```bash
+npm install   # once per machine (installs sharp)
+node scripts/optimize-project-images.mjs <id>   # e.g. 0003
+# or batch: node scripts/optimize-project-images.mjs --all
+```
+
+- **PNG &gt; 500 KB** → `.jpg` at **90%**; scaled to fit **1024×1024** when width or height &gt; 1024; source **`.png` deleted** after success.
+- **Other types** (JPEG, WebP, GIF) **&gt; 500 KB** and **width or height &gt; 1024 px** → JPEG at **90%**, scaled to fit inside a **1024×1024** box (aspect preserved); source removed when the filename changes.
+- Renames (e.g. `after.png` → `after.jpg`) update that project’s **`index.html`** and **`projects-index.json`** thumbnail paths automatically.
+
+Use `--dry-run` first to preview. Social-only publish can skip this step; **webpage** go-live should not.
+
 ### 1. Add the story page
 
 Create **`projects/<folder>/index.html`** from [`projects/0000 - template/index.html.example`](../projects/0000%20-%20template/index.html.example).
