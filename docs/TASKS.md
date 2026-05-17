@@ -36,7 +36,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 | T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
 | T-00024 | Todo | Website rebuild: SEO metadata completeness | BR-015 |
-| T-00025 | Todo | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
+| T-00025 | Done | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
 | T-00026 | Todo | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
 | T-00027 | Todo | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
 
@@ -302,7 +302,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-018, BR-019 |
 | **Goal** | Add a repeatable way to create many `projects/<id> - <name>/` entries from a **CSV** file instead of hand-copying the template each time. |
 | **CSV** | Document expected columns (minimum: **`id`** or auto-assign next free id, **`projectName`** or **`folder`**, optional `title`, `description`, `tags`, `skills`, `startDate`, `endDate`, `status`, `itemDetails`, `repairDetails`, image path hints). Provide an example file e.g. `docs/project-import.example.csv` or `data/project-import.example.csv`. |
@@ -313,6 +313,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Depends on** | T-00011 (prior import patterns in [`import-site-projects.mjs`](../scripts/import-site-projects.mjs)) |
 | **Related** | T-00006 (`validate-publish.mjs` after owner fills content), T-00015 (go-live after `DONE`), README *Project management* |
 | **Out of scope** | Auto-publishing; downloading images from URLs; AI rewrite of copy; merging unrelated repairs that only share a vague name (merge rules must be conservative + reported) |
+| **Outcome** | [`scripts/scaffold-projects-from-csv.mjs`](../scripts/scaffold-projects-from-csv.mjs) with hybrid batch grouping (C), replication report, BR-019 privacy. Timesheet import: **62** folders **`0016`–`0077`** (skipped exact matches Donald Duck, Venom). Mattel + Teddy Bear joint jobs bundle sub-items. Review dates/copy/images per folder before `DONE` / publish. |
 
 ---
 

@@ -1,0 +1,20 @@
+{
+  "isTemplate": false,
+  "projectName": "Mattel dolls",
+  "title": "",
+  "startDate": "2025-27-04",
+  "endDate": "2025-27-07",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [],
+  "skills": [],
+  "description": "Mattel dolls",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 26072025.",
+  "repairDetails": "- communication — 1.00h — 27/04/25 → 27/07/25\n\nSub-items:\n\n### gymnast Jennie\nrepair\n- Repair (repair) — 5.00h\n\n### Rollerblade baby\\\nrepair\n- repair (repair) — 10.00h\n\n### Rock n Roll baby\nrepair\n- repair (repair) — 30.00h\n\nTimesheet: income 250, materials 10, profit 240\n\nImported from timesheet CSV — 2026-05-17.",
+  "googleReview": null
+}

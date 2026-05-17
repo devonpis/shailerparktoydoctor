@@ -1,0 +1,20 @@
+{
+  "isTemplate": false,
+  "projectName": "Lucy dog",
+  "title": "",
+  "startDate": "2026-03-03",
+  "endDate": "2026-04-05",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [],
+  "skills": [],
+  "description": "repair and modifying",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 03/03/2026.",
+  "repairDetails": "repair and modifying\n- quote: 80 (repair and modifying) — 05/04/2026\n\nTimesheet: income 80, materials —, profit —\n\nImported from timesheet CSV — 2026-05-17.",
+  "googleReview": null
+}
