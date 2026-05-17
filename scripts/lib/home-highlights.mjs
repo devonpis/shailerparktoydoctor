@@ -8,7 +8,7 @@ import { REPO_ROOT, PROJECTS_DIR, resolveProjectDir, projectIdFromDir } from './
 import { normalizeSkills } from './normalize-skills.mjs';
 
 export const TILE_COUNT = 6;
-export const HOME_INDEX_PATH = path.join(REPO_ROOT, 'new/index.html');
+export const HOME_INDEX_PATH = path.join(REPO_ROOT, 'index.html');
 export const HIGHLIGHTS_START = '<!-- sync-home-highlights:start';
 export const HIGHLIGHTS_END = '<!-- sync-home-highlights:end -->';
 
@@ -26,7 +26,7 @@ const SKILL_LABELS = {
   paintjob: 'Paint',
 };
 
-const PROJECTS_INDEX_PATH = path.join(REPO_ROOT, 'new/data/projects-index.json');
+const PROJECTS_INDEX_PATH = path.join(REPO_ROOT, 'data/projects-index.json');
 
 export function escapeHtml(s) {
   return String(s ?? '')

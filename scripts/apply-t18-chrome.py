@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply T-00018 shared header/chrome to /new/ marketing pages."""
+"""Apply T-00018 shared header/chrome to / marketing pages."""
 import re
 from pathlib import Path
 
@@ -17,7 +17,7 @@ TAILWIND_INLINE = re.compile(
 )
 TAILWIND_HEAD = (
     '<script src="https://cdn.tailwindcss.com"></script>\n'
-    '    <script src="/new/js/tailwind-theme.js"></script>'
+    '    <script src="/js/tailwind-theme.js"></script>'
 )
 HEADER_BLOCK = re.compile(r"<header[\s\S]*?</header>", re.MULTILINE)
 
@@ -52,7 +52,7 @@ SERVICES = """
               <p class="text-3xl mb-2" aria-hidden="true">📷</p>
               <h3 class="font-display text-lg">Get a quote</h3>
               <p class="mt-2 text-sm text-gray-600">Email or SMS photos first — appointment only</p>
-              <a href="/new/contact.html" class="btn-primary mt-4 text-sm">Contact us</a>
+              <a href="/contact.html" class="btn-primary mt-4 text-sm">Contact us</a>
             </article>
           </div>
         </div>
@@ -63,10 +63,10 @@ SERVICES = """
 def patch_page(path: Path, page: str, extra_scripts: str = "") -> None:
     html = path.read_text()
     html = TAILWIND_INLINE.sub(TAILWIND_HEAD, html)
-    if "/new/css/site.css" not in html:
+    if "/css/site.css" not in html:
         html = html.replace(
             '<link rel="icon"',
-            '<link rel="stylesheet" href="/new/css/site.css" />\n    <link rel="icon"',
+            '<link rel="stylesheet" href="/css/site.css" />\n    <link rel="icon"',
             1,
         )
     html = HEADER_BLOCK.sub(HEADER, html, count=1)
@@ -77,12 +77,12 @@ def patch_page(path: Path, page: str, extra_scripts: str = "") -> None:
             html,
             count=1,
         )
-    scripts = '<script src="/new/js/site-nav.js" defer></script>\n' + extra_scripts
+    scripts = '<script src="/js/site-nav.js" defer></script>\n' + extra_scripts
     if "site-nav.js" not in html:
         html = html.replace("</body>", f"    {scripts}  </body>", 1)
     elif extra_scripts and "home-featured.js" not in html:
         html = html.replace(
-            '<script src="/new/js/site-nav.js" defer></script>',
+            '<script src="/js/site-nav.js" defer></script>',
             scripts.rstrip() + "\n",
             1,
         )
@@ -90,7 +90,7 @@ def patch_page(path: Path, page: str, extra_scripts: str = "") -> None:
 
 
 for path, page in PAGES.items():
-    extra = '    <script src="/new/js/home-featured.js" defer></script>\n' if page == "home" else ""
+    extra = '    <script src="/js/home-featured.js" defer></script>\n' if page == "home" else ""
     patch_page(path, page, extra)
 
 index = ROOT / "new/index.html"

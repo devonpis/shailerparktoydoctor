@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Curate home page patient-story highlights via config.json `importance`, then bake HTML into new/index.html.
+ * Curate home page patient-story highlights via config.json `importance`, then bake HTML into index.html.
  *
  * Higher importance ranks higher. #1 = full-width lead story; #2–#7 = six tile slots.
  *
@@ -51,7 +51,7 @@ function parseArgs(argv) {
 function warnIfNotInGallery(id) {
   const rows = loadProjectsIndex();
   if (!rows.some((r) => r.id === id)) {
-    console.warn(`  WARN: ${id} is not in new/data/projects-index.json — story may not be published yet`);
+    console.warn(`  WARN: ${id} is not in data/projects-index.json — story may not be published yet`);
   }
 }
 
@@ -96,13 +96,13 @@ function main() {
   if (flags.list) return;
 
   if (flags.dryRun) {
-    console.log('\n[dry-run] would update new/index.html #patient-stories-root');
+    console.log('\n[dry-run] would update index.html #patient-stories-root');
     return;
   }
 
   const changed = patchHomeIndex(html);
-  if (changed) console.log('\nWrote new/index.html — patient stories highlight section');
-  else console.log('\nnew/index.html highlights already current');
+  if (changed) console.log('\nWrote index.html — patient stories highlight section');
+  else console.log('\nindex.html highlights already current');
 }
 
 main();

@@ -2,10 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { REPO_ROOT, PROJECTS_DIR } from './resolve-project-dir.mjs';
 
-export const INDEX_JSON_PATHS = [
-  path.join(REPO_ROOT, 'new/data/projects-index.json'),
-  path.join(REPO_ROOT, 'data/projects-index.json'),
-];
+export const INDEX_JSON_PATHS = [path.join(REPO_ROOT, 'data/projects-index.json')];
 
 /** Files that may contain /projects/… image paths (home + gallery JSON + story HTML). */
 export function listMediaReferenceFiles({ projectsDir = PROJECTS_DIR } = {}) {
@@ -20,9 +17,9 @@ export function listMediaReferenceFiles({ projectsDir = PROJECTS_DIR } = {}) {
     if (fs.existsSync(html)) files.add(html);
   }
 
-  const newDir = path.join(REPO_ROOT, 'new');
-  if (fs.existsSync(newDir)) {
-    walkHtml(newDir, files);
+  for (const rel of ['index.html', 'contact.html', 'testimonials.html', 'projects/index.html']) {
+    const p = path.join(REPO_ROOT, rel);
+    if (fs.existsSync(p)) files.add(p);
   }
 
   return [...files].sort();

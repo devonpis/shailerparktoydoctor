@@ -5,7 +5,7 @@ import { INDEX_JSON_PATHS, listMediaReferenceFiles } from './list-media-referenc
 
 export { INDEX_JSON_PATHS };
 
-/** Replace image filenames in story HTML, projects-index.json (home + /new/projects/ gallery). */
+/** Replace image filenames in story HTML, projects-index.json (home + /projects/ gallery). */
 export function updateProjectPathReferences(renames, { projectsDir = PROJECTS_DIR } = {}) {
   const files = listMediaReferenceFiles({ projectsDir });
 

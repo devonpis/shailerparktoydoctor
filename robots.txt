@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /new/
 
 Sitemap: https://sptoydoctor.com.au/sitemap.xml

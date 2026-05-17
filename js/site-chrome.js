@@ -15,7 +15,7 @@
   }
 
   function injectSocialIcons() {
-    return fetch('/new/includes/social-icons.html')
+    return fetch('/includes/social-icons.html')
       .then((res) => (res.ok ? res.text() : ''))
       .then((html) => {
         if (!html) return;
@@ -28,12 +28,12 @@
 
   Promise.all([
     headerSlot
-      ? fetch('/new/includes/site-header.html')
+      ? fetch('/includes/site-header.html')
           .then((res) => res.text())
           .catch(() => '')
       : Promise.resolve(''),
     footerSlot
-      ? fetch('/new/includes/site-footer.html')
+      ? fetch('/includes/site-footer.html')
           .then((res) => res.text())
           .catch(() => '')
       : Promise.resolve(''),

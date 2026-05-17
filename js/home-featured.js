@@ -27,7 +27,7 @@
       </a>`;
   }
 
-  fetch('/new/data/projects-index.json')
+  fetch('/data/projects-index.json')
     .then((res) => res.json())
     .then((projects) => {
       const cards = [];

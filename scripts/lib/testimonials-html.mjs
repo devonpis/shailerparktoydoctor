@@ -19,7 +19,7 @@ function unescapeHtml(s) {
     .replace(/&amp;/g, '&');
 }
 
-/** Reviews already rendered on new/testimonials.html (for skip-if-captured checks). */
+/** Reviews already rendered on testimonials.html (for skip-if-captured checks). */
 export function parseTestimonialsPageReviews(html) {
   if (!html || typeof html !== 'string') return [];
   const reviews = [];
@@ -68,7 +68,7 @@ export function dedupeReviewEntries(entries) {
   return out;
 }
 
-export const TESTIMONIALS_HTML_PATH = path.join(REPO_ROOT, 'new/testimonials.html');
+export const TESTIMONIALS_HTML_PATH = path.join(REPO_ROOT, 'testimonials.html');
 export const STANDALONE_REVIEWS_PATH = path.join(REPO_ROOT, 'data/testimonials-standalone.json');
 
 const MAPS_LISTING_URL = 'https://maps.app.goo.gl/Yx6zSEhhyDuv6geB8';
@@ -147,7 +147,7 @@ export function buildTestimonialsHtml({ introLine, cardsHtml }) {
       href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/new/css/site.css" />
+    <link rel="stylesheet" href="/css/site.css" />
   </head>
   <body data-active-page="testimonials">
     <div id="site-header"></div>
@@ -168,8 +168,8 @@ ${cardsHtml}
 
     <div id="site-footer"></div>
 
-    <script src="/new/js/brand-text.js" defer></script>
-    <script src="/new/js/site-chrome.js" defer></script>
+    <script src="/js/brand-text.js" defer></script>
+    <script src="/js/site-chrome.js" defer></script>
   </body>
 </html>
 `;

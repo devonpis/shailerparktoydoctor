@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Rebuild new/testimonials.html from project googleReview fields + standalone list.
+ * Rebuild testimonials.html from project googleReview fields + standalone list.
  *
  * Usage:
  *   node scripts/sync-testimonials-html.mjs [--dry-run]

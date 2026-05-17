@@ -27,7 +27,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00013 | Done | Website rebuild: site artifacts (JSON, templates, sitemap) | BR-015 |
 | T-00014 | Done | Website rebuild: initial `new/` scaffold (split → T-00017–20) | BR-006, BR-015 |
 | T-00015 | Done | Website rebuild: webpage go-live workflow (docs) | BR-004, BR-015 |
-| T-00016 | Todo | Website rebuild: promote `new/` to root (cutover) | BR-006, BR-015 |
+| T-00016 | Done | Website rebuild: promote `new/` to root (cutover) | BR-006, BR-015 |
 | T-00017 | Done | Website rebuild: scaffold sections & structure (`new/`) | BR-006, BR-015 |
 | T-00018 | Done | Website rebuild: UI style polish (Prepbox, responsive) | BR-006, BR-015 |
 | T-00019 | Done | Website rebuild: project story page wireframe & plan | BR-015 |
@@ -49,7 +49,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00035 | Todo | Import owner CSV; polish repairDetails & description | BR-030 |
 | T-00036 | Done | Rename skill `plush` → `needlework` (after T-00035) | BR-031 |
 | T-00037 | Done | Replace legacy homepage images 0004–0015 | BR-032 |
-| T-00038 | Todo | Update testimonials page (last before cutover) | BR-033 |
+| T-00038 | Done | Update testimonials page (last before cutover) | BR-033 |
 | T-00039 | Done | On-demand project image rotation (portrait/landscape) | BR-034 |
 | T-00040 | Done | Home highlight importance + six tiles | BR-015 |
 | T-00041 | Done | Publish legacy repair stories 0004–0015 + 0093 to HTML | BR-004, BR-015 |
@@ -275,9 +275,10 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-006, BR-015 |
 | **Goal** | After owner confirms the preview site: move `new/*` to site root (or equivalent promote); remove or archive legacy root HTML (`index.html`, `contact.html`, `reviews.html`, `index_bk.html`); drop preview banners and `noindex` on marketing pages; point nav/sitemap at production URLs; update `webpageUrl` in project configs; regenerate `sitemap.xml`. |
+| **Outcome** | **2026-05-17:** [`scripts/cutover-promote-new-to-root.mjs`](../scripts/cutover-promote-new-to-root.mjs) — legacy pages → `legacy/website-pre-2026/`; home, contact, testimonials, projects gallery, `css/`, `js/`, `includes/` at site root; `noindex` removed; `robots.txt` allows crawl; `sitemap.xml` production URLs only; `new/` removed. Story pages + scripts use `/projects/`, `/css/`, `/js/`, `/data/projects-index.json`. |
 | **Depends on** | T-00018, T-00020, T-00022, **T-00024**, **T-00038** (and T-00013 for story pages as needed); explicit owner approval for cutover. |
 | **Related** | **T-00038** (testimonials refresh — **last** content task before go-live); remove `noindex` and fix canonicals/OG at cutover |
 | **Order** | **T-00038** runs after metadata/SEO (**T-00024**) and before **T-00016** — do not cut over until testimonials are current. |
@@ -289,7 +290,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-033 |
 | **Goal** | Refresh [`new/testimonials.html`](../new/testimonials.html) with **current** Google reputation and quote copy **immediately before** publishing the new site (**T-00016**). |
 | **Updates** | **Star count / trust line** (e.g. total Google reviews, all 5★ — verify on Maps); **2–4 featured quote cards** (paste newer reviews per [`website-testimonials-page-plan.md`](website-testimonials-page-plan.md) + **T-00023**); reviewer names + Maps profile links; Maps CTA URL; optional Maps embed if owner wants it. |

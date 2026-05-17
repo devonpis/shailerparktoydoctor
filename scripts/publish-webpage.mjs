@@ -363,11 +363,11 @@ function printChecklist(dir, config, projectId) {
   console.log(`  [${inSitemap ? 'x' : ' '}] sitemap.xml story URL`);
   if (testimonial.applicable) {
     console.log(
-      `  [${testimonial.hasRepairLink ? 'x' : ' '}] new/testimonials.html — Repair link${testimonial.hasRepairLink ? '' : ' (needs index.html + webpageUrl)'}`
+      `  [${testimonial.hasRepairLink ? 'x' : ' '}] testimonials.html — Repair link${testimonial.hasRepairLink ? '' : ' (needs index.html + webpageUrl)'}`
     );
   } else if (hasHtml) {
     console.log(
-      '  [ ] googleReview + testimonials — not set (apply-google-review.mjs → story block + new/testimonials.html)'
+      '  [ ] googleReview + testimonials — not set (apply-google-review.mjs → story block + testimonials.html)'
     );
   }
   console.log('\n  After HTML + index + sitemap: commit, push main (GitHub Pages).');

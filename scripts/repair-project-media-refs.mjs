@@ -106,7 +106,7 @@ function main() {
         ? `\nDry run: ${urlPatches} file(s) would patch URLs; ${thumbUpdates} thumbnail(s) would refresh.`
         : `\nDone: patched ${urlPatches} file(s); refreshed ${thumbUpdates} gallery thumbnail(s).`
     );
-    console.log('Home (/new/) and projects gallery load images from projects-index.json.');
+    console.log('Home (/) and projects gallery load images from projects-index.json.');
   }
 }
 

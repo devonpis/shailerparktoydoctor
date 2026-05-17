@@ -3,7 +3,7 @@
 How to put a **DONE** repair on the public website. This is **separate from social** publish (`publish 0003 to facebook`, etc.) — see [`publish-content-guards.md`](publish-content-guards.md) and README *Project management*.
 
 **Story layout:** [`website-project-page-wireframe.md`](website-project-page-wireframe.md)  
-**Preview site:** pages under [`new/`](../new/) until cutover (**T-00016**). Project stories always live at **`/projects/<folder>/`**.
+**Live site:** marketing pages at site root (`/`, `/projects/`, `/testimonials.html`, `/contact.html`). Project stories at **`/projects/<folder>/`**. Legacy preview removed (**T-00016** done).
 
 ---
 
