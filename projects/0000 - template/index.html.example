@@ -33,14 +33,16 @@
       </div>
 
       <h1><!-- title (slogan) --></h1>
-      <h2 class="project-subtitle"><!-- projectName --></h2>
-      <div id="project-skills-root"></div>
-      <ul class="project-tags">
-        <!-- <li class="project-tag">tag</li> -->
-      </ul>
+      <h3 class="project-subtitle"><!-- projectName --></h3>
+      <div class="project-tag-row">
+        <div id="project-skills-root"></div>
+        <ul class="project-tags">
+          <!-- <li class="project-tag">tag</li> -->
+        </ul>
+      </div>
 
       <p class="project-meta"><!-- endDate AU, e.g. 6 May 2026 --></p>
-      <p class="project-lead"><!-- description (short summary) --></p>
+      <p class="project-lead text-lead"><!-- description (short summary) --></p>
 
       <!-- If googleReview is set in config.json: blockquote under summary -->
 
@@ -56,16 +58,27 @@
       <!-- YouTube iframes if youtubeUrl / youtubeShortUrl -->
       <!--
       <section class="project-section">
-        <h2 class="jw-heading-100">Full repair video</h2>
-        <div class="project-video"><iframe …></iframe></div>
+        <h2 class="jw-heading-100">Videos</h2>
+        <div class="project-videos">
+          <div class="project-video">
+            <div class="project-video__embed"><iframe …></iframe></div>
+          </div>
+          <div class="project-video">
+            <div class="project-video__embed"><iframe …></iframe></div>
+          </div>
+        </div>
       </section>
       -->
 
       <section class="project-prose">
         <h2 class="jw-heading-100">The repair</h2>
-        <p><!-- repairDetails --></p>
+        <!-- One <p> per paragraph from repairDetails (blank line between paragraphs in config). -->
+        <p><!-- repairDetails paragraph 1 --></p>
+        <p><!-- repairDetails paragraph 2 --></p>
         <h2 class="jw-heading-100">About this item</h2>
-        <p><!-- itemDetails --></p>
+        <!-- One <p> per paragraph from itemDetails. -->
+        <p><!-- itemDetails paragraph 1 --></p>
+        <p><!-- itemDetails paragraph 2 --></p>
       </section>
 
       <div class="projects-cta">

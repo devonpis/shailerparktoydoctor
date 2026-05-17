@@ -84,8 +84,8 @@ Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-
 |-------|---------|
 | `title` | Headline for webpage and social (≤ **500** chars) |
 | `description` | Story / caption body (≤ **500** chars for cross-platform social) |
-| `itemDetails` | Optional — product/collectible facts (manufacturer, model, specs); for repair pages / SEO, not the social caption |
-| `repairDetails` | Optional — technical repair log (symptoms, method, parts); for repair pages, not the social caption |
+| `itemDetails` | Optional — product/collectible facts (manufacturer, model, specs); for repair pages / SEO, not the social caption. Use **paragraph breaks** (`\n\n`); on the site, one `<p>` per paragraph (see [`docs/website-go-live.md`](docs/website-go-live.md)). |
+| `repairDetails` | Optional — technical repair log (symptoms, method, parts); for repair pages, not the social caption. Same paragraph rules as `itemDetails`. |
 | `tags` | Topic labels (**1–30**); appended as hashtags on social (see [`docs/publish-content-guards.md`](docs/publish-content-guards.md)) |
 | `googleReview` | Optional — customer’s **Google review** for this repair (`author`, `text`, `rating`, optional `profileUrl`, `date`, `featuredOnTestimonials`). See [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md). |
 | Images / video | `before`, `after`, `hero`, `WIP-###`, or video files in the project folder |

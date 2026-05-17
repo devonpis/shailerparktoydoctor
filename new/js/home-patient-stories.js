@@ -51,7 +51,7 @@
             ${badges}
           </div>
         </div>
-        <h3 class="patient-story__title"><a href="${url}">${name}</a></h3>
+        <h3 class="patient-story__title project-subtitle"><a href="${url}">${name}</a></h3>
         <p>${body}</p>
         <p><a href="${url}">Read the full repair story →</a></p>
       </div>`;

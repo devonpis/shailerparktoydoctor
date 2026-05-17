@@ -31,6 +31,11 @@ Create **`projects/<folder>/index.html`** from [`projects/0000 - template/index.
 - **`<title>`:** `{projectName} — Shailer Park Toy Doctor`
 - **Nav (until T-00016 cutover):** “← All projects” → `/new/projects/`; site links → `/new/…`
 - **After cutover:** update story page links to `/projects/`, `/contact.html`, etc. (or re-copy from an updated template).
+- **Prose (`repairDetails`, `itemDetails`):** Rewrite as **readable paragraphs**, not one wall of text.
+  - In **`config.json`**, separate paragraphs with a **blank line** (`\n\n` in the string).
+  - In **`index.html`**, use **one `<p>` per paragraph** under “The repair” and “About this item”.
+  - Typical split: problem → work done → outcome (repair); what it is → context → materials/market (item).
+  - Keep `description` as the short lead above the gallery; long copy lives only in `repairDetails` / `itemDetails`.
 
 **First reference implementation:** [`projects/0003 - Donald Duck/index.html`](../projects/0003%20-%20Donald%20Duck/index.html).
 

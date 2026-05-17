@@ -88,7 +88,7 @@ Desktop wireframe (mobile = same order, stacked full-width):
 | **Short summary** | `description` | Shortened **`description`** for intro; use as-is if already short. |
 | **Photo sections** | `before.*`, `after.*`, `WIP-*` | Layout by [image count rules](#in-page-photo-layout-by-count); hero image not repeated if already used as hero. |
 | **Video** | `youtubeUrl`, `youtubeShortUrl` | **Embed** via YouTube iframe. Primary: `youtubeUrl`. Second: `youtubeShortUrl` if set. Omit section if both null. |
-| **Full story** | `repairDetails` then `itemDetails` | “The repair” then “About this item”; plain text → `<p>`. |
+| **Full story** | `repairDetails` then `itemDetails` | “The repair” then “About this item”; **one `<p>` per paragraph** (blank line between paragraphs in `config.json`). |
 | **CTA** | — | Full-width band → contact. |
 
 ---
