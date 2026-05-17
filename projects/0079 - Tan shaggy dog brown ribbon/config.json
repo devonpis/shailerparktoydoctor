@@ -1,6 +1,6 @@
 {
   "isTemplate": false,
-  "projectName": "Shaggy bunny plush",
+  "projectName": "Tan shaggy dog brown ribbon",
   "title": "",
   "startDate": "2025-12-11",
   "endDate": "2025-12-14",
@@ -13,7 +13,7 @@
   "youtubeShortUrl": null,
   "tags": [
     "plush",
-    "bunny"
+    "dog"
   ],
   "skills": [
     "sewing",
@@ -21,6 +21,6 @@
   ],
   "description": "repair - plush",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Large shaggy two-tone bunny (tan/cream). USB folder Brown_ribbon_dog was a mislabel (rabbit, not dog).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Tan/cream shaggy floppy-eared puppy with chocolate satin neck bow (Kellytoy / Friendzies style). USB folder Brown_ribbon_dog.\n\nT-00030 + fallback photo review — 2026-05-17.",
   "googleReview": null
 }

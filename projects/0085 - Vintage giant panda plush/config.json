@@ -1,9 +1,9 @@
 {
   "isTemplate": false,
-  "projectName": "Curly teddy pink ribbon",
+  "projectName": "Vintage giant panda plush",
   "title": "",
-  "startDate": "2025-12-04",
-  "endDate": "2025-12-04",
+  "startDate": "2026-03-25",
+  "endDate": "2026-03-28",
   "status": "WIP",
   "webpageUrl": null,
   "facebookUrl": null,
@@ -13,7 +13,7 @@
   "youtubeShortUrl": null,
   "tags": [
     "plush",
-    "teddy"
+    "panda"
   ],
   "skills": [
     "sewing",
@@ -21,6 +21,6 @@
   ],
   "description": "repair - plush",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Brown curly-fur teddy with pink satin neck ribbon.\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Well-loved black-and-white giant panda plush. USB folder Panda.\n\nT-00030 + fallback photo review — 2026-05-17.",
   "googleReview": null
 }

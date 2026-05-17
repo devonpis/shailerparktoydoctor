@@ -1,6 +1,6 @@
 {
   "isTemplate": false,
-  "projectName": "Tan teddy bear with pillow",
+  "projectName": "Sleeping tan teddy blue pillow",
   "title": "",
   "startDate": "2026-05-12",
   "endDate": "2026-05-14",
@@ -23,6 +23,6 @@
   ],
   "description": "repair - plush cleaning",
   "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 12/05/26.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Tan teddy with pillow — clean/restuff (USB bear_pillow; not frog).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Tan sleeping teddy on small light-blue pillow — clean/restuff (USB bear_pillow; not frog).\n\nT-00030 + fallback photo review — 2026-05-17.",
   "googleReview": null
 }

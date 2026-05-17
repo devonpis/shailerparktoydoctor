@@ -42,7 +42,7 @@ const NEW_USB_FOLDERS = [
   { id: '0085', usb: 'Panda', name: 'Panda' },
   { id: '0086', usb: 'Tumbling_tiger', name: 'Tumbling tiger' },
   { id: '0087', usb: 'Yellow_teddy', name: 'Yellow teddy' },
-  { id: '0088', usb: 'anime_figure', name: 'anime figure' },
+  { id: '0088', usb: 'anime_figure', name: 'Yui Yuigahama Bunny Ver' },
   { id: '0089', usb: 'pink_ribbon_bear', name: 'pink ribbon bear' },
   { id: '0090', usb: 'polar_bear', name: 'polar bear' },
   { id: '0091', usb: 'Woody_2', name: 'Woody 2' },

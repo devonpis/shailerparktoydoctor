@@ -1,9 +1,9 @@
 {
   "isTemplate": false,
-  "projectName": "Tan plush dog",
+  "projectName": "Brown sherpa teddy pink ribbon",
   "title": "",
-  "startDate": "2026-04-21",
-  "endDate": "2026-04-22",
+  "startDate": "2025-12-04",
+  "endDate": "2025-12-04",
   "status": "WIP",
   "webpageUrl": null,
   "facebookUrl": null,
@@ -13,13 +13,15 @@
   "youtubeShortUrl": null,
   "tags": [
     "plush",
-    "dog"
+    "teddy",
+    "sherpa"
   ],
   "skills": [
-    "sewing"
+    "sewing",
+    "cleaning"
   ],
   "description": "repair - plush",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Small tan plush dog (floppy ears).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Medium-brown sherpa teddy, cream muzzle and foot pads, pink satin bow (USB pink_ribbon_bear).\n\nT-00030 + fallback photo review — 2026-05-17.",
   "googleReview": null
 }

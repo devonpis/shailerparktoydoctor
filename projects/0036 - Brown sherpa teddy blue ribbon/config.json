@@ -1,6 +1,6 @@
 {
   "isTemplate": false,
-  "projectName": "Brown sherpa teddy bear",
+  "projectName": "Brown sherpa teddy blue ribbon",
   "title": "",
   "startDate": "2025-09-26",
   "endDate": "2025-09-26",
@@ -23,6 +23,6 @@
   ],
   "description": "repair - plush restuffing",
   "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 26092025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Brown sherpa teddy — tears and restuff (USB brown_bear; not snoring electronics).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Brown popcorn-sherpa teddy, amber safety eyes, navy satin bow — tears and restuff (USB brown_bear).\n\nT-00030 + fallback photo review — 2026-05-17.",
   "googleReview": null
 }

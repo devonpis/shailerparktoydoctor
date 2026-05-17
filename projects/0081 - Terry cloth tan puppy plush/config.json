@@ -1,9 +1,9 @@
 {
   "isTemplate": false,
-  "projectName": "Anime bunny girl figure",
+  "projectName": "Terry cloth tan puppy plush",
   "title": "",
-  "startDate": "2026-03-27",
-  "endDate": "2026-03-28",
+  "startDate": "2026-04-21",
+  "endDate": "2026-04-22",
   "status": "WIP",
   "webpageUrl": null,
   "facebookUrl": null,
@@ -12,15 +12,14 @@
   "youtubeUrl": null,
   "youtubeShortUrl": null,
   "tags": [
-    "figure",
-    "anime"
+    "plush",
+    "dog"
   ],
   "skills": [
-    "figure repair",
-    "gluing"
+    "sewing"
   ],
-  "description": "repair - figure",
+  "description": "repair - plush",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Anime bunny-girl scale figure — detached bunny ear; glue/repair.\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Tan terry-cloth loop-pile puppy with brown spot on head and brown ear. USB folder Dog.\n\nT-00030 + fallback photo review — 2026-05-17.",
   "googleReview": null
 }

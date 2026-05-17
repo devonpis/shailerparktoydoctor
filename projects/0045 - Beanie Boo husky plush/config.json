@@ -1,6 +1,6 @@
 {
   "isTemplate": false,
-  "projectName": "Husky plush dog",
+  "projectName": "Beanie Boo husky plush",
   "title": "",
   "startDate": "2025-12-02",
   "endDate": "2025-12-02",
@@ -14,7 +14,9 @@
   "tags": [
     "husky",
     "dog",
-    "plush"
+    "plush",
+    "Ty",
+    "Beanie Boo"
   ],
   "skills": [
     "sewing",
@@ -22,6 +24,6 @@
   ],
   "description": "repair - plush",
   "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 2122025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
-  "repairDetails": "Husky plush — eyes, tears, grooming.\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Ty-style husky/wolf cub with large blue glitter eyes — tear and grooming repair. USB folder Husky.\n\nT-00030 + fallback photo review — 2026-05-17.",
   "googleReview": null
 }

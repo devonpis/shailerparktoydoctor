@@ -20,12 +20,12 @@ export const T30_USB_IDENTITIES = [
   },
   {
     id: '0079',
-    projectName: 'Shaggy bunny plush',
+    projectName: 'Tan shaggy dog brown ribbon',
     description: 'repair - plush',
     skills: ['sewing', 'restuffing'],
-    tags: ['plush', 'bunny'],
+    tags: ['plush', 'dog'],
     repairDetails:
-      'Large shaggy two-tone bunny (tan/cream). USB folder Brown_ribbon_dog was a mislabel (rabbit, not dog).\n\nIdentified T-00030 — 2026-05-17.',
+      'Tan/cream shaggy floppy-eared puppy with chocolate satin neck bow (Kellytoy / Friendzies style). USB folder Brown_ribbon_dog.\n\nT-00030 + fallback photo review — 2026-05-17.',
   },
   {
     id: '0080',
@@ -38,11 +38,12 @@ export const T30_USB_IDENTITIES = [
   },
   {
     id: '0081',
-    projectName: 'Tan plush dog',
+    projectName: 'Terry cloth tan puppy plush',
     description: 'repair - plush',
     skills: ['sewing'],
     tags: ['plush', 'dog'],
-    repairDetails: 'Small tan plush dog (floppy ears).\n\nIdentified T-00030 — 2026-05-17.',
+    repairDetails:
+      'Tan terry-cloth loop-pile puppy with brown spot on head and brown ear. USB folder Dog.\n\nT-00030 + fallback photo review — 2026-05-17.',
   },
   {
     id: '0082',
@@ -72,11 +73,11 @@ export const T30_USB_IDENTITIES = [
   },
   {
     id: '0085',
-    projectName: 'Panda plush',
+    projectName: 'Vintage giant panda plush',
     description: 'repair - plush',
     skills: ['sewing', 'cleaning'],
     tags: ['plush', 'panda'],
-    repairDetails: 'Small vintage panda plush.\n\nIdentified T-00030 — 2026-05-17.',
+    repairDetails: 'Well-loved black-and-white giant panda plush. USB folder Panda.\n\nT-00030 + fallback photo review — 2026-05-17.',
   },
   {
     id: '0086',
@@ -89,37 +90,39 @@ export const T30_USB_IDENTITIES = [
   },
   {
     id: '0087',
-    projectName: 'Yellow teddy bear',
+    projectName: 'Curly sherpa teddy gold organza bow',
     description: 'repair - plush',
     skills: ['sewing', 'cleaning'],
-    tags: ['plush', 'teddy'],
-    repairDetails: 'Vintage yellow/tan teddy with gold neck ribbon.\n\nIdentified T-00030 — 2026-05-17.',
+    tags: ['plush', 'teddy', 'sherpa'],
+    repairDetails:
+      'Honey-tan curly sherpa teddy with gold organza neck bow. USB folder yellow_bear.\n\nT-00030 + fallback photo review — 2026-05-17.',
   },
   {
     id: '0088',
-    projectName: 'Anime bunny girl figure',
+    projectName: 'Yui Yuigahama Bunny Ver 1/4 FREEing',
     description: 'repair - figure',
     skills: ['figure repair', 'gluing'],
-    tags: ['figure', 'anime'],
+    tags: ['figure', 'anime', 'Oregairu', 'Yui Yuigahama', 'FREEing', '1/4 scale'],
     repairDetails:
-      'Anime bunny-girl scale figure — detached bunny ear; glue/repair.\n\nIdentified T-00030 — 2026-05-17.',
+      'Yui Yuigahama Bunny Ver (Oregairu) — FREEing 1/4 scale; detached bunny ear. Lens/web confirmed.\n\nIdentified T-00030 — 2026-05-17.',
   },
   {
     id: '0089',
-    projectName: 'Curly teddy pink ribbon',
+    projectName: 'Brown sherpa teddy pink ribbon',
     description: 'repair - plush',
     skills: ['sewing', 'cleaning'],
-    tags: ['plush', 'teddy'],
-    repairDetails: 'Brown curly-fur teddy with pink satin neck ribbon.\n\nIdentified T-00030 — 2026-05-17.',
+    tags: ['plush', 'teddy', 'sherpa'],
+    repairDetails:
+      'Medium-brown sherpa teddy, cream muzzle and foot pads, pink satin bow (USB pink_ribbon_bear).\n\nT-00030 + fallback photo review — 2026-05-17.',
   },
   {
     id: '0090',
-    projectName: 'Vintage tan teddy bear',
+    projectName: 'Cream teddy blue satin bow',
     description: 'repair - plush restuffing',
     skills: ['sewing', 'restuffing'],
     tags: ['plush', 'teddy', 'vintage'],
     repairDetails:
-      'Vintage tan teddy — neck seam open, restuff. USB folder polar_bear was a mislabel.\n\nIdentified T-00030 — 2026-05-17.',
+      'Off-white/cream vintage teddy with navy blue satin neck bow; neck seam open, restuff. USB folder polar_bear was a mislabel (not a polar bear).\n\nT-00030 + fallback photo review — 2026-05-17.',
   },
   {
     id: '0091',

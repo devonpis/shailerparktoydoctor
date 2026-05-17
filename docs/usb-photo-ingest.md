@@ -39,6 +39,7 @@ Ingest photos from an external volume into `projects/<id> - <name>/` using conve
    ```
 
 6. **Rename / product info** (T-00030): `node scripts/apply-project-identities.mjs` — see [`docs/reports/t30-project-identities-2026-05-17.md`](reports/t30-project-identities-2026-05-17.md).
+7. **Lens / web fallback** for still-generic names: [`docs/product-identification.md`](product-identification.md) — `node scripts/report-product-id-fallback.mjs`.
 
 ## Rules
 
