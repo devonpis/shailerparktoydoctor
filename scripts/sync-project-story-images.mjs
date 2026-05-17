@@ -8,11 +8,18 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { resolveProjectDir, projectIdFromDir } from './lib/resolve-project-dir.mjs';
+import { resolveProjectDir, projectIdFromDir, REPO_ROOT } from './lib/resolve-project-dir.mjs';
 import { syncProjectWorkInProgressHtml } from './lib/project-work-in-progress-html.mjs';
 import { updateProjectStoryMeta } from './lib/project-story-meta.mjs';
 import { listProjectImages } from './lib/project-media.mjs';
+import { readImportance, hasImportance } from './lib/home-highlights.mjs';
+import {
+  buildHighlightsFromDisk,
+  patchHomeIndex,
+  formatHighlightsList,
+} from './lib/home-highlights.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -49,13 +56,50 @@ function syncOne(projectId, dryRun) {
   if (meta.skipped) console.log(`  meta: skipped (${meta.reason})`);
   else console.log(`  hero/OG: ${meta.changed ? meta.meta.heroImageName : 'already current'}`);
 
-  return { id, wip, meta };
+  const onHomePage = hasImportance(readImportance(config));
+  return { id, wip, meta, onHomePage };
+}
+
+function syncGalleryIndex(projectId, dryRun) {
+  if (dryRun) {
+    console.log(`  gallery index: [dry-run] would sync ${projectId}`);
+    return;
+  }
+  const r = spawnSync(
+    process.execPath,
+    [path.join('scripts', 'sync-projects-gallery-index.mjs'), projectId],
+    { cwd: REPO_ROOT, stdio: 'inherit' }
+  );
+  if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
+function refreshHomeHighlights(dryRun) {
+  const { highlights, html } = buildHighlightsFromDisk();
+  console.log('\n--- Home highlights (baked index.html) ---');
+  console.log(formatHighlightsList(highlights));
+  if (dryRun) {
+    console.log('[dry-run] would rebuild index.html #patient-stories-root');
+    return;
+  }
+  if (patchHomeIndex(html)) {
+    console.log('  OK: updated home highlight section');
+  } else {
+    console.log('  OK: home highlights already current');
+  }
 }
 
 function main() {
   const { ids, dryRun } = parseArgs(process.argv);
   if (dryRun) console.log('[dry-run] no files written');
-  for (const id of ids) syncOne(id, dryRun);
+  let refreshHome = false;
+  for (const id of ids) {
+    const r = syncOne(id, dryRun);
+    if (r.onHomePage) {
+      refreshHome = true;
+      syncGalleryIndex(id, dryRun);
+    }
+  }
+  if (refreshHome) refreshHomeHighlights(dryRun);
 }
 
 main();

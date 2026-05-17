@@ -2,16 +2,16 @@
 description: Home page patient-story highlights — importance in config + sync-home-highlights script
 globs:
   - "**/projects/**/config.json"
-  - new/index.html
-  - new/js/home-patient-stories.js
+  - index.html
+  - js/home-patient-stories.js
   - scripts/sync-home-highlights.mjs
   - scripts/lib/home-highlights.mjs
-  - new/css/site.css
+  - css/site.css
 ---
 
 # Home highlight importance
 
-The preview home page section **Some Of Our Patients' Stories** (`new/index.html`, `#patient-stories-root`) shows **one lead story** (full-width image + description) plus **six** smaller tiles.
+The home page section **Some Of Our Patients' Stories** (`index.html`, `#patient-stories-root`) shows **one lead story** (full-width image + description) plus **six** smaller tiles.
 
 ## `importance` in `config.json`
 
@@ -22,7 +22,7 @@ The preview home page section **Some Of Our Patients' Stories** (`new/index.html
 
 Selection rules:
 
-1. Load entries from `new/data/projects-index.json`.
+1. Load entries from `data/projects-index.json`.
 2. Merge each row with `projects/<folder>/config.json` (`importance`, `description`, `skills`).
 3. Keep only projects with a numeric `importance` (including `0`).
 4. Sort by **`importance` descending**, then **`endDate` descending** as tiebreaker.
@@ -37,7 +37,7 @@ Legacy field **`priority`** is ignored.
 When the owner names projects and importance values:
 
 1. Run **`node scripts/sync-home-highlights.mjs --set <id>=<n> …`** (and **`--clear <id>`** to remove).
-2. The script updates each **`config.json`**, prints the ranked list, and **bakes HTML** into `new/index.html` (`#patient-stories-root`, between `sync-home-highlights` comment markers).
+2. The script updates each **`config.json`**, prints the ranked list, and **bakes HTML** into `index.html` (`#patient-stories-root`, between `sync-home-highlights` comment markers).
 3. Commit and push when ready.
 
 Other commands:
@@ -48,8 +48,18 @@ node scripts/sync-home-highlights.mjs --list       # show ranking only
 node scripts/sync-home-highlights.mjs --dry-run    # preview config/HTML changes
 ```
 
-Requirements for a highlight: project should be **`DONE`**, have a story page, and appear in **`projects-index.json`**.
+Requirements for a highlight: project should be **`DONE`**, have a story page, and appear in **`data/projects-index.json`**.
 
-`new/js/home-patient-stories.js` only runs the old client-side fetch if the root is still empty; after sync, it applies skill badges / portrait crop on the baked markup.
+`js/home-patient-stories.js` only runs the old client-side fetch if the root is still empty; after sync, it applies skill badges / portrait crop on the baked markup.
 
-Manual image renames: see [`.cursor/rules/project-images-manual-rename.mdc`](project-images-manual-rename.mdc).
+## After manual image updates (required)
+
+When the owner **updates or renames images** for a project that is on the home page (has numeric **`importance`**):
+
+1. `node scripts/sync-project-story-images.mjs <id>`
+2. `node scripts/sync-projects-gallery-index.mjs <id>`
+3. **`node scripts/sync-home-highlights.mjs`** — rebakes lead + tile **thumbnails** from `projects-index.json` (easy to miss; baked HTML does not auto-update).
+
+Or rebuild all highlights: `node scripts/sync-home-highlights.mjs` (no flags).
+
+See also [`.cursor/rules/project-images-manual-rename.mdc`](project-images-manual-rename.mdc).

@@ -25,7 +25,9 @@ That syncs **`index.html`**: Work in progress gallery + project-hero + Open Grap
 
 3. Optionally run **`publish-webpage.mjs`** for optimize / validate / meta — it does **not** rename files, but prefer **`sync-project-story-images.mjs`** when the only change is manual renames (faster, no image processing).
 
-4. Refresh gallery index thumbnails only if hero/after changed and tiles look stale: `sync-projects-gallery-index.mjs <id>`.
+4. `node scripts/sync-projects-gallery-index.mjs <id>` — gallery tile thumbnail in `data/projects-index.json`.
+
+5. If the project has numeric **`importance`** in `config.json` (home highlight lead or tile), also run **`node scripts/sync-home-highlights.mjs`** — baked `index.html` highlight images/descriptions do not update automatically. Shortcut after image-only changes: run steps 2–4 for the id(s), then `node scripts/sync-home-highlights.mjs` once to refresh all highlight slots.
 
 ## Do not
 

@@ -153,6 +153,8 @@ function writeSitemap(dryRun) {
 function writeRobots(dryRun) {
   const text = `User-agent: *
 Allow: /
+Disallow: /new/
+Disallow: /legacy/
 
 Sitemap: https://sptoydoctor.com.au/sitemap.xml
 `;
