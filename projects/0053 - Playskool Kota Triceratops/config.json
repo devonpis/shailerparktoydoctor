@@ -23,12 +23,13 @@
     "paintjob"
   ],
   "description": "This Kota Triceratops had a grinding neck whenever the head turned — a failed gear in the neck joint. We opened the skin, rebuilt mechanism and electronics, 3D-printed and painted the missing horns, remade the horn touch sensors, and stitched him closed so Kota moves quietly and responds again.",
-  "itemDetails": "Playskool Kota My Triceratops is a large-scale interactive dinosaur toy released by Hasbro's Playskool line in the late 2000s (notably 2008). It is known as an oversized ride-on/interactive prehistoric toy from a short but memorable retail window.\n\nKota uses molded plastic structural parts with soft-touch outer covering, internal motors/electronics, and touch or button interactivity features. Collector value is helped by its scale and relative scarcity, but shipping size and mechanism condition heavily affect market pricing.",
-  "repairDetails": "This large interactive Kota had a grinding noise whenever the head turned. Inside we found a broken gear on the neck joint driving the motion.\n\nWe opened the outer skin and deep-cleaned the shell and parts, then disassembled the full internal frame to reach the gearbox. The failed gear was replaced with a new part ordered to match the original, moving parts were lubricated, and battery contacts were renewed. The circuit was rewired and a connection was added for an AC adaptor so the owner can run Kota without relying on batteries alone.\n\nMissing horn pieces were 3D printed, the horn touch sensors were remade, and the horns were painted and reattached. The skin was stitched closed and the dinosaur reassembled so head movement is smooth and quiet again.",
+  "itemDetails": "Playskool Kota My Triceratops is a large-scale interactive dinosaur toy released by Hasbro's Playskool line in the late 2000s (notably 2008). It is known as an oversized ride-on/interactive prehistoric toy from a short but memorable retail window. Kota uses molded plastic structural parts with soft-touch outer covering, internal motors/electronics, and touch or button interactivity features. Collector value is helped by its scale and relative scarcity, but shipping size and mechanism condition heavily affect market pricing.",
+  "repairDetails": "This large interactive Kota had a grinding noise whenever the head turned. Inside we found a broken gear on the neck joint driving the motion. We opened the outer skin and deep-cleaned the shell and parts, then disassembled the full internal frame to reach the gearbox. The failed gear was replaced with a new part ordered to match the original, moving parts were lubricated, and battery contacts were renewed. The circuit was rewired and a connection was added for an AC adaptor so the owner can run Kota without relying on batteries alone. Missing horn pieces were 3D printed, the horn touch sensors were remade, and the horns were painted and reattached. The skin was stitched closed and the dinosaur reassembled so head movement is smooth and quiet again.",
   "googleReview": {
     "quote": "Grace did an amazing restoration on a very difficult project. I totally recommend her and will definitely take my business to her.",
     "authorName": "Sandra B.",
     "profileUrl": "https://www.google.com/maps/contrib/105882181965627643803",
     "featuredOnTestimonials": true
-  }
+  },
+  "importance": 7
 }

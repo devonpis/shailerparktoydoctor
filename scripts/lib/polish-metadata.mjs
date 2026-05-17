@@ -15,6 +15,13 @@ export const META_FOOTER_RE =
 
 export const USB_NOTE_RE = /\s*USB folder[:\s][^.]*\.?/gi;
 
+/** Internal filing / merge notes — not for public story pages. */
+export const INTERNAL_FILING_NOTE_RE =
+  /(?:\n\n|\n|^)Photos for this repair were previously filed under USB[^\n]*(?:\(now project \d{4}\))?\.?\s*/gi;
+
+export const MERGED_PROJECT_NOTE_RE =
+  /(?:\n\n|\n|^)Merged into \d{4}[^.\n]*(?:\(\d{4}-\d{2}-\d{2}\))?\.?\s*/gi;
+
 const SKIP_ITEM_DETAILS_IDS = new Set(['0002', '0003']);
 
 import { normalizeSkills, skillLabelPhrase as canonicalSkillLabelPhrase } from './normalize-skills.mjs';
@@ -29,9 +36,21 @@ const SKILL_PHRASES = {
 export function stripMetaFooters(text) {
   return (text || '')
     .replace(META_FOOTER_RE, '')
+    .replace(INTERNAL_FILING_NOTE_RE, '\n\n')
+    .replace(MERGED_PROJECT_NOTE_RE, '\n\n')
     .replace(USB_NOTE_RE, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .replace(/[ \t]+\n/g, '\n')
     .replace(/\s{2,}/g, ' ')
     .trim();
+}
+
+/** Prose fields safe for public index.html (strips internal meta footers). */
+export function publicProseFromConfig(config) {
+  return {
+    repairDetails: stripMetaFooters(config?.repairDetails),
+    itemDetails: stripMetaFooters(config?.itemDetails),
+  };
 }
 
 export function isGenericDescription(description) {

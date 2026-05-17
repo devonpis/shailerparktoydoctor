@@ -1,8 +1,11 @@
 ---
-description: Home page patient-story highlights use optional importance in project config.json
+description: Home page patient-story highlights — importance in config + sync-home-highlights script
 globs:
   - "**/projects/**/config.json"
+  - new/index.html
   - new/js/home-patient-stories.js
+  - scripts/sync-home-highlights.mjs
+  - scripts/lib/home-highlights.mjs
   - new/css/site.css
 ---
 
@@ -15,18 +18,38 @@ The preview home page section **Some Of Our Patients' Stories** (`new/index.html
 | Value | Effect |
 |-------|--------|
 | **Omitted** or **`null`** | Project is **not** eligible for home highlights (gallery/index only). |
-| **Number** | Eligible; **higher number ranks higher** (`2` beats `1`). |
+| **Number** | Eligible; **higher number ranks higher** (`3` beats `2`). |
 
-Selection (`new/js/home-patient-stories.js`):
+Selection rules:
 
-1. Load all entries from `new/data/projects-index.json`.
-2. Merge each row with its `projects/<folder>/config.json` (including `importance`).
+1. Load entries from `new/data/projects-index.json`.
+2. Merge each row with `projects/<folder>/config.json` (`importance`, `description`, `skills`).
 3. Keep only projects with a numeric `importance` (including `0`).
 4. Sort by **`importance` descending**, then **`endDate` descending** as tiebreaker.
-5. **#1** → lead block; **#2–#7** → the six tiles. Fewer than seven → remaining tile slots show placeholders.
+5. **#1** → lead block (full width); **#2–#7** → six tiles. Fewer than seven → placeholders fill empty tiles.
 
-Do **not** use `projects-index.json` for highlight curation — **`importance` lives only in per-project `config.json`**.
+**`importance` lives only in per-project `config.json`** — not in `projects-index.json`.
 
-When the owner asks to feature a repair on the home page, set or raise **`importance`** in that project's `config.json` (and ensure the project is **`DONE`** and listed in `projects-index.json`).
+Legacy field **`priority`** is ignored.
 
-Legacy field **`priority`** is ignored — use **`importance`** only.
+## On-demand workflow (owner + agent)
+
+When the owner names projects and importance values:
+
+1. Run **`node scripts/sync-home-highlights.mjs --set <id>=<n> …`** (and **`--clear <id>`** to remove).
+2. The script updates each **`config.json`**, prints the ranked list, and **bakes HTML** into `new/index.html` (`#patient-stories-root`, between `sync-home-highlights` comment markers).
+3. Commit and push when ready.
+
+Other commands:
+
+```bash
+node scripts/sync-home-highlights.mjs              # rebuild HTML from current configs
+node scripts/sync-home-highlights.mjs --list       # show ranking only
+node scripts/sync-home-highlights.mjs --dry-run    # preview config/HTML changes
+```
+
+Requirements for a highlight: project should be **`DONE`**, have a story page, and appear in **`projects-index.json`**.
+
+`new/js/home-patient-stories.js` only runs the old client-side fetch if the root is still empty; after sync, it applies skill badges / portrait crop on the baked markup.
+
+Manual image renames: see [`.cursor/rules/project-images-manual-rename.mdc`](project-images-manual-rename.mdc).

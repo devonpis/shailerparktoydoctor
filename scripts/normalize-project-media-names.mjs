@@ -3,6 +3,9 @@
  * Rename loose project images to before / after / hero / WIP-### by capture time.
  * Keeps existing canonical names when they already occupy a slot.
  *
+ * WARNING: Do NOT use after the owner manually renamed files in a project folder.
+ * For that, run sync-project-story-images.mjs (HTML only, no file moves).
+ *
  * Usage:
  *   node scripts/normalize-project-media-names.mjs 0004 0005 [--dry-run]
  *   node scripts/normalize-project-media-names.mjs --range 4 15 [--dry-run]

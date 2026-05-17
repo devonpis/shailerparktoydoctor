@@ -89,7 +89,7 @@ Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-
 | `skills` | Repair categories — **one or more** of: `needlework`, `electronic`, `mechanical`, `paintjob` (site badges / filters). See [`docs/project-skills.md`](docs/project-skills.md) (**BR-028**). Normalize: `node scripts/normalize-project-skills.mjs`. |
 | `tags` | Topic labels (**1–30**); appended as hashtags on social (see [`docs/publish-content-guards.md`](docs/publish-content-guards.md)) |
 | `googleReview` | Optional — customer’s **Google review** (`quote`, `authorName` as first + last initial only e.g. `Howard C.`, optional `profileUrl`, `featuredOnTestimonials`, `featuredOrder`). See [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md). |
-| `importance` | Optional — number for **home page highlights** (`/new/` patient stories). **Higher = ranked higher** (lead story + up to six tiles). Omit or `null` = not shown there. See [`.cursor/rules/home-highlight-importance.mdc`](.cursor/rules/home-highlight-importance.mdc). |
+| `importance` | Optional — number for **home page highlights** (`/new/` patient stories). **Higher = ranked higher** (lead story + up to six tiles). Omit or `null` = not shown there. Update with `node scripts/sync-home-highlights.mjs --set 0003=3` (see [`.cursor/rules/home-highlight-importance.mdc`](.cursor/rules/home-highlight-importance.mdc)). |
 | *(privacy)* | **Do not** store other customer names, phones, or emails in `config.json`, HTML, or imports (e.g. timesheet client rows). See [`.cursor/rules/client-privacy-no-pii-in-repo.mdc`](.cursor/rules/client-privacy-no-pii-in-repo.mdc). |
 | Images / video | `before`, `after`, `hero`, `WIP-###`, or video files in the project folder |
 
@@ -154,6 +154,14 @@ Images sit next to each project’s `config.json`. **The filename already states
 | Work in progress | `WIP-001.jpeg`, `WIP-002.jpeg`, … (zero-padded `001`, `002`, … sequence) |
 
 Use the same idea for new repairs: descriptive stem + optional WIP index. Extension can be `.jpg` / `.jpeg` / `.png` as exported.
+
+**After you rename files manually** in a project folder, sync the story page only — do **not** auto-rename on disk:
+
+```bash
+node scripts/sync-project-story-images.mjs <id>
+```
+
+See [`.cursor/rules/project-images-manual-rename.mdc`](.cursor/rules/project-images-manual-rename.mdc). Use `normalize-project-media-names.mjs` only when you explicitly want capture-time auto-renaming (e.g. messy USB imports).
 
 Before a **webpage** go-live, run `node scripts/publish-webpage.mjs <id>` (rotate if needed → optimize → validate → checklist; see [`docs/website-go-live.md`](docs/website-go-live.md)). Use `--rotate <file> --cw|--ccw|--180` or `--exif-orient` for sideways photos. If the project has **`googleReview`**, publish syncs the review onto **`index.html`** and rebuilds **`new/testimonials.html`** with a **Repair:** link (`--no-story-review` / `--no-testimonials` to skip either step).
 

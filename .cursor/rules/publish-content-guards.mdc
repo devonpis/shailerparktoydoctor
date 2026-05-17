@@ -21,6 +21,8 @@ Example: `node scripts/validate-publish.mjs 0001`
 node scripts/publish-webpage.mjs <project-id> [--rotate <file> --cw|--ccw|--180] [--exif-orient]
 ```
 
+**Owner manually renamed images** in the project folder → **`sync-project-story-images.mjs` only** (HTML from disk). **Do not** run **`normalize-project-media-names.mjs`**. See [`.cursor/rules/project-images-manual-rename.mdc`](project-images-manual-rename.mdc).
+
 When the project has **`googleReview`**, `publish-webpage.mjs` syncs the **review block** on **`index.html`** (`--no-story-review` to skip) and, when the story is live, runs **`sync-testimonials-html.mjs`** for the **Repair:** link on testimonials (`--no-testimonials` to skip).
 
 Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md). Webpage steps: [`docs/website-go-live.md`](../../docs/website-go-live.md).

@@ -1,0 +1,46 @@
+---
+description: Owner manual image renames — sync HTML only; never auto-rename files
+alwaysApply: true
+globs:
+  - "**/projects/**"
+  - scripts/publish-webpage.mjs
+  - scripts/sync-project-story-images.mjs
+  - scripts/normalize-project-media-names.mjs
+---
+
+# Project images — manual renames (do not auto-rename)
+
+When the owner says they **updated / renamed images**, **reordered WIPs**, or **renamed files manually** in `projects/<folder>/`:
+
+## Do
+
+1. **Read filenames on disk** (`before`, `after`, `hero`, `WIP-###.jpeg` / `.png` only).
+2. **Update HTML only** so story pages match those names:
+
+```bash
+node scripts/sync-project-story-images.mjs <id> [id …]
+```
+
+That syncs **`index.html`**: Work in progress gallery + project-hero + Open Graph — **no file moves**.
+
+3. Optionally run **`publish-webpage.mjs`** for optimize / validate / meta — it does **not** rename files, but prefer **`sync-project-story-images.mjs`** when the only change is manual renames (faster, no image processing).
+
+4. Refresh gallery index thumbnails only if hero/after changed and tiles look stale: `sync-projects-gallery-index.mjs <id>`.
+
+## Do not
+
+- **Do not** run **`normalize-project-media-names.mjs`** unless the owner **explicitly** asks to auto-rename loose photos by capture time.
+- **Do not** promote a WIP to **`hero.jpeg`** or renumber WIPs to fill gaps — that script’s job, not “update images after my rename”.
+- **Do not** assume “update images” means normalize + full publish.
+
+## Wrong vs right
+
+| Owner intent | Wrong | Right |
+|--------------|-------|-------|
+| “I renamed the files” | `normalize-project-media-names.mjs` then `publish-webpage.mjs` | `sync-project-story-images.mjs` |
+| “Update images on the page” (after manual folder edit) | Renumber WIPs / create `hero.jpeg` from a WIP | Sync HTML from disk |
+| USB ingest / messy loose `IMG_*` files | — | `normalize-project-media-names.mjs` **only when asked** |
+
+## Page hero
+
+Story hero / OG use files on disk: **`hero` → `after` → first `WIP-###` → `before`**. If the owner wants a specific shot on top without renaming, they can name it **`hero.jpeg`** themselves — the agent must not rename files for them.

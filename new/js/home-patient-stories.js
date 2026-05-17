@@ -2,8 +2,16 @@
   const root = document.getElementById('patient-stories-root');
   if (!root) return;
 
-  const TILE_COUNT = 6;
   const skillsApi = window.SiteSkills;
+
+  /** Baked by scripts/sync-home-highlights.mjs — only enhance (skills crop, brand bold). */
+  if (root.querySelector('.patient-stories-layout')) {
+    if (skillsApi?.applyProjectTileImages) skillsApi.applyProjectTileImages(root);
+    if (window.applyToyDoctorBold) window.applyToyDoctorBold(root);
+    return;
+  }
+
+  const TILE_COUNT = 6;
 
   function escapeHtml(s) {
     return String(s)

@@ -22,6 +22,7 @@ import {
   updateProjectStoryMeta,
 } from './lib/project-story-meta.mjs';
 import { renderProjectReviewBlock } from './lib/project-google-review-html.mjs';
+import { publicProseFromConfig } from './lib/polish-metadata.mjs';
 
 function listPublishedIds() {
   const ids = [];
@@ -156,8 +157,9 @@ ${blocks.join('\n')}
 
   const reviewBlock = renderProjectReviewBlock(config.googleReview);
 
-  const repairParas = splitParagraphs(config.repairDetails);
-  const itemParas = splitParagraphs(config.itemDetails);
+  const prose = publicProseFromConfig(config);
+  const repairParas = splitParagraphs(prose.repairDetails);
+  const itemParas = splitParagraphs(prose.itemDetails);
   const itemBlock =
     itemParas.length > 0
       ? `        <h2 class="jw-heading-100">About this item</h2>

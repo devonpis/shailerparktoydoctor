@@ -9,6 +9,8 @@
  *   node scripts/publish-webpage.mjs 0003 --rotate WIP-001.jpg --cw
  *   node scripts/publish-webpage.mjs 0003 --no-optimize
  *
+ * Owner manually renamed images → sync-project-story-images.mjs (not normalize-project-media-names.mjs).
+ *
  * Options:
  *   --rotate <file> --cw|--ccw|--180   Passed to optimizer (same encode pass as resize)
  *   --no-exif-orient                   Skip EXIF bake (default: on)
@@ -39,6 +41,10 @@ import {
   syncProjectGoogleReviewHtml,
 } from './lib/project-google-review-html.mjs';
 import { syncProjectWorkInProgressHtml } from './lib/project-work-in-progress-html.mjs';
+import {
+  sanitizeConfigProseInPlace,
+  syncProjectStoryProseHtml,
+} from './lib/project-story-prose-html.mjs';
 import { INDEX_JSON_PATHS } from './lib/update-project-path-refs.mjs';
 import { validateProject } from './validate-publish.mjs';
 
@@ -195,6 +201,32 @@ function testimonialsRepairStatus(dir, config) {
     hasRepairLink: Boolean(href),
     label: href ? repairLinkLabel(config) : null,
   };
+}
+
+function runSanitizeConfigProse(dir, config, flags) {
+  if (flags.dryRun) return config;
+  const next = { ...config };
+  if (sanitizeConfigProseInPlace(next)) {
+    fs.writeFileSync(path.join(dir, 'config.json'), `${JSON.stringify(next, null, 2)}\n`);
+    console.log('  OK: removed internal notes from repairDetails/itemDetails in config.json');
+    return next;
+  }
+  return config;
+}
+
+function runSyncStoryProse(dir, config, flags) {
+  const htmlPath = path.join(dir, 'index.html');
+  if (!fs.existsSync(htmlPath)) return;
+
+  console.log('\n--- Story page prose (repair + about) ---');
+  if (flags.dryRun) {
+    console.log('  [dry-run] would sync project-prose from config (internal notes stripped)');
+    return;
+  }
+  const r = syncProjectStoryProseHtml(dir, config, { dryRun: false });
+  if (r.skipped) console.log(`  skipped (${r.action})`);
+  else if (r.changed) console.log(`  OK: ${r.action}`);
+  else console.log(`  OK: ${r.action}`);
 }
 
 function runSyncWorkInProgressGallery(dir, config, flags) {
@@ -394,8 +426,10 @@ async function main() {
   }
 
   config = JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
+  config = runSanitizeConfigProse(dir, config, flags);
   runSyncWorkInProgressGallery(dir, config, flags);
   runSyncStoryGoogleReview(dir, config, flags);
+  runSyncStoryProse(dir, config, flags);
   runSyncTestimonialsIfNeeded(dir, config, flags);
 
   printChecklist(dir, config, projectId);
