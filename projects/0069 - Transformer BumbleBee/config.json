@@ -12,9 +12,9 @@
   "youtubeUrl": null,
   "youtubeShortUrl": null,
   "tags": [],
-  "skills": [],
-  "description": "Transformer BumbleBee",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 03/04/2026.",
-  "repairDetails": "- (no task)\n\nNotes:\n- Also: Brad\n\nImported from timesheet CSV — 2026-05-17.",
+  "skills": ["electronics", "mechanical"],
+  "description": "repair - electronics and mechanical",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 03/04/2026. No repair photos yet.",
+  "repairDetails": "Transformer BumbleBee — electronic and mechanical repair.\n\nPhotos: none yet (WIP).\n\nTimesheet notes: Brad (import metadata only).\n\nImported from timesheet CSV — 2026-05-17.\nOwner review T-00029 — 2026-05-17.",
   "googleReview": null
 }

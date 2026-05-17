@@ -40,7 +40,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00026 | Done | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
 | T-00027 | Done | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
 | T-00028 | Done | USB photos: analyse, match projects, copy and rename | BR-022 |
-| T-00029 | Todo | Review ambiguous timesheet imports (e.g. Sandy, client rows) | BR-023 |
+| T-00029 | Done | Review ambiguous timesheet imports (e.g. Sandy, client rows) | BR-023 |
 | T-00030 | Todo | Project identity: product info, rename folder & metadata | BR-024 |
 | T-00031 | Todo | Project dates from EXIF (oldest/newest image) | BR-025 |
 | T-00032 | Todo | CSV metadata gap report for owner fill-in | BR-026 |
@@ -382,12 +382,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-023 |
 | **Goal** | Owner reviews scaffolded projects that may be **client names**, **empty quote stubs**, or **mis-assigned** rows from the timesheet import — fix, rename, merge, or delete folders as needed. |
-| **Known items** | **`0054 - Sandy`** — may be a client contact row, not a toy; confirm and rename/delete/reassign. **`0069 - Transformer BumbleBee`** — note row `Brad` in notes only. Other quote-only rows with minimal `repairDetails` (check list in dry-run or owner pass). |
+| **Outcome** | **`0054 - Sandy`** removed (client row, not a repair). **`0069 - Transformer BumbleBee`** kept — intentional job; `description` / `repairDetails` / `skills` set to electronics + mechanical; no photos yet. Prior merges: **`0023`** → **`0015`**; **`0007`** / **`0068`** Teddy Bear separate; dates via `fix-imported-dates.mjs`. Owner signed off remaining quote stubs 2026-05-17. |
 | **Also done (ref)** | **`0023`** merged into **`0015`** (Anpanman reading pen). **`0007`** and **`0068`** Teddy Bear jobs kept separate. Invalid **`startDate`/`endDate`** repaired via `scripts/fix-imported-dates.mjs` + AU date parsing fix in scaffold script. |
-| **Outcome** | Checklist in `docs/` or comment in task when complete; no publish until `config.json` and folder names are correct. |
 | **Depends on** | T-00025 |
 | **Out of scope** | Re-importing full CSV; auto-deleting folders without owner confirm |
 
