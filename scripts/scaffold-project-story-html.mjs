@@ -87,6 +87,47 @@ function listWipImageNames(dir) {
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 }
 
+function findImageByStem(dir, stem) {
+  return listProjectImages(dir).find((n) => n.toLowerCase().startsWith(stem.toLowerCase())) || null;
+}
+
+function buildBeforeAfterSection(dir, prefix, heroName) {
+  const heroLower = (heroName || '').toLowerCase();
+  const items = [];
+  const before = findImageByStem(dir, 'before');
+  const after = findImageByStem(dir, 'after');
+  if (before && before.toLowerCase() !== heroLower) {
+    items.push({ name: before, label: 'Before' });
+  }
+  if (after && after.toLowerCase() !== heroLower) {
+    items.push({ name: after, label: 'After' });
+  }
+  if (!items.length) return '';
+
+  const gridClass =
+    items.length === 1 ? 'project-before-after project-before-after--single' : 'project-before-after';
+  const figures = items
+    .map(
+      (item) => `          <figure class="project-before-after__item">
+            <img
+              src="${prefix}/${encodeURIComponent(item.name)}"
+              alt="${escapeHtml(item.label)} — repair"
+              loading="lazy"
+            />
+            <figcaption>${escapeHtml(item.label)}</figcaption>
+          </figure>`
+    )
+    .join('\n');
+
+  return `
+      <section class="project-section">
+        <h2 class="jw-heading-100">Before &amp; after</h2>
+        <div class="${gridClass}">
+${figures}
+        </div>
+      </section>`;
+}
+
 function youtubeEmbedId(url) {
   if (!url) return null;
   try {
@@ -135,6 +176,7 @@ function buildHtml(config, folder, dir) {
   if (!heroName) throw new Error('No hero/after/before/WIP image found');
 
   const heroSrc = `${prefix}/${encodeURIComponent(heroName)}`;
+  const beforeAfterSection = buildBeforeAfterSection(dir, prefix, heroName);
   const wipNames = listWipImageNames(dir);
   const tags = (config.tags || []).map(formatTagLabel).filter(Boolean);
   const headline = (config.title || config.projectName || folder).trim();
@@ -249,7 +291,7 @@ ${tagLis}
       <p class="project-lead text-lead">
         ${escapeHtml(lead)}
       </p>
-${reviewBlock}${wipSection}${videoSection}
+${reviewBlock}${beforeAfterSection}${wipSection}${videoSection}
       <section class="project-prose">
         <h2 class="jw-heading-100">The repair</h2>
 ${paragraphBlock(repairParas)}

@@ -3,7 +3,6 @@ import path from 'node:path';
 
 /** Listed repair images: .jpeg / .jpg (rename to .jpeg on publish) or .png. */
 const IMAGE_RE = /^(before|after|hero|WIP-\d{3})\.(jpe?g|png)$/i;
-const PRIORITY = ['hero', 'after', 'before'];
 
 export function listProjectImages(dir) {
   return fs
@@ -12,7 +11,26 @@ export function listProjectImages(dir) {
     .sort();
 }
 
-/** Pick by stem: after, hero, before, or auto (hero → after → before → WIP). */
+/**
+ * Featured image filename for gallery tiles, story hero, and OG image.
+ * Order: hero → after → WIP-001… → before.
+ */
+export function pickFeaturedImageName(dir) {
+  const names = listProjectImages(dir);
+  for (const stem of ['hero', 'after']) {
+    const hit = names.find((n) => n.toLowerCase().startsWith(stem));
+    if (hit) return hit;
+  }
+  const wip = names
+    .filter((n) => /^WIP-/i.test(n))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))[0];
+  if (wip) return wip;
+  const before = names.find((n) => n.toLowerCase().startsWith('before'));
+  if (before) return before;
+  return null;
+}
+
+/** Pick by stem: hero, after, before, or auto (hero → after → WIP → before). */
 export function pickImage(dir, stem = 'auto') {
   if (stem === 'auto') return pickPrimaryImage(dir);
   const names = listProjectImages(dir);
@@ -23,19 +41,13 @@ export function pickImage(dir, stem = 'auto') {
   return path.join(dir, hit);
 }
 
-/** Primary image for social: hero → after → before → lowest WIP */
+/** Primary image path for gallery tile / story hero (hero → after → WIP → before). */
 export function pickPrimaryImage(dir) {
-  const names = listProjectImages(dir);
-  for (const stem of PRIORITY) {
-    const hit = names.find((n) => n.toLowerCase().startsWith(stem));
-    if (hit) return path.join(dir, hit);
+  const name = pickFeaturedImageName(dir);
+  if (!name) {
+    throw new Error('No project image found (hero, after, WIP-###, or before).');
   }
-  const wip = names
-    .filter((n) => /^WIP-/i.test(n))
-    .sort()
-    .at(0);
-  if (wip) return path.join(dir, wip);
-  throw new Error('No project image found (before, after, hero, or WIP-###).');
+  return path.join(dir, name);
 }
 
 /** Max images per unified FB / IG / Threads carousel in this repo. */

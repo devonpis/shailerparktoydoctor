@@ -55,7 +55,7 @@ node scripts/fix-project-image-orientation.mjs --all --vision   # needs OPENAI_A
 
 Rotation and resize share **one sharp pipeline** per file (`optimize-project-images.mjs` via `publish-webpage.mjs`), so you do not rotate then optimize separately (which would JPEG-compress twice). Orient-only files use `--orient-quality` 92; resize/convert uses 90%.
 
-**`publish-webpage.mjs`** (T-00024 story SEO): if **`index.html`** is missing, runs **`scaffold-project-story-html.mjs`** first (body + head tags from `config.json`). Then syncs **SEO meta** from current images: `<title>`, meta description, canonical, Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`), and **project-hero** (`hero` → `after` → `before`). Sets **`webpageUrl`** in config if empty. Use `--no-meta` to skip. Edit prose in `config.json` (`repairDetails`, `itemDetails`) before scaffold, or hand-edit `index.html` after (re-run publish to refresh meta/hero only).
+**`publish-webpage.mjs`** (T-00024 story SEO): if **`index.html`** is missing, runs **`scaffold-project-story-html.mjs`** first (body + head tags from `config.json`). Then syncs **SEO meta** from current images: `<title>`, meta description, canonical, Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`), and **project-hero** (`hero` → `after` → `WIP-001` → `before`). Sets **`webpageUrl`** in config if empty. Use `--no-meta` to skip. Edit prose in `config.json` (`repairDetails`, `itemDetails`) before scaffold, or hand-edit `index.html` after (re-run publish to refresh meta/hero only).
 
 Agent flow for **`publish <id> to webpage`**: after owner confirms → `publish-webpage.mjs` (images + validate + scaffold if needed + SEO meta) → `sync-projects-gallery-index.mjs <id>` → sitemap → commit/push when approved. Optional: `scaffold-project-story-html.mjs <id> --force` to regenerate body from config without re-optimizing images.
 
@@ -80,7 +80,7 @@ Use `--dry-run` first to preview. Social-only publish can skip this step; **webp
 Create **`projects/<folder>/index.html`** from [`projects/0000 - template/index.html.example`](../projects/0000%20-%20template/index.html.example).
 
 - Copy fields from `config.json` (see wireframe field map).
-- **Thumbnail / hero image:** first file found in order **hero → after → before → WIP-001** (any `.jpg` / `.jpeg` / `.png`).
+- **Thumbnail / hero image:** first file found in order **hero → after → WIP-001 → before** (any `.jpg` / `.jpeg` / `.png`).
 - **`<title>`:** `{projectName} — Shailer Park Toy Doctor`
 - **Nav (until T-00016 cutover):** “← All projects” → `/new/projects/`; site links → `/new/…`
 - **After cutover:** update story page links to `/projects/`, `/contact.html`, etc. (or re-copy from an updated template).

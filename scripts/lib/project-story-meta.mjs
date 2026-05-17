@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { listProjectImages, pickPrimaryImage } from './project-media.mjs';
+import { pickFeaturedImageName } from './project-media.mjs';
 
 export const SITE_ORIGIN = 'https://sptoydoctor.com.au';
 
@@ -12,24 +12,14 @@ export function storyImageUrl(folderName, fileName) {
   return `${storyCanonicalUrl(folderName)}${encodeURIComponent(fileName)}`;
 }
 
-/** Page hero: hero → after → before → first WIP (matches gallery / wireframe). */
+/** Page hero: hero → after → WIP-001… → before (same as gallery tile). */
 export function pickStoryHeroImageName(dir) {
-  try {
-    return path.basename(pickPrimaryImage(dir));
-  } catch {
-    return pickStoryOgImageName(dir);
-  }
+  return pickFeaturedImageName(dir);
 }
 
-/** Open Graph / social: after (repair result) → hero → before. */
+/** Open Graph image: same priority as story hero / gallery tile. */
 export function pickStoryOgImageName(dir) {
-  const names = listProjectImages(dir);
-  for (const stem of ['after', 'hero', 'before']) {
-    const hit = names.find((n) => n.toLowerCase().startsWith(stem));
-    if (hit) return hit;
-  }
-  const wip = names.filter((n) => /^wip-/i.test(n)).sort()[0];
-  return wip || null;
+  return pickFeaturedImageName(dir);
 }
 
 function stripForMeta(text) {

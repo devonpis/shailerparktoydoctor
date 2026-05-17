@@ -119,7 +119,7 @@ Desktop wireframe (mobile = same order, stacked full-width):
 **One rule everywhere** (gallery tiles, home featured, story hero, OG image):
 
 ```
-hero.*  →  after.*  →  before.*  →  WIP-001.*  (first WIP only for thumbnail)
+hero.*  →  after.*  →  WIP-001.*  →  before.*  (gallery tile, story hero, OG)
 ```
 
 - Resolve first existing file in that order (any of `.jpg` / `.jpeg` / `.png`).  
