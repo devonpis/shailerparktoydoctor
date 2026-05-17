@@ -4,8 +4,8 @@
   "title": "Jakks 48 in Stormtrooper Battle Buddy — electronics",
   "startDate": "2024-01-01",
   "endDate": "2024-01-01",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0012%20-%20Jakks%20First%20Order%20Stormtrooper%20Battle%20Buddy/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -16,11 +16,11 @@
     "Stormtrooper",
     "Jakks"
   ],
-  "description": "Jakks Pacific giant First Order Stormtrooper Battle Buddy — motion-sensor voice box cleaned and repaired so this 48-inch figure responds with movie lines when you walk past again.",
+  "description": "Jakks 48-inch First Order Stormtrooper Battle Buddy — battery contact repair after a long disassembly of the giant figure so motion detection and voice lines work reliably again.",
   "itemDetails": "Jakks Pacific Star Wars: The Force Awakens First Order Stormtrooper Battle Buddy (Colossal Big-Figs line; ~48 in / 122 cm tall). Full-body white and black First Order armour sculpt; TRY ME retail packaging indicates built-in electronics—motion presence detection with movie lines and sound effects; poseable elbow for blaster arm. UPC 039897908335 documented. Materials: moulded plastic, battery compartment (typical for Jakks large figs). Market: 2015–2016 retail (~AUD/USD $50–100 when new); oversized display/collectible, heavy and bulky for storage. Sources: Zavvi / UPC listings; eBay Battle Buddy descriptions.",
-  "repairDetails": "Giant Stormtrooper (legacy site gallery — short caption only; expand story when details are available).",
+  "repairDetails": "This Jakks Pacific First Order Stormtrooper Battle Buddy had gone quiet — no motion-triggered lines even with fresh batteries, pointing to the internal battery contacts.\n\nThe battery pack sits deep inside a 48-inch shell, so the job meant a slow, careful disassembly of the whole figure. We serviced the contacts and wiring at the box, then rebuilt the trooper and tested walk-by responses before return.",
   "skills": [
-    "needlework",
-    "electronic"
+    "electronic",
+    "mechanical"
   ]
 }

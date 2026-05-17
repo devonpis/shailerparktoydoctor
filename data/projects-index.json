@@ -1,11 +1,242 @@
 [
   {
+    "id": "0093",
+    "folder": "0093 - Tomy Big Loader white shells pair",
+    "projectName": "Tomy Big Loader white shells pair",
+    "title": "Tomy Big Loader white shells (pair) — body restoration",
+    "tags": [
+      "Tomy",
+      "BigLoader"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0093%20-%20Tomy%20Big%20Loader%20white%20shells%20pair/hero.jpg",
+    "url": "/projects/0093%20-%20Tomy%20Big%20Loader%20white%20shells%20pair/",
+    "endDate": "2024-02-02"
+  },
+  {
+    "id": "0015",
+    "folder": "0015 - Anpanman Kotoba Zukan DX",
+    "projectName": "Anpanman Kotoba Zukan DX",
+    "title": "Anpanman Kotoba Zukan DX — talking pen and book",
+    "tags": [
+      "Anpanman",
+      "educational"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0015%20-%20Anpanman%20Kotoba%20Zukan%20DX/hero.jpg",
+    "url": "/projects/0015%20-%20Anpanman%20Kotoba%20Zukan%20DX/",
+    "endDate": "2025-06-25"
+  },
+  {
+    "id": "0014",
+    "folder": "0014 - Tomy Big Loader blue power unit",
+    "projectName": "Tomy Big Loader blue power unit",
+    "title": "Tomy Big Loader blue power unit — motor and gearbox",
+    "tags": [
+      "Tomy",
+      "BigLoader"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0014%20-%20Tomy%20Big%20Loader%20blue%20power%20unit/hero.jpeg",
+    "url": "/projects/0014%20-%20Tomy%20Big%20Loader%20blue%20power%20unit/",
+    "endDate": "2024-02-02"
+  },
+  {
+    "id": "0013",
+    "folder": "0013 - Press heart talking bear",
+    "projectName": "Press-heart talking bear",
+    "title": "Vintage Press-heart talking bear — voice module",
+    "tags": [
+      "teddy",
+      "talking",
+      "vintage"
+    ],
+    "skills": [
+      "needlework",
+      "electronic"
+    ],
+    "thumbnail": "/projects/0013%20-%20Press%20heart%20talking%20bear/hero.jpg",
+    "url": "/projects/0013%20-%20Press%20heart%20talking%20bear/",
+    "endDate": "2024-01-01"
+  },
+  {
+    "id": "0012",
+    "folder": "0012 - Jakks First Order Stormtrooper Battle Buddy",
+    "projectName": "Jakks First Order Stormtrooper Battle Buddy",
+    "title": "Jakks 48 in Stormtrooper Battle Buddy — electronics",
+    "tags": [
+      "StarWars",
+      "Stormtrooper",
+      "Jakks"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0012%20-%20Jakks%20First%20Order%20Stormtrooper%20Battle%20Buddy/hero.jpg",
+    "url": "/projects/0012%20-%20Jakks%20First%20Order%20Stormtrooper%20Battle%20Buddy/",
+    "endDate": "2024-01-01"
+  },
+  {
+    "id": "0011",
+    "folder": "0011 - Ahsoka Tano Legacy lightsabers",
+    "projectName": "Ahsoka Tano Legacy lightsabers",
+    "title": "Ahsoka Legacy lightsaber set — hilt electronics",
+    "tags": [
+      "StarWars",
+      "Ahsoka",
+      "lightsaber"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0011%20-%20Ahsoka%20Tano%20Legacy%20lightsabers/hero.jpg",
+    "url": "/projects/0011%20-%20Ahsoka%20Tano%20Legacy%20lightsabers/",
+    "endDate": "2024-01-01"
+  },
+  {
+    "id": "0010",
+    "folder": "0010 - Guitar Hero World Tour guitar",
+    "projectName": "Guitar Hero World Tour guitar",
+    "title": "Guitar Hero World Tour guitar — wireless controller repair",
+    "tags": [
+      "GuitarHero",
+      "controller"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0010%20-%20Guitar%20Hero%20World%20Tour%20guitar/hero.jpg",
+    "url": "/projects/0010%20-%20Guitar%20Hero%20World%20Tour%20guitar/",
+    "endDate": "2024-01-01"
+  },
+  {
+    "id": "0009",
+    "folder": "0009 - Hey Duggee interactive plush",
+    "projectName": "Hey Duggee interactive plush",
+    "title": "Hey Duggee interactive plush — sound, lights and plush",
+    "tags": [
+      "HeyDuggee",
+      "plush",
+      "interactive"
+    ],
+    "skills": [
+      "needlework",
+      "electronic"
+    ],
+    "thumbnail": "/projects/0009%20-%20Hey%20Duggee%20interactive%20plush/hero.jpg",
+    "url": "/projects/0009%20-%20Hey%20Duggee%20interactive%20plush/",
+    "endDate": "2024-01-01"
+  },
+  {
+    "id": "0008",
+    "folder": "0008 - Large floppy brown cream dog",
+    "projectName": "Large floppy brown cream dog",
+    "title": "Floppy brown and cream dog plush — clean and mend",
+    "tags": [
+      "plush",
+      "dog"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0008%20-%20Large%20floppy%20brown%20cream%20dog/hero.jpg",
+    "url": "/projects/0008%20-%20Large%20floppy%20brown%20cream%20dog/",
+    "endDate": "2024-01-01"
+  },
+  {
+    "id": "0007",
+    "folder": "0007 - Patchwork teddy bear with heart",
+    "projectName": "Patchwork teddy bear with heart",
+    "title": "Patchwork teddy — head reattach, restuff and refresh",
+    "tags": [
+      "teddy",
+      "plush"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0007%20-%20Patchwork%20teddy%20bear%20with%20heart/hero.jpg",
+    "url": "/projects/0007%20-%20Patchwork%20teddy%20bear%20with%20heart/",
+    "endDate": "2024-01-01"
+  },
+  {
+    "id": "0006",
+    "folder": "0006 - Tomy Plarail Edward",
+    "projectName": "Tomy Plarail Edward",
+    "title": "Tomy Plarail Edward — motor rewire and gearbox clean",
+    "tags": [
+      "Tomy",
+      "Plarail",
+      "Thomas"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0006%20-%20Tomy%20Plarail%20Edward/hero.jpeg",
+    "url": "/projects/0006%20-%20Tomy%20Plarail%20Edward/",
+    "endDate": "2024-01-01"
+  },
+  {
+    "id": "0005",
+    "folder": "0005 - Vintage giant Smurf plush",
+    "projectName": "Vintage giant Smurf plush",
+    "title": "Peyo giant Smurf plush — restuff and deep clean",
+    "tags": [
+      "Smurf",
+      "plush",
+      "vintage"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0005%20-%20Vintage%20giant%20Smurf%20plush/hero.jpeg",
+    "url": "/projects/0005%20-%20Vintage%20giant%20Smurf%20plush/",
+    "endDate": "2024-01-01"
+  },
+  {
+    "id": "0004",
+    "folder": "0004 - Gemmy Rocky Balboa",
+    "projectName": "Gemmy Rocky Balboa",
+    "title": "Gemmy Rocky Balboa — gears, switch and stage mount",
+    "tags": [
+      "Gemmy",
+      "Rocky",
+      "animatronic"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0004%20-%20Gemmy%20Rocky%20Balboa/hero.jpeg",
+    "url": "/projects/0004%20-%20Gemmy%20Rocky%20Balboa/",
+    "endDate": "2024-01-01"
+  },
+  {
     "id": "0003",
     "folder": "0003 - Donald Duck",
     "projectName": "Vintage Illco Donald Duck wind-up",
     "title": "Illco Donald Duck wind-up — gear repair",
-    "tags": ["Vintage toy repair", "Donald Duck", "Wind-up toy"],
-    "skills": ["mechanical"],
+    "tags": [
+      "Vintage toy repair",
+      "Donald Duck",
+      "Wind-up toy"
+    ],
+    "skills": [
+      "mechanical"
+    ],
     "thumbnail": "/projects/0003%20-%20Donald%20Duck/after.jpg",
     "url": "/projects/0003%20-%20Donald%20Duck/",
     "endDate": "2026-05-06"
@@ -15,8 +246,12 @@
     "folder": "0001 - Saielle of the Willow Tree",
     "projectName": "Saielle of the Willow Tree",
     "title": "Saielle of the Willow Tree",
-    "tags": ["Figure restoration"],
-    "skills": ["mechanical"],
+    "tags": [
+      "Figure restoration"
+    ],
+    "skills": [
+      "mechanical"
+    ],
     "thumbnail": "/projects/0001%20-%20Saielle%20of%20the%20Willow%20Tree/hero.jpeg",
     "url": "/projects/0001%20-%20Saielle%20of%20the%20Willow%20Tree/",
     "endDate": "2026-05-16"
