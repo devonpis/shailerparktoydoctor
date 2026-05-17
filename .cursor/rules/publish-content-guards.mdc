@@ -37,7 +37,7 @@ Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/pu
 
 - `status` === `"DONE"` for webpage/social publish
 - Presentable metadata (see `scripts/lib/project-readiness.mjs`) — not skill-list stubs, legacy gallery captions, or `T-00030` / timesheet debug text
-- `title` / `description` — ≤ **500** characters; **Threads** summary ≤ **100**
+- `title` / `description` — ≤ **500** characters; **Threads** summary ≤ **200** (rewritten, not truncated with `…`)
 - `tags` — array, **1–30** strings (no `#` in JSON)
 - `skills` — non-empty; only `needlework`, `electronic`, `mechanical`, `paintjob`
 - **Media** — at least one project image
@@ -48,7 +48,7 @@ Also check **description + appended hashtags** ≤ **500** characters total (FB 
 
 - One `tags` array in `config.json` is the source of truth.
 - **Instagram:** hashtags go in **caption** (max **30**).
-- **Threads:** **no hashtags**; post text is `buildThreadsCaption()` — ≤ **100** characters, summarized from `description` (URLs stripped). See [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md).
+- **Threads:** **no hashtags**; post text is `buildThreadsCaption()` — ≤ **200** characters, **rewritten** from `description` via `rewriteForThreads()` (URLs stripped; no `…` truncation). See [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md).
 - **Facebook:** hashtags go in post **message** (same caption string as IG).
 - There is no shared Meta “tags” API field for all three — FB/IG use `description` + `tags`; Threads uses the short summary only.
 
@@ -61,6 +61,6 @@ Also check **description + appended hashtags** ≤ **500** characters total (FB 
 
 ## Preview summary must include
 
-After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **description length** (x/500), **Threads text** (≤100, no hashtags), **tag count** (FB/IG), **included** social images (x/10), **omitted** images when truncation applies, and validation **OK** or list failures.
+After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **description length** (x/500), **Threads text** (≤200 rewritten, no hashtags), **tag count** (FB/IG), **included** social images (x/10), **omitted** images when truncation applies, and validation **OK** or list failures.
 
 If validation fails, **do not** proceed to publish; report failures and ask the user to fix `config.json` or add media.

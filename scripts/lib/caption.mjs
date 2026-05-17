@@ -1,31 +1,20 @@
 import { buildHashtagLine } from './hashtag.mjs';
+import {
+  THREADS_CAPTION_MAX,
+  cleanThreadsSource,
+  rewriteForThreads,
+} from './threads-caption-rewrite.mjs';
 
 const DESCRIPTION_MAX_CHARS = 500;
 
-/** Threads post text at publish time (stricter than config `description` max). */
-export const THREADS_CAPTION_MAX = 100;
+export { THREADS_CAPTION_MAX, cleanThreadsSource, rewriteForThreads };
 
-/** Short caption for Threads: no hashtags, no URLs, ≤ {@link THREADS_CAPTION_MAX} chars. */
-export function summarizeForThreads(text, maxChars = THREADS_CAPTION_MAX) {
-  let s = String(text || '')
-    .trim()
-    .replace(/https?:\/\/\S+/gi, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-  if (!s) return '';
-  if (s.length <= maxChars) return s;
+/** @deprecated Use rewriteForThreads */
+export const summarizeForThreads = rewriteForThreads;
 
-  const budget = maxChars - 1;
-  const cut = s.slice(0, budget);
-  const lastSpace = cut.lastIndexOf(' ');
-  if (lastSpace > budget * 0.45) {
-    return `${cut.slice(0, lastSpace).trim()}…`;
-  }
-  return `${cut.trim()}…`;
-}
-
+/** Threads post text: rewritten summary of `description` (≤200 chars, no hashtags). */
 export function buildThreadsCaption(config) {
-  return summarizeForThreads(config.description || '');
+  return rewriteForThreads(config.description || '');
 }
 
 export function buildCaption(config, { includeHashtags = true } = {}) {

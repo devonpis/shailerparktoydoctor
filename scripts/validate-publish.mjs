@@ -8,7 +8,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildHashtagLine } from './lib/hashtag.mjs';
-import { buildThreadsCaption, THREADS_CAPTION_MAX } from './lib/caption.mjs';
+import {
+  buildThreadsCaption,
+  cleanThreadsSource,
+  THREADS_CAPTION_MAX,
+} from './lib/caption.mjs';
 import { SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
 import {
   assertStatusDone,
@@ -126,12 +130,9 @@ function validateConfig(config, dir) {
     errors.push(
       `Threads caption is ${threadsCaption.length} characters; max ${THREADS_CAPTION_MAX} (no hashtags).`
     );
-  } else if (
-    description &&
-    (description.length > THREADS_CAPTION_MAX || threadsCaption.endsWith('…'))
-  ) {
+  } else if (description && cleanThreadsSource(description).length > THREADS_CAPTION_MAX) {
     warnings.push(
-      `Threads will use a shortened caption (${threadsCaption.length}/${THREADS_CAPTION_MAX} chars, no hashtags, URLs stripped).`
+      `Threads will use a rewritten summary (${threadsCaption.length}/${THREADS_CAPTION_MAX} chars, no hashtags, URLs stripped).`
     );
   }
 
