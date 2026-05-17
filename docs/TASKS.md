@@ -37,6 +37,8 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
 | T-00024 | Todo | Website rebuild: SEO metadata completeness | BR-015 |
 | T-00025 | Todo | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
+| T-00026 | Todo | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
+| T-00027 | Todo | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
 
 ---
 
@@ -311,3 +313,39 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Depends on** | T-00011 (prior import patterns in [`import-site-projects.mjs`](../scripts/import-site-projects.mjs)) |
 | **Related** | T-00006 (`validate-publish.mjs` after owner fills content), T-00015 (go-live after `DONE`), README *Project management* |
 | **Out of scope** | Auto-publishing; downloading images from URLs; AI rewrite of copy; merging unrelated repairs that only share a vague name (merge rules must be conservative + reported) |
+
+---
+
+## T-00026 — Social publish: image cap + priority selection (WIP last)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-020, BR-012 |
+| **Goal** | When a project has more images than the **cross-platform social cap**, publish only up to the limit using **hero → before → after → WIP** priority. **Webpage** publish remains unlimited. |
+| **Cap** | **10** images per carousel (lowest of FB / IG / Threads for this repo’s unified flow; see BR-020). Centralize constant in [`scripts/lib/social-publish.mjs`](../scripts/lib/social-publish.mjs) / [`scripts/lib/project-media.mjs`](../scripts/lib/project-media.mjs). |
+| **Selection** | Add e.g. `selectImagesForSocial(dir)` — if `listPublishImagePaths(dir).length` ≤ cap, use all; else keep all `hero` / `before` / `after` stems present, then fill remaining slots with `WIP-###` in numeric order until cap; drop excess WIP. Re-sort **selected** paths for carousel **display** (story order: before → WIP → hero → after). |
+| **Workflow** | Wire into [`scripts/publish-social.mjs`](../scripts/publish-social.mjs) (replace naive `slice(0, 10)`). **Publish preview** (agent + `--dry-run`) must list **included** vs **omitted** files when truncation applies. |
+| **Docs** | Extend [`docs/publish-content-guards.md`](publish-content-guards.md) with image-cap table and priority; update [`.cursor/rules/publish-content-guards.mdc`](../.cursor/rules/publish-content-guards.mdc) preview checklist. |
+| **Depends on** | T-00006, T-00007 (existing publish stack) |
+| **Related** | T-00027 (smaller files help Meta fetch; separate concern) |
+| **Out of scope** | Changing webpage gallery limits; video carousel limits; per-platform different caps in one run |
+
+---
+
+## T-00027 — Project image optimize (batch + on-demand, PNG→JPEG, HTML paths)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-021 |
+| **Goal** | One toolchain to **compress and normalize** repair images under `projects/`, with a **batch** mode for existing folders and **on-demand** mode after new files are added. |
+| **Script** | e.g. `scripts/optimize-project-images.mjs` — `node scripts/optimize-project-images.mjs [--all \| <project-id-or-path>] [--dry-run] [--quality 85] [--max-width N]` (exact flags TBD). Loop convention files: `before`, `after`, `hero`, `WIP-###` (+ optional other gallery assets in the folder). |
+| **PNG → JPEG** | Convert `.png` publish images to `.jpg` (or `.jpeg`); remove or archive source PNG when successful (behaviour documented; default prefer **replace** with backup optional `--keep-originals`). |
+| **JPEG** | Re-encode when over size/dimension thresholds (configurable); skip when already small enough. |
+| **HTML / JSON** | After rename, update references in that project’s `index.html` (and any generated snippet paths in `new/data/projects-index.json` **thumbnail** fields if they point at renamed files). Report files changed. |
+| **Workflow** | Document in [`docs/website-go-live.md`](website-go-live.md) as recommended **before** `publish … to webpage` (not required for social-only). README *Project management* — one-line pointer. |
+| **Dependency** | Add a Node image library (e.g. **sharp**) as a dev dependency; document install in script header or README. |
+| **Depends on** | T-00013 (story pages exist); optional before T-00016 cutover |
+| **Related** | T-00026 (social cap is count, not bytes); T-00015 (go-live doc) |
+| **Out of scope** | Optimizing site-wide `images/` marketing assets unless owner extends scope; auto-run on git commit; changing publish caption logic |

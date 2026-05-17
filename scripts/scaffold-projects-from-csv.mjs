@@ -107,7 +107,9 @@ function isClientNoteRow(orderName) {
   if (!orderName) return true;
   if (/@|email/i.test(orderName)) return true;
   if (/:\s*(\d{4}|email)/i.test(orderName)) return true;
+  if (/\b0\d{3}[\s-]?\d{3}[\s-]?\d{3}\b/.test(orderName)) return true;
   if (/^\d[\d\s]{7,}$/.test(orderName.replace(/\s/g, ''))) return true;
+  if (/^[\w\s]+-\s*0\d/.test(orderName)) return true;
   return false;
 }
 
@@ -148,6 +150,74 @@ function normalizeKey(name) {
     .replace(/[^a-z0-9]+/g, ' ')
     .trim()
     .replace(/\s+/g, ' ');
+}
+
+/** Multi-item batch parent (Mattel dolls, Pokemon x 2, Tonka x 3, etc.). */
+function isMultiItemParentName(name) {
+  const n = name.toLowerCase();
+  return (
+    /\bdolls?\b/.test(n) ||
+    /\bx\s*\d+\b/.test(n) ||
+    /\bfigures\b.*\bx\s*\d+/i.test(n) ||
+    /&\s*friends/i.test(n) ||
+    /\d+\s*x\s+/i.test(n)
+  );
+}
+
+function isSubPartName(name) {
+  return /^doll\s*\d+$/i.test(name.trim());
+}
+
+function isQuoteLine(jobDesc, task) {
+  const s = `${jobDesc} ${task}`.toLowerCase();
+  return s.includes('quote');
+}
+
+function headerRowHasRepair(row, cols) {
+  const task = cell(row, cols.task).toLowerCase();
+  const mins = minutesFromRow(row, cols);
+  return mins > 0 && task && !task.includes('communication') && !task.includes('sourcing');
+}
+
+function parentHeaderIsBillingOnly(order) {
+  if (order.headerHadRepair) return false;
+  if (!order.lines.length) return true;
+  return order.lines.every((l) => {
+    const t = (l.task || '').toLowerCase();
+    return t.includes('communication') || t === '(no task)';
+  });
+}
+
+/** Hybrid (C): attach undated sub-toy rows to the open receive-date batch when appropriate. */
+function shouldAttachSubItem(parent, subName, subRow, cols) {
+  if (!parent?.receiveDate) return false;
+  if (isClientNoteRow(subName)) return false;
+
+  if (isSubPartName(subName)) return true;
+  if (isMultiItemParentName(parent.orderName)) return true;
+
+  const subJob = cell(subRow, cols.jobDescription);
+  const subTask = cell(subRow, cols.task);
+  if (isQuoteLine(subJob, subTask) && !isSubPartName(subName)) return false;
+
+  if (parent.headerHadRepair && !isMultiItemParentName(parent.orderName)) return false;
+
+  const subHasWork =
+    minutesFromRow(subRow, cols) > 0 ||
+    (subTask && !subTask.toLowerCase().includes('communication'));
+  if (parentHeaderIsBillingOnly(parent) && subHasWork) return true;
+
+  return false;
+}
+
+function ensureSubItem(order, name) {
+  if (!order.subItems) order.subItems = [];
+  let sub = order.subItems.find((s) => normalizeKey(s.orderName) === normalizeKey(name));
+  if (!sub) {
+    sub = { orderName: name, jobDescription: '', lines: [] };
+    order.subItems.push(sub);
+  }
+  return sub;
 }
 
 function folderNameFromOrder(orderName) {
@@ -195,14 +265,124 @@ function nextProjectId(existing) {
   return String(max + 1).padStart(4, '0');
 }
 
-function findExistingMatch(orderName, existing) {
+function findExactMatch(orderName, existing) {
   const key = normalizeKey(orderName);
   if (!key) return null;
+  return existing.find((e) => e.key === key || e.folderKey === key) || null;
+}
+
+function findNearMatch(orderName, existing) {
+  const key = normalizeKey(orderName);
+  if (!key) return null;
+  if (findExactMatch(orderName, existing)) return null;
   return (
-    existing.find((e) => e.key === key || e.folderKey === key) ||
-    existing.find((e) => key.includes(e.key) || e.key.includes(key)) ||
-    null
+    existing.find((e) => {
+      const ek = e.key;
+      if (ek.length < 4) return false;
+      return key.includes(ek) || ek.includes(key);
+    }) || null
   );
+}
+
+function findReplicationOverview(planned, skipped, existing, mergeLog, bundleLog) {
+  const repoDupes = new Map();
+  for (const e of existing) {
+    const k = e.key;
+    if (!repoDupes.has(k)) repoDupes.set(k, []);
+    repoDupes.get(k).push(e.folder);
+  }
+  const repoDuplicateFolders = [...repoDupes.entries()].filter(([, folders]) => folders.length > 1);
+
+  const idCollisions = new Map();
+  for (const e of existing) {
+    if (e.id === '0000') continue;
+    if (!idCollisions.has(e.id)) idCollisions.set(e.id, []);
+    idCollisions.get(e.id).push(e.folder);
+  }
+  const repoIdDuplicates = [...idCollisions.entries()].filter(([, folders]) => folders.length > 1);
+
+  const csvKeyCounts = new Map();
+  for (const p of planned) {
+    const k = normalizeKey(p.order.orderName);
+    csvKeyCounts.set(k, (csvKeyCounts.get(k) || 0) + 1);
+  }
+  const csvDupesInPlan = [...csvKeyCounts.entries()].filter(([, n]) => n > 1);
+
+  const exactSkipped = skipped.filter((s) => s.match);
+  const nearMatches = [];
+  for (const p of planned) {
+    const near = findNearMatch(p.order.orderName, existing);
+    if (near) nearMatches.push({ csv: p.order.orderName, folder: near.folder, id: near.id });
+  }
+  const newProjects = planned.filter((p) => !p.existingMatch);
+
+  return {
+    repoDuplicateFolders,
+    repoIdDuplicates,
+    csvDupesInPlan,
+    exactSkipped,
+    nearMatches,
+    newProjects,
+    mergeLog,
+    bundleLog,
+  };
+}
+
+function printReplicationOverview(overview) {
+  console.log('--- Replication overview ---\n');
+
+  if (overview.bundleLog.length) {
+    console.log(`Bundled sub-rows (${overview.bundleLog.length}):`);
+    overview.bundleLog.forEach((m) => console.log(`  ${m}`));
+    console.log('');
+  }
+
+  if (overview.mergeLog.length) {
+    console.log(`CSV duplicate names merged (${overview.mergeLog.length}):`);
+    overview.mergeLog.forEach((m) => console.log(`  ${m}`));
+    console.log('');
+  }
+
+  if (overview.repoIdDuplicates.length) {
+    console.log(`Repo: duplicate project IDs (${overview.repoIdDuplicates.length}) — resolve before import:`);
+    overview.repoIdDuplicates.forEach(([id, folders]) => {
+      console.log(`  ${id} → ${folders.join(' | ')}`);
+    });
+    console.log('');
+  }
+
+  if (overview.repoDuplicateFolders.length) {
+    console.log(`Repo: same normalized name in multiple folders (${overview.repoDuplicateFolders.length}):`);
+    overview.repoDuplicateFolders.forEach(([key, folders]) => {
+      console.log(`  "${key}" → ${folders.join(', ')}`);
+    });
+    console.log('');
+  }
+
+  if (overview.exactSkipped.length) {
+    console.log(`Skip — exact name match in repo (${overview.exactSkipped.length}):`);
+    overview.exactSkipped.forEach((s) => {
+      console.log(`  CSV "${s.order}" → ${s.match.folder} (${s.match.id})`);
+    });
+    console.log('');
+  }
+
+  if (overview.nearMatches.length) {
+    console.log(`Near matches — review before import (${overview.nearMatches.length}):`);
+    overview.nearMatches.forEach((n) => {
+      console.log(`  CSV "${n.csv}" ≈ ${n.folder} (${n.id})`);
+    });
+    console.log('');
+  }
+
+  if (overview.csvDupesInPlan.length) {
+    console.log('Warning: duplicate normalized names in import plan:');
+    overview.csvDupesInPlan.forEach(([key, n]) => console.log(`  "${key}" × ${n}`));
+    console.log('');
+  }
+
+  console.log(`New folders to create: ${overview.newProjects.length}`);
+  console.log(`Updates (with --force-existing): ${overview.planned?.length - overview.newProjects.length || 0}`);
 }
 
 function minutesFromRow(row, cols) {
@@ -211,19 +391,48 @@ function minutesFromRow(row, cols) {
   return hr * 60 + min;
 }
 
+function appendLineToOrder(order, row, cols) {
+  const task = cell(row, cols.task);
+  const jobDesc = cell(row, cols.jobDescription);
+  const line = {
+    task: task || '(no task)',
+    jobDescription: jobDesc,
+    minutes: minutesFromRow(row, cols),
+    dateStart: cell(row, cols.dateStart),
+    dateEnd: cell(row, cols.dateEnd),
+  };
+  order.lines.push(line);
+
+  const ds = parseFlexibleDate(line.dateStart);
+  const de = parseFlexibleDate(line.dateEnd);
+  if (ds && (!order.dateStart || ds < order.dateStart)) order.dateStart = ds;
+  if (de && (!order.dateEnd || de > order.dateEnd)) order.dateEnd = de;
+
+  const inc = cell(row, cols.income);
+  if (inc) order.income = inc;
+  const mat = cell(row, cols.materialCost);
+  if (mat) order.materialCost = mat;
+  const prof = cell(row, cols.profit);
+  if (prof) order.profit = prof;
+  if (jobDesc && !order.jobDescription) order.jobDescription = jobDesc;
+}
+
 function parseOrders(rows, cols) {
   const orders = [];
   let current = null;
+  const bundleLog = [];
 
-  const startOrder = (row) => {
+  const startOrder = (row, { receiveDateOverride } = {}) => {
     const orderName = cell(row, cols.orderName);
-    const receiveDate = cell(row, cols.receiveDate);
+    const receiveDate = receiveDateOverride ?? cell(row, cols.receiveDate);
     if (!orderName || isClientNoteRow(orderName)) return null;
     return {
       receiveDate,
       orderName,
       jobDescription: cell(row, cols.jobDescription),
+      headerHadRepair: headerRowHasRepair(row, cols),
       lines: [],
+      subItems: [],
       dateStart: null,
       dateEnd: null,
       income: '',
@@ -240,7 +449,6 @@ function parseOrders(rows, cols) {
     const jobDesc = cell(row, cols.jobDescription);
 
     if (isClientNoteRow(orderName) && !receiveDate) {
-      /* Client/contact rows are never written to config (see client-privacy rule). */
       continue;
     }
 
@@ -249,6 +457,7 @@ function parseOrders(rows, cols) {
       if (o) {
         current = o;
         orders.push(current);
+        appendLineToOrder(current, row, cols);
       }
       continue;
     }
@@ -256,44 +465,36 @@ function parseOrders(rows, cols) {
     if (orderName && !isClientNoteRow(orderName)) {
       const looksLikeSubJob =
         task || jobDesc || cell(row, cols.timeHr) || cell(row, cols.timeMin);
+
+      if (current && shouldAttachSubItem(current, orderName, row, cols)) {
+        const sub = ensureSubItem(current, orderName);
+        if (jobDesc) sub.jobDescription = jobDesc;
+        if (looksLikeSubJob) appendLineToOrder(sub, row, cols);
+        else sub.lines.push({ task: '(listed)', jobDescription: '', minutes: 0, dateStart: '', dateEnd: '' });
+        bundleLog.push(`Bundled "${orderName}" → "${current.orderName}"`);
+        continue;
+      }
+
       if (!current || looksLikeSubJob) {
-        const o = startOrder(row);
+        const o = startOrder(row, {
+          receiveDateOverride: current?.receiveDate || '',
+        });
         if (o) {
           current = o;
           orders.push(current);
+          if (looksLikeSubJob) appendLineToOrder(current, row, cols);
         }
-      } else if (!isClientNoteRow(orderName)) {
+      } else {
         current.notes.push(`Also: ${orderName}`);
       }
       continue;
     }
 
     if (!current) continue;
-
-    const line = {
-      task: task || '(no task)',
-      jobDescription: jobDesc,
-      minutes: minutesFromRow(row, cols),
-      dateStart: cell(row, cols.dateStart),
-      dateEnd: cell(row, cols.dateEnd),
-    };
-    current.lines.push(line);
-
-    const ds = parseFlexibleDate(line.dateStart);
-    const de = parseFlexibleDate(line.dateEnd);
-    if (ds && (!current.dateStart || ds < current.dateStart)) current.dateStart = ds;
-    if (de && (!current.dateEnd || de > current.dateEnd)) current.dateEnd = de;
-
-    const inc = cell(row, cols.income);
-    if (inc) current.income = inc;
-    const mat = cell(row, cols.materialCost);
-    if (mat) current.materialCost = mat;
-    const prof = cell(row, cols.profit);
-    if (prof) current.profit = prof;
-    if (jobDesc && !current.jobDescription) current.jobDescription = jobDesc;
+    appendLineToOrder(current, row, cols);
   }
 
-  return orders;
+  return { orders, bundleLog };
 }
 
 function mergeDuplicateOrders(orders) {
@@ -321,15 +522,23 @@ function mergeDuplicateOrders(orders) {
   return { merged, mergeLog };
 }
 
+function formatLineBullet(line) {
+  const hrs = line.minutes ? `${(line.minutes / 60).toFixed(2)}h` : '';
+  const range = [line.dateStart, line.dateEnd].filter(Boolean).join(' → ');
+  return `- ${line.task}${line.jobDescription ? ` (${line.jobDescription})` : ''}${hrs ? ` — ${hrs}` : ''}${range ? ` — ${range}` : ''}`;
+}
+
 function buildRepairDetails(order) {
   const parts = [];
   if (order.jobDescription) parts.push(order.jobDescription);
-  for (const line of order.lines) {
-    const hrs = line.minutes ? `${(line.minutes / 60).toFixed(2)}h` : '';
-    const range = [line.dateStart, line.dateEnd].filter(Boolean).join(' → ');
-    parts.push(
-      `- ${line.task}${line.jobDescription ? ` (${line.jobDescription})` : ''}${hrs ? ` — ${hrs}` : ''}${range ? ` — ${range}` : ''}`
-    );
+  for (const line of order.lines) parts.push(formatLineBullet(line));
+  if (order.subItems?.length) {
+    parts.push('', 'Sub-items:');
+    for (const sub of order.subItems) {
+      parts.push('', `### ${sub.orderName}`);
+      if (sub.jobDescription) parts.push(sub.jobDescription);
+      for (const line of sub.lines) parts.push(formatLineBullet(line));
+    }
   }
   const safeNotes = order.notes.filter((n) => n && !isClientNoteRow(n));
   if (safeNotes.length) parts.push('', 'Notes:', ...safeNotes.map((n) => `- ${n}`));
@@ -386,7 +595,7 @@ function main() {
   }
   const cols = buildColumnMap(rows[headerIdx]);
   const dataRows = rows.slice(headerIdx + 1);
-  const orders = parseOrders(dataRows, cols);
+  const { orders, bundleLog } = parseOrders(dataRows, cols);
   const { merged, mergeLog } = mergeDuplicateOrders(orders);
 
   const existing = listExistingProjects();
@@ -395,7 +604,7 @@ function main() {
   const skipped = [];
 
   for (const order of merged) {
-    const match = findExistingMatch(order.orderName, existing);
+    const match = findExactMatch(order.orderName, existing);
     const folderLabel = folderNameFromOrder(order.orderName);
     if (!folderLabel) continue;
 
@@ -434,28 +643,23 @@ function main() {
     });
   }
 
+  const overview = findReplicationOverview(planned, skipped, existing, mergeLog, bundleLog);
+  overview.planned = planned;
+
   console.log(`CSV: ${csvPath}`);
-  console.log(`Parsed ${orders.length} order group(s), ${merged.length} after merge.\n`);
+  console.log(
+    `Parsed ${orders.length} order group(s), ${merged.length} after name-merge (hybrid batch grouping).\n`
+  );
 
-  if (mergeLog.length) {
-    console.log('Merge:');
-    mergeLog.forEach((m) => console.log(`  ${m}`));
-    console.log('');
-  }
+  printReplicationOverview(overview);
 
-  if (skipped.length) {
-    console.log(`Skip ${skipped.length} (existing / protected):`);
-    skipped.slice(0, 15).forEach((s) => console.log(`  ${s.order} — ${s.reason}`));
-    if (skipped.length > 15) console.log(`  … and ${skipped.length - 15} more`);
-    console.log('');
-  }
-
-  console.log(`${dryRun ? 'Would create' : 'Create'} ${planned.length} project folder(s):`);
-  planned.slice(0, 25).forEach((p) => {
+  const toCreate = planned.filter((p) => !p.existingMatch || forceExisting);
+  console.log(`${dryRun ? 'Would write' : 'Write'} ${toCreate.length} project config(s):`);
+  toCreate.forEach((p) => {
+    const subs = p.order.subItems?.length ? ` [+${p.order.subItems.length} sub-item(s)]` : '';
     const tag = p.existingMatch && forceExisting ? ' (update)' : '';
-    console.log(`  ${p.dirName}${tag}`);
+    console.log(`  ${p.dirName}${subs}${tag}`);
   });
-  if (planned.length > 25) console.log(`  … and ${planned.length - 25} more`);
 
   if (dryRun) return;
 

@@ -130,3 +130,35 @@ The owner may supply a **CSV** listing repairs to onboard in bulk. A script (or 
 ## BR-019 — No customer PII in the repository
 
 Customer-identifying information (names, phones, emails, addresses on repair jobs) must **not** appear in tracked project content, except **Google review author names** (and optional public Maps profile URLs) in `googleReview` / testimonials, and the **business** Google Maps listing link in site copy. Agents and import scripts must enforce this. See [`.cursor/rules/client-privacy-no-pii-in-repo.mdc`](../.cursor/rules/client-privacy-no-pii-in-repo.mdc).
+
+---
+
+## BR-020 — Social publish image cap and priority
+
+When posting **photos** to **Facebook, Instagram, and Threads** with one shared carousel, the repo uses the **lowest** per-post image count across those three APIs. Today that binding limit is **10** images per carousel ([Instagram](https://developers.facebook.com/docs/instagram-api/reference/ig-user/media/); Facebook multi-photo posts align with the same cap in [`scripts/lib/social-publish.mjs`](../scripts/lib/social-publish.mjs); Threads allows more but is not the driver).
+
+If a project folder has **more** publishable images than the cap, **social** publish must **select** which files to upload using this **priority** (keep higher tiers first; drop lower tiers until within the cap):
+
+1. **`hero`**
+2. **`before`**
+3. **`after`**
+4. **`WIP-###`** (lowest priority — omit excess WIP shots first)
+
+Within a tier, preserve numeric WIP order. **Carousel display order** on the post may still follow story order (before → WIP → hero → after) for the **selected** set.
+
+**Webpage** publishing has **no** image-count cap — all convention-named images may appear on the repair story page.
+
+Selection rules, preview output, and script behaviour belong in [`docs/publish-content-guards.md`](publish-content-guards.md) and the publish workflow (**T-00026**).
+
+---
+
+## BR-021 — Project image optimization (compress / PNG → JPEG)
+
+Repair images under `projects/` should be **web-friendly** (reasonable file size, JPEG for photos). The repo provides:
+
+1. **Batch** optimization — one command to process **all** existing project folders (and optionally legacy `images/` if in scope).
+2. **On-demand** optimization — same tool scoped to one project folder after the owner adds new files.
+
+**PNG** photos (common from phones/export) should be converted to **JPEG** with configurable quality; large existing JPEGs may be recompressed in place when over a size threshold. When a file is renamed (`hero.png` → `hero.jpg`), any **HTML** that references the old path (e.g. `projects/<folder>/index.html`, gallery JSON) must be **updated** to match.
+
+Recommended as an optional step **before** webpage go-live (see [`docs/website-go-live.md`](website-go-live.md)); **not** required for social-only publish if images already meet Meta size guidance. Implementation: **T-00027**.
