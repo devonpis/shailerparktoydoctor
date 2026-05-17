@@ -53,7 +53,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00039 | Done | On-demand project image rotation (portrait/landscape) | BR-034 |
 | T-00040 | Done | Home highlight importance + six tiles | BR-015 |
 | T-00041 | Done | Publish legacy repair stories 0004–0015 + 0093 to HTML | BR-004, BR-015 |
-| T-00042 | Todo | Publish repairs: Kota, Verna, Homer Santa, Lucy, Lulla, Ducksley, Yui (0088) | BR-004, BR-015 |
+| T-00042 | Done | Publish repairs: Kota, Verna, Homer Santa, Lucy, Lulla, Ducksley, Yui (0088) | BR-004, BR-015 |
 | T-00043 | Done | Home page: add Dr. Mechanic; split mechanical from Dr. Hobby | BR-014, BR-015 |
 | — | — | Skill categories: four IDs only (`docs/project-skills.md`, BR-028) | BR-028 |
 
@@ -556,7 +556,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 |-------|-------|
 | **Status** | Done |
 | **Requirements** | BR-015 |
-| **Outcome** | Optional **`importance`** in `config.json` (template + README). Home **Some Of Our Patients' Stories**: highest **importance** = lead story; next six = `.highlight-tiles` (3×2 grid). [`new/js/home-patient-stories.js`](../new/js/home-patient-stories.js); rule [`.cursor/rules/home-highlight-importance.mdc`](../.cursor/rules/home-highlight-importance.mdc); [`docs/website-go-live.md`](website-go-live.md). |
+| **Outcome** | Optional **`importance`** in `config.json` (template + README). Home **Some Of Our Patients' Stories**: highest **importance** = lead story; next six = `.highlight-tiles` (3×2 grid). Baked HTML via [`scripts/sync-home-highlights.mjs`](../scripts/sync-home-highlights.mjs); client fallback [`new/js/home-patient-stories.js`](../new/js/home-patient-stories.js). Rule [`.cursor/rules/home-highlight-importance.mdc`](../.cursor/rules/home-highlight-importance.mdc). **2026-05-17:** Lead **0053** Kota; tiles **0055**, **0066**, **0043**, **0042**, **0088**, **0094**. |
 | **Out of scope** | Duplicating `importance` in `projects-index.json`; auto-assigning values |
 
 ---
@@ -580,26 +580,26 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-004, BR-015 |
 | **Goal** | Set **`status: DONE`**, add owner **`repairDetails`**, and publish **story pages** (`index.html`, gallery index, sitemap, SEO meta) for seven projects. |
-| **Projects** | See table below. Owner will supply **`repairDetails`** prose per project (paste in chat or CSV). |
-| **Per project** | 1. Merge owner **`repairDetails`** → **always refresh `title` and `description`** from that copy (short slogan **`title`**; one- or two-sentence story **`description`** lead — not a skill list or stub). 2. `node scripts/validate-done-readiness.mjs <id>` → 3. `node scripts/set-project-status.mjs <id> --status DONE` → 4. `node scripts/publish-webpage.mjs <id>` (images + scaffold if needed + SEO meta) → 5. `node scripts/sync-projects-gallery-index.mjs <id>` → 6. `node scripts/sync-sitemap-project-urls.mjs` (if used) → commit/push when approved. |
-| **Owner paste workflow** | When the owner supplies **`repairDetails`** in chat (or CSV), the agent **writes `repairDetails` and updates `title` + `description` in the same pass** before publish. |
-| **Depends on** | Owner **`repairDetails`** for each row; photos in folder (see blockers). **T-00024** (story SEO in publish). |
-| **Related** | T-00035 (optional CSV import path); existing YouTube on **0053**, **0055**, **0094** — embed on story when published. |
-| **Out of scope** | Social publish for whole batch; renaming folders unless owner asks |
-| **Merge note** | **0028** (Vintage five-joint mohair teddy) photos → **0043** Verna; **0028** retained as stub only — do not publish. |
+| **Outcome** | **2026-05-17:** All seven published — **`index.html`**, **`projects-index.json`**, **`webpageUrl`**, gallery/WIP sync. **0043** internal USB filing note removed from config + prose (`publish-webpage.mjs` strips on release). **0088** Google review on story + testimonials. Owner **manual image renames** → [`scripts/sync-project-story-images.mjs`](../scripts/sync-project-story-images.mjs) + gallery index (rule [`.cursor/rules/project-images-manual-rename.mdc`](../.cursor/rules/project-images-manual-rename.mdc)) — not `normalize-project-media-names.mjs`. Home highlights curated via **T-00040** (`f8bc33d`). |
+| **Projects** | See table below. |
+| **Per project** | 1. Merge owner **`repairDetails`** → refresh **`title` + `description`**. 2. `validate-done-readiness.mjs` → 3. `set-project-status.mjs --status DONE` → 4. `publish-webpage.mjs` → 5. `sync-projects-gallery-index.mjs` → 6. sitemap when needed. After manual photo renames: **`sync-project-story-images.mjs`** only. |
+| **Depends on** | **T-00024** (story SEO in publish). |
+| **Related** | T-00040 (home highlights); **0053** / **0055** / **0094** YouTube on story pages where set. |
+| **Out of scope** | Social publish for whole batch; **0028** stub (photos merged into **0043** only). |
+| **Merge note** | **0028** retained as stub — do not publish. |
 
-| ID | Folder | Owner label | Images (2026-05-17) | Notes |
-|----|--------|-------------|---------------------|--------|
-| **0053** | Playskool Kota Triceratops | Dino triceratops (Kota) | ~33 | `youtubeUrl` set |
-| **0043** | Verna 1960s vintage teddy | Verna the golden bear | **15** | Merged from **0028** (USB Vintage_yellow_bear / Vintage_bear_straw); needs **`repairDetails`** |
-| **0055** | Santa Homer Simpson animatronic | Homer Santa | ~21 | `youtubeUrl` set |
-| **0066** | Lucy dalmatian plush dog | Lucy dog | ~6 | |
-| **0042** | Soft cloth baby doll | Lulla doll | ~11 | USB map: `Lulla_doll` |
-| **0094** | Ducksley | Ducksley (Russ singing duck) | ~15 | `youtubeShortUrl` set |
-| **0088** | Yui Yuigahama Bunny Ver 1 4 FREEing | Yui FREEing 1/4 bunny figure | **8** | `paintjob`; **`title`**, **`description`**, **`repairDetails`** done — ready for DONE + publish |
+| ID | Folder | Status |
+|----|--------|--------|
+| **0053** | Playskool Kota Triceratops | Done — story live; home **lead** highlight |
+| **0043** | Verna 1960s vintage teddy | Done |
+| **0055** | Santa Homer Simpson animatronic | Done |
+| **0066** | Lucy dalmatian plush dog | Done |
+| **0042** | Soft cloth baby doll | Done |
+| **0094** | Ducksley | Done |
+| **0088** | Yui Yuigahama Bunny Ver 1 4 FREEing | Done — `googleReview` + testimonials |
 
 ---
 
