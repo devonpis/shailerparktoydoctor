@@ -58,6 +58,7 @@ mindmap
 | [`docs/TASKS.md`](docs/TASKS.md) | **Task list** (`T-00001` … five-digit IDs); work and commits map here. |
 | [`docs/publish-content-guards.md`](docs/publish-content-guards.md) | **Publish checks:** caption 500 chars, tags 1–30, media, validation script. |
 | [`docs/github-pages-deploy.md`](docs/github-pages-deploy.md) | **Site deploy:** push `main` → GitHub Pages → sptoydoctor.com.au. |
+| [`docs/google-analytics-setup.md`](docs/google-analytics-setup.md) | **GA4 setup** — property, Measurement ID, site tag (T-00044). |
 | [`docs/website-go-live.md`](docs/website-go-live.md) | **Website go-live:** DONE repair → `index.html`, `projects-index.json`, `webpageUrl`, sitemap (T-00015). |
 | [`docs/website-rebuild-analysis.md`](docs/website-rebuild-analysis.md) | **Site rebuild** analysis & direction (T-00009, discuss before HTML). |
 | [`projects/0000 - template/`](projects/0000%20-%20template/) | Copy fields / structure for new repairs; [`config.json`](projects/0000%20-%20template/config.json) lists all keys. |

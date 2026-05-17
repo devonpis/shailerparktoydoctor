@@ -9,6 +9,7 @@ import {
   repairPageHrefSync,
   reviewFingerprint,
 } from './google-review.mjs';
+import { googleAnalyticsHeadMarkup } from './google-analytics.mjs';
 
 function unescapeHtml(s) {
   return String(s ?? '')
@@ -136,6 +137,7 @@ export function buildTestimonialsHtml({ introLine, cardsHtml }) {
 <html lang="en-AU">
   <head>
     <meta charset="utf-8" />
+${googleAnalyticsHeadMarkup()}
     <title>Testimonials — Shailer Park Toy Doctor</title>
     <meta name="description" content="32 five-star Google reviews for Shailer Park Toy Doctor." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

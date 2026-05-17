@@ -11,6 +11,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { googleAnalyticsHeadMarkup } from './lib/google-analytics.mjs';
 import { resolveProjectDir, PROJECTS_DIR, projectIdFromDir } from './lib/resolve-project-dir.mjs';
 import {
   buildWorkInProgressSectionHtml,
@@ -170,6 +171,7 @@ ${paragraphBlock(itemParas)}`
 <html lang="en-AU">
   <head>
     <meta charset="utf-8" />
+${googleAnalyticsHeadMarkup()}
     <title>${escapeHtml(meta.pageTitle)}</title>
     <meta name="description" content="${escapeHtml(meta.metaDescription)}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

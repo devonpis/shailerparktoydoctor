@@ -54,6 +54,7 @@ Bring cherished toys and small electronics back to life at an affordable price â
 | Channel | URL |
 |---------|-----|
 | Website | https://sptoydoctor.com.au/ |
+| Google Analytics (GA4) | Measurement ID **`G-3T7KLB9S7F`** â€” see [`data/site-analytics.json`](../data/site-analytics.json), [`docs/google-analytics-setup.md`](google-analytics-setup.md) |
 | Facebook | https://www.facebook.com/profile.php?id=61589652126144 |
 | Instagram | https://www.instagram.com/sptoydoctor/ |
 | Threads | https://www.threads.com/@sptoydoctor |

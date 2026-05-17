@@ -288,3 +288,11 @@ Implementation: **T-00038**. Blocks cutover until done.
 When the owner pastes or uploads a repair photo that displays sideways (wrong EXIF orientation, or phone held portrait/landscape), rotate it **on explicit request** so it reads correctly on the site and in social crops — without re-running full USB ingest.
 
 Implementation: **T-00039** — `rotate-project-image.mjs` and **`publish-webpage.mjs`** (rotate → optimize → validate before HTML go-live). Uses **sharp** (same stack as **T-00027**). **On-demand only** — use `--exif-orient` when the owner wants EXIF applied to all images in a folder.
+
+---
+
+## BR-035 — Website analytics (Google Analytics 4)
+
+The public site should report **page views and basic traffic** via **Google Analytics 4 (GA4)** on **https://sptoydoctor.com.au/** (all marketing pages and published project story pages). The **Measurement ID** (`G-…`) is **not secret** (it appears in HTML) but setup and property access stay with the **business Google account**. No customer PII in analytics config or custom events.
+
+Implementation: **T-00044** — owner follows [`docs/google-analytics-setup.md`](google-analytics-setup.md); repo adds a shared gtag snippet and wires it into root pages, the projects gallery, and the story-page scaffold (see task).

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { ensureGoogleAnalyticsInHtml } from './google-analytics.mjs';
 import { pickFeaturedImageName } from './project-media.mjs';
 
 export const SITE_ORIGIN = 'https://sptoydoctor.com.au';
@@ -181,7 +182,7 @@ export function applyStoryMetaToHtml(html, meta, folderName) {
     );
   }
 
-  return out;
+  return ensureGoogleAnalyticsInHtml(out);
 }
 
 export function updateProjectStoryMeta(dir, config, { dryRun = false } = {}) {

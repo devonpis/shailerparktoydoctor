@@ -55,6 +55,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00041 | Done | Publish legacy repair stories 0004–0015 + 0093 to HTML | BR-004, BR-015 |
 | T-00042 | Done | Publish repairs: Kota, Verna, Homer Santa, Lucy, Lulla, Ducksley, Yui (0088) | BR-004, BR-015 |
 | T-00043 | Done | Home page: add Dr. Mechanic; split mechanical from Dr. Hobby | BR-014, BR-015 |
+| T-00044 | Done | Google Analytics 4 (GA4) on live site | BR-035 |
 | — | — | Skill categories: four IDs only (`docs/project-skills.md`, BR-028) | BR-028 |
 
 ---
@@ -615,6 +616,21 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Depends on** | None |
 | **Related** | T-00016 (cutover to root); owner may replace `drmechanic.jpeg` |
 | **Out of scope** | Legacy root `index.html` (only two doctors today) |
+
+---
+
+## T-00044 — Google Analytics 4 (GA4) on live site
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-035 |
+| **Goal** | Measure traffic on **https://sptoydoctor.com.au/** with **GA4**: page views on home, Projects gallery, Contact, Testimonials, and every published **`projects/<folder>/index.html`**. |
+| **Owner guide** | [`docs/google-analytics-setup.md`](google-analytics-setup.md) — property + stream; Measurement ID **`G-3T7KLB9S7F`**. |
+| **Outcome** | **`data/site-analytics.json`**, [`scripts/lib/google-analytics.mjs`](../scripts/lib/google-analytics.mjs), [`scripts/inject-google-analytics.mjs`](../scripts/inject-google-analytics.mjs), [`includes/google-analytics.html`](../includes/google-analytics.html). Tag in marketing pages + all published story HTML; scaffold (`scaffold-project-story-html.mjs`), meta sync (`project-story-meta.mjs`), and testimonials rebuild include gtag. ID in [`business-info.md`](business-info.md). |
+| **Depends on** | Owner Measurement ID (Part A). |
+| **Related** | T-00016 (site at root); T-00002 (GitHub Pages deploy) |
+| **Out of scope** | Cookie consent banner / CMP; Google Ads; Search Console; Measurement Protocol |
 
 ---
 
