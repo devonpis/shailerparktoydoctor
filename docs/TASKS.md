@@ -35,14 +35,14 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00021 | Done | Website rebuild: testimonials page (plan) | BR-015 |
 | T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 | T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
-| T-00024 | Todo | Website rebuild: SEO metadata completeness | BR-015 |
+| T-00024 | Todo | Website rebuild: SEO metadata completeness (after T-00032) | BR-015 |
 | T-00025 | Done | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
 | T-00026 | Done | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
 | T-00027 | Done | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
 | T-00028 | Done | USB photos: analyse, match projects, copy and rename | BR-022 |
 | T-00029 | Done | Review ambiguous timesheet imports (e.g. Sandy, client rows) | BR-023 |
 | T-00030 | Done | Project identity: product info, rename folder & metadata | BR-024 |
-| T-00031 | Todo | Project dates from EXIF (oldest/newest image) | BR-025 |
+| T-00031 | Done | Project dates from EXIF (oldest/newest image) | BR-025 |
 | T-00032 | Todo | CSV metadata gap report for owner fill-in | BR-026 |
 | T-00033 | Done | Fill itemDetails summaries (Donald char budgets) | BR-027 |
 | T-00034 | Todo | Review title & description from images + metadata | BR-029 |
@@ -253,8 +253,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-015 |
 | **Goal** | Close gaps vs [`website-design-brief.md`](website-design-brief.md) SEO checklist and [`website-project-page-wireframe.md`](website-project-page-wireframe.md) per-page SEO — so every **indexable** page has correct `<title>`, meta description, canonical, HTTPS Open Graph, and structured data where specified. |
 | **Checklist** | **Marketing (`/new/` until cutover):** add `link rel="canonical"` and `og:title`, `og:description`, `og:image`, `og:url`, `og:type` on home, projects index, testimonials, contact (contact already has `LocalBusiness` JSON-LD — add same on home); keep `noindex` on preview until **T-00016**. **Project stories:** ensure template [`index.html.example`](../projects/0000%20-%20template/index.html.example) includes full OG block like [0003 Donald Duck](../projects/0003%20-%20Donald%20Duck/index.html); add `og:type` on story pages; verify title `{projectName} — Shailer Park Toy Doctor` and description ≤ ~160 chars for each DONE page. **Sitemap:** remove `/new/*` URLs (conflicts with `robots.txt` `Disallow: /new/`); list only public URLs; add production marketing paths after cutover. **Cutover (with T-00016):** remove `noindex` from marketing pages; canonicals and OG URLs use `https://sptoydoctor.com.au/` paths (not `/new/`). **Legacy root** (`index.html`, `contact.html`, `reviews.html`): fix `lang="en-AU"`, HTTPS Open Graph URLs, or archive at cutover. **Accessibility/SEO:** one primary `<h1>` per page (header site title vs page headline); image `alt` from project titles on story/gallery images. |
-| **Depends on** | T-00012, T-00017, T-00019 |
-| **Related** | T-00013 (sitemap), T-00016 (cutover + de-index preview), T-00022 (contact JSON-LD pattern) |
+| **Depends on** | T-00012, T-00017, T-00019, **T-00032** (owner metadata CSV / gap fill before final SEO pass) |
+| **Related** | T-00013 (sitemap), T-00016 (cutover + de-index preview), T-00022 (contact JSON-LD pattern), **T-00034** (title/description copy) |
+| **Order** | Run **after T-00032** so meta descriptions and story SEO reflect filled project metadata; partial marketing-page OG can precede cutover, but project-story SEO checklist should wait until **T-00032** (and ideally **T-00034**) are done. |
 | **Out of scope** | Paid SEO tools; auto-generated meta from AI; changing project copy for keyword stuffing |
 
 ---
@@ -267,7 +268,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-006, BR-015 |
 | **Goal** | After owner confirms the preview site: move `new/*` to site root (or equivalent promote); remove or archive legacy root HTML (`index.html`, `contact.html`, `reviews.html`, `index_bk.html`); drop preview banners and `noindex` on marketing pages; point nav/sitemap at production URLs; update `webpageUrl` in project configs; regenerate `sitemap.xml`. |
 | **Depends on** | T-00018, T-00020, T-00022 (and T-00013 for story pages as needed); explicit owner approval for cutover. |
-| **Related** | T-00024 (complete SEO metadata; remove `noindex` and fix canonicals/OG at cutover) |
+| **Related** | T-00024 (SEO metadata after **T-00032**; remove `noindex` and fix canonicals/OG at cutover) |
 | **Out of scope** | Publishing social posts; changing project `status` to DONE. |
 
 ---
@@ -413,10 +414,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-025 |
 | **Goal** | For each `projects/<id> - <name>/` folder with repair images, read **EXIF capture time** (fallback: `IMG_*` filename date, then file mtime). Set `config.json` **`startDate`** to the **oldest** image date and **`endDate`** to the **newest** (ISO `YYYY-MM-DD`) when dates are missing, placeholder, or clearly scaffold/USB defaults — **do not overwrite** trusted timesheet dates without `--force` or owner confirm. |
-| **Script** | e.g. `scripts/set-project-dates-from-images.mjs [--dry-run] [--all \| <id>…] [--force]` — report per project: image count, min/max capture, current vs proposed dates. |
+| **Script** | [`scripts/set-project-dates-from-images.mjs`](../scripts/set-project-dates-from-images.mjs) — `node scripts/set-project-dates-from-images.mjs [--dry-run] [--id <id>…] [--force]`. Libs: [`scripts/lib/image-capture-time.mjs`](../scripts/lib/image-capture-time.mjs), [`scripts/lib/project-dates-from-images.mjs`](../scripts/lib/project-dates-from-images.mjs). Report: [`docs/reports/project-dates-from-images-<date>.md`](reports/). |
+| **Outcome** | EXIF pass applied then **reverted for 0004–0014** (legacy homepage imports — hero/WIP EXIF not reliable). Script **skips 0001–0003 and 0004–0014** unless `--force`. Use timesheet/USB dates or owner fill via **T-00032** for that band. Report: [`docs/reports/project-dates-from-images-2026-05-17.md`](reports/project-dates-from-images-2026-05-17.md). |
 | **Depends on** | T-00028 (images present); optional after T-00027 (JPEG EXIF retained) |
 | **Related** | T-00030; **T-00032** (CSV should use updated dates) |
 | **Out of scope** | Changing `status`; GPS/PII in reports; editing non-`config.json` files |
@@ -462,6 +464,6 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-026 |
 | **Goal** | Export a **spreadsheet-friendly CSV** (for owner / wife) listing projects that need human input: empty or stub **`repairDetails`**, **`description`**, **`skills`**, **`tags`**, **`title`**, weak **`projectName`** (USB placeholders), and any row flagged after **T-00030** / **T-00031**. Include current values + blank or “FILL IN” columns for updates. No customer PII in export. |
 | **Script** | e.g. `scripts/export-project-metadata-gaps.mjs [--output docs/reports/project-metadata-gaps-<date>.csv]` — optional `--import` later to merge filled CSV back into `config.json` (separate task or flag). |
-| **Depends on** | **T-00030** (names stable enough to label rows); **T-00031** (dates populated from EXIF) |
-| **Related** | T-00029 (timesheet cleanup); T-00028 ingest stubs |
+| **Depends on** | **T-00030** (names stable enough to label rows); **T-00031** (Done — EXIF for **0015+**; **0004–0014** dates via owner CSV) |
+| **Related** | T-00029 (timesheet cleanup); T-00028 ingest stubs; **T-00024** (SEO metadata — **after** this task) |
 | **Out of scope** | Auto-writing repair prose without owner; publish; HTML |

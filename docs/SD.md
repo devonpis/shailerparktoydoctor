@@ -203,8 +203,9 @@ When `config.json` lacks reliable **`startDate`** / **`endDate`** (empty, templa
 1. **Read** capture time per image: EXIF `DateTimeOriginal` (or equivalent), then `IMG_YYYYMMDD_*` filename, then file mtime.
 2. **Set** `startDate` = oldest capture (date only); `endDate` = newest capture (date only).
 3. **Preserve** owner-verified timesheet dates unless explicitly overridden (`--force` or confirmed import).
+4. **Exclude** legacy homepage imports **0004–0014** and owner projects **0001–0003** (unreliable hero/ingest EXIF); dates for that band via timesheet or **T-00032** fill-in.
 
-Implementation: **T-00031**. Feeds accurate rows into owner metadata CSV (**T-00032**).
+Implementation: **T-00031** (Done). Feeds accurate rows into owner metadata CSV (**T-00032**).
 
 ---
 

@@ -154,6 +154,8 @@ Before a **webpage** go-live, run `node scripts/optimize-project-images.mjs <id>
 
 Bulk import from a USB stick: [`docs/usb-photo-ingest.md`](docs/usb-photo-ingest.md) (`scripts/ingest-usb-photos.mjs` — dry-run first, then `--apply`, then optimize).
 
+Repair dates from photos (EXIF): `node scripts/set-project-dates-from-images.mjs [--dry-run]` — see **T-00031** in [`docs/TASKS.md`](docs/TASKS.md).
+
 ---
 
 ## Intended repair → publish loop
