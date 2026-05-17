@@ -28,8 +28,6 @@
   --star-gold: #f59e0b;
   --h2-margin-top: 1.25rem;
   --h2-padding-y: 0.35rem;
-  --h2-outline-width: 6px;
-  --h2-outline-color: #fff;
 }
 
 *,
@@ -329,9 +327,6 @@ h2:not(.project-card__title) {
   font-weight: 700;
   font-style: normal;
   font-size: 1.75em;
-  text-shadow: none;
-  -webkit-text-stroke: var(--h2-outline-width) var(--h2-outline-color);
-  paint-order: stroke fill;
   background: linear-gradient(
     to right,
     color-mix(in srgb, var(--primary) 16%, transparent) 0%,
@@ -1304,7 +1299,6 @@ h3.project-subtitle {
 @media (max-width: 768px) {
   :root {
     --lobster-outline-width: 4px;
-    --h2-outline-width: 4px;
   }
 
   .title-main {
