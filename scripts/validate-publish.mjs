@@ -10,7 +10,11 @@ import { fileURLToPath } from 'node:url';
 import { buildHashtagLine } from './lib/hashtag.mjs';
 import { buildThreadsCaption, THREADS_CAPTION_MAX } from './lib/caption.mjs';
 import { SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
-import { CANONICAL_SKILL_IDS, normalizeSkills } from './lib/normalize-skills.mjs';
+import {
+  assertStatusDone,
+  validateDoneReadiness,
+  validateStoryPagePublished,
+} from './lib/project-readiness.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -62,49 +66,21 @@ function validateConfig(config, dir) {
   const errors = [];
   const warnings = [];
 
-  if (config.isTemplate === true) {
-    errors.push('isTemplate is true — not a publishable repair project.');
-  }
-  if (config.status !== 'DONE') {
-    errors.push(`status must be "DONE" (current: ${JSON.stringify(config.status)}).`);
-  }
+  errors.push(...assertStatusDone(config));
+
+  const { errors: readinessErrors, images } = validateDoneReadiness(config, dir);
+  errors.push(...readinessErrors);
 
   const title = typeof config.title === 'string' ? config.title.trim() : '';
-  if (!title) errors.push('title is required (non-empty string).');
-  else if (title.length > LIMITS.titleMaxChars) {
+  if (title.length > LIMITS.titleMaxChars) {
     errors.push(`title exceeds ${LIMITS.titleMaxChars} characters (${title.length}).`);
   }
 
   const description = typeof config.description === 'string' ? config.description.trim() : '';
-  if (!description) errors.push('description is required (non-empty string).');
-  else if (description.length > LIMITS.descriptionMaxChars) {
+  if (description.length > LIMITS.descriptionMaxChars) {
     errors.push(
       `description exceeds ${LIMITS.descriptionMaxChars} characters (${description.length}) — Threads limit for shared captions.`
     );
-  }
-
-  if (config.skills != null) {
-    if (!Array.isArray(config.skills)) {
-      errors.push('skills must be an array.');
-    } else {
-      for (let i = 0; i < config.skills.length; i++) {
-        const s = config.skills[i];
-        if (!CANONICAL_SKILL_IDS.includes(s)) {
-          errors.push(
-            `skills[${i}] must be one of: ${CANONICAL_SKILL_IDS.join(', ')} (got ${JSON.stringify(s)}). See docs/project-skills.md.`
-          );
-        }
-      }
-      const normalized = normalizeSkills(config.skills);
-      if (
-        config.skills.length > 0 &&
-        JSON.stringify(config.skills) !== JSON.stringify(normalized)
-      ) {
-        warnings.push(
-          `skills should use canonical IDs only; run: node scripts/normalize-project-skills.mjs — would be ${JSON.stringify(normalized)}.`
-        );
-      }
-    }
   }
 
   if (!Array.isArray(config.tags) || config.tags.length < LIMITS.tagsMin) {
@@ -125,15 +101,16 @@ function validateConfig(config, dir) {
     }
   }
 
-  const { images, videos } = listMediaFiles(dir);
-  if (images.length === 0 && videos.length === 0) {
-    errors.push(
-      'No publishable media: add before/after/hero/WIP images or a video (.mp4, .mov, .webm).'
-    );
-  } else if (images.length > SOCIAL_CAROUSEL_MAX) {
+  const { videos } = listMediaFiles(dir);
+  const imageList = images?.length ? images : listMediaFiles(dir).images;
+  if (imageList.length > SOCIAL_CAROUSEL_MAX) {
     warnings.push(
-      `Folder has ${images.length} images; social carousel uses at most ${SOCIAL_CAROUSEL_MAX} (hero → before → after → WIP). Webpage gallery is unlimited.`
+      `Folder has ${imageList.length} images; social carousel uses at most ${SOCIAL_CAROUSEL_MAX} (hero → before → after → WIP). Webpage gallery is unlimited.`
     );
+  }
+
+  if (videos.length > 0 && imageList.length === 0) {
+    warnings.push('Video present without still images — social carousel may be video-only when supported.');
   }
 
   const hashtagPreview = buildHashtagLine(config.tags);
@@ -158,7 +135,16 @@ function validateConfig(config, dir) {
     );
   }
 
-  return { errors, warnings, images, videos, captionWithTags, threadsCaption };
+  return { errors, warnings, images: imageList, videos, captionWithTags, threadsCaption };
+}
+
+/** Social publish: DONE + presentable content + index.html + webpageUrl. */
+export function validateSocialProject(projectArg) {
+  const base = validateProject(projectArg);
+  if (!base.config) return base;
+  const extra = validateStoryPagePublished(base.config, base.dir);
+  const errors = [...base.errors, ...extra];
+  return { ...base, ok: errors.length === 0, errors };
 }
 
 export function validateProject(projectArg) {

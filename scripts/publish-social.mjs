@@ -18,7 +18,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateProject } from './validate-publish.mjs';
+import { validateSocialProject } from './validate-publish.mjs';
 import { loadEnv, requireEnv, tryLoadEnv } from './lib/load-env.mjs';
 import { buildCaption, buildThreadsCaption, THREADS_CAPTION_MAX } from './lib/caption.mjs';
 import { pickImage, publicImageUrl, SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
@@ -154,8 +154,9 @@ function writeConfigUrls(configPath, config, urls) {
 
 async function main() {
   const { projectArg, flags } = parseArgs(process.argv);
-  const validation = validateProject(projectArg);
+  const validation = validateSocialProject(projectArg);
   if (!validation.ok) {
+    console.error('\n--- Social publish blocked ---');
     for (const e of validation.errors) console.error(`FAIL: ${e}`);
     process.exit(1);
   }

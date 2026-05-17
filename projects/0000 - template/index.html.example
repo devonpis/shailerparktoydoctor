@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- Copy to projects/<folder>/index.html when status is DONE. Reference: projects/0003 - Donald Duck/index.html -->
+<!-- Head SEO tags: run `node scripts/publish-webpage.mjs <id>` after authoring — syncs meta from config.json -->
 <html lang="en-AU">
   <head>
     <meta charset="utf-8" />

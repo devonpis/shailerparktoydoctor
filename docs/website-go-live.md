@@ -11,9 +11,9 @@ How to put a **DONE** repair on the public website. This is **separate from soci
 
 | Check | Requirement |
 |-------|-------------|
-| **Status** | `config.json` → **`"status": "DONE"`** (you set this). |
-| **Content** | `title`, `projectName`, `description`, `repairDetails`, images in folder. |
-| **Validation** | `node scripts/validate-publish.mjs <id>` exits **0** (good practice before any publish). |
+| **Status** | Set **`"status": "DONE"`** only after `node scripts/validate-done-readiness.mjs <id>` passes (or `node scripts/set-project-status.mjs <id> --status DONE`). |
+| **Content** | Presentable `projectName`, `title`, `description`, `itemDetails`, `repairDetails`, canonical `skills`, ≥1 image — enforced by readiness script. |
+| **Validation** | `node scripts/validate-publish.mjs <id>` before social; `publish-webpage.mjs` blocks if not **DONE**. |
 | **Explicit approval** | For agent work: `publish <id> to webpage` (or clear HTML request) → **preview** → your **yes**. |
 
 **WIP:** Do **not** add `index.html` or a row in `projects-index.json`.
@@ -28,7 +28,9 @@ Recommended single entry point before authoring or updating **`index.html`**:
 
 ```bash
 npm install   # once per machine (installs sharp)
-node scripts/publish-webpage.mjs <id>              # process images → orientation check → validate
+node scripts/validate-done-readiness.mjs <id>      # before setting status DONE
+node scripts/set-project-status.mjs <id> --status DONE   # optional; enforces readiness
+node scripts/publish-webpage.mjs <id>              # requires DONE; images → validate → SEO meta
 node scripts/publish-webpage.mjs <id> --dry-run      # preview only
 
 # Fix sideways photos (EXIF + manual rotate + resize in **one encode** per file — avoids double JPEG loss):
@@ -51,9 +53,11 @@ node scripts/fix-project-image-orientation.mjs --all --exif-only
 node scripts/fix-project-image-orientation.mjs --all --vision   # needs OPENAI_API_KEY
 ```
 
-Rotation and resize share **one sharp pipeline** per file (`optimize-project-images.mjs` via `publish-webpage.mjs`), so you do not rotate then optimize separately (which would JPEG-compress twice). Orient-only files use `--orient-quality` 92; resize/convert uses 90%. The publish script does **not** create HTML — it prints a checklist for `index.html`, gallery index, `webpageUrl`, and `sitemap.xml`.
+Rotation and resize share **one sharp pipeline** per file (`optimize-project-images.mjs` via `publish-webpage.mjs`), so you do not rotate then optimize separately (which would JPEG-compress twice). Orient-only files use `--orient-quality` 92; resize/convert uses 90%.
 
-Agent flow for **`publish <id> to webpage`**: after owner confirms → run `publish-webpage.mjs` (with any `--rotate`; EXIF orient is on by default) → author/update **`index.html`** → gallery + sitemap + `webpageUrl` → commit/push when approved.
+When **`projects/<folder>/index.html`** exists, `publish-webpage.mjs` also syncs **SEO meta** from `config.json` (T-00024): `<title>`, meta description, canonical, Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`), and the **project-hero** image (`after` → `hero` → `before`). Sets **`webpageUrl`** in config if empty. Use `--no-meta` to skip. The script does **not** generate body copy — author prose from the template first.
+
+Agent flow for **`publish <id> to webpage`**: after owner confirms → run `publish-webpage.mjs` (with any `--rotate`; EXIF orient on by default) → author **`index.html`** from template if new → re-run publish (meta sync) → gallery + sitemap → commit/push when approved.
 
 ### 0b. Optimize project images (included in `publish-webpage.mjs`)
 

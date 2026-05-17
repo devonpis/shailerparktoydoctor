@@ -52,6 +52,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00038 | Todo | Update testimonials page (last before cutover) | BR-033 |
 | T-00039 | Done | On-demand project image rotation (portrait/landscape) | BR-034 |
 | T-00040 | Done | Home highlight importance + six tiles | BR-015 |
+| T-00041 | Todo | Publish legacy repair stories 0004–0015 + 0093 to HTML | BR-004, BR-015 |
 | — | — | Skill categories: four IDs only (`docs/project-skills.md`, BR-028) | BR-028 |
 
 ---
@@ -258,7 +259,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | In progress |
 | **Requirements** | BR-015 |
 | **Goal** | Close gaps vs [`website-design-brief.md`](website-design-brief.md) SEO checklist and [`website-project-page-wireframe.md`](website-project-page-wireframe.md) per-page SEO — so every **indexable** page has correct `<title>`, meta description, canonical, HTTPS Open Graph, and structured data where specified. |
-| **Progress** | **2026-05-17:** Published stories **0001**, **0003** + [`index.html.example`](../projects/0000%20-%20template/index.html.example) — added `og:type` article; **0001** `og:image` and hero use `after.jpeg`. Marketing `/new/` pages still pending. |
+| **Progress** | **2026-05-17:** Published stories **0001**, **0003** + template — `og:type` article; hero/`og:image` use `after`. **`publish-webpage.mjs`** now syncs title, description, canonical, and Open Graph from `config.json` when `index.html` exists (`scripts/lib/project-story-meta.mjs`). Marketing `/new/` pages still pending. |
 | **Checklist** | **Marketing (`/new/` until cutover):** add `link rel="canonical"` and `og:title`, `og:description`, `og:image`, `og:url`, `og:type` on home, projects index, testimonials, contact (contact already has `LocalBusiness` JSON-LD — add same on home); keep `noindex` on preview until **T-00016**. **Project stories:** ensure template [`index.html.example`](../projects/0000%20-%20template/index.html.example) includes full OG block like [0003 Donald Duck](../projects/0003%20-%20Donald%20Duck/index.html); add `og:type` on story pages; verify title `{projectName} — Shailer Park Toy Doctor` and description ≤ ~160 chars for each DONE page. **Sitemap:** remove `/new/*` URLs (conflicts with `robots.txt` `Disallow: /new/`); list only public URLs; add production marketing paths after cutover. **Cutover (with T-00016):** remove `noindex` from marketing pages; canonicals and OG URLs use `https://sptoydoctor.com.au/` paths (not `/new/`). **Legacy root** (`index.html`, `contact.html`, `reviews.html`): fix `lang="en-AU"`, HTTPS Open Graph URLs, or archive at cutover. **Accessibility/SEO:** one primary `<h1>` per page (header site title vs page headline); image `alt` from project titles on story/gallery images. |
 | **Depends on** | T-00012, T-00017, T-00019, **T-00035** (owner CSV import + generated copy), **T-00034** (titles) |
 | **Related** | T-00013 (sitemap), T-00016 (cutover + de-index preview), T-00022 (contact JSON-LD pattern) |
@@ -553,6 +554,23 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-015 |
 | **Outcome** | Optional **`importance`** in `config.json` (template + README). Home **Some Of Our Patients' Stories**: highest **importance** = lead story; next six = `.highlight-tiles` (3×2 grid). [`new/js/home-patient-stories.js`](../new/js/home-patient-stories.js); rule [`.cursor/rules/home-highlight-importance.mdc`](../.cursor/rules/home-highlight-importance.mdc); [`docs/website-go-live.md`](website-go-live.md). |
 | **Out of scope** | Duplicating `importance` in `projects-index.json`; auto-assigning values |
+
+---
+
+## T-00041 — Publish legacy repair stories 0004–0015 + 0093 to HTML
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-004, BR-015 |
+| **Goal** | Publish **website story pages** for legacy homepage repairs **0004–0015** and **0093** (split from 0014). |
+| **Readiness report** | [`docs/reports/done-readiness-2026-05-17.md`](reports/done-readiness-2026-05-17.md) — regenerate: `node scripts/report-done-readiness.mjs --legacy-batch` |
+| **Promote DONE first** (8 ready 2026-05-17) | **0004**, **0005**, **0006**, **0007**, **0009**, **0013**, **0014**, **0093** |
+| **Blocked until repairDetails** | **0008**, **0010**, **0011**, **0012**, **0015** (hero-only; expand `repairDetails` from photos or owner notes) |
+| **Per project** | 1. `validate-done-readiness.mjs` → 2. `set-project-status.mjs --status DONE` → 3. `publish-webpage.mjs` → 4. Author `index.html` from template → 5. Re-run publish (meta sync) → 6. `projects-index.json` + `webpageUrl` + `sitemap.xml` |
+| **Depends on** | T-00034 (titles/descriptions batch done); publish guards (`project-readiness.mjs`, `publish-webpage.mjs`) |
+| **Related** | T-00037 (photos); T-00016 (cutover) |
+| **Out of scope** | Social publish for whole batch (per project after story live); T-00035 CSV import |
 
 ---
 

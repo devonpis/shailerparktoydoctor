@@ -10,16 +10,31 @@ node scripts/validate-publish.mjs 0001
 
 ---
 
+## Publish gates (order)
+
+| Step | Gate | Script |
+|------|------|--------|
+| 1 | **DONE readiness** — presentable copy + images + skills (set status only after this passes) | `node scripts/validate-done-readiness.mjs <id>` or `node scripts/set-project-status.mjs <id> --status DONE` |
+| 2 | **Webpage publish** — `status` must be `"DONE"` | `node scripts/publish-webpage.mjs <id>` |
+| 3 | **Social publish** — `DONE` + `index.html` + `webpageUrl` | `node scripts/publish-social.mjs <id>` |
+
+---
+
 ## Required in `projects/<id>/config.json`
 
-| Field | Webpage | Social (FB / IG / Threads) |
-|-------|---------|----------------------------|
-| `status` | `"DONE"` | `"DONE"` |
-| `title` | non-empty | non-empty |
-| `description` | non-empty | non-empty (this is the post/caption body) |
-| `tags` | non-empty array | non-empty array |
-| `skills` | if present: only `needlework`, `electronic`, `mechanical`, `paintjob` ([`docs/project-skills.md`](project-skills.md)) | same |
-| Media | ≥1 image **or** video file in folder | same |
+| Field | DONE readiness | Webpage | Social |
+|-------|----------------|---------|--------|
+| `status` | Set to `"DONE"` only after readiness script passes | `"DONE"` | `"DONE"` |
+| `projectName` | presentable name | (in readiness) | same |
+| `title` | presentable headline (not name-only) | same | same |
+| `description` | presentable lead (not skill stub) | same | same |
+| `itemDetails` | ≥150 chars, real product copy | same | same |
+| `repairDetails` | ≥2 paragraphs, no legacy/debug stub | same | same |
+| `skills` | non-empty; `needlework`, `electronic`, `mechanical`, `paintjob` | same | same |
+| `tags` | — | non-empty array | non-empty array |
+| Media | ≥1 image | same | same |
+| `index.html` | — | optional for prep script | **required** |
+| `webpageUrl` | — | set by publish prep / manually | **required** (https) |
 
 **Media files** (in the project folder): `before.*`, `after.*`, `hero.*`, `WIP-*.*`, or `*.mp4` / `*.mov` / `*.webm`.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Webpage publish prep: process images (orient + optimize, one encode) → check → validate → checklist.
- * Does not create index.html (agent/owner authors HTML per website-go-live.md).
+ * Webpage publish prep: DONE gate → images → orientation check → validate → SEO meta → checklist.
+ * Requires status "DONE". Does not create index.html from scratch; syncs meta when index.html exists.
  *
  * Usage:
  *   node scripts/publish-webpage.mjs <project-id> [--dry-run]
@@ -13,6 +13,7 @@
  *   --no-exif-orient                   Skip EXIF bake (default: on)
  *   --exif-orient                      Same as default (compatibility)
  *   --no-optimize                      Skip image processing step
+ *   --no-meta                          Skip SEO meta sync on index.html
  *   --dry-run                          Dry-run process + validate; still validates
  */
 
@@ -22,6 +23,8 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { resolveProjectDir, REPO_ROOT, projectIdFromDir } from './lib/resolve-project-dir.mjs';
 import { scanProjectOrientation } from './lib/project-image-orientation.mjs';
+import { updateProjectStoryMeta } from './lib/project-story-meta.mjs';
+import { validateWebpagePublishGate } from './lib/project-readiness.mjs';
 import { INDEX_JSON_PATHS } from './lib/update-project-path-refs.mjs';
 import { validateProject } from './validate-publish.mjs';
 
@@ -32,6 +35,7 @@ function parseArgs(argv) {
     dryRun: false,
     exifOrient: true,
     optimize: true,
+    updateMeta: true,
     rotations: [],
   };
   const positional = [];
@@ -42,6 +46,7 @@ function parseArgs(argv) {
     else if (a === '--exif-orient') flags.exifOrient = true;
     else if (a === '--no-exif-orient') flags.exifOrient = false;
     else if (a === '--no-optimize') flags.optimize = false;
+    else if (a === '--no-meta') flags.updateMeta = false;
     else if (a === '--rotate') {
       const file = argv[++i];
       const dirFlag = argv[++i];
@@ -71,6 +76,32 @@ function runProcessImages(projectId, flags) {
   }
   const r = spawnSync(process.execPath, args, { cwd: REPO_ROOT, stdio: 'inherit' });
   if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
+function runMetaUpdate(dir, config, flags) {
+  console.log('\n--- SEO meta (index.html) ---');
+  if (!flags.updateMeta) {
+    console.log('  skipped (--no-meta)');
+    return config;
+  }
+  const r = updateProjectStoryMeta(dir, config, { dryRun: flags.dryRun });
+  if (r.skipped) {
+    console.log(`  skipped (${r.reason}) — create index.html from template, then re-run`);
+    return config;
+  }
+  if (flags.dryRun) {
+    console.log(`  [dry-run] would update: ${r.meta.pageTitle}`);
+    console.log(`  description: ${r.meta.metaDescription}`);
+    if (r.meta.ogImageUrl) console.log(`  og:image: ${r.meta.ogImageName}`);
+    return config;
+  }
+  if (r.changed) console.log('  OK: title, description, canonical, Open Graph, hero image');
+  else console.log('  OK: meta already current');
+  if (r.webpageUrlSet) {
+    console.log(`  set config.json webpageUrl → ${r.meta.canonical}`);
+    return JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
+  }
+  return config;
 }
 
 async function runOrientationCheck(dir) {
@@ -141,9 +172,16 @@ async function main() {
   const { projectArg, flags } = parseArgs(process.argv);
   const dir = resolveProjectDir(projectArg);
   const projectId = projectIdFromDir(dir);
-  const config = JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
+  let config = JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
 
   console.log(`Webpage publish prep: ${path.basename(dir)}${flags.dryRun ? ' (dry-run)' : ''}`);
+
+  const gateErrors = validateWebpagePublishGate(config, dir);
+  if (gateErrors.length) {
+    console.error('\n--- Webpage publish blocked ---');
+    for (const e of gateErrors) console.error(`ERROR: ${e}`);
+    process.exit(1);
+  }
 
   if (flags.optimize) {
     runProcessImages(projectId, flags);
@@ -166,6 +204,8 @@ async function main() {
     process.exit(1);
   }
   console.log('OK: publish content checks passed.');
+
+  config = runMetaUpdate(dir, config, flags);
 
   printChecklist(dir, config, projectId);
 }

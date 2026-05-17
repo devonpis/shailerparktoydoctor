@@ -23,14 +23,20 @@ node scripts/publish-webpage.mjs <project-id> [--rotate <file> --cw|--ccw|--180]
 
 Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md). Webpage steps: [`docs/website-go-live.md`](../../docs/website-go-live.md).
 
+## Publish order
+
+1. **`validate-done-readiness.mjs`** — presentable `projectName`, `title`, `description`, `itemDetails`, `repairDetails`, skills, images; no debug/placeholder text. Human sets **`status`: `"DONE"`** only after this passes (`set-project-status.mjs --status DONE` enforces it).
+2. **`publish-webpage.mjs`** — blocked unless **`status` === `"DONE"`**.
+3. **`publish-social.mjs`** — blocked unless **`DONE`** + **`index.html`** + **`webpageUrl`** (story live on site first).
+
 ## Required (config + folder)
 
-- `status` === `"DONE"`
-- `title` — non-empty, ≤ **500** characters
-- `description` — non-empty, ≤ **500** characters (shared social caption; **Threads** is the binding limit)
-- `tags` — array, **1–30** strings (no `#` in JSON); **30** = Instagram hashtag cap
-- `skills` — if set: only `needlework`, `electronic`, `mechanical`, `paintjob` ([`docs/project-skills.md`](../../docs/project-skills.md), **BR-028**)
-- **Media** — at least one of: `before` / `after` / `hero` / `WIP-###` image, or video (`.mp4`, `.mov`, `.webm`)
+- `status` === `"DONE"` for webpage/social publish
+- Presentable metadata (see `scripts/lib/project-readiness.mjs`) — not skill-list stubs, legacy gallery captions, or `T-00030` / timesheet debug text
+- `title` / `description` — ≤ **500** characters; **Threads** summary ≤ **100**
+- `tags` — array, **1–30** strings (no `#` in JSON)
+- `skills` — non-empty; only `needlework`, `electronic`, `mechanical`, `paintjob`
+- **Media** — at least one project image
 
 Also check **description + appended hashtags** ≤ **500** characters total (FB / IG).
 
