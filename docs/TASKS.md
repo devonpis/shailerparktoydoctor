@@ -327,8 +327,8 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-020, BR-012 |
 | **Goal** | When a project has more images than the **cross-platform social cap**, publish only up to the limit using **hero → before → after → WIP** priority. **Webpage** publish remains unlimited. |
 | **Cap** | **10** images per carousel (lowest of FB / IG / Threads for this repo’s unified flow; see BR-020). Centralize constant in [`scripts/lib/social-publish.mjs`](../scripts/lib/social-publish.mjs) / [`scripts/lib/project-media.mjs`](../scripts/lib/project-media.mjs). |
-| **Selection** | Add e.g. `selectImagesForSocial(dir)` — if `listPublishImagePaths(dir).length` ≤ cap, use all; else keep all `hero` / `before` / `after` stems present, then fill remaining slots with `WIP-###` in numeric order until cap; drop excess WIP. Re-sort **selected** paths for carousel **display** (story order: before → WIP → hero → after). |
-| **Workflow** | Wire into [`scripts/publish-social.mjs`](../scripts/publish-social.mjs) (replace naive `slice(0, 10)`). **Publish preview** (agent + `--dry-run`) must list **included** vs **omitted** files when truncation applies. |
+| **Selection** | `selectImagesForSocial()` (rules) + `selectImagesForSocialPublish()` — when &gt; cap: **`--pick-images auto`** uses OpenAI vision if `OPENAI_API_KEY`, else heuristic scoring; `--no-ai` / `rules` = hero → before → after → WIP. Story display order unchanged. |
+| **Workflow** | Wired in [`scripts/publish-social.mjs`](../scripts/publish-social.mjs). **Dry-run** lists method, **included** vs **omitted**, and per-file notes. Shipped in `321c1a8`. |
 | **Docs** | Extend [`docs/publish-content-guards.md`](publish-content-guards.md) with image-cap table and priority; update [`.cursor/rules/publish-content-guards.mdc`](../.cursor/rules/publish-content-guards.mdc) preview checklist. |
 | **Depends on** | T-00006, T-00007 (existing publish stack) |
 | **Related** | T-00027 (smaller files help Meta fetch; separate concern) |
