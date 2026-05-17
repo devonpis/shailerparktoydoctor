@@ -12,7 +12,7 @@
   };
 
   const SKILL_EMOJI = {
-    needlework: '🧵',
+    needlework: '🧸',
     electronic: '⚡',
     mechanical: '🔧',
     paintjob: '🖌️',

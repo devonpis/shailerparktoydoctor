@@ -86,7 +86,7 @@
           ${badges}
         </div>
         <div class="project-card__body">
-          <h3 class="project-card__title">${name}</h3>
+          <h3 class="project-card__title" title="${name}">${name}</h3>
         </div>
       </a>`;
   }

@@ -1,38 +1,36 @@
 #!/usr/bin/env node
 /**
- * Webpage publish prep: rotate → optimize → validate → go-live checklist.
+ * Webpage publish prep: process images (orient + optimize, one encode) → check → validate → checklist.
  * Does not create index.html (agent/owner authors HTML per website-go-live.md).
  *
  * Usage:
  *   node scripts/publish-webpage.mjs <project-id> [--dry-run]
  *   node scripts/publish-webpage.mjs 0003 --rotate WIP-001.jpg --cw
- *   node scripts/publish-webpage.mjs 0003 --exif-orient
- *   node scripts/publish-webpage.mjs 0003 --rotate after.jpg --ccw --no-optimize
+ *   node scripts/publish-webpage.mjs 0003 --no-optimize
  *
  * Options:
- *   --rotate <file> --cw|--ccw|--180   Repeat for multiple images (before optimize)
- *   --exif-orient                      EXIF auto-orient all project images
- *   --no-optimize                      Skip optimize-project-images step
- *   --dry-run                          Rotate/optimize dry-run only; still validates
+ *   --rotate <file> --cw|--ccw|--180   Passed to optimizer (same encode pass as resize)
+ *   --no-exif-orient                   Skip EXIF bake (default: on)
+ *   --exif-orient                      Same as default (compatibility)
+ *   --no-optimize                      Skip image processing step
+ *   --dry-run                          Dry-run process + validate; still validates
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { listProjectImages } from './lib/project-media.mjs';
 import { resolveProjectDir, REPO_ROOT, projectIdFromDir } from './lib/resolve-project-dir.mjs';
-import { autoOrientInPlace, parseRotatePreset, rotateImageInPlace } from './lib/rotate-image.mjs';
+import { scanProjectOrientation } from './lib/project-image-orientation.mjs';
 import { INDEX_JSON_PATHS } from './lib/update-project-path-refs.mjs';
 import { validateProject } from './validate-publish.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SCRIPTS_DIR = path.join(REPO_ROOT, 'scripts');
 
 function parseArgs(argv) {
   const flags = {
     dryRun: false,
-    exifOrient: false,
+    exifOrient: true,
     optimize: true,
     rotations: [],
   };
@@ -42,6 +40,7 @@ function parseArgs(argv) {
     const a = argv[i];
     if (a === '--dry-run') flags.dryRun = true;
     else if (a === '--exif-orient') flags.exifOrient = true;
+    else if (a === '--no-exif-orient') flags.exifOrient = false;
     else if (a === '--no-optimize') flags.optimize = false;
     else if (a === '--rotate') {
       const file = argv[++i];
@@ -56,55 +55,46 @@ function parseArgs(argv) {
 
   if (!positional[0]) {
     throw new Error(
-      'Usage: node scripts/publish-webpage.mjs <project-id> [--rotate file --cw] [--exif-orient] [--dry-run] [--no-optimize]'
+      'Usage: node scripts/publish-webpage.mjs <project-id> [--rotate file --cw] [--no-exif-orient] [--dry-run] [--no-optimize]'
     );
   }
   return { projectArg: positional[0], flags };
 }
 
-function resolveImageFile(dir, name) {
-  const direct = path.join(dir, name);
-  if (fs.existsSync(direct)) return direct;
-  const hit = listProjectImages(dir).find((n) => n.toLowerCase() === name.toLowerCase());
-  if (hit) return path.join(dir, hit);
-  throw new Error(`Image not found: ${name}`);
-}
-
-async function applyRotations(dir, flags) {
-  if (!flags.rotations.length && !flags.exifOrient) return;
-
-  console.log('\n--- Rotate images ---');
-  for (const { file, dirFlag } of flags.rotations) {
-    const degrees = parseRotatePreset(dirFlag);
-    if (degrees == null) throw new Error(`Bad rotate flag after ${file}: ${dirFlag}`);
-    const filePath = resolveImageFile(dir, file);
-    const r = await rotateImageInPlace(filePath, degrees, { dryRun: flags.dryRun });
-    console.log(
-      `  ${path.basename(r.filePath)}: ${r.before.width}×${r.before.height} → ${r.after.width}×${r.after.height} (${dirFlag})`
-    );
-  }
-
-  if (flags.exifOrient) {
-    for (const name of listProjectImages(dir)) {
-      const filePath = path.join(dir, name);
-      const r = await autoOrientInPlace(filePath, { dryRun: flags.dryRun });
-      if (r.skipped) {
-        console.log(`  ${name}: already upright`);
-      } else {
-        console.log(
-          `  ${name}: EXIF ${r.orientation} — ${r.before.width}×${r.before.height} → ${r.after.width}×${r.after.height}`
-        );
-      }
-    }
-  }
-}
-
-function runOptimize(projectId, dryRun) {
-  console.log('\n--- Optimize images ---');
+function runProcessImages(projectId, flags) {
+  console.log('\n--- Process images (orient + optimize, one encode per file) ---');
   const args = ['scripts/optimize-project-images.mjs', projectId];
-  if (dryRun) args.push('--dry-run');
+  if (flags.dryRun) args.push('--dry-run');
+  if (flags.exifOrient) args.push('--exif-orient');
+  for (const { file, dirFlag } of flags.rotations) {
+    args.push('--rotate', file, dirFlag);
+  }
   const r = spawnSync(process.execPath, args, { cwd: REPO_ROOT, stdio: 'inherit' });
   if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
+async function runOrientationCheck(dir) {
+  console.log('\n--- Orientation check ---');
+  const warnings = await scanProjectOrientation(dir);
+  const exif = warnings.filter((w) => w.type === 'exif');
+  const heuristic = warnings.filter((w) => w.type === 'heuristic');
+
+  if (!warnings.length) {
+    console.log('  OK: no EXIF issues; no review hints on primary images.');
+    return;
+  }
+
+  for (const w of exif) console.warn(`  WARN: ${w.message}`);
+  for (const w of heuristic) console.log(`  hint: ${w.message}`);
+
+  if (heuristic.length) {
+    console.log(
+      '  Landscape hints are not auto-rotated — confirm visually or use --rotate <file> --cw|--ccw|--180'
+    );
+  }
+  if (exif.length) {
+    console.log('  Re-run publish with EXIF orient enabled, or: optimize-project-images.mjs --exif-orient');
+  }
 }
 
 function readJsonIfExists(p) {
@@ -155,13 +145,18 @@ async function main() {
 
   console.log(`Webpage publish prep: ${path.basename(dir)}${flags.dryRun ? ' (dry-run)' : ''}`);
 
-  await applyRotations(dir, flags);
-
   if (flags.optimize) {
-    runOptimize(projectId, flags.dryRun);
+    runProcessImages(projectId, flags);
   } else {
-    console.log('\n--- Optimize images --- skipped (--no-optimize)');
+    console.log('\n--- Process images --- skipped (--no-optimize)');
+    if (flags.rotations.length || flags.exifOrient) {
+      console.warn(
+        'WARN: --rotate / EXIF orient skipped with --no-optimize. Use optimize-project-images.mjs or rotate-project-image.mjs.'
+      );
+    }
   }
+
+  await runOrientationCheck(dir);
 
   console.log('\n--- Validate publish content ---');
   const result = validateProject(projectArg);

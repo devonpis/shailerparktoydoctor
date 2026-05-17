@@ -1,0 +1,91 @@
+id,folder,file,width,height,exif_orientation,needs_fix,suggested_rotate,vision_ok,heuristic
+0001,0001 - Saielle of the Willow Tree,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0002,0002 - Venom,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0002,0002 - Venom,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0003,0003 - Donald Duck,WIP-001.jpg,2880,1512,1,heuristic,manual_review,,review_landscape_wip
+0003,0003 - Donald Duck,WIP-002.jpg,2880,1512,1,heuristic,manual_review,,review_landscape_wip
+0003,0003 - Donald Duck,WIP-003.jpg,2880,1512,1,heuristic,manual_review,,review_landscape_wip
+0003,0003 - Donald Duck,WIP-004.jpg,2880,1512,1,heuristic,manual_review,,review_landscape_wip
+0003,0003 - Donald Duck,after.jpg,2880,1512,1,heuristic,manual_review,,review_landscape_primary
+0006,0006 - Tomy Plarail Edward,after.jpg,1280,960,1,heuristic,manual_review,,review_landscape_primary
+0007,0007 - Patchwork teddy bear with heart,before.jpg,994,808,1,heuristic,manual_review,,review_landscape_primary
+0009,0009 - Hey Duggee interactive plush,before.jpeg,1280,960,1,heuristic,manual_review,,review_landscape_primary
+0009,0009 - Hey Duggee interactive plush,hero.jpg,1280,960,1,heuristic,manual_review,,review_landscape_primary
+0014,0014 - Tomy Big Loader blue power unit,after.jpg,1280,960,1,heuristic,manual_review,,review_landscape_primary
+0014,0014 - Tomy Big Loader blue power unit,before.jpeg,1024,759,1,heuristic,manual_review,,review_landscape_primary
+0014,0014 - Tomy Big Loader blue power unit,hero.jpeg,1024,759,1,heuristic,manual_review,,review_landscape_primary
+0016,0016 - Grey bashful bunny plush,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0016,0016 - Grey bashful bunny plush,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0019,0019 - Bear in giraffe onesie plush,before.jpeg,1280,960,1,heuristic,manual_review,,review_landscape_primary
+0020,0020 - Christmas bear music box figurine,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0022,0022 - Pokemon Pikachu 2 GS pair,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0025,0025 - Hamish yellow teddy bear,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0027,0027 - Playmates Amazing dolls trio,after.jpeg,1280,960,1,heuristic,manual_review,,review_landscape_primary
+0028,0028 - Vintage five joint mohair teddy,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0028,0028 - Vintage five joint mohair teddy,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0030,0030 - KFC Chicky footballer figurines,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0030,0030 - KFC Chicky footballer figurines,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0031,0031 - Mickey and Goofy plush pair,after.jpeg,4080,3060,1,heuristic,manual_review,,review_landscape_primary
+0032,0032 - Kitchen witch on broomstick,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0034,0034 - Miniso radish plush,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0034,0034 - Miniso radish plush,before.jpeg,1280,960,1,heuristic,manual_review,,review_landscape_primary
+0035,0035 - Jurassic Park electronic T Rex,WIP-001.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_wip
+0035,0035 - Jurassic Park electronic T Rex,after.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_primary
+0036,0036 - Brown sherpa teddy blue ribbon,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0036,0036 - Brown sherpa teddy blue ribbon,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0037,0037 - Jellycat Blossom bunny,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0037,0037 - Jellycat Blossom bunny,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0038,0038 - Hallmark reading buddy teddy,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0039,0039 - CoComelon Cece plush,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0039,0039 - CoComelon Cece plush,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0040,0040 - Christmas toy train set,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0041,0041 - Tonka Chuck and Friends trucks,after.jpeg,4080,3060,1,heuristic,manual_review,,review_landscape_primary
+0042,0042 - Soft cloth baby doll,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0042,0042 - Soft cloth baby doll,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0044,0044 - Kosen white plush horse,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0044,0044 - Kosen white plush horse,before.jpeg,4080,3060,1,heuristic,manual_review,,review_landscape_primary
+0045,0045 - Beanie Boo husky plush,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0048,0048 - Vintage Santa Christmas figure,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0048,0048 - Vintage Santa Christmas figure,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0050,0050 - Toy Story Woody pull string doll,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0051,0051 - Harold singing reindeer,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0052,0052 - Singing Elvis Christmas dog,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0053,0053 - Playskool Kota Triceratops,WIP-026.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_wip
+0055,0055 - Santa Homer Simpson animatronic,WIP-012.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_wip
+0055,0055 - Santa Homer Simpson animatronic,WIP-013.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_wip
+0055,0055 - Santa Homer Simpson animatronic,WIP-014.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_wip
+0055,0055 - Santa Homer Simpson animatronic,WIP-015.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_wip
+0055,0055 - Santa Homer Simpson animatronic,WIP-019.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_wip
+0055,0055 - Santa Homer Simpson animatronic,WIP-020.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_wip
+0055,0055 - Santa Homer Simpson animatronic,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0057,0057 - Yellow Yoshi plush,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0057,0057 - Yellow Yoshi plush,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0058,0058 - John Deere ride on tractor,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0059,0059 - Brown kangaroo plush tan pouch,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0059,0059 - Brown kangaroo plush tan pouch,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0062,0062 - Bob the Builder and Spud plush,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0062,0062 - Bob the Builder and Spud plush,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0064,0064 - Animatronic Santa figure,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0066,0066 - Lucy dalmatian plush dog,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0067,0067 - Dakin stroller huggers with music box,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0074,0074 - Jellycat Bashful bunnies yellow and navy,WIP-003.jpeg,1024,576,1,heuristic,manual_review,,review_landscape_wip
+0076,0076 - Sleeping tan teddy blue pillow,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0078,0078 - Disney Pluto plush,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0078,0078 - Disney Pluto plush,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0079,0079 - Tan shaggy dog brown ribbon,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0079,0079 - Tan shaggy dog brown ribbon,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0080,0080 - Capybara plush,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0082,0082 - Elephant baby lovey blanket,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0082,0082 - Elephant baby lovey blanket,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0084,0084 - Paddington Bear,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0084,0084 - Paddington Bear,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0085,0085 - Vintage giant panda plush,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0087,0087 - Curly sherpa teddy gold organza bow,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0087,0087 - Curly sherpa teddy gold organza bow,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0088,0088 - Yui Yuigahama Bunny Ver 1 4 FREEing,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0089,0089 - Brown sherpa teddy pink ribbon,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0090,0090 - Cream teddy blue satin bow,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0090,0090 - Cream teddy blue satin bow,before.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0091,0091 - Woody doll Toy Story,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0092,0092 - Buzz Lightyear figure,after.jpeg,1024,768,1,heuristic,manual_review,,review_landscape_primary
+0093,0093 - Tomy Big Loader white shells pair,hero.jpg,1280,960,1,heuristic,manual_review,,review_landscape_primary

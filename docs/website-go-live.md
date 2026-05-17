@@ -28,13 +28,13 @@ Recommended single entry point before authoring or updating **`index.html`**:
 
 ```bash
 npm install   # once per machine (installs sharp)
-node scripts/publish-webpage.mjs <id>              # optimize → validate → checklist
+node scripts/publish-webpage.mjs <id>              # process images → orientation check → validate
 node scripts/publish-webpage.mjs <id> --dry-run      # preview only
 
-# Fix sideways photos first (then optimize runs automatically):
+# Fix sideways photos (EXIF + manual rotate + resize in **one encode** per file — avoids double JPEG loss):
 node scripts/publish-webpage.mjs 0003 --rotate WIP-001.jpg --cw
 node scripts/publish-webpage.mjs 0003 --rotate after.jpg --ccw --rotate before.jpg --180
-node scripts/publish-webpage.mjs 0003 --exif-orient   # apply EXIF to all project images
+node scripts/publish-webpage.mjs 0003 --no-exif-orient   # skip EXIF bake (default is on)
 ```
 
 **Rotate only** (no optimize/validate):
@@ -51,17 +51,18 @@ node scripts/fix-project-image-orientation.mjs --all --exif-only
 node scripts/fix-project-image-orientation.mjs --all --vision   # needs OPENAI_API_KEY
 ```
 
-Rotation **bakes pixels** (EXIF orientation stripped). Run **before** optimize when both apply. The script does **not** create HTML — it prints a checklist for `index.html`, gallery index, `webpageUrl`, and `sitemap.xml`.
+Rotation and resize share **one sharp pipeline** per file (`optimize-project-images.mjs` via `publish-webpage.mjs`), so you do not rotate then optimize separately (which would JPEG-compress twice). Orient-only files use `--orient-quality` 92; resize/convert uses 90%. The publish script does **not** create HTML — it prints a checklist for `index.html`, gallery index, `webpageUrl`, and `sitemap.xml`.
 
-Agent flow for **`publish <id> to webpage`**: after owner confirms → run `publish-webpage.mjs` (with any `--rotate` / `--exif-orient` the owner requested) → author/update **`index.html`** → gallery + sitemap + `webpageUrl` → commit/push when approved.
+Agent flow for **`publish <id> to webpage`**: after owner confirms → run `publish-webpage.mjs` (with any `--rotate`; EXIF orient is on by default) → author/update **`index.html`** → gallery + sitemap + `webpageUrl` → commit/push when approved.
 
 ### 0b. Optimize project images (included in `publish-webpage.mjs`)
 
 Or run the optimizer alone:
 
 ```bash
-node scripts/optimize-project-images.mjs <id>   # e.g. 0003
-# or batch: node scripts/optimize-project-images.mjs --all
+node scripts/optimize-project-images.mjs <id>   # resize/convert only (no EXIF unless flagged)
+node scripts/optimize-project-images.mjs <id> --exif-orient   # EXIF + resize in one pass
+node scripts/optimize-project-images.mjs --all --exif-orient  # batch EXIF bake
 ```
 
 - **PNG &gt; 500 KB** → `.jpg` at **90%**; scaled to fit **1024×1024** when width or height &gt; 1024; source **`.png` deleted** after success.

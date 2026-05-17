@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /**
- * Rotate a project repair image in place (webpage / gallery display).
+ * Rotate a project repair image in place (quick one-off).
+ * For publish workflow, prefer publish-webpage.mjs / optimize-project-images.mjs --rotate
+ * so rotation and resize share one JPEG encode.
  *
  * Usage:
  *   node scripts/rotate-project-image.mjs <project-id> <filename> --cw | --ccw | --180

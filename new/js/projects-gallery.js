@@ -55,7 +55,7 @@
           ${badges}
         </div>
         <div class="project-card__body">
-          <h2 class="project-card__title">${name}</h2>
+          <h2 class="project-card__title" title="${name}">${name}</h2>
           ${date}
         </div>
       </a>`;

@@ -1,22 +1,29 @@
 #!/usr/bin/env node
 /**
- * T-00027: Optimize project repair images.
+ * T-00027: Optimize project repair images (single encode per file).
+ *
+ * Orientation (EXIF + manual rotate) runs in the same sharp pipeline as resize/convert
+ * so images are not JPEG-recompressed twice.
  *
  * Rules:
- * - PNG > 500 KB → .jpg at 90%; scale to fit 1024×1024 when width or height > 1024; delete PNG
- * - Other types (JPEG, WebP, GIF) > 500 KB and (width > 1024 or height > 1024)
- *   → JPEG at 90%, scaled to fit inside a 1024×1024 box (aspect preserved); delete
- *     source when the output filename changes
+ * - With --exif-orient: bake EXIF orientation (one encode; --orient-quality default 92)
+ * - PNG > 500 KB → .jpg at 90%; scale to fit 1024×1024 when width or height > 1024
+ * - JPEG/WebP/GIF > 500 KB and oversized → JPEG at 90%, scaled inside 1024×1024
  * - Updates index.html and projects-index.json when filenames change
  *
  * Usage:
  *   npm install
  *   node scripts/optimize-project-images.mjs --all [--dry-run]
  *   node scripts/optimize-project-images.mjs 0003 [--dry-run]
+ *   node scripts/optimize-project-images.mjs 0003 --exif-orient
+ *   node scripts/optimize-project-images.mjs 0003 --exif-orient --rotate after.jpg --cw
  *
  * Options:
  *   --dry-run          Report only, no writes
- *   --quality N        JPEG quality 1–100 (default: 90)
+ *   --exif-orient      Bake EXIF orientation (combined with optimize/rotate in one pass)
+ *   --rotate <file> --cw|--ccw|--180   Manual rotation (repeatable; before resize in same pass)
+ *   --quality N        JPEG quality for resize/convert (default: 90)
+ *   --orient-quality N JPEG quality for orient-only writes (default: 92)
  *   --min-kb N         Size threshold in KB (default: 500)
  *   --max-px N         Max width/height for oversized resize (default: 1024)
  */
@@ -24,9 +31,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import sharp from 'sharp';
 import { listProjectImages } from './lib/project-media.mjs';
 import { updateProjectPathReferences } from './lib/update-project-path-refs.mjs';
+import { parseRotatePreset } from './lib/rotate-image.mjs';
+import {
+  executeImagePlan,
+  logPlanResult,
+  planImageProcessing,
+} from './lib/process-project-image.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -35,25 +47,37 @@ const PROJECTS_DIR = path.join(REPO_ROOT, 'projects');
 function parseArgs(argv) {
   const flags = {
     dryRun: false,
+    exifOrient: false,
     quality: 90,
+    orientQuality: 92,
     minBytes: 500 * 1024,
     maxPx: 1024,
     all: false,
     targets: [],
+    rotations: [],
   };
   for (let i = 2; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--dry-run') flags.dryRun = true;
     else if (a === '--all') flags.all = true;
+    else if (a === '--exif-orient') flags.exifOrient = true;
     else if (a === '--quality') flags.quality = Number(argv[++i]);
+    else if (a === '--orient-quality') flags.orientQuality = Number(argv[++i]);
     else if (a === '--min-kb') flags.minBytes = Number(argv[++i]) * 1024;
     else if (a === '--max-px') flags.maxPx = Number(argv[++i]);
-    else if (a.startsWith('--')) throw new Error(`Unknown flag: ${a}`);
+    else if (a === '--rotate') {
+      const file = argv[++i];
+      const dirFlag = argv[++i];
+      if (!file || !dirFlag?.startsWith('--')) {
+        throw new Error('Use: --rotate <filename> --cw|--ccw|--180');
+      }
+      flags.rotations.push({ file, dirFlag });
+    } else if (a.startsWith('--')) throw new Error(`Unknown flag: ${a}`);
     else flags.targets.push(a);
   }
   if (!flags.all && !flags.targets.length) {
     throw new Error(
-      'Usage: node scripts/optimize-project-images.mjs --all | <project-id> […] [--dry-run]'
+      'Usage: node scripts/optimize-project-images.mjs --all | <project-id> […] [--exif-orient] [--rotate file --cw] [--dry-run]'
     );
   }
   return flags;
@@ -81,139 +105,39 @@ function listProjectDirs(targets, all) {
   return dirs;
 }
 
-function formatKb(bytes) {
-  return `${(bytes / 1024).toFixed(1)} KB`;
-}
-
-function jpegOutputPath(filePath) {
-  const ext = path.extname(filePath).toLowerCase();
-  if (ext === '.png') return filePath.replace(/\.png$/i, '.jpg');
-  if (ext === '.webp' || ext === '.gif') return filePath.replace(/\.(webp|gif)$/i, '.jpg');
-  return filePath;
-}
-
-function isOversized(width, height, maxPx) {
-  return width > maxPx || height > maxPx;
-}
-
-async function imageDimensions(filePath) {
-  const meta = await sharp(filePath).metadata();
-  return { width: meta.width ?? 0, height: meta.height ?? 0 };
-}
-
-async function optimizeImage(filePath, flags) {
-  const stat = fs.statSync(filePath);
-  if (stat.size <= flags.minBytes) return null;
-
-  const ext = path.extname(filePath).toLowerCase();
-  const base = path.basename(filePath);
-
-  if (ext === '.png') {
-    const { width, height } = await imageDimensions(filePath);
-    const outPath = jpegOutputPath(filePath);
-    return {
-      action: 'png-to-jpg',
-      from: filePath,
-      to: outPath,
-      oldName: base,
-      newName: path.basename(outPath),
-      beforeBytes: stat.size,
-      width,
-      height,
-      resize: isOversized(width, height, flags.maxPx),
-    };
+function buildRotationMap(rotations, dir) {
+  const map = new Map();
+  for (const { file, dirFlag } of rotations) {
+    const degrees = parseRotatePreset(dirFlag);
+    if (degrees == null) throw new Error(`Bad rotate flag after ${file}: ${dirFlag}`);
+    const hit = listProjectImages(dir).find((n) => n.toLowerCase() === file.toLowerCase());
+    if (!hit) throw new Error(`Image not found for --rotate: ${file}`);
+    map.set(hit.toLowerCase(), degrees);
   }
-
-  const other = ['.jpg', '.jpeg', '.webp', '.gif'];
-  if (!other.includes(ext)) return null;
-
-  const { width, height } = await imageDimensions(filePath);
-  if (!isOversized(width, height, flags.maxPx)) return null;
-
-  const outPath = jpegOutputPath(filePath);
-  return {
-    action: 'resize-to-jpeg',
-    from: filePath,
-    to: outPath,
-    oldName: base,
-    newName: path.basename(outPath),
-    beforeBytes: stat.size,
-    width,
-    height,
-    resize: true,
-  };
-}
-
-async function writeOptimized(plan, flags) {
-  let pipeline = sharp(plan.from);
-  const jpegOpts = { quality: flags.quality, mozjpeg: true };
-
-  if (plan.resize) {
-    pipeline = pipeline.resize(flags.maxPx, flags.maxPx, {
-      fit: 'inside',
-      withoutEnlargement: true,
-    });
-  }
-
-  const tmpPath = `${plan.to}.optimize-tmp`;
-  await pipeline.jpeg(jpegOpts).toFile(tmpPath);
-
-  const afterBytes = fs.statSync(tmpPath).size;
-  if (flags.dryRun) {
-    fs.unlinkSync(tmpPath);
-    return afterBytes;
-  }
-
-  const replacesInPlace = plan.from === plan.to;
-  if (replacesInPlace && afterBytes >= plan.beforeBytes) {
-    fs.unlinkSync(tmpPath);
-    return plan.beforeBytes;
-  }
-
-  fs.renameSync(tmpPath, plan.to);
-  if (!replacesInPlace && fs.existsSync(plan.from)) {
-    fs.unlinkSync(plan.from);
-  }
-  return afterBytes;
+  return map;
 }
 
 async function processProjectDir(dir, flags) {
+  const rotationMap = buildRotationMap(flags.rotations, dir);
   const names = listProjectImages(dir);
   const plans = [];
+
   for (const name of names) {
     const filePath = path.join(dir, name);
-    const plan = await optimizeImage(filePath, flags);
+    const manualDegrees = rotationMap.get(name.toLowerCase()) ?? null;
+    const plan = await planImageProcessing(filePath, flags, manualDegrees);
     if (plan) plans.push(plan);
   }
+
   if (!plans.length) return { plans: [], updatedFiles: [] };
 
   const renames = [];
   console.log(`\n${path.basename(dir)}:`);
   for (const plan of plans) {
-    const afterBytes = await writeOptimized(plan, flags);
-    const saved = plan.beforeBytes - afterBytes;
-    const tag = flags.dryRun ? '[dry-run]' : 'ok';
-
-    if (plan.action === 'png-to-jpg') {
-      const removed = flags.dryRun ? '' : ' (original PNG removed)';
-      const dim = plan.width ? `${plan.width}×${plan.height}, ` : '';
-      const fit = plan.resize ? ` (fit ${flags.maxPx}px)` : '';
-      console.log(
-        `  ${tag} ${plan.oldName} → ${plan.newName}: ${dim}${formatKb(plan.beforeBytes)} → ${formatKb(afterBytes)}${fit}${removed}`
-      );
+    const result = await executeImagePlan(plan, flags);
+    logPlanResult(plan, result, flags);
+    if (plan.oldName !== plan.newName) {
       renames.push({ oldName: plan.oldName, newName: plan.newName });
-    } else if (plan.oldName !== plan.newName) {
-      const removed = flags.dryRun ? '' : ' (original removed)';
-      console.log(
-        `  ${tag} ${plan.oldName} → ${plan.newName}: ${plan.width}×${plan.height}, ${formatKb(plan.beforeBytes)} → ${formatKb(afterBytes)} (fit ${flags.maxPx}px)${removed}`
-      );
-      renames.push({ oldName: plan.oldName, newName: plan.newName });
-    } else {
-      const note =
-        afterBytes >= plan.beforeBytes ? 'no gain, kept original' : `−${formatKb(saved)}`;
-      console.log(
-        `  ${tag} ${plan.oldName}: ${plan.width}×${plan.height}, ${formatKb(plan.beforeBytes)} → ${formatKb(afterBytes)} (fit ${flags.maxPx}px, ${note})`
-      );
     }
   }
 
@@ -231,9 +155,15 @@ async function processProjectDir(dir, flags) {
 async function main() {
   const flags = parseArgs(process.argv);
   const dirs = listProjectDirs(flags.targets, flags.all);
-  console.log(
-    `Optimize ${dirs.length} project(s); > ${flags.minBytes / 1024} KB; max ${flags.maxPx}px; JPEG ${flags.quality}%`
-  );
+  const parts = [
+    `Process ${dirs.length} project(s)`,
+    `> ${flags.minBytes / 1024} KB resize/convert`,
+    `max ${flags.maxPx}px`,
+    `JPEG ${flags.quality}%`,
+  ];
+  if (flags.exifOrient) parts.push(`EXIF orient (${flags.orientQuality}% when orient-only)`);
+  if (flags.rotations.length) parts.push(`${flags.rotations.length} manual rotation(s)`);
+  console.log(`${parts.join('; ')} — one encode per file`);
 
   let total = 0;
   for (const dir of dirs) {
