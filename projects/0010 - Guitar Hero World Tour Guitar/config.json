@@ -4,8 +4,8 @@
   "title": "Guitar Hero World Tour guitar — wireless controller repair",
   "startDate": "2024-01-01",
   "endDate": "2024-01-01",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0010%20-%20Guitar%20Hero%20World%20Tour%20guitar/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -15,9 +15,9 @@
     "GuitarHero",
     "controller"
   ],
-  "description": "Red Octane Guitar Hero World Tour wireless guitar for Xbox 360 — electronics and mechanical work on the fret board, strum bar, and wireless link so the controller registers cleanly in game again.",
+  "description": "Guitar Hero World Tour wireless guitar (Xbox 360) — corroded battery contacts fixed after a careful full disassembly to reach the battery box, so the controller powers on and plays again.",
   "itemDetails": "Red Octane wireless Guitar Hero World Tour guitar controller for Microsoft Xbox 360 (model 95457.805; sunburst red-to-black metallic finish, white pickguard). Five coloured fret buttons (green/red/yellow/blue/orange), touch-sensitive neck slider strip (World Tour / GH5 era), strum bar, whammy bar, Star Power / Back button, Xbox guide-compatible D-pad cluster. 2.4 GHz wireless (receiver dongle not shown in hero). Manufacturer: Red Octane (Activision publishing era). Market: legacy rhythm-game peripheral; used sunburst units common on eBay. Note: game console, not a toy—electronics and switch repair typical.",
-  "repairDetails": "X-box Guitar hero console (legacy site gallery — short caption only; expand story when details are available).",
+  "repairDetails": "This Red Octane Guitar Hero World Tour wireless guitar would not power on reliably — the fault traced to poor contact at the battery terminals.\n\nReaching the battery compartment meant a full disassembly of the guitar shell, which is fiddly on this model. We cleaned and rebuilt the contacts, reassembled the neck and body, and confirmed stable power for play.",
   "skills": [
     "electronic",
     "mechanical"
