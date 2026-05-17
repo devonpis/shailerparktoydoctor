@@ -20,6 +20,7 @@
       content="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/<!-- hero or after filename -->"
     />
     <meta property="og:url" content="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/" />
+    <meta property="og:type" content="article" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
