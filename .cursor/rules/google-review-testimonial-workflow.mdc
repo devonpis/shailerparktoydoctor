@@ -1,0 +1,108 @@
+---
+description: Google review → project config, story HTML, testimonials page (apply-google-review / sync-testimonials-html)
+alwaysApply: false
+---
+
+# Google review and testimonials workflow
+
+When the user pastes a Google Maps review or asks to **update testimonial(s)**:
+
+## 0. Skip if already on testimonials page
+
+Before applying a **new** review from a feed/paste, check whether that quote is **already captured** on `new/testimonials.html` (same quote text, or same Google `profileUrl` + quote).
+
+- If yes → **skip** that review (do not re-write config or re-scaffold).
+- `node scripts/apply-google-review.mjs` does this automatically; use `--force` to apply anyway.
+- `--sync-all` always refreshes all configs and rebuilds the page (no skip).
+
+## 1. Map review → project (human / agent)
+
+Match review text and owner replies to a repair folder under `projects/`. If no folder exists and the repair is real, scaffold a new project (`config.json`, photos later).
+
+Say **unmapped** when the review is general shop praise with no repair (→ standalone only).
+
+**Names:** Never store a full surname in the repo. `authorName` in config is **first name + last initial** only (e.g. `Howard C.`). When pasting from Google, pass `--author "Howard Chung"` — the apply script saves `Howard C.` only. Optional `profileUrl` links the name on testimonials cards.
+
+## 2. Apply with scripts (do not hand-edit HTML when this flow applies)
+
+```bash
+# One project — set googleReview, re-scaffold story if index.html exists, rebuild testimonials
+node scripts/apply-google-review.mjs <project-id> \
+  --author "Reviewer Full Name" \
+  --quote "Paste review text from Google." \
+  [--profile-url "https://www.google.com/maps/contrib/…"]
+
+# Re-apply from config only (after manual config edit)
+node scripts/apply-google-review.mjs <project-id> --from-config
+
+# Refresh all project reviews + testimonials page
+node scripts/apply-google-review.mjs --sync-all
+```
+
+Options:
+
+- `--force` — apply even when the review is already on the testimonials page
+- `--no-featured` — keep review on project story only (`featuredOnTestimonials: false`)
+- `--no-scaffold` — skip `index.html` regen
+- `--no-testimonials` — skip `new/testimonials.html` rebuild
+
+Rebuild testimonials only:
+
+```bash
+node scripts/sync-testimonials-html.mjs
+node scripts/sync-testimonials-html.mjs --intro "From Google Reviews. Updated on Google Maps, May 2026."
+```
+
+If `authorName` was stripped from configs, restore from `data/google-review-author-names.json`:
+
+```bash
+node scripts/restore-google-review-author-names.mjs
+node scripts/apply-google-review.mjs --sync-all
+```
+
+## 3. What each step updates
+
+| Step | File | Result |
+|------|------|--------|
+| Config | `projects/<folder>/config.json` | `googleReview`: `quote`, `authorName` (partial, e.g. `Howard C.`), optional `profileUrl`, `featuredOnTestimonials`, `featuredOrder` |
+| Story | `projects/<folder>/index.html` | `<blockquote class="project-review">` footer `— First L.` |
+| Testimonials | `new/testimonials.html` | `— First L.` on its own line (no link; `profileUrl` for dedupe only) |
+| Repair link | Testimonials card | If `webpageUrl` or `index.html` exists: **Repair: {title}** → project page |
+
+## 4. `googleReview` schema (canonical)
+
+```json
+"googleReview": {
+  "quote": "Review text.",
+  "authorName": "Howard C.",
+  "profileUrl": "https://www.google.com/maps/contrib/…",
+  "featuredOnTestimonials": true,
+  "featuredOrder": 53
+}
+```
+
+Use `null` when there is no review. Legacy keys `author` / `text` are accepted when reading.
+
+## 5. Standalone reviews (no project)
+
+General praise (TV remote, shop overall) with no repair folder → add to `data/testimonials-standalone.json`, then run `sync-testimonials-html.mjs`. Do **not** invent a project config.
+
+## 6. HTML policy
+
+`apply-google-review` and `sync-testimonials-html` **may** write `new/testimonials.html` and regen project `index.html` when the user explicitly requested testimonial / Google review updates. Other HTML still follows the *no HTML unless asked* rule.
+
+## 7. HTML webpage release
+
+When **`publish <id> to webpage`** / **`publish-webpage.mjs`** runs:
+
+1. **Story** — if `index.html` exists and **`googleReview`** is set, syncs the **`<blockquote class="project-review">`** block from config (unless `--no-story-review`). New pages from scaffold include the block automatically.
+2. **Testimonials** — if the story is live (`index.html` / `webpageUrl`), rebuilds **`new/testimonials.html`** with a **Repair:** link (unless `--no-testimonials`).
+
+See [`docs/website-go-live.md`](../../docs/website-go-live.md) §3b.
+
+## 8. After apply
+
+- Show which project id was mapped and whether story/testimonials were updated.
+- If review mentions a toy not in the map, ask the owner to confirm project id before applying.
+
+Docs: [`docs/website-testimonials-page-plan.md`](../../docs/website-testimonials-page-plan.md)

@@ -1,24 +1,57 @@
 <!DOCTYPE html>
-<!-- Copy to projects/<folder>/index.html when status is DONE. Reference: projects/0003 - Donald Duck/index.html -->
-<!-- Head SEO tags: run `node scripts/publish-webpage.mjs <id>` after authoring — syncs meta from config.json -->
+<!--
+  Copy to projects/<folder>/index.html when status is DONE (or let publish-webpage scaffold it).
+
+  Preferred workflow (do not hand-author unless needed):
+    node scripts/validate-done-readiness.mjs <id>
+    node scripts/set-project-status.mjs <id> --status DONE
+    node scripts/publish-webpage.mjs <id>
+      → optimize/orient images, SEO <head>, webpageUrl
+      → sync <blockquote class="project-review"> from config.googleReview
+      → rebuild new/testimonials.html (Repair: link) when googleReview is set
+    node scripts/sync-projects-gallery-index.mjs <id>
+    → sitemap.xml, commit, push
+
+  Other scripts:
+    node scripts/scaffold-project-story-html.mjs <id> [--force]   full page from config
+    node scripts/apply-google-review.mjs <id> --author "…" --quote "…"   config + story + testimonials
+
+  Reference pages: projects/0008 - Large floppy brown cream dog/index.html (review, no WIP)
+                    projects/0006 - Tomy Plarail Edward/index.html (review + before/after + WIP)
+                    projects/0001 - Saielle of the Willow Tree/index.html (review + before/after + WIP + videos)
+
+  Section order (omit blocks you do not need):
+    hero → h1/title → tags/skills → date → lead → googleReview → work-in-progress gallery → videos → prose → CTA
+
+  Work in progress gallery: before → WIP-### → after (all except hero.*; includes before/after even when used as hero). Hidden if empty.
+
+  Hero / thumbnail / og:image priority: hero.* → after.* → WIP-001.* → before.*
+  Images: .jpeg or .png only in repo (publish-webpage renames .jpg → .jpeg).
+
+  googleReview in config.json — see googleReview.example.json. Story block is auto-synced on publish.
+  Testimonials: featured reviews also appear on new/testimonials.html with Repair: link when this page is live.
+
+  Wireframe: docs/website-project-page-wireframe.md
+  Go-live: docs/website-go-live.md
+-->
 <html lang="en-AU">
   <head>
     <meta charset="utf-8" />
     <title><!-- projectName --> — Shailer Park Toy Doctor</title>
     <meta
       name="description"
-      content="<!-- ~160 chars: short SEO summary from description or repair lead -->"
+      content="<!-- ~160 chars: SEO summary; publish-webpage.mjs syncs from description -->"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/" />
     <meta property="og:title" content="<!-- projectName --> — Shailer Park Toy Doctor" />
     <meta
       property="og:description"
-      content="<!-- same as meta description -->"
+      content="<!-- same as meta description; truncated ~160 chars in practice -->"
     />
     <meta
       property="og:image"
-      content="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/<!-- hero or after filename -->"
+      content="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/<!-- hero | after | WIP-001 | before -->"
     />
     <meta property="og:url" content="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/" />
     <meta property="og:type" content="article" />
@@ -31,7 +64,7 @@
     />
     <link rel="stylesheet" href="/new/css/site.css" />
   </head>
-  <body data-active-page="projects" data-project-folder="<!-- folder name, e.g. 0003 - Donald Duck -->">
+  <body data-active-page="projects" data-project-folder="<!-- folder name, e.g. 0008 - Large floppy brown cream dog -->">
     <div id="site-header"></div>
 
     <main class="page-main">
@@ -41,49 +74,59 @@
 
       <div class="project-hero">
         <img
-          src="/projects/<!-- URL-encoded folder -->/<!-- after.png | hero.jpeg | before.jpg -->"
-          alt="<!-- projectName -->"
+          src="/projects/<!-- URL-encoded folder -->/<!-- hero.jpeg | after.jpeg | before.jpeg -->"
+          alt="<!-- projectName --> — repair"
           width="1000"
           height="667"
         />
       </div>
 
-      <h1><!-- title (slogan / headline) --></h1>
+      <h1><!-- title (slogan / headline from config) --></h1>
       <h3 class="project-subtitle"><!-- projectName --></h3>
       <div class="project-tag-row">
         <div id="project-skills-root"></div>
         <ul class="project-tags">
-          <!-- <li class="project-tag">tag from config tags[]</li> -->
+          <!-- <li class="project-tag">from config tags[]</li> -->
         </ul>
       </div>
 
-      <p class="project-meta"><!-- endDate AU only, e.g. 6 May 2026 --></p>
+      <p class="project-meta"><!-- endDate only, AU format e.g. 6 May 2026 --></p>
       <p class="project-lead text-lead">
-        <!-- description (short summary / social-style lead) -->
+        <!-- description (short lead; one or two sentences) -->
       </p>
 
-      <!-- Optional: if googleReview is set in config.json -->
-      <!--
+      <!-- OMIT entire block if googleReview is null in config.json -->
+      <!-- publish-webpage.mjs and apply-google-review.mjs sync this from config -->
       <blockquote class="project-review">
-        <p>“<!-- quote -->”</p>
-        <footer>— <!-- authorName --></footer>
+        <p>“<!-- googleReview.quote -->”</p>
+        <footer>— Reviewer F.</footer>
+        <!-- Full name in config; site shows first name + last initial only -->
       </blockquote>
-      -->
 
-      <!-- Omit entire section if no WIP-### images -->
+      <!-- OMIT if only hero.* exists: gallery = before → WIP-### → after (never hero.*) -->
       <section class="project-section">
         <h2 class="jw-heading-100">Work in progress</h2>
         <div class="project-wip-grid">
+          <img
+            src="/projects/<!-- URL-encoded folder -->/before.jpeg"
+            alt="Before — repair"
+            loading="lazy"
+          />
           <img
             src="/projects/<!-- URL-encoded folder -->/WIP-001.jpeg"
             alt="Repair in progress 1"
             loading="lazy"
           />
-          <!-- WIP-002, WIP-003, … -->
+          <!-- WIP-002… then after.jpeg last -->
+          <img
+            src="/projects/<!-- URL-encoded folder -->/after.jpeg"
+            alt="After — repair"
+            loading="lazy"
+          />
         </div>
       </section>
 
-      <!-- Omit entire section if no youtubeUrl / youtubeShortUrl -->
+      <!-- OMIT entire section if youtubeUrl and youtubeShortUrl are both null -->
       <section class="project-section">
         <h2 class="jw-heading-100">Videos</h2>
         <div class="project-videos">
@@ -115,11 +158,11 @@
 
       <section class="project-prose">
         <h2 class="jw-heading-100">The repair</h2>
-        <!-- One <p> per paragraph from repairDetails (blank line between paragraphs in config). -->
+        <!-- One <p> per paragraph: blank line between paragraphs in config repairDetails -->
         <p><!-- repairDetails paragraph 1 --></p>
         <p><!-- repairDetails paragraph 2 --></p>
+        <!-- OMIT "About this item" h2 + paragraphs if itemDetails is null/empty -->
         <h2 class="jw-heading-100">About this item</h2>
-        <!-- One <p> per paragraph from itemDetails. -->
         <p><!-- itemDetails paragraph 1 --></p>
         <p><!-- itemDetails paragraph 2 --></p>
       </section>

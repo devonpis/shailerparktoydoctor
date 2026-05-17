@@ -1,5 +1,24 @@
 [
   {
+    "id": "0094",
+    "folder": "0094 - Ducksley",
+    "projectName": "Russ Ducksley singing duck",
+    "title": "Russ Ducksley — gearbox, wiring, and singing mechanism",
+    "tags": [
+      "Russ",
+      "Ducksley",
+      "animatronic"
+    ],
+    "skills": [
+      "needlework",
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0094%20-%20Ducksley/after.jpeg",
+    "url": "/projects/0094%20-%20Ducksley/",
+    "endDate": "2025-08-26"
+  },
+  {
     "id": "0093",
     "folder": "0093 - Tomy Big Loader white shells pair",
     "projectName": "Tomy Big Loader white shells pair",
@@ -15,6 +34,121 @@
     "thumbnail": "/projects/0093%20-%20Tomy%20Big%20Loader%20white%20shells%20pair/hero.jpeg",
     "url": "/projects/0093%20-%20Tomy%20Big%20Loader%20white%20shells%20pair/",
     "endDate": "2024-02-02"
+  },
+  {
+    "id": "0088",
+    "folder": "0088 - Yui Yuigahama Bunny Ver 1 4 FREEing",
+    "projectName": "Yui Yuigahama Bunny Ver 1/4 FREEing",
+    "title": "Yui Yuigahama FREEing 1/4 — missing hair rebuilt and glaze-matched",
+    "tags": [
+      "figure",
+      "anime",
+      "Oregairu",
+      "Yui Yuigahama",
+      "FREEing",
+      "1/4 scale"
+    ],
+    "skills": [
+      "paintjob"
+    ],
+    "thumbnail": "/projects/0088%20-%20Yui%20Yuigahama%20Bunny%20Ver%201%204%20FREEing/hero.jpeg",
+    "url": "/projects/0088%20-%20Yui%20Yuigahama%20Bunny%20Ver%201%204%20FREEing/",
+    "endDate": "2026-03-28"
+  },
+  {
+    "id": "0066",
+    "folder": "0066 - Lucy dalmatian plush dog",
+    "projectName": "Lucy dalmatian plush dog",
+    "title": "Lucy dalmatian plush — lower body rebuild and deep clean",
+    "tags": [
+      "dog",
+      "dalmatian",
+      "plush"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0066%20-%20Lucy%20dalmatian%20plush%20dog/WIP-001.jpeg",
+    "url": "/projects/0066%20-%20Lucy%20dalmatian%20plush%20dog/",
+    "endDate": "2026-04-05"
+  },
+  {
+    "id": "0055",
+    "folder": "0055 - Santa Homer Simpson animatronic",
+    "projectName": "Santa Homer Simpson animatronic",
+    "title": "Santa Homer animatronic — gears, belt, and mechanism rebuild",
+    "tags": [
+      "Simpsons",
+      "Homer",
+      "Christmas"
+    ],
+    "skills": [
+      "needlework",
+      "electronic",
+      "mechanical",
+      "paintjob"
+    ],
+    "thumbnail": "/projects/0055%20-%20Santa%20Homer%20Simpson%20animatronic/after.jpeg",
+    "url": "/projects/0055%20-%20Santa%20Homer%20Simpson%20animatronic/",
+    "endDate": "2025-12-01"
+  },
+  {
+    "id": "0053",
+    "folder": "0053 - Playskool Kota Triceratops",
+    "projectName": "Playskool Kota Triceratops",
+    "title": "Playskool Kota — neck gear, horns, and full rebuild",
+    "tags": [
+      "Kota",
+      "dinosaur",
+      "Playskool"
+    ],
+    "skills": [
+      "needlework",
+      "electronic",
+      "mechanical",
+      "paintjob"
+    ],
+    "thumbnail": "/projects/0053%20-%20Playskool%20Kota%20Triceratops/WIP-001.jpeg",
+    "url": "/projects/0053%20-%20Playskool%20Kota%20Triceratops/",
+    "endDate": "2025-10-30"
+  },
+  {
+    "id": "0043",
+    "folder": "0043 - Verna 1960s vintage teddy",
+    "projectName": "Verna 1960s vintage teddy",
+    "title": "Verna golden mohair teddy — clean, mend, and paw restoration",
+    "tags": [
+      "Verna",
+      "teddy",
+      "vintage",
+      "1960s",
+      "mohair"
+    ],
+    "skills": [
+      "needlework",
+      "paintjob"
+    ],
+    "thumbnail": "/projects/0043%20-%20Verna%201960s%20vintage%20teddy/after.jpeg",
+    "url": "/projects/0043%20-%20Verna%201960s%20vintage%20teddy/",
+    "endDate": "2025-11-24"
+  },
+  {
+    "id": "0042",
+    "folder": "0042 - Soft cloth baby doll",
+    "projectName": "Lulla soft cloth baby doll",
+    "title": "Lulla cloth doll — face, chest detail, and restuff",
+    "tags": [
+      "Lulla",
+      "doll",
+      "baby",
+      "cloth"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0042%20-%20Soft%20cloth%20baby%20doll/after.jpeg",
+    "url": "/projects/0042%20-%20Soft%20cloth%20baby%20doll/",
+    "endDate": "2025-10-30"
   },
   {
     "id": "0015",

@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Santa Homer Simpson animatronic",
-  "title": "",
+  "title": "Santa Homer animatronic — gears, belt, and mechanism rebuild",
   "startDate": "2025-12-01",
   "endDate": "2025-12-01",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0055%20-%20Santa%20Homer%20Simpson%20animatronic/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -19,10 +19,11 @@
   "skills": [
     "needlework",
     "electronic",
-    "mechanical"
+    "mechanical",
+    "paintjob"
   ],
-  "description": "Santa Homer Simpson animatronic — mechanical repair, electronics repair, and cleaning and refresh.",
+  "description": "This Santa Homer Simpson animatronic had seized motion and broken internal supports. We stripped and cleaned the Santa costume, replaced failed gearbox gears and the drive belt, repaired arm and head joints, repainted the head, and reassembled him for display again.",
   "itemDetails": "Santa Homer Simpson animatronics are licensed seasonal tie-in collectibles combining The Simpsons branding with Christmas novelty motion toys. Most examples date to 2000s-era character-merch waves where pop-culture mascots were adapted into festive decor.\n\nTypical construction includes molded plastic components, textile Santa costume elements, and a battery-operated motor/sound assembly. Market value is strongest for clearly licensed, fully functional units with intact paint and costume parts, particularly in original packaging.",
-  "repairDetails": null,
+  "repairDetails": "Homer arrived in his Santa outfit with the movement mechanism failing — worn gears, a broken rubber belt, and cracked supports at the arm and shoulder.\n\nWe disassembled the figure, removed the Santa costume for a deep clean, and opened the gearbox. New gears were sourced and fitted where originals had stripped, the rubber belt in the moving mechanism was replaced, and broken arm supports plus the head attachment joint were repaired.\n\nThe head received a repaint where finish had chipped, then costume, chassis, and electronics were reassembled and tested so Homer animates reliably again.",
   "googleReview": null
 }

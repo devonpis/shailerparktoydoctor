@@ -55,9 +55,24 @@ node scripts/fix-project-image-orientation.mjs --all --vision   # needs OPENAI_A
 
 Rotation and resize share **one sharp pipeline** per file (`optimize-project-images.mjs` via `publish-webpage.mjs`), so you do not rotate then optimize separately (which would JPEG-compress twice). Orient-only files use `--orient-quality` 92; resize/convert uses 90%.
 
-**`publish-webpage.mjs`** (T-00024 story SEO): if **`index.html`** is missing, runs **`scaffold-project-story-html.mjs`** first (body + head tags from `config.json`). Then syncs **SEO meta** from current images: `<title>`, meta description, canonical, Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`), and **project-hero** (`hero` → `after` → `WIP-001` → `before`). Sets **`webpageUrl`** in config if empty. Use `--no-meta` to skip. Edit prose in `config.json` (`repairDetails`, `itemDetails`) before scaffold, or hand-edit `index.html` after (re-run publish to refresh meta/hero only).
+**`publish-webpage.mjs`** (T-00024 story SEO): if **`index.html`** is missing, runs **`scaffold-project-story-html.mjs`** first (body + head tags from `config.json`). On existing pages, syncs the **Work in progress** gallery (before → WIP → after, excludes `hero.*` only). Then syncs **SEO meta** from current images: `<title>`, meta description, canonical, Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`), and **project-hero** (`hero` → `after` → `WIP-001` → `before`). Sets **`webpageUrl`** in config if empty. Use `--no-meta` to skip. Edit prose in `config.json` (`repairDetails`, `itemDetails`) before scaffold, or hand-edit `index.html` after (re-run publish to refresh meta/hero only).
 
-Agent flow for **`publish <id> to webpage`**: after owner confirms → `publish-webpage.mjs` (images + validate + scaffold if needed + SEO meta) → `sync-projects-gallery-index.mjs <id>` → sitemap → commit/push when approved. Optional: `scaffold-project-story-html.mjs <id> --force` to regenerate body from config without re-optimizing images.
+Agent flow for **`publish <id> to webpage`**: after owner confirms → `publish-webpage.mjs` (images + validate + scaffold if needed + SEO meta) → **`sync-testimonials-html.mjs`** when the project has **`googleReview`** and a live story URL (`webpageUrl` or `index.html`) so the testimonials quote card gets a **Repair:** link → `sync-projects-gallery-index.mjs <id>` → sitemap → commit/push when approved. Optional: `scaffold-project-story-html.mjs <id> --force` to regenerate body from config without re-optimizing images.
+
+**Google review (required for testimonials):** `publish-webpage.mjs` does **not** invent reviews. If `config.json` has **`googleReview": null`**, the story page will have **no** review block and **`new/testimonials.html` will not** get a card for that repair (checklist shows `[ ] googleReview + testimonials`). After you map a Google review, run:
+
+```bash
+node scripts/apply-google-review.mjs <id> --author "…" --quote "…" [--profile-url "…"]
+```
+
+That updates config, syncs the story `project-review` block, and rebuilds testimonials (with **Repair:** link when the story is live).
+
+**Google review on story + testimonials:** When `googleReview` is set, `publish-webpage.mjs` (before release):
+
+1. **Story** — inserts or updates **`<blockquote class="project-review">`** on `index.html` from config (`--no-story-review` to skip). New scaffolds include it automatically.
+2. **Testimonials** — runs `sync-testimonials-html.mjs` when the story is live, adding **Repair: {title}** on that quote card (`--no-testimonials` to skip).
+
+See [`website-testimonials-page-plan.md`](website-testimonials-page-plan.md).
 
 ### 0b. Optimize project images (included in `publish-webpage.mjs`)
 
@@ -77,7 +92,9 @@ Use `--dry-run` first to preview. Social-only publish can skip this step; **webp
 
 ### 1. Add the story page
 
-Create **`projects/<folder>/index.html`** from [`projects/0000 - template/index.html.example`](../projects/0000%20-%20template/index.html.example).
+Create **`projects/<folder>/index.html`** from [`projects/0000 - template/index.html.example`](../projects/0000%20-%20template/index.html.example) (optional sections: google review, **Work in progress** gallery, videos — see template comments). **`googleReview`** shape: [`googleReview.example.json`](../projects/0000%20-%20template/googleReview.example.json).
+
+**Work in progress** gallery (scaffold / `scaffold-project-story-html.mjs --force`): all repair images except `hero.*`, ordered **before → WIP-### → after** (before/after appear even when used as the page hero). Section omitted when there is nothing to show.
 
 - Copy fields from `config.json` (see wireframe field map).
 - **Thumbnail / hero image:** first file found in order **hero → after → WIP-001 → before** (any `.jpg` / `.jpeg` / `.png`).
@@ -113,6 +130,22 @@ In `projects/<folder>/config.json`:
 ```
 
 Use the real folder name; URL-encode spaces as `%20` in the stored URL.
+
+### 3b. Google review on story page and testimonials
+
+If `config.json` has **`googleReview`**:
+
+**Story page** — handled by `publish-webpage.mjs` (syncs `<blockquote class="project-review">` from config). **`apply-google-review.mjs`** does the same when `index.html` already exists.
+
+**Testimonials** — when the story page is live:
+
+```bash
+node scripts/sync-testimonials-html.mjs
+```
+
+`publish-webpage.mjs` does this step for you when `index.html` / `webpageUrl` exist. The matching quote card on **`new/testimonials.html`** gets a **Repair:** link to this project.
+
+Skip with `publish-webpage.mjs --no-testimonials`. Reviews with no repair page stay on the card without a repair link until the story is published.
 
 ### 4. Update sitemap
 

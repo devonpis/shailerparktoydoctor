@@ -7,7 +7,7 @@ alwaysApply: true
 
 Use the repository **README**, section *Project management*, for the full workflow. When working inside `**/projects/**/config.json` or publishing repair content:
 
-Respect the *client privacy* rule: **no customer names, phones, or emails** in project files — only testimonial reviewer names and Google Maps links where explicitly allowed.
+Respect the *client privacy* rule: **no customer names, phones, or emails** in project files — except **`googleReview.authorName`** (first name + last initial only, e.g. `Howard C.`).
 
 ## Explicit publish commands only
 
@@ -59,4 +59,5 @@ Per-project `config.json` URL fields (`facebookUrl`, `instagramUrl`, `threadUrl`
 2. Agent replies with a **preview summary**; human **confirms** (see *human confirmation* rule).
 3. **Content validation** must pass first — run `node scripts/validate-publish.mjs <id>` (see *publish content guards* rule and [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md)).
 4. For **`webpage`** (or combined **social media and webpage**): when the owner supplies **`repairDetails`**, write **`repairDetails`** and **refresh `title` + `description`** in `config.json` in the same pass (slogan title; short story lead for `description` — not a skill list). Then run **`node scripts/publish-webpage.mjs <id>`** first (add **`--rotate <file> --cw|--ccw|--180`** or **`--exif-orient`** when the owner reports sideways images); then author/update **`index.html`** if needed. Format **`repairDetails`** and **`itemDetails`** as **multiple paragraphs** — blank line in JSON, one `<p>` each on the page (see [`docs/website-go-live.md`](../../docs/website-go-live.md)).
-5. After go-live, **persist** returned permalinks in `config.json` (commits still need separate confirmation).
+5. **Google review:** If the project has **`googleReview`**, **`publish-webpage.mjs`** syncs the **review block** onto **`index.html`** before release (`--no-story-review` to skip) and rebuilds **`new/testimonials.html`** with a **Repair:** link when the story is live (`--no-testimonials` to skip). See [`google-review-testimonial-workflow.mdc`](google-review-testimonial-workflow.mdc).
+6. After go-live, **persist** returned permalinks in `config.json` (commits still need separate confirmation).

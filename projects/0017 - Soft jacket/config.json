@@ -21,5 +21,9 @@
   "description": "Soft jacket repair — sewing and fabric repair.",
   "itemDetails": null,
   "repairDetails": null,
-  "googleReview": null
+  "googleReview": {
+    "quote": "Really went above and beyond to help fix my bear jacket. I knew it was a hard fix but she came through for me! She is a lovely lady!",
+    "authorName": "Paula W.",
+    "featuredOnTestimonials": true
+  }
 }

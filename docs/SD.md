@@ -129,7 +129,7 @@ The owner may supply a **CSV** listing repairs to onboard in bulk. A script (or 
 
 ## BR-019 — No customer PII in the repository
 
-Customer-identifying information (names, phones, emails, addresses on repair jobs) must **not** appear in tracked project content, except **Google review author names** (and optional public Maps profile URLs) in `googleReview` / testimonials, and the **business** Google Maps listing link in site copy. Agents and import scripts must enforce this. See [`.cursor/rules/client-privacy-no-pii-in-repo.mdc`](../.cursor/rules/client-privacy-no-pii-in-repo.mdc).
+Customer-identifying information (names, phones, emails, addresses on repair jobs) must **not** appear in tracked project content, except **Google review** `authorName` (first name + last initial only, e.g. `Howard C.`) and optional Maps `profileUrl` on testimonials. The **business** Google Maps listing link may appear in site copy. See [`.cursor/rules/client-privacy-no-pii-in-repo.mdc`](../.cursor/rules/client-privacy-no-pii-in-repo.mdc).
 
 ---
 

@@ -1,0 +1,32 @@
+{
+  "0001": { "authorName": "Lyandra A.", "profileUrl": "https://www.google.com/maps/contrib/115369988855126250489" },
+  "0006": { "authorName": "David W." },
+  "0007": { "authorName": "Jose P." },
+  "0008": { "authorName": "Molly R." },
+  "0010": { "authorName": "Mark L." },
+  "0013": { "authorName": "Ty A." },
+  "0015": { "authorName": "Alister W." },
+  "0017": { "authorName": "Paula W." },
+  "0019": { "authorName": "Jodi S." },
+  "0022": { "authorName": "Lindy" },
+  "0025": { "authorName": "Hamish M." },
+  "0029": { "authorName": "Ashley J." },
+  "0035": { "authorName": "Bret H." },
+  "0041": { "authorName": "Danny W." },
+  "0043": { "authorName": "Fergus S." },
+  "0053": { "authorName": "Sandra B.", "profileUrl": "https://www.google.com/maps/contrib/105882181965627643803" },
+  "0081": { "authorName": "Ollie S.", "profileUrl": "https://www.google.com/maps/contrib/116761936774706350176" },
+  "0088": { "authorName": "Howard C.", "profileUrl": "https://www.google.com/maps/contrib/105644778905190282074" },
+  "0092": { "authorName": "Carmen W." },
+  "0097": { "authorName": "Bradley G." },
+  "standalone": [
+    {
+      "authorName": "Hikaru B.",
+      "profileUrl": "https://www.google.com/maps/contrib/114704427028872991012"
+    },
+    {
+      "authorName": "Michelle C.",
+      "profileUrl": "https://www.google.com/maps/contrib/109712609960970676722"
+    }
+  ]
+}

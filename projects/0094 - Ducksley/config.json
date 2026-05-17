@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Russ Ducksley singing duck",
-  "title": "Russ Ducksley — electronics and mechanism repair",
+  "title": "Russ Ducksley — gearbox, wiring, and singing mechanism",
   "startDate": "2025-08-26",
   "endDate": "2025-08-26",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0094%20-%20Ducksley/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -17,12 +17,13 @@
     "animatronic"
   ],
   "skills": [
+    "needlework",
     "electronic",
     "mechanical"
   ],
-  "description": "Russ Ducksley Singin' in the Rain animatronic duck — motor, gearbox, and wiring fault. We rebuilt the drive mechanism and electronics so he sways, taps his foot, and sings again.",
+  "description": "Russ Ducksley Singin' in the Rain animatronic duck — corroded batteries, stripped gears, and a silent mechanism. We replaced contacts and wiring, 3D-printed gearbox gears, rebuilt the drive train, and restitched the plush so he sways, taps his foot, and sings again.",
   "itemDetails": "Russ (Russ Berrie / Russ Gift) Ducksley — The Singing Duck \"Singin' in the Rain\" (circa 2003). Yellow plush duck with yellow rain hat and checkered bow tie; animatronic: sways side to side and taps foot while singing \"Singin' in the Rain.\" Internal plastic chassis with DC motor, gear train, speaker behind grille, and battery-powered sound board. Common failure modes on aged units: stripped or jammed gears, loose belt, fractured harness, corroded battery contacts. Market: nostalgic gift-shop / secondary-market animatronic plush; not current production. Sources: Animatronic Wiki (Russ Ducksley); collector listings for Russ singing duck line.",
-  "repairDetails": null,
+  "repairDetails": "Ducksley arrived silent and stiff — corroded battery contacts and stripped gears inside the singing mechanism.\n\nWe opened the plush skin and deep-cleaned the body, replaced the battery contacts and wiring, then disassembled the motion chassis. Broken gears were 3D printed and fitted in the gearbox, the train was lubricated and reassembled, and electrical tests confirmed sway, foot tap, and song again before the skin was restitched closed.",
   "googleReview": null,
   "importance": null
 }

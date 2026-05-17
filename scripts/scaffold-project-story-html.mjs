@@ -12,12 +12,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { resolveProjectDir, PROJECTS_DIR, projectIdFromDir } from './lib/resolve-project-dir.mjs';
-import { listProjectImages } from './lib/project-media.mjs';
+import {
+  buildWorkInProgressSectionHtml,
+  projectPathPrefix,
+} from './lib/project-work-in-progress-html.mjs';
 import {
   buildStoryMeta,
   pickStoryHeroImageName,
   updateProjectStoryMeta,
 } from './lib/project-story-meta.mjs';
+import { renderProjectReviewBlock } from './lib/project-google-review-html.mjs';
 
 function listPublishedIds() {
   const ids = [];
@@ -81,53 +85,6 @@ function splitParagraphs(text) {
     .filter(Boolean);
 }
 
-function listWipImageNames(dir) {
-  return listProjectImages(dir)
-    .filter((n) => /^wip-/i.test(n))
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-}
-
-function findImageByStem(dir, stem) {
-  return listProjectImages(dir).find((n) => n.toLowerCase().startsWith(stem.toLowerCase())) || null;
-}
-
-function buildBeforeAfterSection(dir, prefix, heroName) {
-  const heroLower = (heroName || '').toLowerCase();
-  const items = [];
-  const before = findImageByStem(dir, 'before');
-  const after = findImageByStem(dir, 'after');
-  if (before && before.toLowerCase() !== heroLower) {
-    items.push({ name: before, label: 'Before' });
-  }
-  if (after && after.toLowerCase() !== heroLower) {
-    items.push({ name: after, label: 'After' });
-  }
-  if (!items.length) return '';
-
-  const gridClass =
-    items.length === 1 ? 'project-before-after project-before-after--single' : 'project-before-after';
-  const figures = items
-    .map(
-      (item) => `          <figure class="project-before-after__item">
-            <img
-              src="${prefix}/${encodeURIComponent(item.name)}"
-              alt="${escapeHtml(item.label)} — repair"
-              loading="lazy"
-            />
-            <figcaption>${escapeHtml(item.label)}</figcaption>
-          </figure>`
-    )
-    .join('\n');
-
-  return `
-      <section class="project-section">
-        <h2 class="jw-heading-100">Before &amp; after</h2>
-        <div class="${gridClass}">
-${figures}
-        </div>
-      </section>`;
-}
-
 function youtubeEmbedId(url) {
   if (!url) return null;
   try {
@@ -139,10 +96,6 @@ function youtubeEmbedId(url) {
   } catch {
     return null;
   }
-}
-
-function projectPathPrefix(folder) {
-  return `/projects/${encodeURIComponent(folder)}`;
 }
 
 function paragraphBlock(paragraphs) {
@@ -176,34 +129,14 @@ function buildHtml(config, folder, dir) {
   if (!heroName) throw new Error('No hero/after/before/WIP image found');
 
   const heroSrc = `${prefix}/${encodeURIComponent(heroName)}`;
-  const beforeAfterSection = buildBeforeAfterSection(dir, prefix, heroName);
-  const wipNames = listWipImageNames(dir);
+  const workInProgressSection = buildWorkInProgressSectionHtml(dir, folder);
+  const wipBlock = workInProgressSection ? `\n${workInProgressSection}` : '';
   const tags = (config.tags || []).map(formatTagLabel).filter(Boolean);
   const headline = (config.title || config.projectName || folder).trim();
   const subtitle = (config.projectName || folder).trim();
   const lead = (config.description || '').trim();
   const dateAu = formatAuDate(config.endDate);
   const tagLis = tags.map((t) => `          <li class="project-tag">${escapeHtml(t)}</li>`).join('\n');
-
-  let wipSection = '';
-  if (wipNames.length) {
-    const imgs = wipNames
-      .map(
-        (name, i) => `          <img
-            src="${prefix}/${encodeURIComponent(name)}"
-            alt="Repair in progress ${i + 1}"
-            loading="lazy"
-          />`
-      )
-      .join('\n');
-    wipSection = `
-      <section class="project-section">
-        <h2 class="jw-heading-100">Work in progress</h2>
-        <div class="project-wip-grid">
-${imgs}
-        </div>
-      </section>`;
-  }
 
   let videoSection = '';
   const ytMain = youtubeEmbedId(config.youtubeUrl);
@@ -221,15 +154,7 @@ ${blocks.join('\n')}
       </section>`;
   }
 
-  const review = config.googleReview;
-  let reviewBlock = '';
-  if (review?.quote) {
-    reviewBlock = `
-      <blockquote class="project-review">
-        <p>“${escapeHtml(review.quote)}”</p>
-        <footer>— ${escapeHtml(review.authorName || 'Customer')}</footer>
-      </blockquote>`;
-  }
+  const reviewBlock = renderProjectReviewBlock(config.googleReview);
 
   const repairParas = splitParagraphs(config.repairDetails);
   const itemParas = splitParagraphs(config.itemDetails);
@@ -291,7 +216,7 @@ ${tagLis}
       <p class="project-lead text-lead">
         ${escapeHtml(lead)}
       </p>
-${reviewBlock}${beforeAfterSection}${wipSection}${videoSection}
+${reviewBlock}${wipBlock}${videoSection}
       <section class="project-prose">
         <h2 class="jw-heading-100">The repair</h2>
 ${paragraphBlock(repairParas)}

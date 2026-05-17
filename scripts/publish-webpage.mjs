@@ -15,6 +15,8 @@
  *   --exif-orient                      Same as default (compatibility)
  *   --no-optimize                      Skip image processing step
  *   --no-meta                          Skip SEO meta sync on index.html
+ *   --no-testimonials                  Skip testimonials.html rebuild (googleReview repair link)
+ *   --no-story-review                  Skip googleReview block sync on index.html
  *   --dry-run                          Dry-run process + validate; still validates
  */
 
@@ -27,6 +29,16 @@ import { scanProjectOrientation } from './lib/project-image-orientation.mjs';
 import { updateProjectStoryMeta } from './lib/project-story-meta.mjs';
 import { ensureAcceptableProjectImages } from './lib/project-image-extensions.mjs';
 import { validateWebpagePublishGate } from './lib/project-readiness.mjs';
+import {
+  normalizeGoogleReview,
+  repairLinkLabel,
+  repairPageHrefSync,
+} from './lib/google-review.mjs';
+import {
+  projectStoryReviewStatus,
+  syncProjectGoogleReviewHtml,
+} from './lib/project-google-review-html.mjs';
+import { syncProjectWorkInProgressHtml } from './lib/project-work-in-progress-html.mjs';
 import { INDEX_JSON_PATHS } from './lib/update-project-path-refs.mjs';
 import { validateProject } from './validate-publish.mjs';
 
@@ -38,6 +50,8 @@ function parseArgs(argv) {
     exifOrient: true,
     optimize: true,
     updateMeta: true,
+    syncTestimonials: true,
+    syncStoryReview: true,
     rotations: [],
   };
   const positional = [];
@@ -49,6 +63,8 @@ function parseArgs(argv) {
     else if (a === '--no-exif-orient') flags.exifOrient = false;
     else if (a === '--no-optimize') flags.optimize = false;
     else if (a === '--no-meta') flags.updateMeta = false;
+    else if (a === '--no-testimonials') flags.syncTestimonials = false;
+    else if (a === '--no-story-review') flags.syncStoryReview = false;
     else if (a === '--rotate') {
       const file = argv[++i];
       const dirFlag = argv[++i];
@@ -167,6 +183,110 @@ function readJsonIfExists(p) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 
+function testimonialsRepairStatus(dir, config) {
+  const review = normalizeGoogleReview(config.googleReview);
+  if (!review || review.featuredOnTestimonials === false) {
+    return { applicable: false, hasRepairLink: false };
+  }
+  const hasHtml = fs.existsSync(path.join(dir, 'index.html'));
+  const href = repairPageHrefSync(config, path.basename(dir), hasHtml);
+  return {
+    applicable: true,
+    hasRepairLink: Boolean(href),
+    label: href ? repairLinkLabel(config) : null,
+  };
+}
+
+function runSyncWorkInProgressGallery(dir, config, flags) {
+  const htmlPath = path.join(dir, 'index.html');
+  if (!fs.existsSync(htmlPath)) return;
+
+  console.log('\n--- Story page Work in progress gallery ---');
+  if (flags.dryRun) {
+    console.log('  [dry-run] would sync before → WIP → after gallery (excludes hero.*)');
+    return;
+  }
+  const folder = path.basename(dir);
+  const r = syncProjectWorkInProgressHtml(dir, folder, { dryRun: false });
+  if (r.skipped) console.log(`  skipped (${r.action})`);
+  else if (r.changed) console.log(`  OK: ${r.action}`);
+  else console.log(`  OK: ${r.action}`);
+}
+
+function runSyncStoryGoogleReview(dir, config, flags) {
+  const htmlPath = path.join(dir, 'index.html');
+  if (!fs.existsSync(htmlPath)) return;
+
+  if (!flags.syncStoryReview) {
+    console.log('\n--- Story page googleReview --- skipped (--no-story-review)');
+    return;
+  }
+
+  const review = normalizeGoogleReview(config.googleReview);
+  const html = fs.readFileSync(htmlPath, 'utf8');
+  const status = projectStoryReviewStatus(html, config);
+
+  if (!review && !status.htmlReview) {
+    console.log(
+      '\n--- Story page googleReview --- skipped (no googleReview in config — use apply-google-review.mjs)'
+    );
+    return;
+  }
+
+  console.log('\n--- Story page googleReview ---');
+  if (flags.dryRun) {
+    const would = status.needsSync
+      ? review
+        ? status.htmlReview
+          ? 'update project-review block'
+          : 'add project-review block'
+        : 'remove project-review block'
+      : 'already current';
+    console.log(`  [dry-run] ${would}`);
+    return;
+  }
+
+  const r = syncProjectGoogleReviewHtml(dir, config, { dryRun: false });
+  if (r.skipped) console.log(`  skipped (${r.action})`);
+  else if (r.changed) console.log(`  OK: ${r.action}`);
+  else console.log(`  OK: ${r.action}`);
+}
+
+function runSyncTestimonialsIfNeeded(dir, config, flags) {
+  const status = testimonialsRepairStatus(dir, config);
+  if (!status.applicable) {
+    console.log(
+      '\n--- Testimonials page --- skipped (no googleReview in config — use apply-google-review.mjs, then re-run publish or sync-testimonials-html.mjs)'
+    );
+    return;
+  }
+
+  if (!flags.syncTestimonials) {
+    console.log('\n--- Testimonials page --- skipped (--no-testimonials)');
+    return;
+  }
+
+  if (!status.hasRepairLink) {
+    console.log(
+      '\n--- Testimonials page --- skipped (googleReview present; repair link needs index.html or webpageUrl)'
+    );
+    return;
+  }
+
+  console.log(
+    `\n--- Testimonials page (Repair: ${status.label}) ---`
+  );
+  if (flags.dryRun) {
+    console.log('  [dry-run] would run: sync-testimonials-html.mjs');
+    return;
+  }
+  const r = spawnSync(process.execPath, ['scripts/sync-testimonials-html.mjs'], {
+    cwd: REPO_ROOT,
+    stdio: 'inherit',
+  });
+  if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
 function printChecklist(dir, config, projectId) {
   const folder = path.basename(dir);
   const encodedFolder = encodeURIComponent(folder).replace(/%20/g, '%20');
@@ -187,10 +307,21 @@ function printChecklist(dir, config, projectId) {
   const inSitemap = sitemapText.includes(encodedFolder) || sitemapText.includes(folder);
 
   const webpageUrl = config.webpageUrl;
+  const testimonial = testimonialsRepairStatus(dir, config);
+  let storyReviewOk = true;
+  if (hasHtml && normalizeGoogleReview(config.googleReview)) {
+    const html = fs.readFileSync(indexHtml, 'utf8');
+    storyReviewOk = projectStoryReviewStatus(html, config).inSync;
+  }
 
   console.log('\n--- Webpage go-live checklist ---');
   console.log(`  Project: ${folder} (${projectId})`);
   console.log(`  [${hasHtml ? 'x' : ' '}] projects/<folder>/index.html`);
+  if (hasHtml && normalizeGoogleReview(config.googleReview)) {
+    console.log(
+      `  [${storyReviewOk ? 'x' : ' '}] index.html — googleReview block`
+    );
+  }
   for (const { path: p, hit } of indexChecks) {
     console.log(`  [${hit ? 'x' : ' '}] ${p}`);
   }
@@ -198,6 +329,15 @@ function printChecklist(dir, config, projectId) {
     `  [${webpageUrl ? 'x' : ' '}] config.json webpageUrl${webpageUrl ? '' : ` → set: ${canonical}`}`
   );
   console.log(`  [${inSitemap ? 'x' : ' '}] sitemap.xml story URL`);
+  if (testimonial.applicable) {
+    console.log(
+      `  [${testimonial.hasRepairLink ? 'x' : ' '}] new/testimonials.html — Repair link${testimonial.hasRepairLink ? '' : ' (needs index.html + webpageUrl)'}`
+    );
+  } else if (hasHtml) {
+    console.log(
+      '  [ ] googleReview + testimonials — not set (apply-google-review.mjs → story block + new/testimonials.html)'
+    );
+  }
   console.log('\n  After HTML + index + sitemap: commit, push main (GitHub Pages).');
   console.log(`  Story URL: ${canonical}`);
 }
@@ -252,6 +392,11 @@ async function main() {
     });
     if (r.status !== 0) process.exit(r.status ?? 1);
   }
+
+  config = JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
+  runSyncWorkInProgressGallery(dir, config, flags);
+  runSyncStoryGoogleReview(dir, config, flags);
+  runSyncTestimonialsIfNeeded(dir, config, flags);
 
   printChecklist(dir, config, projectId);
 }

@@ -40,47 +40,81 @@
 
 The site does **not** fetch reviews in real time. **Paste the review text in chat** (most reliable). Example commands:
 
-- `add google review to 0003` — then paste reviewer name, text, optional [Google profile URL](https://www.google.com/maps/contrib/…), optional date
-- `add google review` — paste only; **testimonials page only** (no project link)
-- `update the review count on testimonials` (e.g. if no longer 32)
+- `add google review to 0003` — map project, then run apply script (below)
+- `add google review` — paste only; add to `data/testimonials-standalone.json` + sync
+- `update the review count on testimonials` (e.g. change intro line via `--intro`)
 
 Do **not** rely on `refresh testimonials from Google` alone — Maps HTML is not a dependable source for full review text.
 
-#### Workflow A — review for a specific repair (recommended)
+#### Automated follow-up (recommended)
 
-When a customer’s Google review clearly belongs to a project (e.g. Donald Duck wind-up):
+When processing a batch of new reviews, **check `new/testimonials.html` first** (or let the apply script check): if that quote (or profile URL + quote) is already on the page, **skip** it. Use `--force` on apply to override. Store **first name + last initial** in `authorName` only (e.g. `Howard C.` — never full surname in repo). Apply script converts a pasted Google name automatically.
+
+After you map a review to a project id:
+
+```bash
+node scripts/apply-google-review.mjs <project-id> \
+  --author "Reviewer Full Name" \
+  --quote "Paste review text from Google." \
+  [--profile-url "https://www.google.com/maps/contrib/…"]
+```
+
+This updates, in order:
+
+1. `projects/<folder>/config.json` — **`googleReview`**
+2. `projects/<folder>/index.html` — regen with `--force` **if** `index.html` already exists
+3. `new/testimonials.html` — full rebuild from all project reviews + standalone list
+
+Rebuild testimonials only:
+
+```bash
+node scripts/sync-testimonials-html.mjs
+```
+
+Refresh every mapped project + testimonials:
+
+```bash
+node scripts/apply-google-review.mjs --sync-all
+```
+
+Cursor rule: [`.cursor/rules/google-review-testimonial-workflow.mdc`](../.cursor/rules/google-review-testimonial-workflow.mdc).
+
+#### Workflow A — review for a specific repair
 
 | Step | Where | What |
 |------|--------|------|
-| 1 | `projects/<folder>/config.json` | Set **`googleReview`** (source of truth) — see schema below |
-| 2 | `projects/<folder>/index.html` | Blockquote **under the short summary** (`description`), matching wireframe |
-| 3 | `new/testimonials.html` | Append a **featured quote card** (same text; link author to `profileUrl` if set). Optionally note “Repair: …” linking to `webpageUrl` when live |
+| 0 | `new/testimonials.html` | If review already on page → skip (apply script does this by default) |
+| 1 | Map | Agent matches review → project id (owner can correct) |
+| 2 | `config.json` | **`googleReview`** (source of truth) — see schema below |
+| 3 | `index.html` | Blockquote under summary — via scaffold when page exists |
+| 4 | `new/testimonials.html` | Quote card; **Repair: …** link when `webpageUrl` or `index.html` exists |
+| 5 | Webpage release | **`publish-webpage.mjs`** syncs **`project-review`** on `index.html` + rebuilds testimonials repair link when story is live |
 
 **`googleReview` in `config.json`:**
 
 ```json
 "googleReview": {
-  "author": "Customer Name",
-  "rating": 5,
-  "text": "Paste the review exactly as on Google (trim only if too long for layout).",
-  "date": "2026-05-16",
+  "quote": "Paste the review exactly as on Google (trim only if too long for layout).",
+  "authorName": "Howard C.",
   "profileUrl": "https://www.google.com/maps/contrib/…",
-  "featuredOnTestimonials": true
+  "featuredOnTestimonials": true,
+  "featuredOrder": 53
 }
 ```
 
-Use **`null`** when there is no review for that project. Omit `profileUrl` / `date` if unknown. Set **`featuredOnTestimonials": false`** to keep the review on the project page only (not on the global testimonials page).
+Use **`null`** when there is no review. Set **`featuredOnTestimonials": false`** to keep the review on the project story only. Optional **`featuredOrder`** (higher = higher on testimonials page; default sort is project id).
 
 #### Workflow B — general review (no project)
 
-Examples: Guitar Hero guitars, TV remote — not tied to one repair folder.
+Examples: TV remote, pepper grinder — not tied to one repair folder.
 
-1. Append quote card to `new/testimonials.html` only.
-2. Do **not** add `googleReview` to a project `config.json`.
+1. Add entry to **`data/testimonials-standalone.json`**
+2. Run **`node scripts/sync-testimonials-html.mjs`**
+3. Do **not** add `googleReview` to a project `config.json`.
 
-**Agent:** show diff for all touched files; **commit and push** only after you approve.
+**Agent:** show mapping + script output; **commit and push** only after you approve.
 
-Keep the **Read all reviews on Google Maps** button for the full live list; keep **3–6 featured quotes** on the testimonials page and add more on demand.
+Keep the **Read all reviews on Google Maps** button for the full live list; featured quote cards are rebuilt from config + standalone data.
 
 ---
 

@@ -752,9 +752,25 @@ body[data-active-page='testimonials'] .quote-card p.stars {
   font-weight: 700;
 }
 
+.quote-card__attribution {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
 .quote-card__meta {
   font-weight: 400;
   color: #666;
+}
+
+.quote-card__repair {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  font-size: 0.95em;
+}
+
+.quote-card__repair a {
+  font-weight: 700;
 }
 
 .contact-list {

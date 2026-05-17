@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Verna 1960s vintage teddy",
-  "title": "Verna — golden mohair teddy restoration",
+  "title": "Verna golden mohair teddy — clean, mend, and paw restoration",
   "startDate": "2025-07-28",
   "endDate": "2025-11-24",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0043%20-%20Verna%201960s%20vintage%20teddy/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -19,10 +19,15 @@
     "mohair"
   ],
   "skills": [
-    "needlework"
+    "needlework",
+    "paintjob"
   ],
-  "description": "Verna is a 1960s golden mohair jointed teddy — worn pile, loose joints, and tired stuffing. We cleaned, restuffed, and repaired seams so she sits upright again with her original charm.",
+  "description": "Verna, a 1960s golden mohair teddy, arrived with decomposing stuffing, tears, and tired glass eyes. We emptied and cleaned the bear, repaired fabric throughout, polished and reset the eyes, reinforced nose and mouth stitching, and reconditioned the leather paw pads so she displays beautifully again.",
   "itemDetails": "Verna is a named 1960s vintage teddy bear in the post-war plush tradition — golden mohair pile on cotton backing, five-point jointing (head, arms, legs) typical of mid-century gift and collector bears. The golden colour and mohair texture match the era when regional makers still used natural-style pile before full synthetics dominated.\n\nConstruction usually combines disk or cotter-pin joints, wood-wool or polyester fill (often replaced during restoration), and glass or early plastic eyes depending on maker. Verna-style named bears bridge older German/British teddy patterns and 1960s safer-child construction. Collector value depends on provenance, joint tightness, originality of pads and eyes, and condition of the mohair; documented 1960s named bears with intact character appeal are sought after in the nostalgia market.\n\nPhotos for this repair were previously filed under USB folders Vintage_yellow_bear / Vintage_bear_straw (now project 0043).",
-  "repairDetails": null,
-  "googleReview": null
+  "repairDetails": "Verna is a golden vintage teddy with mohair pile that had held decades of love — the stuffing inside was decomposing and the body had holes and tears that needed careful work.\n\nWe opened the bear and removed the old fill, then deep-cleaned the mohair and lining. Fabric repairs were worked through the body, the glass eyes were removed for polishing and set back securely, and stitching at the nose and mouth was reinforced.\n\nThe leather paw pads were reconditioned and repainted where wear had dulled the finish. Fresh stuffing went back in and the bear was closed so Verna sits upright with her original charm restored.",
+  "googleReview": {
+    "quote": "Grace did a wonderful job repairing our teddy bear that was over 60 years old. She researched the issues and came up with a great solution. Perfect work including fixing an extra issue at no cost. Lovely manner and very good and quick communications. Very highly recommend.",
+    "authorName": "Fergus S.",
+    "featuredOnTestimonials": true
+  }
 }

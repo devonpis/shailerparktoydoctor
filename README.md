@@ -88,14 +88,18 @@ Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-
 | `repairDetails` | Optional — technical repair log (symptoms, method, parts); for repair pages, not the social caption. Same paragraph rules as `itemDetails`. |
 | `skills` | Repair categories — **one or more** of: `needlework`, `electronic`, `mechanical`, `paintjob` (site badges / filters). See [`docs/project-skills.md`](docs/project-skills.md) (**BR-028**). Normalize: `node scripts/normalize-project-skills.mjs`. |
 | `tags` | Topic labels (**1–30**); appended as hashtags on social (see [`docs/publish-content-guards.md`](docs/publish-content-guards.md)) |
-| `googleReview` | Optional — customer’s **Google review** for this repair (`author`, `text`, `rating`, optional `profileUrl`, `date`, `featuredOnTestimonials`). See [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md). **Only** approved place for a **customer name** in project data (with optional Maps profile URL). |
+| `googleReview` | Optional — customer’s **Google review** (`quote`, `authorName` as first + last initial only e.g. `Howard C.`, optional `profileUrl`, `featuredOnTestimonials`, `featuredOrder`). See [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md). |
 | `importance` | Optional — number for **home page highlights** (`/new/` patient stories). **Higher = ranked higher** (lead story + up to six tiles). Omit or `null` = not shown there. See [`.cursor/rules/home-highlight-importance.mdc`](.cursor/rules/home-highlight-importance.mdc). |
 | *(privacy)* | **Do not** store other customer names, phones, or emails in `config.json`, HTML, or imports (e.g. timesheet client rows). See [`.cursor/rules/client-privacy-no-pii-in-repo.mdc`](.cursor/rules/client-privacy-no-pii-in-repo.mdc). |
 | Images / video | `before`, `after`, `hero`, `WIP-###`, or video files in the project folder |
 
 ### Google reviews (paste in chat)
 
-When you copy a review from Google Maps, paste it and say which project (e.g. **`add google review to 0003`**). The agent updates **`config.json`**, the project **`index.html`** (quote under the short summary), and **`new/testimonials.html`** (featured card) unless you set `featuredOnTestimonials: false`. General reviews with no project → testimonials page only. Details: [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md).
+When you copy a review from Google Maps, paste it and say which project (e.g. **`add google review to 0003`**). The agent maps the review to a project, then runs:
+
+`node scripts/apply-google-review.mjs <id> --author "…" --quote "…" [--profile-url …]`
+
+That updates **`config.json`**, regens **`index.html`** when it exists, and rebuilds **`new/testimonials.html`** (with a **Repair:** link when the story page exists). Skips automatically if that review is already on the testimonials page (`--force` to override). General reviews with no project → `data/testimonials-standalone.json` + `node scripts/sync-testimonials-html.mjs`. Details: [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md) and [`.cursor/rules/google-review-testimonial-workflow.mdc`](.cursor/rules/google-review-testimonial-workflow.mdc).
 
 Before any publish, run: `node scripts/validate-publish.mjs <project-id>` — must exit **0**. For social (after explicit `publish …` + confirm in chat): push `main`, then `node scripts/publish-social.mjs <project-id> --use-site --wait-for-site` for Instagram/Threads (polls until all project images are live; `--image after` optional; Facebook can run without `--use-site`).
 
@@ -151,7 +155,7 @@ Images sit next to each project’s `config.json`. **The filename already states
 
 Use the same idea for new repairs: descriptive stem + optional WIP index. Extension can be `.jpg` / `.jpeg` / `.png` as exported.
 
-Before a **webpage** go-live, run `node scripts/publish-webpage.mjs <id>` (rotate if needed → optimize → validate → checklist; see [`docs/website-go-live.md`](docs/website-go-live.md)). Use `--rotate <file> --cw|--ccw|--180` or `--exif-orient` for sideways photos.
+Before a **webpage** go-live, run `node scripts/publish-webpage.mjs <id>` (rotate if needed → optimize → validate → checklist; see [`docs/website-go-live.md`](docs/website-go-live.md)). Use `--rotate <file> --cw|--ccw|--180` or `--exif-orient` for sideways photos. If the project has **`googleReview`**, publish syncs the review onto **`index.html`** and rebuilds **`new/testimonials.html`** with a **Repair:** link (`--no-story-review` / `--no-testimonials` to skip either step).
 
 Bulk import from a USB stick: [`docs/usb-photo-ingest.md`](docs/usb-photo-ingest.md) (`scripts/ingest-usb-photos.mjs` — dry-run first, then `--apply`, then optimize).
 

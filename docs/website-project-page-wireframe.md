@@ -103,7 +103,7 @@ Desktop wireframe (mobile = same order, stacked full-width):
 | `startDate` | Internal / publish workflow | Not shown on public page v1 | — |
 | `tags` | Topics | Chips + search | Search / filter |
 | `description` | Short blurb | Summary paragraph | — |
-| `googleReview` | Optional Google review for this repair | Blockquote under summary (author, stars, text; link name if `profileUrl`) | — |
+| `googleReview` | Optional Google review for this repair | `<blockquote class="project-review">` under lead (footer `— First L.` from full `authorName`); synced by `publish-webpage.mjs` / `apply-google-review.mjs`. Also on `new/testimonials.html` with **Repair:** link when story is live. | — |
 | `repairDetails`, `itemDetails` | Long copy | Full story | — |
 | `youtubeUrl`, `youtubeShortUrl` | Video | Embeds + links under tags | — |
 | `facebookUrl`, `instagramUrl`, `threadUrl` | Social | Links under tags | — |
@@ -125,7 +125,7 @@ hero.*  →  after.*  →  WIP-001.*  →  before.*  (gallery tile, story hero, 
 - Resolve first existing file in that order (any of `.jpg` / `.jpeg` / `.png`).  
 - **`projects-index.json`** field `thumbnail` (rename from `hero` in **T-00013**) stores the resolved path when the entry is added.  
 - Story **hero** band uses the same resolved image.  
-- Do not use the same file twice on the page if it is already the hero (e.g. if `after` is hero, skip `after` in before/after row).
+- **Work in progress** gallery (below the lead): all images except `hero.*`, in order **before → WIP-### → after** — including before/after even when also used as hero. Omit the whole section when only `hero.*` exists.
 
 ### 0003 Donald Duck (today)
 
@@ -256,7 +256,7 @@ WIP folders stay **out** of the JSON so they never appear as tiles.
 
 ## T-00013 deliverables (after this plan)
 
-1. `projects/0000 - template/index.html.example` (or documented snippet) following this wireframe.  
+1. `projects/0000 - template/index.html.example` + `googleReview.example.json` following this wireframe (see also `docs/website-go-live.md` publish workflow).  
 2. First real page: **`projects/0003 - Donald Duck/index.html`** (owner approval before go-live / `webpageUrl`).  
 3. Document in go-live workflow (**T-00015**): add index + update `projects-index.json` + sitemap.
 

@@ -21,6 +21,8 @@ Example: `node scripts/validate-publish.mjs 0001`
 node scripts/publish-webpage.mjs <project-id> [--rotate <file> --cw|--ccw|--180] [--exif-orient]
 ```
 
+When the project has **`googleReview`**, `publish-webpage.mjs` syncs the **review block** on **`index.html`** (`--no-story-review` to skip) and, when the story is live, runs **`sync-testimonials-html.mjs`** for the **Repair:** link on testimonials (`--no-testimonials` to skip).
+
 Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md). Webpage steps: [`docs/website-go-live.md`](../../docs/website-go-live.md).
 
 ## Publish order

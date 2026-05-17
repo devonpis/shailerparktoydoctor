@@ -53,6 +53,38 @@ export function pickPrimaryImage(dir) {
 /** Max images per unified FB / IG / Threads carousel in this repo. */
 export const SOCIAL_CAROUSEL_MAX = 10;
 
+/**
+ * Story page “Work in progress” gallery: before → WIP-### → after.
+ * Excludes hero.* only (before/after/WIP show even when also used as page hero).
+ */
+export function listStoryGalleryImageNames(dir) {
+  const names = listProjectImages(dir).filter((n) => !/^hero\./i.test(n));
+  const rank = (name) => {
+    const lower = name.toLowerCase();
+    if (lower.startsWith('before')) return [0, 0, name];
+    const wip = lower.match(/^wip-(\d+)/i);
+    if (wip) return [1, Number(wip[1]), name];
+    if (lower.startsWith('after')) return [2, 0, name];
+    return [3, 0, name];
+  };
+  return names.sort((a, b) => {
+    const ra = rank(a);
+    const rb = rank(b);
+    return ra[0] - rb[0] || ra[1] - rb[1] || ra[2].localeCompare(rb[2]);
+  });
+}
+
+export function storyGalleryImageAlt(name, index) {
+  const lower = name.toLowerCase();
+  if (lower.startsWith('before')) return 'Before — repair';
+  if (lower.startsWith('after')) return 'After — repair';
+  if (/^wip-/i.test(lower)) {
+    const n = Number(lower.match(/^wip-(\d+)/i)?.[1]) || index + 1;
+    return `Repair in progress ${n}`;
+  }
+  return 'Repair';
+}
+
 /** Story order for carousels: before → WIP sequence → hero → after. */
 export function listPublishImagePaths(dir) {
   const names = listProjectImages(dir);

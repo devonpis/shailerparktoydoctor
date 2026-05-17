@@ -22,5 +22,9 @@
   "description": "Bumblebear adding sound module — electronics repair and sewing and fabric repair.",
   "itemDetails": null,
   "repairDetails": null,
-  "googleReview": null
+  "googleReview": {
+    "quote": "Grace did a wonderful job upgrading my toy with a sound module! She sourced the module herself and made a zip compartment for it. Now it sounds just like it does from the game.",
+    "authorName": "Ashley J.",
+    "featuredOnTestimonials": true
+  }
 }
