@@ -55,9 +55,9 @@ node scripts/fix-project-image-orientation.mjs --all --vision   # needs OPENAI_A
 
 Rotation and resize share **one sharp pipeline** per file (`optimize-project-images.mjs` via `publish-webpage.mjs`), so you do not rotate then optimize separately (which would JPEG-compress twice). Orient-only files use `--orient-quality` 92; resize/convert uses 90%.
 
-When **`projects/<folder>/index.html`** exists, `publish-webpage.mjs` also syncs **SEO meta** from `config.json` (T-00024): `<title>`, meta description, canonical, Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`), and the **project-hero** image (`after` → `hero` → `before`). Sets **`webpageUrl`** in config if empty. Use `--no-meta` to skip. The script does **not** generate body copy — author prose from the template first.
+**`publish-webpage.mjs`** (T-00024 story SEO): if **`index.html`** is missing, runs **`scaffold-project-story-html.mjs`** first (body + head tags from `config.json`). Then syncs **SEO meta** from current images: `<title>`, meta description, canonical, Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`), and **project-hero** (`hero` → `after` → `before`). Sets **`webpageUrl`** in config if empty. Use `--no-meta` to skip. Edit prose in `config.json` (`repairDetails`, `itemDetails`) before scaffold, or hand-edit `index.html` after (re-run publish to refresh meta/hero only).
 
-Agent flow for **`publish <id> to webpage`**: after owner confirms → run `publish-webpage.mjs` (with any `--rotate`; EXIF orient on by default) → author **`index.html`** from template if new → re-run publish (meta sync) → gallery + sitemap → commit/push when approved.
+Agent flow for **`publish <id> to webpage`**: after owner confirms → `publish-webpage.mjs` (images + validate + scaffold if needed + SEO meta) → `sync-projects-gallery-index.mjs <id>` → sitemap → commit/push when approved. Optional: `scaffold-project-story-html.mjs <id> --force` to regenerate body from config without re-optimizing images.
 
 ### 0b. Optimize project images (included in `publish-webpage.mjs`)
 
@@ -89,6 +89,7 @@ Create **`projects/<folder>/index.html`** from [`projects/0000 - template/index.
   - In **`index.html`**, use **one `<p>` per paragraph** under “The repair” and “About this item”.
   - Typical split: problem → work done → outcome (repair); what it is → context → materials/market (item).
   - Keep `description` as the short lead above the gallery; long copy lives only in `repairDetails` / `itemDetails`.
+  - When the owner supplies **`repairDetails`** (chat or CSV), **update `title` and `description` in the same edit** — slogan-style title plus a one- or two-sentence outcome lead derived from the repair story (see **T-00042**).
 
 **First reference implementation:** [`projects/0003 - Donald Duck/index.html`](../projects/0003%20-%20Donald%20Duck/index.html).
 

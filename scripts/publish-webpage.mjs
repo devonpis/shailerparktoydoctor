@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Webpage publish prep: DONE gate → images → orientation check → validate → SEO meta → checklist.
- * Requires status "DONE". Does not create index.html from scratch; syncs meta when index.html exists.
+ * Requires status "DONE". Scaffolds index.html when missing; always syncs SEO meta when index.html exists.
  * Canonical images (before/after/hero/WIP-###) must be .jpeg or .png; .jpg is renamed to .jpeg before processing.
  *
  * Usage:
@@ -77,6 +77,21 @@ function runProcessImages(projectId, flags) {
     args.push('--rotate', file, dirFlag);
   }
   const r = spawnSync(process.execPath, args, { cwd: REPO_ROOT, stdio: 'inherit' });
+  if (r.status !== 0) process.exit(r.status ?? 1);
+}
+
+function runScaffoldIfNeeded(dir, projectId, flags) {
+  const htmlPath = path.join(dir, 'index.html');
+  if (fs.existsSync(htmlPath)) return;
+  console.log('\n--- Scaffold index.html (config + images + SEO meta) ---');
+  if (flags.dryRun) {
+    console.log(`  [dry-run] would run: scaffold-project-story-html.mjs ${projectId}`);
+    return;
+  }
+  const r = spawnSync(process.execPath, ['scripts/scaffold-project-story-html.mjs', projectId], {
+    cwd: REPO_ROOT,
+    stdio: 'inherit',
+  });
   if (r.status !== 0) process.exit(r.status ?? 1);
 }
 
@@ -226,6 +241,8 @@ async function main() {
   }
   console.log('OK: publish content checks passed.');
 
+  runScaffoldIfNeeded(dir, projectId, flags);
+  config = JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
   config = runMetaUpdate(dir, config, flags);
 
   if (!flags.dryRun && flags.optimize) {

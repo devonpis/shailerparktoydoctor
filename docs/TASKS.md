@@ -53,7 +53,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00039 | Done | On-demand project image rotation (portrait/landscape) | BR-034 |
 | T-00040 | Done | Home highlight importance + six tiles | BR-015 |
 | T-00041 | Done | Publish legacy repair stories 0004–0015 + 0093 to HTML | BR-004, BR-015 |
-| T-00042 | Todo | Publish six repairs: Kota, Verna, Homer Santa, Lucy, Lulla, Ducksley | BR-004, BR-015 |
+| T-00042 | Todo | Publish repairs: Kota, Verna, Homer Santa, Lucy, Lulla, Ducksley, Yui (0088) | BR-004, BR-015 |
 | T-00043 | Done | Home page: add Dr. Mechanic; split mechanical from Dr. Hobby | BR-014, BR-015 |
 | — | — | Skill categories: four IDs only (`docs/project-skills.md`, BR-028) | BR-028 |
 
@@ -576,15 +576,16 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 ---
 
-## T-00042 — Publish six repairs: Kota, Verna, Homer Santa, Lucy, Lulla, Ducksley
+## T-00042 — Publish repairs: Kota, Verna, Homer Santa, Lucy, Lulla, Ducksley, Yui (0088)
 
 | Field | Value |
 |-------|-------|
 | **Status** | Todo |
 | **Requirements** | BR-004, BR-015 |
-| **Goal** | Set **`status: DONE`**, add owner **`repairDetails`**, and publish **story pages** (`index.html`, gallery index, sitemap, SEO meta) for six projects. |
+| **Goal** | Set **`status: DONE`**, add owner **`repairDetails`**, and publish **story pages** (`index.html`, gallery index, sitemap, SEO meta) for seven projects. |
 | **Projects** | See table below. Owner will supply **`repairDetails`** prose per project (paste in chat or CSV). |
-| **Per project** | 1. Merge **`repairDetails`** (+ polish **`description`** / **`title`** if needed) → 2. `node scripts/validate-done-readiness.mjs <id>` → 3. `node scripts/set-project-status.mjs <id> --status DONE` → 4. `node scripts/publish-webpage.mjs <id>` (images + scaffold if needed + SEO meta) → 5. `node scripts/sync-projects-gallery-index.mjs <id>` → 6. `node scripts/sync-sitemap-project-urls.mjs` (if used) → commit/push when approved. |
+| **Per project** | 1. Merge owner **`repairDetails`** → **always refresh `title` and `description`** from that copy (short slogan **`title`**; one- or two-sentence story **`description`** lead — not a skill list or stub). 2. `node scripts/validate-done-readiness.mjs <id>` → 3. `node scripts/set-project-status.mjs <id> --status DONE` → 4. `node scripts/publish-webpage.mjs <id>` (images + scaffold if needed + SEO meta) → 5. `node scripts/sync-projects-gallery-index.mjs <id>` → 6. `node scripts/sync-sitemap-project-urls.mjs` (if used) → commit/push when approved. |
+| **Owner paste workflow** | When the owner supplies **`repairDetails`** in chat (or CSV), the agent **writes `repairDetails` and updates `title` + `description` in the same pass** before publish. |
 | **Depends on** | Owner **`repairDetails`** for each row; photos in folder (see blockers). **T-00024** (story SEO in publish). |
 | **Related** | T-00035 (optional CSV import path); existing YouTube on **0053**, **0055**, **0094** — embed on story when published. |
 | **Out of scope** | Social publish for whole batch; renaming folders unless owner asks |
@@ -598,6 +599,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **0066** | Lucy dalmatian plush dog | Lucy dog | ~6 | |
 | **0042** | Soft cloth baby doll | Lulla doll | ~11 | USB map: `Lulla_doll` |
 | **0094** | Ducksley | Ducksley (Russ singing duck) | ~15 | `youtubeShortUrl` set |
+| **0088** | Yui Yuigahama Bunny Ver 1 4 FREEing | Yui FREEing 1/4 bunny figure | **8** | `paintjob`; **`title`**, **`description`**, **`repairDetails`** done — ready for DONE + publish |
 
 ---
 
@@ -610,7 +612,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Goal** | Update **`new/index.html`** “Our Doctors” to **four** personas: add **Dr. Mechanic** with **`mechanical`** skill badge; **Dr. Hobby** keeps **`paintjob`** only (figures / models / paint). |
 | **Outcome** | **2026-05-17:** Four doctor tiles on preview home; `images/drmechanic.png` placeholder (replace when owner supplies portrait); [`business-info.md`](business-info.md) personas table updated; doctors grid CSS adjusted for four columns. |
 | **Depends on** | None |
-| **Related** | T-00016 (cutover to root); owner may replace `drmechanic.png` |
+| **Related** | T-00016 (cutover to root); owner may replace `drmechanic.jpeg` |
 | **Out of scope** | Legacy root `index.html` (only two doctors today) |
 
 ---

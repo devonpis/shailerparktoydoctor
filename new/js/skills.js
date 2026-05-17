@@ -117,6 +117,25 @@
     };
   }
 
+  function markTileImagePortrait(img) {
+    const apply = () => {
+      if (img.naturalWidth && img.naturalHeight > img.naturalWidth) {
+        img.classList.add('is-portrait');
+      } else {
+        img.classList.remove('is-portrait');
+      }
+    };
+    if (img.complete && img.naturalWidth) apply();
+    else img.addEventListener('load', apply, { once: true });
+  }
+
+  /** Square project tiles: portrait sources crop from top; landscape stays centered. */
+  function applyProjectTileImages(root = document) {
+    root
+      .querySelectorAll('.project-card__media img, .product-tile > .product-tile__img')
+      .forEach(markTileImagePortrait);
+  }
+
   global.SiteSkills = {
     SKILL_IDS,
     SKILLS,
@@ -129,5 +148,6 @@
     doctorBadgesHtml,
     filterBarHtml,
     withSkills,
+    applyProjectTileImages,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

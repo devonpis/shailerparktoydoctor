@@ -52,8 +52,8 @@ export const USB_FOLDER_TO_PROJECT_DIR = {
   Teddy_musicbox: '0020 - Music box teddy bear',
   Trucks: '0041 - Tonka Trucks and Friends',
   Tumbling_tiger: '0086 - Tumbling tiger',
-  Vintage_bear_straw: '0028 - Vintage 5 Joint Teddy Bear',
-  Vintage_yellow_bear: '0028 - Vintage 5 Joint Teddy Bear',
+  Vintage_bear_straw: '0043 - Verna 1960s vintage teddy',
+  Vintage_yellow_bear: '0043 - Verna 1960s vintage teddy',
   White_horse: '0044 - Kosen White horse',
   witch: '0032 - Witch toy',
   // Woody / Woody_2 / Woody_n_Buzz = separate clients (0050, 0091, 0092)

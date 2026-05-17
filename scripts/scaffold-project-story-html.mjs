@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Generate projects/<folder>/index.html from config.json + images.
- * Run publish-webpage.mjs after to sync SEO meta from config.
+ * Writes index.html with SEO meta from config.json + images; sets webpageUrl when empty.
+ * publish-webpage.mjs re-syncs meta after image changes (or scaffolds index.html if missing).
  *
  * Usage:
  *   node scripts/scaffold-project-story-html.mjs <project-id> [id …] [--force]
@@ -12,7 +13,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { resolveProjectDir, PROJECTS_DIR, projectIdFromDir } from './lib/resolve-project-dir.mjs';
 import { listProjectImages } from './lib/project-media.mjs';
-import { buildStoryMeta, pickStoryHeroImageName } from './lib/project-story-meta.mjs';
+import {
+  buildStoryMeta,
+  pickStoryHeroImageName,
+  updateProjectStoryMeta,
+} from './lib/project-story-meta.mjs';
 
 function listPublishedIds() {
   const ids = [];
@@ -275,9 +280,16 @@ function scaffoldOne(projectArg, flags) {
     console.log(`SKIP ${folder}: index.html exists (use --force)`);
     return false;
   }
-  const config = JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
+  let config = JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
   const html = buildHtml(config, folder, dir);
   fs.writeFileSync(htmlPath, html);
+  const metaResult = updateProjectStoryMeta(dir, config);
+  if (metaResult.webpageUrlSet) {
+    config = JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
+    console.log(`  SEO: webpageUrl → ${metaResult.meta.canonical}`);
+  } else if (metaResult.changed) {
+    console.log('  SEO: synced head tags and hero from disk');
+  }
   console.log(`OK ${folder}: wrote index.html`);
   return true;
 }
@@ -288,7 +300,9 @@ function main() {
   for (const id of ids) {
     if (scaffoldOne(id, flags)) n += 1;
   }
-  console.log(`\nScaffolded ${n} story page(s). Re-run publish-webpage.mjs per project for meta sync.`);
+  console.log(
+    `\nScaffolded ${n} story page(s) with SEO meta. Run publish-webpage.mjs for images, validate, and gallery index.`
+  );
 }
 
 main();

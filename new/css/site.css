@@ -479,20 +479,21 @@ h5 {
 }
 
 .doctors-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
   margin-top: 1.25rem;
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .doctors-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1 1 200px;
-  max-width: 24%;
-  min-width: 200px;
-  margin: 10px 0;
+  min-width: 0;
+  margin: 0;
   padding: 20px;
 }
 
@@ -627,7 +628,7 @@ h5 {
 }
 
 .project-card__img-placeholder {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -840,15 +841,22 @@ body[data-active-page='testimonials'] .quote-card p.stars {
 .project-card__media {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: #eee;
 }
 
 .project-card__media img,
 .project-card > img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
   display: block;
+}
+
+.project-card__media img.is-portrait,
+.project-card > img.is-portrait {
+  object-position: top center;
 }
 
 .patient-stories__media {
@@ -1320,6 +1328,11 @@ h3.project-subtitle {
       color-mix(in srgb, var(--primary) 16%, transparent) 0%,
       transparent 100%
     );
+  }
+
+  .doctors-container {
+    grid-template-columns: 1fr;
+    max-width: none;
   }
 
   .doctors-box {

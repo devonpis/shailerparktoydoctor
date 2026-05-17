@@ -5,7 +5,8 @@
   const root = document.getElementById('projects-root');
   if (!root || !window.SiteSkills) return;
 
-  const { filterBarHtml, overlayBadgesHtml, projectHasSkill, withSkills } = SiteSkills;
+  const { filterBarHtml, overlayBadgesHtml, projectHasSkill, withSkills, applyProjectTileImages } =
+    SiteSkills;
 
   function escapeHtml(s) {
     return String(s)
@@ -77,6 +78,7 @@
       const list = projects.filter((p) => projectHasSkill(p, activeSkill));
       grid.innerHTML = list.map(renderCard).join('');
       empty.hidden = list.length > 0;
+      applyProjectTileImages(grid);
     }
 
     root.addEventListener('click', (e) => {

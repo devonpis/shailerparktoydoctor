@@ -136,6 +136,7 @@
         return project ? tileCard(project) : tilePlaceholder(i + 2);
       }).join('');
       root.innerHTML = renderLayout(leadHtml, tileHtml);
+      if (skillsApi?.applyProjectTileImages) skillsApi.applyProjectTileImages(root);
       if (window.applyToyDoctorBold) window.applyToyDoctorBold(root);
     })
     .catch(() => {
