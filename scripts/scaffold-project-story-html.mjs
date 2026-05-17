@@ -5,27 +5,43 @@
  *
  * Usage:
  *   node scripts/scaffold-project-story-html.mjs <project-id> [id …] [--force]
+ *   node scripts/scaffold-project-story-html.mjs --published [--force]
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { resolveProjectDir } from './lib/resolve-project-dir.mjs';
+import { resolveProjectDir, PROJECTS_DIR, projectIdFromDir } from './lib/resolve-project-dir.mjs';
 import { listProjectImages } from './lib/project-media.mjs';
-import { buildStoryMeta } from './lib/project-story-meta.mjs';
+import { buildStoryMeta, pickStoryHeroImageName } from './lib/project-story-meta.mjs';
+
+function listPublishedIds() {
+  const ids = [];
+  for (const name of fs.readdirSync(PROJECTS_DIR)) {
+    if (!/^\d{4} - /.test(name) || name.startsWith('0000')) continue;
+    const dir = path.join(PROJECTS_DIR, name);
+    if (!fs.existsSync(path.join(dir, 'index.html'))) continue;
+    ids.push(projectIdFromDir(dir));
+  }
+  return ids.sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
+}
 
 function parseArgs(argv) {
-  const flags = { force: false };
+  const flags = { force: false, published: false };
   const ids = [];
   for (let i = 2; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--force') flags.force = true;
+    else if (a === '--published') flags.published = true;
     else if (a.startsWith('--')) throw new Error(`Unknown flag: ${a}`);
     else ids.push(a);
   }
-  if (!ids.length) {
-    throw new Error('Usage: node scripts/scaffold-project-story-html.mjs <id> [id …] [--force]');
+  const resolved = flags.published ? listPublishedIds() : ids;
+  if (!resolved.length) {
+    throw new Error(
+      'Usage: node scripts/scaffold-project-story-html.mjs <id> [id …] [--force] | --published [--force]'
+    );
   }
-  return { ids, flags };
+  return { ids: resolved, flags };
 }
 
 function escapeHtml(s) {
@@ -58,16 +74,6 @@ function splitParagraphs(text) {
     .split(/\n\n+/)
     .map((p) => p.trim())
     .filter(Boolean);
-}
-
-/** hero → after → before → first WIP */
-function pickHeroImageName(dir) {
-  const names = listProjectImages(dir);
-  for (const stem of ['hero', 'after', 'before']) {
-    const hit = names.find((n) => n.toLowerCase().startsWith(stem));
-    if (hit) return hit;
-  }
-  return names.filter((n) => /^wip-/i.test(n)).sort()[0] || null;
 }
 
 function listWipImageNames(dir) {
@@ -120,7 +126,7 @@ function buildVideoIframe(id, subtitle, label) {
 function buildHtml(config, folder, dir) {
   const meta = buildStoryMeta(config, folder, dir);
   const prefix = projectPathPrefix(folder);
-  const heroName = pickHeroImageName(dir);
+  const heroName = pickStoryHeroImageName(dir);
   if (!heroName) throw new Error('No hero/after/before/WIP image found');
 
   const heroSrc = `${prefix}/${encodeURIComponent(heroName)}`;

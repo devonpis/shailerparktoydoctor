@@ -1,0 +1,29 @@
+{
+  "isTemplate": false,
+  "projectName": "Toy Biz My Pal 2 robot",
+  "title": "Toy Biz My Pal 2 — electronics and mechanism repair",
+  "startDate": "2026-02-27",
+  "endDate": "2026-03-02",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": "https://www.youtube.com/shorts/hBdq4EL-aIY",
+  "tags": [
+    "My Pal 2",
+    "Toy Biz",
+    "robot",
+    "interactive"
+  ],
+  "skills": [
+    "electronic",
+    "mechanical"
+  ],
+  "description": "Toy Biz My Pal 2 talking robot — gearbox, motor, and wiring repair so face movement, games, and voice work again.",
+  "itemDetails": "My Pal 2 is a talking electronic companion robot released by Toy Biz (Toy Biz Inc.) circa 1991–1993. It was marketed as an interactive playmate for children: voice-activated speech (often cited as 70+ phrases and sounds), chest buttons for games such as Simon Says and memory challenges, and motorized face parts (eyes, ears, nose, mouth) that move while it talks. The colourful shell uses blue, yellow, and white moulded plastic with a clear dome head and red accent features; accessories on complete sets can include a removable cap, light-up “brain,” backpack-stored flashlight, and play pieces (foam ball, bat, hoop, ring-toss stick, catch funnel).\n\nInternally, units combine a white plastic chassis, DC motor, multi-stage gearboxes in the limbs and torso, tension springs for head/body articulation, and a dense wiring harness to the head dome (speaker/microphone and face motors). Battery-powered sound and game logic live on boards in the body. After 30+ years, common failures are stripped or jammed plastic gears, fractured spring mounts, loose or broken harness wires, and corroded battery contacts. It is a well-remembered early-1990s electronic toy rather than a current line; working examples with accessories attract modest nostalgia/collector interest on the secondary market. References: [NFSA collection record](https://www.nfsa.gov.au/collection/curated/asset/103084-my-pal-2-toy); [In the 80s — My Pal 2](https://inthe80s.com/toys/mypal20.shtml); [Electronic Robot Toys Wiki — My Pal 2](https://electronic-toys-wiki.fandom.com/wiki/My_Pal_2).",
+  "repairDetails": null,
+  "googleReview": null,
+  "importance": null
+}

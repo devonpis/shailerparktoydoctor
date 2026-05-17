@@ -28,7 +28,7 @@ export const LIMITS = {
   tagMaxChars: 50,
 };
 
-const IMAGE_RE = /^(before|after|hero|WIP-\d{3})\.(jpe?g|png|webp|gif)$/i;
+const IMAGE_RE = /^(before|after|hero|WIP-\d{3})\.(jpe?g|png)$/i;
 const VIDEO_RE = /\.(mp4|mov|webm|m4v)$/i;
 
 function resolveProjectDir(arg) {

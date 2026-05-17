@@ -1118,6 +1118,7 @@ h3.project-subtitle {
   box-sizing: border-box;
 }
 
+.project-tag-row #project-skills-root,
 .project-tag-row .project-skills,
 .project-tag-row .project-tags {
   display: contents;

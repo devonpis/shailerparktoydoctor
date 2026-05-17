@@ -39,6 +39,7 @@ import {
   logPlanResult,
   planImageProcessing,
 } from './lib/process-project-image.mjs';
+import { ensureAcceptableProjectImages } from './lib/project-image-extensions.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -118,6 +119,18 @@ function buildRotationMap(rotations, dir) {
 }
 
 async function processProjectDir(dir, flags) {
+  const ext = ensureAcceptableProjectImages(dir, { dryRun: flags.dryRun });
+  if (ext.errors.length) {
+    throw new Error(ext.errors.join('\n'));
+  }
+  if (ext.renames.length) {
+    console.log(`\n${path.basename(dir)} (extensions):`);
+    for (const { oldName, newName } of ext.renames) {
+      console.log(`  ${oldName} → ${newName}`);
+    }
+    for (const f of ext.updatedFiles || []) console.log(`  updated refs: ${f}`);
+  }
+
   const rotationMap = buildRotationMap(flags.rotations, dir);
   const names = listProjectImages(dir);
   const plans = [];

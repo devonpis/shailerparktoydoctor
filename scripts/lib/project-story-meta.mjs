@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { listProjectImages } from './project-media.mjs';
+import { listProjectImages, pickPrimaryImage } from './project-media.mjs';
 
 export const SITE_ORIGIN = 'https://sptoydoctor.com.au';
 
@@ -12,7 +12,16 @@ export function storyImageUrl(folderName, fileName) {
   return `${storyCanonicalUrl(folderName)}${encodeURIComponent(fileName)}`;
 }
 
-/** Prefer after (repair result), then hero, then before. */
+/** Page hero: hero → after → before → first WIP (matches gallery / wireframe). */
+export function pickStoryHeroImageName(dir) {
+  try {
+    return path.basename(pickPrimaryImage(dir));
+  } catch {
+    return pickStoryOgImageName(dir);
+  }
+}
+
+/** Open Graph / social: after (repair result) → hero → before. */
 export function pickStoryOgImageName(dir) {
   const names = listProjectImages(dir);
   for (const stem of ['after', 'hero', 'before']) {
@@ -80,6 +89,7 @@ export function buildStoryMeta(config, folderName, dir) {
   const projectName = (config.projectName || folderName).trim();
   const pageTitle = `${projectName} — Shailer Park Toy Doctor`;
   const canonical = storyCanonicalUrl(folderName);
+  const heroImageName = pickStoryHeroImageName(dir);
   const ogImageName = pickStoryOgImageName(dir);
   const description = config.description || '';
 
@@ -90,6 +100,7 @@ export function buildStoryMeta(config, folderName, dir) {
     metaDescription: seoMetaDescription(description),
     ogTitle: pageTitle,
     ogDescription: ogMetaDescription(description),
+    heroImageName,
     ogImageName,
     ogImageUrl: ogImageName ? storyImageUrl(folderName, ogImageName) : null,
     ogUrl: canonical,
@@ -165,8 +176,9 @@ export function applyStoryMetaToHtml(html, meta, folderName) {
     );
   }
 
-  if (meta.ogImageName) {
-    const imgPath = `/projects/${encodeURIComponent(folderName)}/${encodeURIComponent(meta.ogImageName)}`;
+  const heroName = meta.heroImageName || meta.ogImageName;
+  if (heroName) {
+    const imgPath = `/projects/${encodeURIComponent(folderName)}/${encodeURIComponent(heroName)}`;
     out = replaceOne(
       out,
       /(<div class="project-hero">[\s\S]*?<img\s+src=")[^"]*"/i,

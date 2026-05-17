@@ -2,6 +2,7 @@
 /**
  * Webpage publish prep: DONE gate → images → orientation check → validate → SEO meta → checklist.
  * Requires status "DONE". Does not create index.html from scratch; syncs meta when index.html exists.
+ * Canonical images (before/after/hero/WIP-###) must be .jpeg or .png; .jpg is renamed to .jpeg before processing.
  *
  * Usage:
  *   node scripts/publish-webpage.mjs <project-id> [--dry-run]
@@ -24,6 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { resolveProjectDir, REPO_ROOT, projectIdFromDir } from './lib/resolve-project-dir.mjs';
 import { scanProjectOrientation } from './lib/project-image-orientation.mjs';
 import { updateProjectStoryMeta } from './lib/project-story-meta.mjs';
+import { ensureAcceptableProjectImages } from './lib/project-image-extensions.mjs';
 import { validateWebpagePublishGate } from './lib/project-readiness.mjs';
 import { INDEX_JSON_PATHS } from './lib/update-project-path-refs.mjs';
 import { validateProject } from './validate-publish.mjs';
@@ -102,6 +104,23 @@ function runMetaUpdate(dir, config, flags) {
     return JSON.parse(fs.readFileSync(path.join(dir, 'config.json'), 'utf8'));
   }
   return config;
+}
+
+function runEnsureImageExtensions(dir, flags) {
+  console.log('\n--- Image extensions (.jpeg / .png only) ---');
+  const r = ensureAcceptableProjectImages(dir, { dryRun: flags.dryRun });
+  if (r.errors.length) {
+    for (const e of r.errors) console.error(`ERROR: ${e}`);
+    process.exit(1);
+  }
+  if (r.renames.length) {
+    for (const { oldName, newName } of r.renames) {
+      console.log(`  ${flags.dryRun ? '[dry-run] ' : ''}${oldName} → ${newName}`);
+    }
+    for (const f of r.updatedFiles || []) console.log(`  updated refs: ${f}`);
+  } else {
+    console.log('  OK: extensions acceptable');
+  }
 }
 
 async function runOrientationCheck(dir) {
@@ -183,6 +202,8 @@ async function main() {
     process.exit(1);
   }
 
+  runEnsureImageExtensions(dir, flags);
+
   if (flags.optimize) {
     runProcessImages(projectId, flags);
   } else {
@@ -206,6 +227,14 @@ async function main() {
   console.log('OK: publish content checks passed.');
 
   config = runMetaUpdate(dir, config, flags);
+
+  if (!flags.dryRun && flags.optimize) {
+    const r = spawnSync(process.execPath, ['scripts/repair-project-media-refs.mjs'], {
+      cwd: REPO_ROOT,
+      stdio: 'inherit',
+    });
+    if (r.status !== 0) process.exit(r.status ?? 1);
+  }
 
   printChecklist(dir, config, projectId);
 }

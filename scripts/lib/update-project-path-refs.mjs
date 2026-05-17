@@ -1,22 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { REPO_ROOT, PROJECTS_DIR } from './resolve-project-dir.mjs';
+import { INDEX_JSON_PATHS, listMediaReferenceFiles } from './list-media-reference-files.mjs';
 
-export const INDEX_JSON_PATHS = [
-  path.join(REPO_ROOT, 'new/data/projects-index.json'),
-  path.join(REPO_ROOT, 'data/projects-index.json'),
-];
+export { INDEX_JSON_PATHS };
 
-/** Replace image filenames in project index.html and projects-index.json files. */
+/** Replace image filenames in story HTML, projects-index.json (home + /new/projects/ gallery). */
 export function updateProjectPathReferences(renames, { projectsDir = PROJECTS_DIR } = {}) {
-  const files = [];
-  for (const dir of fs.readdirSync(projectsDir)) {
-    const html = path.join(projectsDir, dir, 'index.html');
-    if (fs.existsSync(html)) files.push(html);
-  }
-  for (const p of INDEX_JSON_PATHS) {
-    if (fs.existsSync(p)) files.push(p);
-  }
+  const files = listMediaReferenceFiles({ projectsDir });
 
   const updated = [];
   for (const filePath of files) {

@@ -4,29 +4,38 @@
  *
  * Usage:
  *   node scripts/sync-projects-gallery-index.mjs <id> [id …]
+ *   node scripts/sync-projects-gallery-index.mjs --all
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { resolveProjectDir, REPO_ROOT, projectIdFromDir } from './lib/resolve-project-dir.mjs';
-import { listProjectImages } from './lib/project-media.mjs';
+import { resolveProjectDir, REPO_ROOT, PROJECTS_DIR, projectIdFromDir } from './lib/resolve-project-dir.mjs';
+import { pickPrimaryImage } from './lib/project-media.mjs';
 import { INDEX_JSON_PATHS } from './lib/update-project-path-refs.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-function pickThumbnailName(dir) {
-  const names = listProjectImages(dir);
-  for (const stem of ['hero', 'after', 'before']) {
-    const hit = names.find((n) => n.toLowerCase().startsWith(stem));
-    if (hit) return hit;
+function listAllPublishedIds() {
+  const ids = [];
+  for (const name of fs.readdirSync(PROJECTS_DIR)) {
+    if (!/^\d{4} - /.test(name) || name.startsWith('0000')) continue;
+    const dir = path.join(PROJECTS_DIR, name);
+    const configPath = path.join(dir, 'config.json');
+    if (!fs.existsSync(configPath)) continue;
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    if (config.status === 'DONE') ids.push(projectIdFromDir(dir));
   }
-  return names.filter((n) => /^wip-/i.test(n)).sort()[0] || null;
+  return ids.sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
 }
 
 function buildEntry(config, folder, dir, id) {
-  const thumbName = pickThumbnailName(dir);
-  if (!thumbName) throw new Error(`No thumbnail image in ${folder}`);
+  let thumbName;
+  try {
+    thumbName = path.basename(pickPrimaryImage(dir));
+  } catch {
+    throw new Error(`No thumbnail image in ${folder}`);
+  }
   const encoded = encodeURIComponent(folder);
   return {
     id,
@@ -54,9 +63,11 @@ function syncIndexFile(indexPath, entries) {
 }
 
 function main() {
-  const ids = process.argv.slice(2).filter((a) => !a.startsWith('--'));
+  const argv = process.argv.slice(2);
+  const all = argv.includes('--all');
+  const ids = all ? listAllPublishedIds() : argv.filter((a) => !a.startsWith('--'));
   if (!ids.length) {
-    console.error('Usage: node scripts/sync-projects-gallery-index.mjs <id> [id …]');
+    console.error('Usage: node scripts/sync-projects-gallery-index.mjs <id> [id …] | --all');
     process.exit(1);
   }
 

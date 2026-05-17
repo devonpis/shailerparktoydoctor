@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const IMAGE_RE = /^(before|after|hero|WIP-\d{3})\.(jpe?g|png|webp|gif)$/i;
+/** Listed repair images: .jpeg / .jpg (rename to .jpeg on publish) or .png. */
+const IMAGE_RE = /^(before|after|hero|WIP-\d{3})\.(jpe?g|png)$/i;
 const PRIORITY = ['hero', 'after', 'before'];
 
 export function listProjectImages(dir) {

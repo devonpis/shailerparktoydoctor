@@ -9,8 +9,9 @@ export function isOversized(width, height, maxPx) {
 
 export function jpegOutputPath(filePath) {
   const ext = path.extname(filePath).toLowerCase();
-  if (ext === '.png') return filePath.replace(/\.png$/i, '.jpg');
-  if (ext === '.webp' || ext === '.gif') return filePath.replace(/\.(webp|gif)$/i, '.jpg');
+  if (ext === '.png') return filePath.replace(/\.png$/i, '.jpeg');
+  if (ext === '.webp' || ext === '.gif') return filePath.replace(/\.(webp|gif)$/i, '.jpeg');
+  if (ext === '.jpg') return filePath.replace(/\.jpg$/i, '.jpeg');
   return filePath;
 }
 
