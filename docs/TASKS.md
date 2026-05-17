@@ -39,8 +39,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00025 | Done | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
 | T-00026 | Done | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
 | T-00027 | Done | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
-| T-00028 | Todo | USB photos: analyse, match projects, copy and rename | BR-022 |
+| T-00028 | In progress | USB photos: analyse, match projects, copy and rename | BR-022 |
 | T-00029 | Todo | Review ambiguous timesheet imports (e.g. Sandy, client rows) | BR-023 |
+| T-00030 | Todo | Project identity: product info, rename folder & metadata | BR-024 |
 
 ---
 
@@ -386,3 +387,16 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Outcome** | Checklist in `docs/` or comment in task when complete; no publish until `config.json` and folder names are correct. |
 | **Depends on** | T-00025 |
 | **Out of scope** | Re-importing full CSV; auto-deleting folders without owner confirm |
+
+---
+
+## T-00030 — Project identity: fetch product info, rename folder & metadata
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-024 |
+| **Goal** | For projects with placeholder names (USB ingest, CSV gaps, folders like `Godfy`, `Dog`, `anime figure`): identify the toy/product from photos and owner notes, then update `projectName`, folder `#### - Name`, and `config.json` fields (`title`, `description`, `itemDetails`, `tags`) — **owner confirm before rename** if ambiguous. |
+| **Depends on** | T-00028 (images in folder help identification) |
+| **Related** | T-00029 (timesheet cleanup); README project naming |
+| **Out of scope** | Auto-publish; editing `index.html` unless requested |

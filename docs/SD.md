@@ -181,3 +181,15 @@ Conflicts (one photo fits multiple projects, ambiguous date window, missing proj
 ## BR-023 — Timesheet import cleanup (dates and ambiguous rows)
 
 CSV scaffold imports may produce **invalid ISO dates** when day/month are parsed incorrectly (Australian **DD/MM/YYYY** and compact **DDMMYYYY**). The repo should parse and repair dates consistently and allow **owner review** of ambiguous scaffold rows (e.g. client first names mistaken for toy projects). See `scripts/fix-imported-dates.mjs`, scaffold date logic, and **T-00029**.
+
+---
+
+## BR-024 — Project identity: product info and rename
+
+Repair folders may use **working labels** from USB export or timesheet gaps (e.g. `Godfy`, `Dog`, `anime figure`) that are not proper product names. The repo should support a workflow to:
+
+1. **Identify** the toy or product from photos in `projects/<id> - <name>/` and any owner notes (optional public product references).
+2. **Update** `projectName`, folder name `#### - Name`, and descriptive fields in `config.json` (`title`, `description`, `itemDetails`, `tags`) after owner confirmation when ambiguous.
+3. **Avoid** customer PII in filenames or committed metadata.
+
+Depends on images being present (often after **T-00028** USB ingest). Does not auto-publish or edit story HTML unless requested. Implementation: **T-00030**.
