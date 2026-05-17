@@ -1,0 +1,20 @@
+{
+  "isTemplate": false,
+  "projectName": "Monkey restuffing",
+  "title": "",
+  "startDate": "2025-03-24",
+  "endDate": "2025-03-24",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [],
+  "skills": [],
+  "description": "restuffing",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 24032025.",
+  "repairDetails": "restuffing\n- repair (restuffing) — 1.00h — 24/03/25 → 24/03/25\n\nTimesheet: income 30, materials —, profit 30\n\nImported from timesheet CSV — 2026-05-17.",
+  "googleReview": null
+}

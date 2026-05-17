@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<!-- Copy to projects/<folder>/index.html when status is DONE. See docs/website-go-live.md -->
+<!-- Copy to projects/<folder>/index.html when status is DONE. Reference: projects/0003 - Donald Duck/index.html -->
 <html lang="en-AU">
   <head>
     <meta charset="utf-8" />
     <title><!-- projectName --> — Shailer Park Toy Doctor</title>
-    <meta name="description" content="<!-- shortened description, ~160 chars -->" />
+    <meta
+      name="description"
+      content="<!-- ~160 chars: short SEO summary from description or repair lead -->"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/" />
+    <meta property="og:title" content="<!-- projectName --> — Shailer Park Toy Doctor" />
+    <meta
+      property="og:description"
+      content="<!-- same as meta description -->"
+    />
+    <meta
+      property="og:image"
+      content="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/<!-- hero or after filename -->"
+    />
+    <meta property="og:url" content="https://sptoydoctor.com.au/projects/<!-- URL-encoded folder -->/" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +29,7 @@
     />
     <link rel="stylesheet" href="/new/css/site.css" />
   </head>
-  <body data-active-page="projects" data-project-folder="<!-- folder name -->">
+  <body data-active-page="projects" data-project-folder="<!-- folder name, e.g. 0003 - Donald Duck -->">
     <div id="site-header"></div>
 
     <main class="page-main">
@@ -24,51 +37,79 @@
         <a href="/new/projects/">← All projects</a>
       </p>
 
-      <!-- Hero: first of hero.*, after.*, before.*, WIP-001.* -->
       <div class="project-hero">
         <img
-          src="/projects/<!-- folder encoded -->/hero-or-after.jpg"
+          src="/projects/<!-- URL-encoded folder -->/<!-- after.png | hero.jpeg | before.jpg -->"
           alt="<!-- projectName -->"
+          width="1000"
+          height="667"
         />
       </div>
 
-      <h1><!-- title (slogan) --></h1>
+      <h1><!-- title (slogan / headline) --></h1>
       <h3 class="project-subtitle"><!-- projectName --></h3>
       <div class="project-tag-row">
         <div id="project-skills-root"></div>
         <ul class="project-tags">
-          <!-- <li class="project-tag">tag</li> -->
+          <!-- <li class="project-tag">tag from config tags[]</li> -->
         </ul>
       </div>
 
-      <p class="project-meta"><!-- endDate AU, e.g. 6 May 2026 --></p>
-      <p class="project-lead text-lead"><!-- description (short summary) --></p>
+      <p class="project-meta"><!-- endDate AU only, e.g. 6 May 2026 --></p>
+      <p class="project-lead text-lead">
+        <!-- description (short summary / social-style lead) -->
+      </p>
 
-      <!-- If googleReview is set in config.json: blockquote under summary -->
-
-      <!-- Before/after: omit if none; skip image already used as hero -->
-      <!-- WIP grid: WIP-001, WIP-002, … -->
+      <!-- Optional: if googleReview is set in config.json -->
       <!--
-      <section class="project-section">
-        <h2 class="jw-heading-100">Work in progress</h2>
-        <div class="project-wip-grid">…</div>
-      </section>
+      <blockquote class="project-review">
+        <p>“<!-- quote -->”</p>
+        <footer>— <!-- authorName --></footer>
+      </blockquote>
       -->
 
-      <!-- YouTube iframes if youtubeUrl / youtubeShortUrl -->
-      <!--
+      <!-- Omit entire section if no WIP-### images -->
+      <section class="project-section">
+        <h2 class="jw-heading-100">Work in progress</h2>
+        <div class="project-wip-grid">
+          <img
+            src="/projects/<!-- URL-encoded folder -->/WIP-001.jpeg"
+            alt="Repair in progress 1"
+            loading="lazy"
+          />
+          <!-- WIP-002, WIP-003, … -->
+        </div>
+      </section>
+
+      <!-- Omit entire section if no youtubeUrl / youtubeShortUrl -->
       <section class="project-section">
         <h2 class="jw-heading-100">Videos</h2>
         <div class="project-videos">
           <div class="project-video">
-            <div class="project-video__embed"><iframe …></iframe></div>
+            <div class="project-video__embed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/<!-- VIDEO_ID from youtubeUrl -->"
+                title="<!-- projectName --> — full video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
+          <!-- Second column if youtubeShortUrl is set -->
           <div class="project-video">
-            <div class="project-video__embed"><iframe …></iframe></div>
+            <div class="project-video__embed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/<!-- VIDEO_ID from youtubeShortUrl -->"
+                title="<!-- projectName --> — short"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
-      -->
 
       <section class="project-prose">
         <h2 class="jw-heading-100">The repair</h2>

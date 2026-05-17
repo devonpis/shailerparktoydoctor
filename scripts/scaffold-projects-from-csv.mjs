@@ -1,12 +1,17 @@
 #!/usr/bin/env node
 /**
  * T-00025: Scaffold projects/ from a timesheet-style CSV (merge continuation rows).
+ * Order names are normalized (no special chars) via ./lib/normalize-project-name.mjs.
  * Usage: node scripts/scaffold-projects-from-csv.mjs <file.csv> [--dry-run] [--force-existing]
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  folderLabelFromProjectName,
+  normalizeProjectName,
+} from './lib/normalize-project-name.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -231,7 +236,7 @@ function ensureSubItem(order, name) {
 }
 
 function folderNameFromOrder(orderName) {
-  return orderName
+  return folderLabelFromProjectName(orderName)
     .replace(/[\\/:*?"<>|]/g, '')
     .replace(/\s+/g, ' ')
     .replace(/\s*-\s*$/g, '')
@@ -639,7 +644,7 @@ function main() {
       id,
       order,
       payload: {
-        projectName: order.orderName,
+        projectName: normalizeProjectName(order.orderName),
         title: '',
         startDate: order.dateStart || receiveIso,
         endDate: order.dateEnd || order.dateStart || receiveIso,
