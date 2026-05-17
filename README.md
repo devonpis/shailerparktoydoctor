@@ -86,10 +86,10 @@ Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-
 | `description` | Story / caption body (≤ **500** chars for cross-platform social) |
 | `itemDetails` | Optional — product/collectible facts (manufacturer, model, specs); for repair pages / SEO, not the social caption. Use **paragraph breaks** (`\n\n`); on the site, one `<p>` per paragraph (see [`docs/website-go-live.md`](docs/website-go-live.md)). Length guide from **0003 Donald Duck**: ~**375 / 294 / 330** chars per paragraph (3 paragraphs); tiers **200 / 600 / 1000** — see [`scripts/lib/item-details-budget.mjs`](scripts/lib/item-details-budget.mjs) and `node scripts/fill-project-item-details.mjs`. |
 | `repairDetails` | Optional — technical repair log (symptoms, method, parts); for repair pages, not the social caption. Same paragraph rules as `itemDetails`. |
-| `skills` | Repair categories — **one or more** of: `plush`, `electronic`, `mechanical`, `paintjob` (site badges / filters). See [`docs/project-skills.md`](docs/project-skills.md) (**BR-028**). Normalize: `node scripts/normalize-project-skills.mjs`. |
+| `skills` | Repair categories — **one or more** of: `needlework`, `electronic`, `mechanical`, `paintjob` (site badges / filters). See [`docs/project-skills.md`](docs/project-skills.md) (**BR-028**). Normalize: `node scripts/normalize-project-skills.mjs`. |
 | `tags` | Topic labels (**1–30**); appended as hashtags on social (see [`docs/publish-content-guards.md`](docs/publish-content-guards.md)) |
 | `googleReview` | Optional — customer’s **Google review** for this repair (`author`, `text`, `rating`, optional `profileUrl`, `date`, `featuredOnTestimonials`). See [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md). **Only** approved place for a **customer name** in project data (with optional Maps profile URL). |
-| `priority` | Optional — number for **home page highlights** (`/new/` patient stories). Higher = ranked higher; highest = lead story, next six = tiles. Omit or `null` = not shown there. See [`.cursor/rules/home-highlight-priority.mdc`](.cursor/rules/home-highlight-priority.mdc). |
+| `importance` | Optional — number for **home page highlights** (`/new/` patient stories). **Higher = ranked higher** (lead story + up to six tiles). Omit or `null` = not shown there. See [`.cursor/rules/home-highlight-importance.mdc`](.cursor/rules/home-highlight-importance.mdc). |
 | *(privacy)* | **Do not** store other customer names, phones, or emails in `config.json`, HTML, or imports (e.g. timesheet client rows). See [`.cursor/rules/client-privacy-no-pii-in-repo.mdc`](.cursor/rules/client-privacy-no-pii-in-repo.mdc). |
 | Images / video | `before`, `after`, `hero`, `WIP-###`, or video files in the project folder |
 
@@ -151,7 +151,7 @@ Images sit next to each project’s `config.json`. **The filename already states
 
 Use the same idea for new repairs: descriptive stem + optional WIP index. Extension can be `.jpg` / `.jpeg` / `.png` as exported.
 
-Before a **webpage** go-live, run `node scripts/optimize-project-images.mjs <id>` (see [`docs/website-go-live.md`](docs/website-go-live.md)) to compress large PNGs/JPEGs and fix HTML paths if filenames change.
+Before a **webpage** go-live, run `node scripts/publish-webpage.mjs <id>` (rotate if needed → optimize → validate → checklist; see [`docs/website-go-live.md`](docs/website-go-live.md)). Use `--rotate <file> --cw|--ccw|--180` or `--exif-orient` for sideways photos.
 
 Bulk import from a USB stick: [`docs/usb-photo-ingest.md`](docs/usb-photo-ingest.md) (`scripts/ingest-usb-photos.mjs` — dry-run first, then `--apply`, then optimize).
 

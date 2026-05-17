@@ -9,5 +9,16 @@
     "thumbnail": "/projects/0003%20-%20Donald%20Duck/after.jpg",
     "url": "/projects/0003%20-%20Donald%20Duck/",
     "endDate": "2026-05-06"
+  },
+  {
+    "id": "0001",
+    "folder": "0001 - Saielle of the Willow Tree",
+    "projectName": "Saielle of the Willow Tree",
+    "title": "Saielle of the Willow Tree",
+    "tags": ["Figure restoration"],
+    "skills": ["mechanical"],
+    "thumbnail": "/projects/0001%20-%20Saielle%20of%20the%20Willow%20Tree/hero.jpeg",
+    "url": "/projects/0001%20-%20Saielle%20of%20the%20Willow%20Tree/",
+    "endDate": "2026-05-16"
   }
 ]

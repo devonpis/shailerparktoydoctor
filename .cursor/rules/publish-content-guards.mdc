@@ -15,7 +15,13 @@ node scripts/validate-publish.mjs <project-id-or-folder>
 
 Example: `node scripts/validate-publish.mjs 0001`
 
-Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md).
+**Webpage go-live** (rotate → optimize → validate → checklist):
+
+```bash
+node scripts/publish-webpage.mjs <project-id> [--rotate <file> --cw|--ccw|--180] [--exif-orient]
+```
+
+Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md). Webpage steps: [`docs/website-go-live.md`](../../docs/website-go-live.md).
 
 ## Required (config + folder)
 
@@ -23,7 +29,7 @@ Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/pu
 - `title` — non-empty, ≤ **500** characters
 - `description` — non-empty, ≤ **500** characters (shared social caption; **Threads** is the binding limit)
 - `tags` — array, **1–30** strings (no `#` in JSON); **30** = Instagram hashtag cap
-- `skills` — if set: only `plush`, `electronic`, `mechanical`, `paintjob` ([`docs/project-skills.md`](../../docs/project-skills.md), **BR-028**)
+- `skills` — if set: only `needlework`, `electronic`, `mechanical`, `paintjob` ([`docs/project-skills.md`](../../docs/project-skills.md), **BR-028**)
 - **Media** — at least one of: `before` / `after` / `hero` / `WIP-###` image, or video (`.mp4`, `.mov`, `.webm`)
 
 Also check **description + appended hashtags** ≤ **500** characters total (FB / IG).

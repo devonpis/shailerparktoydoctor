@@ -26,15 +26,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { listProjectImages } from './lib/project-media.mjs';
+import { updateProjectPathReferences } from './lib/update-project-path-refs.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
 const PROJECTS_DIR = path.join(REPO_ROOT, 'projects');
-
-const INDEX_JSON_PATHS = [
-  path.join(REPO_ROOT, 'new/data/projects-index.json'),
-  path.join(REPO_ROOT, 'data/projects-index.json'),
-];
 
 function parseArgs(argv) {
   const flags = {
@@ -181,35 +177,6 @@ async function writeOptimized(plan, flags) {
   return afterBytes;
 }
 
-function updatePathReferences(renames) {
-  const files = [];
-  for (const dir of fs.readdirSync(PROJECTS_DIR)) {
-    const html = path.join(PROJECTS_DIR, dir, 'index.html');
-    if (fs.existsSync(html)) files.push(html);
-  }
-  for (const p of INDEX_JSON_PATHS) {
-    if (fs.existsSync(p)) files.push(p);
-  }
-
-  const updated = [];
-  for (const filePath of files) {
-    let text = fs.readFileSync(filePath, 'utf8');
-    let changed = false;
-    for (const { oldName, newName } of renames) {
-      if (oldName === newName) continue;
-      if (text.includes(oldName)) {
-        text = text.split(oldName).join(newName);
-        changed = true;
-      }
-    }
-    if (changed) {
-      fs.writeFileSync(filePath, text);
-      updated.push(path.relative(REPO_ROOT, filePath));
-    }
-  }
-  return updated;
-}
-
 async function processProjectDir(dir, flags) {
   const names = listProjectImages(dir);
   const plans = [];
@@ -252,7 +219,7 @@ async function processProjectDir(dir, flags) {
 
   let updatedFiles = [];
   if (!flags.dryRun && renames.length) {
-    updatedFiles = updatePathReferences(renames);
+    updatedFiles = updateProjectPathReferences(renames);
     for (const f of updatedFiles) console.log(`  updated refs: ${f}`);
   } else if (flags.dryRun && renames.length) {
     console.log(`  would update HTML/JSON for: ${renames.map((r) => r.oldName).join(', ')}`);

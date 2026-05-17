@@ -1,19 +1,20 @@
 # Project skill categories (`config.json` → `skills`)
 
-**BR-028.** Every repair project’s `skills` array must use **only** the four IDs that match the public site (gallery filters and project page badges).
+**BR-028 / T-00036.** Every repair project’s `skills` array must use **only** the four IDs that match the public site (gallery filters and project page badges).
 
 ## Allowed values
 
 | ID | Site label | Typical work |
 |----|------------|--------------|
-| `plush` | Plush | Sewing, restuffing, cleaning, fabric, teddy/plush repair |
+| `needlework` | Needlework | Sewing, restuffing, cleaning, fabric, teddy/plush repair |
 | `electronic` | Electronic | Wiring, batteries, sound modules, controllers, soldering |
 | `mechanical` | Mechanical | Gears, motors, wind-ups, joints, structural/mechanical fix |
 | `paintjob` | Paint | Figure touch-up, glue/bond, resin sculpt, paint and finish |
 
-- **One or more** per project (e.g. talking plush → `["plush", "electronic"]`).
-- **Order in JSON** does not matter; scripts and the site sort as: plush → electronic → mechanical → paintjob.
+- **One or more** per project (e.g. talking plush → `["needlework", "electronic"]`).
+- **Order in JSON** does not matter; scripts and the site sort as: needlework → electronic → mechanical → paintjob.
 - **Empty array** `[]` is allowed (e.g. intake / non-repairable); no legacy granular strings (`sewing`, `electronics`, `cleaning`, etc.).
+- Legacy ID **`plush`** is accepted by normalize scripts and mapped to **`needlework`** — do not commit `plush` in new JSON.
 
 ## Source of truth in code
 

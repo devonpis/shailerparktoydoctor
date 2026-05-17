@@ -1,5 +1,5 @@
 ---
-description: config.json skills must be plush, electronic, mechanical, or paintjob only
+description: config.json skills must be needlework, electronic, mechanical, or paintjob only
 globs: projects/**/config.json,scripts/**/*.mjs,docs/**/*.md
 alwaysApply: false
 ---
@@ -14,12 +14,12 @@ When editing **`projects/*/config.json`** `skills` or scripts that set `skills`:
 
 | ID | Site label |
 |----|------------|
-| `plush` | Plush |
+| `needlework` | Needlework |
 | `electronic` | Electronic |
 | `mechanical` | Mechanical |
 | `paintjob` | Paint |
 
-**Not allowed** in JSON: `sewing`, `cleaning`, `electronics`, `restuffing`, `figure repair`, `gluing`, etc.
+**Not allowed** in JSON: `sewing`, `cleaning`, `electronics`, `plush` (use **`needlework`**), `restuffing`, `figure repair`, `gluing`, etc.
 
 ## Before saving
 
@@ -28,7 +28,7 @@ When editing **`projects/*/config.json`** `skills` or scripts that set `skills`:
 
 ## Mapping (quick)
 
-- Fabric / plush / restuff / clean → **`plush`**
+- Fabric / plush / restuff / clean → **`needlework`**
 - Wiring / battery / sound / solder → **`electronic`**
 - Gears / motors / wind-up / mechanical assembly → **`mechanical`**
 - Figure glue, resin, paint, finish → **`paintjob`**

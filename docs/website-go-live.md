@@ -22,12 +22,37 @@ How to put a **DONE** repair on the public website. This is **separate from soci
 
 ## Checklist (per DONE repair)
 
-### 0. Optimize project images (recommended)
+### 0. Webpage prep script (rotate + optimize + validate)
 
-Before authoring or updating the story page, run the image optimizer so gallery and social loads stay fast:
+Recommended single entry point before authoring or updating **`index.html`**:
 
 ```bash
 npm install   # once per machine (installs sharp)
+node scripts/publish-webpage.mjs <id>              # optimize → validate → checklist
+node scripts/publish-webpage.mjs <id> --dry-run      # preview only
+
+# Fix sideways photos first (then optimize runs automatically):
+node scripts/publish-webpage.mjs 0003 --rotate WIP-001.jpg --cw
+node scripts/publish-webpage.mjs 0003 --rotate after.jpg --ccw --rotate before.jpg --180
+node scripts/publish-webpage.mjs 0003 --exif-orient   # apply EXIF to all project images
+```
+
+**Rotate only** (no optimize/validate):
+
+```bash
+node scripts/rotate-project-image.mjs <id> <filename> --cw | --ccw | --180
+node scripts/rotate-project-image.mjs <id> --exif --all
+```
+
+Rotation **bakes pixels** (EXIF orientation stripped). Run **before** optimize when both apply. The script does **not** create HTML — it prints a checklist for `index.html`, gallery index, `webpageUrl`, and `sitemap.xml`.
+
+Agent flow for **`publish <id> to webpage`**: after owner confirms → run `publish-webpage.mjs` (with any `--rotate` / `--exif-orient` the owner requested) → author/update **`index.html`** → gallery + sitemap + `webpageUrl` → commit/push when approved.
+
+### 0b. Optimize project images (included in `publish-webpage.mjs`)
+
+Or run the optimizer alone:
+
+```bash
 node scripts/optimize-project-images.mjs <id>   # e.g. 0003
 # or batch: node scripts/optimize-project-images.mjs --all
 ```
@@ -133,7 +158,7 @@ Example:
 }
 ```
 
-Home highlights use optional **`priority`** in each project’s **`config.json`** (not in this index): higher number ranks higher; top entry is the lead story, next six are tiles. See [`.cursor/rules/home-highlight-priority.mdc`](../.cursor/rules/home-highlight-priority.mdc).
+Home highlights use optional **`importance`** in each project’s **`config.json`** (not in this index): **higher number ranks higher** (lead + up to six tiles). See [`.cursor/rules/home-highlight-importance.mdc`](../.cursor/rules/home-highlight-importance.mdc).
 
 ---
 
@@ -142,7 +167,7 @@ Home highlights use optional **`priority`** in each project’s **`config.json`*
 | Action | Command / step |
 |--------|----------------|
 | **Facebook / IG / Threads** | `publish 0003 to social media` → preview → confirm → `publish-social.mjs` |
-| **Website story + gallery** | This doc (or `publish 0003 to webpage` if you want agent-driven HTML) |
+| **Website story + gallery** | This doc; `node scripts/publish-webpage.mjs 0003` then HTML + index (or `publish 0003 to webpage` with agent) |
 | **Both** | `publish 0003 to social media and webpage` |
 
 Updating **`facebookUrl`** etc. does **not** replace adding `index.html` or the gallery row.

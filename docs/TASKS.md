@@ -47,11 +47,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00033 | Done | Fill itemDetails summaries (Donald char budgets) | BR-027 |
 | T-00034 | Todo | Review title & description from images + metadata | BR-029 |
 | T-00035 | Todo | Import owner CSV; polish repairDetails & description | BR-030 |
-| T-00036 | Todo | Rename skill `plush` → `needlework` (after T-00035) | BR-031 |
+| T-00036 | Done | Rename skill `plush` → `needlework` (after T-00035) | BR-031 |
 | T-00037 | Todo | Replace legacy homepage images 0004–0015 | BR-032 |
 | T-00038 | Todo | Update testimonials page (last before cutover) | BR-033 |
-| T-00039 | Todo | On-demand project image rotation (portrait/landscape) | BR-034 |
-| T-00040 | Done | Home highlight priority + six tiles | BR-015 |
+| T-00039 | Done | On-demand project image rotation (portrait/landscape) | BR-034 |
+| T-00040 | Done | Home highlight importance + six tiles | BR-015 |
 | — | — | Skill categories: four IDs only (`docs/project-skills.md`, BR-028) | BR-028 |
 
 ---
@@ -500,9 +500,10 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-031 |
 | **Goal** | Rename category ID **`plush`** → **`needlework`** everywhere (workshop label: needlework / fabric repair). |
+| **Outcome** | **62** configs normalized; `needlework` in [`normalize-skills.mjs`](../scripts/lib/normalize-skills.mjs), [`new/js/skills.js`](../new/js/skills.js), CSS (`--skill-needlework-*`), docs/rules. Legacy **`plush`** maps to **`needlework`** in normalize only. |
 | **Scope** | All `projects/*/config.json` `skills` arrays; [`normalize-skills.mjs`](../scripts/lib/normalize-skills.mjs); [`normalize-project-skills.mjs`](../scripts/normalize-project-skills.mjs); [`validate-publish.mjs`](../scripts/validate-publish.mjs); [`new/js/skills.js`](../new/js/skills.js) (filters, badges, display label); [`docs/project-skills.md`](project-skills.md); [`.cursor/rules/project-skills-categories.mdc`](../.cursor/rules/project-skills-categories.mdc); project **`index.html`** / gallery markup that hardcode `plush` or “Plush”; CSV export/import column hints. |
 | **Mapping** | Accept `plush` and `needlework` during migration; committed JSON uses **`needlework` only**. |
 | **Depends on** | **T-00035** (owner CSV skills imported first) |
@@ -531,25 +532,24 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-034 |
 | **Goal** | When the owner asks (e.g. **“rotate `before.jpg` in 0009 clockwise”**), fix image orientation so portraits/landscapes display correctly on the site and in social crops. |
-| **Script** | `scripts/rotate-project-image.mjs` — e.g. `node scripts/rotate-project-image.mjs <project-id> <filename> --cw \| --ccw \| --180` (or `--degrees 90`). Use **sharp**; write in place or to same stem; preserve format when possible. |
-| **Agent** | On-demand only after explicit instruction; show before/after dimensions in reply; run **T-00027** optimize if file exceeds size rules after rotate. |
-| **Depends on** | **T-00027** (sharp installed) |
-| **Related** | **T-00028** ingest (does not auto-fix bad orientation); **T-00037** new photos may need rotation |
-| **Out of scope** | Batch auto-rotate all EXIF-oriented images without owner request; video rotation |
+| **Scripts** | [`rotate-project-image.mjs`](../scripts/rotate-project-image.mjs); [`publish-webpage.mjs`](../scripts/publish-webpage.mjs) runs rotate → optimize → validate → go-live checklist. Lib: [`scripts/lib/rotate-image.mjs`](../scripts/lib/rotate-image.mjs). |
+| **Webpage workflow** | **`publish <id> to webpage`**: `publish-webpage.mjs` with `--rotate` / `--exif-orient` when needed, then HTML + gallery ([`website-go-live.md`](website-go-live.md)). |
+| **Depends on** | **T-00027** (sharp) |
+| **Out of scope** | Batch auto-rotate every project without owner request; video rotation |
 
 ---
 
-## T-00040 — Home highlight priority + six tiles
+## T-00040 — Home highlight importance + six tiles
 
 | Field | Value |
 |-------|-------|
 | **Status** | Done |
 | **Requirements** | BR-015 |
-| **Outcome** | Optional **`priority`** in `config.json` (template + README). Home **Some Of Our Patients' Stories**: highest priority = lead story; next six = `.highlight-tiles` (3×2 grid). [`new/js/home-patient-stories.js`](../new/js/home-patient-stories.js); rule [`.cursor/rules/home-highlight-priority.mdc`](../.cursor/rules/home-highlight-priority.mdc); [`docs/website-go-live.md`](website-go-live.md). |
-| **Out of scope** | Duplicating `priority` in `projects-index.json`; auto-assigning priorities |
+| **Outcome** | Optional **`importance`** in `config.json` (template + README). Home **Some Of Our Patients' Stories**: highest **importance** = lead story; next six = `.highlight-tiles` (3×2 grid). [`new/js/home-patient-stories.js`](../new/js/home-patient-stories.js); rule [`.cursor/rules/home-highlight-importance.mdc`](../.cursor/rules/home-highlight-importance.mdc); [`docs/website-go-live.md`](website-go-live.md). |
+| **Out of scope** | Duplicating `importance` in `projects-index.json`; auto-assigning values |
 
 ---
 

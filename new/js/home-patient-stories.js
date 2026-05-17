@@ -37,12 +37,17 @@
     return skillsApi.overlayBadgesHtml(project.skills);
   }
 
-  function hasPriority(priority) {
-    return typeof priority === 'number' && !Number.isNaN(priority);
+  function hasImportance(importance) {
+    return typeof importance === 'number' && !Number.isNaN(importance);
+  }
+
+  function readImportance(config) {
+    const v = config.importance;
+    return v !== undefined && v !== null ? v : null;
   }
 
   function compareHighlights(a, b) {
-    if (b.priority !== a.priority) return b.priority - a.priority;
+    if (b.importance !== a.importance) return b.importance - a.importance;
     const da = a.endDate || '';
     const db = b.endDate || '';
     if (db !== da) return db.localeCompare(da);
@@ -103,12 +108,10 @@
   function enrich(project) {
     return loadConfig(project).then((config) => {
       const merged = skillsApi ? skillsApi.withSkills(project, config) : { ...project };
-      const priority =
-        config.priority !== undefined && config.priority !== null ? config.priority : null;
       return {
         ...merged,
         storyDescription: config.description || '',
-        priority,
+        importance: readImportance(config),
       };
     });
   }
@@ -117,11 +120,11 @@
     .then((res) => res.json())
     .then((projects) => Promise.all(projects.map(enrich)))
     .then((enriched) => {
-      const highlights = enriched.filter((p) => hasPriority(p.priority)).sort(compareHighlights);
+      const highlights = enriched.filter((p) => hasImportance(p.importance)).sort(compareHighlights);
 
       if (!highlights.length) {
         root.innerHTML =
-          '<p>Repair stories will appear here when projects have a <code>priority</code> set in their config.</p>';
+          '<p>Repair stories will appear here when projects have an <code>importance</code> set in their config.</p>';
         return;
       }
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Normalize config.json skills to plush | electronic | mechanical | paintjob.
+ * Normalize config.json skills to needlework | electronic | mechanical | paintjob.
  *
  * Usage: node scripts/normalize-project-skills.mjs [--dry-run]
  */

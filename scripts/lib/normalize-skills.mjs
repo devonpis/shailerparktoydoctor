@@ -1,17 +1,18 @@
 /**
  * Canonical repair skills (BR-028; matches new/js/skills.js).
- * Only: plush | electronic | mechanical | paintjob
+ * Only: needlework | electronic | mechanical | paintjob
  *
  * @see docs/project-skills.md
  */
 
-export const CANONICAL_SKILL_IDS = ['plush', 'electronic', 'mechanical', 'paintjob'];
+export const CANONICAL_SKILL_IDS = ['needlework', 'electronic', 'mechanical', 'paintjob'];
 
 /** Display order on site badges. */
 export const SKILL_SORT_ORDER = CANONICAL_SKILL_IDS;
 
 const TO_CANONICAL = {
-  plush: 'plush',
+  needlework: 'needlework',
+  plush: 'needlework',
   electronic: 'electronic',
   electronics: 'electronic',
   electrical: 'electronic',
@@ -19,12 +20,12 @@ const TO_CANONICAL = {
   paint: 'paintjob',
   paintjob: 'paintjob',
   painting: 'paintjob',
-  sewing: 'plush',
-  restuffing: 'plush',
-  cleaning: 'plush',
-  textile: 'plush',
-  'fabric repair': 'plush',
-  'joint replacement': 'plush',
+  sewing: 'needlework',
+  restuffing: 'needlework',
+  cleaning: 'needlework',
+  textile: 'needlework',
+  'fabric repair': 'needlework',
+  'joint replacement': 'needlework',
   soldering: 'electronic',
   battery: 'electronic',
   'figure repair': 'paintjob',
@@ -56,7 +57,7 @@ export function normalizeSkills(skills) {
 
 export function skillLabelPhrase(skills = []) {
   const labels = {
-    plush: 'plush repair',
+    needlework: 'needlework and fabric repair',
     electronic: 'electronics',
     mechanical: 'mechanical work',
     paintjob: 'paint and finish',

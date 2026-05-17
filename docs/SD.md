@@ -287,4 +287,4 @@ Implementation: **T-00038**. Blocks cutover until done.
 
 When the owner pastes or uploads a repair photo that displays sideways (wrong EXIF orientation, or phone held portrait/landscape), rotate it **on explicit request** so it reads correctly on the site and in social crops — without re-running full USB ingest.
 
-Implementation: **T-00039**. Uses **sharp** (same stack as **T-00027**). Respect `before` / `after` / `hero` / `WIP-###` filenames; update `projects-index.json` thumbnail paths if the file is renamed. **On-demand only** — no batch auto-rotate from EXIF unless the owner asks.
+Implementation: **T-00039** — `rotate-project-image.mjs` and **`publish-webpage.mjs`** (rotate → optimize → validate before HTML go-live). Uses **sharp** (same stack as **T-00027**). **On-demand only** — use `--exif-orient` when the owner wants EXIF applied to all images in a folder.

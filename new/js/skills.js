@@ -1,29 +1,30 @@
 /**
- * Skill categories: plush, electronic, mechanical, paintjob
+ * Skill categories: needlework, electronic, mechanical, paintjob
  */
 (function (global) {
-  const SKILL_IDS = ['plush', 'electronic', 'mechanical', 'paintjob'];
+  const SKILL_IDS = ['needlework', 'electronic', 'mechanical', 'paintjob'];
 
   const SKILLS = {
-    plush: { label: 'Plush' },
+    needlework: { label: 'Needlework' },
     electronic: { label: 'Electronic' },
     mechanical: { label: 'Mechanical' },
     paintjob: { label: 'Paint' },
   };
 
   const SKILL_EMOJI = {
-    plush: '🧸',
+    needlework: '🧵',
     electronic: '⚡',
     mechanical: '🔧',
     paintjob: '🖌️',
   };
 
   const SKILL_ALIASES = {
+    plush: 'needlework',
     electrical: 'electronic',
     electronics: 'electronic',
-    sewing: 'plush',
-    restuffing: 'plush',
-    cleaning: 'plush',
+    sewing: 'needlework',
+    restuffing: 'needlework',
+    cleaning: 'needlework',
     paint: 'paintjob',
     gluing: 'paintjob',
     'figure repair': 'paintjob',
