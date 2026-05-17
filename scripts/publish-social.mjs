@@ -20,7 +20,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateProject } from './validate-publish.mjs';
 import { loadEnv, requireEnv, tryLoadEnv } from './lib/load-env.mjs';
-import { buildCaption } from './lib/caption.mjs';
+import { buildCaption, buildThreadsCaption, THREADS_CAPTION_MAX } from './lib/caption.mjs';
 import { pickImage, publicImageUrl, SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
 import { selectImagesForSocialPublish } from './lib/select-social-images.mjs';
 import {
@@ -179,7 +179,7 @@ async function main() {
     notes: pickNotes,
   } = pickResult;
   const caption = buildCaption(config);
-  const threadsCaption = buildCaption(config, { includeHashtags: false });
+  const threadsCaption = buildThreadsCaption(config);
   let targets = resolveTargets(flags.target);
 
   const publicBaseUrl = resolvePublicBaseUrl(flags, env, projectFolderName);
@@ -216,7 +216,9 @@ async function main() {
       }
     }
   }
-  console.log(`Caption length: ${caption.length} (Threads without hashtags: ${threadsCaption.length})`);
+  console.log(
+    `Caption length: ${caption.length} (Threads ≤${THREADS_CAPTION_MAX}, no hashtags: ${threadsCaption.length})`
+  );
   console.log(`Targets: ${targets.join(', ')}`);
   if (publicBaseUrl) console.log(`Public image base: ${publicBaseUrl}`);
 
@@ -248,7 +250,7 @@ async function main() {
   if (flags.dryRun) {
     console.log('\n--- DRY RUN (no API calls) ---');
     console.log(caption);
-    console.log('\nThreads text (no hashtags):');
+    console.log(`\nThreads text (≤${THREADS_CAPTION_MAX} chars, no hashtags):`);
     console.log(threadsCaption);
     console.log(`\nIncluded (${imagePaths.length}):\n${imagePaths.map((p) => `  ${path.basename(p)}`).join('\n')}`);
     if (pickMethod && pickMethod !== 'all' && pickMethod !== 'single') {
@@ -326,7 +328,9 @@ async function main() {
 
   if (targets.includes('threads')) {
     requireEnv(env, ['META_THREADS_ACCESS_TOKEN', 'META_THREADS_USER_ID']);
-    console.log(`\nPublishing to Threads (${publicImageUrls.length} image(s), no hashtags)…`);
+    console.log(
+      `\nPublishing to Threads (${publicImageUrls.length} image(s), ≤${THREADS_CAPTION_MAX} chars, no hashtags)…`
+    );
     results.threadUrl = await publishThreads({
       threadsUserId: env.META_THREADS_USER_ID,
       threadsToken: env.META_THREADS_ACCESS_TOKEN,

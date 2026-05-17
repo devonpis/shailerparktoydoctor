@@ -26,15 +26,15 @@ Full limits and platform notes: [`docs/publish-content-guards.md`](../../docs/pu
 - `skills` — if set: only `plush`, `electronic`, `mechanical`, `paintjob` ([`docs/project-skills.md`](../../docs/project-skills.md), **BR-028**)
 - **Media** — at least one of: `before` / `after` / `hero` / `WIP-###` image, or video (`.mp4`, `.mov`, `.webm`)
 
-Also check **description + appended hashtags** ≤ **500** characters total.
+Also check **description + appended hashtags** ≤ **500** characters total (FB / IG).
 
 ## Tags across Facebook, Instagram, Threads
 
 - One `tags` array in `config.json` is the source of truth.
 - **Instagram:** hashtags go in **caption** (max **30**).
-- **Threads:** hashtags are text inside the **500**-character post.
-- **Facebook:** hashtags go in post **message** (same caption string).
-- There is no shared Meta “tags” API field for all three — build caption/message from `description` + `tags`.
+- **Threads:** **no hashtags**; post text is `buildThreadsCaption()` — ≤ **100** characters, summarized from `description` (URLs stripped). See [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md).
+- **Facebook:** hashtags go in post **message** (same caption string as IG).
+- There is no shared Meta “tags” API field for all three — FB/IG use `description` + `tags`; Threads uses the short summary only.
 
 ## Social carousel (max 10 images)
 
@@ -45,6 +45,6 @@ Also check **description + appended hashtags** ≤ **500** characters total.
 
 ## Preview summary must include
 
-After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **description length** (x/500), **tag count**, **included** social images (x/10), **omitted** images when truncation applies, and validation **OK** or list failures.
+After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **description length** (x/500), **Threads text** (≤100, no hashtags), **tag count** (FB/IG), **included** social images (x/10), **omitted** images when truncation applies, and validation **OK** or list failures.
 
 If validation fails, **do not** proceed to publish; report failures and ask the user to fix `config.json` or add media.

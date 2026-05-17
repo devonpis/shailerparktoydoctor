@@ -38,6 +38,21 @@ When one caption is reused across **Facebook, Instagram, and Threads**, this rep
 
 **Emoji / UTF-8:** Threads counts some characters by UTF-8 byte length in edge cases; staying under **500** characters is the safe rule.
 
+### Threads-only text at publish time
+
+Facebook and Instagram use the full caption: **`description` + hashtags** (≤500 chars total).
+
+**Threads** uses a **separate** short text built by [`scripts/lib/caption.mjs`](../scripts/lib/caption.mjs) (`buildThreadsCaption`):
+
+| Rule | Value |
+|------|--------|
+| **Max length** | **100** characters (summarized from `description`) |
+| **Hashtags** | **None** — do not append `tags` on Threads |
+| **URLs** | Stripped from the Threads text (links stay in FB/IG caption) |
+| **Long copy** | Truncated at a word boundary with `…` when over the limit |
+
+Preview and `publish-social.mjs` show both strings on dry-run. `validate-publish.mjs` warns when the Threads summary is shortened.
+
 ---
 
 ## Social carousel: image count and priority
@@ -67,7 +82,7 @@ node scripts/publish-social.mjs 0027 --dry-run --no-ai      # rules only
 | Platform | How `tags` are used |
 |----------|---------------------|
 | **Instagram** | Append as **hashtags** in the **caption** (with `description`). Max **30** hashtags. |
-| **Threads** | Append as hashtags in the **text** field (same string as caption). All text must fit in **500** characters total. |
+| **Threads** | **No hashtags.** Short text only (≤**100** chars, summarized from `description` — see above). |
 | **Facebook** | Append as hashtags in the Page post **message** (same caption string). No separate tags API field. |
 | **Webpage** | Use `tags` for labels/SEO/filtering on the repair page (not necessarily `#` prefixed). |
 

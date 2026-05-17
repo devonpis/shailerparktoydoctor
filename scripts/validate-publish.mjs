@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildHashtagLine } from './lib/hashtag.mjs';
+import { buildThreadsCaption, THREADS_CAPTION_MAX } from './lib/caption.mjs';
 import { SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
 import { CANONICAL_SKILL_IDS, normalizeSkills } from './lib/normalize-skills.mjs';
 
@@ -143,7 +144,21 @@ function validateConfig(config, dir) {
     );
   }
 
-  return { errors, warnings, images, videos, captionWithTags };
+  const threadsCaption = description ? buildThreadsCaption(config) : '';
+  if (threadsCaption.length > THREADS_CAPTION_MAX) {
+    errors.push(
+      `Threads caption is ${threadsCaption.length} characters; max ${THREADS_CAPTION_MAX} (no hashtags).`
+    );
+  } else if (
+    description &&
+    (description.length > THREADS_CAPTION_MAX || threadsCaption.endsWith('…'))
+  ) {
+    warnings.push(
+      `Threads will use a shortened caption (${threadsCaption.length}/${THREADS_CAPTION_MAX} chars, no hashtags, URLs stripped).`
+    );
+  }
+
+  return { errors, warnings, images, videos, captionWithTags, threadsCaption };
 }
 
 export function validateProject(projectArg) {
@@ -158,7 +173,10 @@ export function validateProject(projectArg) {
   } catch (e) {
     return { ok: false, dir, errors: [`config.json invalid JSON: ${e.message}`], warnings: [] };
   }
-  const { errors, warnings, images, videos, captionWithTags } = validateConfig(config, dir);
+  const { errors, warnings, images, videos, captionWithTags, threadsCaption } = validateConfig(
+    config,
+    dir
+  );
   return {
     ok: errors.length === 0,
     dir,
@@ -168,6 +186,7 @@ export function validateProject(projectArg) {
     images,
     videos,
     captionWithTags,
+    threadsCaption,
     limits: LIMITS,
   };
 }
@@ -199,6 +218,9 @@ function main() {
       console.log(
         `Caption+tags length: ${result.captionWithTags.length}/${LIMITS.descriptionMaxChars}`
       );
+    }
+    if (result.threadsCaption != null) {
+      console.log(`Threads caption: ${result.threadsCaption.length}/${THREADS_CAPTION_MAX} (no hashtags)`);
     }
     process.exit(0);
   }

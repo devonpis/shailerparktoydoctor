@@ -108,12 +108,26 @@ a:hover {
 .title-slogan {
   line-height: 1.25;
   margin-top: 1.25rem;
-  margin-bottom: 1.5rem;
-  padding: 28px 20px;
+  margin-bottom: 1.25rem;
+  padding: 28px 20px 16px;
 }
 
 .title-slogan span {
   font-size: 80%;
+}
+
+.slogan-cta {
+  text-align: center;
+  margin: 0 0 3rem;
+  padding: 0 1.25rem;
+}
+
+.slogan-cta .cta-button {
+  display: flex;
+  width: 50%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #site-header {
@@ -940,26 +954,32 @@ body[data-active-page='testimonials'] .quote-card p.stars {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
+  border: 1px solid transparent;
+  box-sizing: border-box;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .skill-badge--icon-only.skill-badge--plush {
   background: var(--skill-plush-bg);
+  border-color: var(--skill-plush-solid);
   color: var(--skill-plush-fg);
 }
 
 .skill-badge--icon-only.skill-badge--electronic {
   background: var(--skill-electronic-bg);
+  border-color: var(--skill-electronic-solid);
   color: var(--skill-electronic-fg);
 }
 
 .skill-badge--icon-only.skill-badge--mechanical {
   background: var(--skill-mechanical-bg);
+  border-color: var(--skill-mechanical-solid);
   color: var(--skill-mechanical-fg);
 }
 
 .skill-badge--icon-only.skill-badge--paintjob {
   background: var(--skill-paintjob-bg);
+  border-color: var(--skill-paintjob-solid);
   color: var(--skill-paintjob-fg);
 }
 
@@ -1207,8 +1227,21 @@ h3.project-subtitle {
   .title-slogan {
     font-size: 36px;
     margin-top: 1rem;
-    margin-bottom: 1.25rem;
-    padding: 20px 12px;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 0 12px;
+  }
+
+  .slogan-cta {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .slogan-cta .cta-button {
+    width: 100%;
   }
 
   .page-main > h1 {

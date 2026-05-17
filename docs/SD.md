@@ -272,3 +272,11 @@ Map legacy `plush` → `needlework`; keep `electronic`, `mechanical`, `paintjob`
 Projects **0004–0015** still use **hero/images copied from the old website** (`images/` import, often edited or montaged). Replace with **authentic repair photos** from USB ingest, owner files, or new shoots — `before`, `after`, `hero`, `WIP-###` per README naming; run **T-00027** optimize after copy.
 
 Implementation: **T-00037**. Depends on **T-00028** / owner supplying files; unrelated to CSV import except dating (**T-00031** / owner dates for **0004–0014**).
+
+---
+
+## BR-033 — Testimonials page refresh before go-live
+
+Before **T-00016** cutover, owner updates [`new/testimonials.html`](../new/testimonials.html): current Google review count, featured quote excerpts (manual paste per **T-00023**), Maps CTA/links. **Last** marketing content task before the new site is published — not at initial **T-00020** build time.
+
+Implementation: **T-00038**. Blocks cutover until done.

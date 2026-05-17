@@ -49,6 +49,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00035 | Todo | Import owner CSV; polish repairDetails & description | BR-030 |
 | T-00036 | Todo | Rename skill `plush` → `needlework` (after T-00035) | BR-031 |
 | T-00037 | Todo | Replace legacy homepage images 0004–0015 | BR-032 |
+| T-00038 | Todo | Update testimonials page (last before cutover) | BR-033 |
 | — | — | Skill categories: four IDs only (`docs/project-skills.md`, BR-028) | BR-028 |
 
 ---
@@ -258,7 +259,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Checklist** | **Marketing (`/new/` until cutover):** add `link rel="canonical"` and `og:title`, `og:description`, `og:image`, `og:url`, `og:type` on home, projects index, testimonials, contact (contact already has `LocalBusiness` JSON-LD — add same on home); keep `noindex` on preview until **T-00016**. **Project stories:** ensure template [`index.html.example`](../projects/0000%20-%20template/index.html.example) includes full OG block like [0003 Donald Duck](../projects/0003%20-%20Donald%20Duck/index.html); add `og:type` on story pages; verify title `{projectName} — Shailer Park Toy Doctor` and description ≤ ~160 chars for each DONE page. **Sitemap:** remove `/new/*` URLs (conflicts with `robots.txt` `Disallow: /new/`); list only public URLs; add production marketing paths after cutover. **Cutover (with T-00016):** remove `noindex` from marketing pages; canonicals and OG URLs use `https://sptoydoctor.com.au/` paths (not `/new/`). **Legacy root** (`index.html`, `contact.html`, `reviews.html`): fix `lang="en-AU"`, HTTPS Open Graph URLs, or archive at cutover. **Accessibility/SEO:** one primary `<h1>` per page (header site title vs page headline); image `alt` from project titles on story/gallery images. |
 | **Depends on** | T-00012, T-00017, T-00019, **T-00035** (owner CSV import + generated copy), **T-00034** (titles) |
 | **Related** | T-00013 (sitemap), T-00016 (cutover + de-index preview), T-00022 (contact JSON-LD pattern) |
-| **Order** | Run **after T-00035** (and **T-00036** if skill labels appear in meta); partial marketing-page OG can precede cutover. |
+| **Order** | Run **after T-00035** (and **T-00036** if skill labels appear in meta); before **T-00038** / **T-00016**. Partial marketing-page OG can precede cutover. |
 | **Out of scope** | Paid SEO tools; auto-generated meta from AI; changing project copy for keyword stuffing |
 
 ---
@@ -270,9 +271,26 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Todo |
 | **Requirements** | BR-006, BR-015 |
 | **Goal** | After owner confirms the preview site: move `new/*` to site root (or equivalent promote); remove or archive legacy root HTML (`index.html`, `contact.html`, `reviews.html`, `index_bk.html`); drop preview banners and `noindex` on marketing pages; point nav/sitemap at production URLs; update `webpageUrl` in project configs; regenerate `sitemap.xml`. |
-| **Depends on** | T-00018, T-00020, T-00022 (and T-00013 for story pages as needed); explicit owner approval for cutover. |
-| **Related** | T-00024 (SEO metadata after **T-00032**; remove `noindex` and fix canonicals/OG at cutover) |
+| **Depends on** | T-00018, T-00020, T-00022, **T-00024**, **T-00038** (and T-00013 for story pages as needed); explicit owner approval for cutover. |
+| **Related** | **T-00038** (testimonials refresh — **last** content task before go-live); remove `noindex` and fix canonicals/OG at cutover |
+| **Order** | **T-00038** runs after metadata/SEO (**T-00024**) and before **T-00016** — do not cut over until testimonials are current. |
 | **Out of scope** | Publishing social posts; changing project `status` to DONE. |
+
+---
+
+## T-00038 — Update testimonials page (last before cutover)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-033 |
+| **Goal** | Refresh [`new/testimonials.html`](../new/testimonials.html) with **current** Google reputation and quote copy **immediately before** publishing the new site (**T-00016**). |
+| **Updates** | **Star count / trust line** (e.g. total Google reviews, all 5★ — verify on Maps); **2–4 featured quote cards** (paste newer reviews per [`website-testimonials-page-plan.md`](website-testimonials-page-plan.md) + **T-00023**); reviewer names + Maps profile links; Maps CTA URL; optional Maps embed if owner wants it. |
+| **Also** | Any testimonial blocks on project story pages (`googleReview` in `config.json`) owner wants live at launch — optional same pass. |
+| **Depends on** | **T-00020**, **T-00021**, **T-00023** (page exists + paste workflow); **T-00024** recommended first (SEO on testimonials page) |
+| **Blocks** | **T-00016** (cutover / promote `new/` to root) |
+| **Order** | **Last** marketing content task before go-live — after **T-00034**–**T-00037** and **T-00024**; owner pastes fresh quotes from Google Maps. |
+| **Out of scope** | Paid review widgets; Places API auto-fetch; changing project repair copy |
 
 ---
 
