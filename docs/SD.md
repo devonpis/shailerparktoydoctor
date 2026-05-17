@@ -175,3 +175,9 @@ The owner stores repair photos on **USB** (or another external volume) in camera
 4. **Copy** (default) or move (opt-in) into the matched project folder after owner review; **`--dry-run`** reports matches, role guesses, and planned names without writing.
 
 Conflicts (one photo fits multiple projects, ambiguous date window, missing project) must be **reported** for human decision. Must not copy unrelated personal photos or write customer PII into filenames. Prefer **agent-assisted** review for uncertain matches rather than silent wrong assignment. Implementation: **T-00028**.
+
+---
+
+## BR-023 — Timesheet import cleanup (dates and ambiguous rows)
+
+CSV scaffold imports may produce **invalid ISO dates** when day/month are parsed incorrectly (Australian **DD/MM/YYYY** and compact **DDMMYYYY**). The repo should parse and repair dates consistently and allow **owner review** of ambiguous scaffold rows (e.g. client first names mistaken for toy projects). See `scripts/fix-imported-dates.mjs`, scaffold date logic, and **T-00029**.

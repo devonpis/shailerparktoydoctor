@@ -113,6 +113,13 @@ function isClientNoteRow(orderName) {
   return false;
 }
 
+function formatIsoDate(year, month, day) {
+  const m = Number(month);
+  const d = Number(day);
+  if (m < 1 || m > 12 || d < 1 || d > 31) return null;
+  return `${year}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+}
+
 function parseFlexibleDate(raw) {
   const s = String(raw || '').trim();
   if (!s || /^tbd|aborted|quote/i.test(s)) return null;
@@ -122,24 +129,27 @@ function parseFlexibleDate(raw) {
     y = y.length === 2 ? `20${y}` : y;
     const d1 = Number(a);
     const d2 = Number(b);
-    let day = d1;
-    let month = d2;
-    if (d1 > 12 && d2 <= 12) {
-      day = d2;
+    let day;
+    let month;
+    if (d2 > 12) {
       month = d1;
-    } else if (d2 > 12 && d1 <= 12) {
+      day = d2;
+    } else if (d1 > 12) {
+      day = d1;
+      month = d2;
+    } else {
       day = d1;
       month = d2;
     }
-    return `${y}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    return formatIsoDate(y, month, day);
   }
   const digits = s.replace(/\D/g, '');
   if (digits.length === 7 || digits.length === 8) {
     const d = digits.length === 7 ? `0${digits}` : digits;
-    const day = d.slice(0, 2);
-    const month = d.slice(2, 4);
+    const day = Number(d.slice(0, 2));
+    const month = Number(d.slice(2, 4));
     const year = d.slice(4);
-    return `${year}-${month}-${day}`;
+    return formatIsoDate(year, month, day);
   }
   return null;
 }
