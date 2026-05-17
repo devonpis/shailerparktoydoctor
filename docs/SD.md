@@ -238,3 +238,37 @@ After **T-00030** naming and **T-00033** `itemDetails`, many projects still have
 - **0001:** description done; title may still need review.
 
 Report: `node scripts/report-title-description-review.mjs` → [`docs/reports/`](reports/). Implementation: **T-00034**.
+
+---
+
+## BR-030 — Import owner metadata CSV and generate publish copy
+
+After **T-00032** fill-in CSV is returned:
+
+1. **Import** `repairDetails_FILL_IN` and `skills_FILL_IN` (and optional date columns) into matching `projects/<id>/config.json` rows.
+2. **Polish** owner draft **`repairDetails`** into presentable website copy using the same tier budgets as **`itemDetails`** ([`scripts/lib/item-details-budget.mjs`](../scripts/lib/item-details-budget.mjs) — short / standard / full).
+3. **Generate** **`description`** (≤500 chars, social/website lead) from **`projectName`**, **`itemDetails`**, polished **`repairDetails`**, and **`skills`** — not skill-list stubs.
+4. **Normalize** **`skills`** to canonical IDs (see BR-028; after **T-00036**, `needlework` replaces `plush`).
+
+Implementation: **T-00035**. Blocks **T-00034** description pass for CSV-filled projects; **T-00024** SEO should run after this.
+
+---
+
+## BR-031 — Rename skill category `plush` → `needlework`
+
+Rename the fabric/sewing skill ID everywhere so site labels match workshop language:
+
+- `projects/*/config.json` — `skills` arrays
+- [`scripts/lib/normalize-skills.mjs`](../scripts/lib/normalize-skills.mjs), validation, export/import scripts
+- [`new/js/skills.js`](../new/js/skills.js) — filters, badges, labels
+- [`docs/project-skills.md`](project-skills.md), Cursor rules, story/gallery **HTML** that reference `plush` or “Plush”
+
+Map legacy `plush` → `needlework`; keep `electronic`, `mechanical`, `paintjob`. Implementation: **T-00036** — **after T-00035** (so imported CSV skills are normalized once).
+
+---
+
+## BR-032 — Replace legacy homepage images (0004–0015)
+
+Projects **0004–0015** still use **hero/images copied from the old website** (`images/` import, often edited or montaged). Replace with **authentic repair photos** from USB ingest, owner files, or new shoots — `before`, `after`, `hero`, `WIP-###` per README naming; run **T-00027** optimize after copy.
+
+Implementation: **T-00037**. Depends on **T-00028** / owner supplying files; unrelated to CSV import except dating (**T-00031** / owner dates for **0004–0014**).

@@ -156,6 +156,8 @@ Bulk import from a USB stick: [`docs/usb-photo-ingest.md`](docs/usb-photo-ingest
 
 Repair dates from photos (EXIF): `node scripts/set-project-dates-from-images.mjs [--dry-run]` — see **T-00031** in [`docs/TASKS.md`](docs/TASKS.md).
 
+Owner metadata worksheet (repair details + skills): `node scripts/export-project-metadata-gaps.mjs` → CSV under `docs/reports/`; attach and email manually — **T-00032**.
+
 ---
 
 ## Intended repair → publish loop
