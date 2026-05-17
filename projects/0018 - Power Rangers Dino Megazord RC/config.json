@@ -1,0 +1,27 @@
+{
+  "isTemplate": false,
+  "projectName": "Power Rangers Dino Megazord RC",
+  "title": "",
+  "startDate": "2024-01-02",
+  "endDate": "2025-02-08",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "PowerRangers",
+    "Megazord",
+    "RC"
+  ],
+  "skills": [
+    "electronics",
+    "mechanical"
+  ],
+  "description": "repair - RC electronics",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 2012024.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Bandai Dino Megazord RC — wiring and motors.\n\nIdentified T-00030 — 2026-05-17.",
+  "googleReview": null
+}

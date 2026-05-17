@@ -11,10 +11,17 @@
   "threadUrl": null,
   "youtubeUrl": null,
   "youtubeShortUrl": null,
-  "tags": [],
-  "skills": [],
-  "description": "singing bear",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 02/05/2026.",
-  "repairDetails": "- quote $80, he said $160\n\nImported from timesheet CSV — 2026-05-17.",
+  "tags": [
+    "bear",
+    "plush",
+    "sound"
+  ],
+  "skills": [
+    "electronics",
+    "sewing"
+  ],
+  "description": "repair - singing plush",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 02/05/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Singing bear per timesheet. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

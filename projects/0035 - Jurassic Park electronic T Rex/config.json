@@ -1,0 +1,28 @@
+{
+  "isTemplate": false,
+  "projectName": "Jurassic Park electronic T-Rex",
+  "title": "",
+  "startDate": "2025-09-25",
+  "endDate": "2025-09-25",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "JurassicPark",
+    "Trex",
+    "dinosaur"
+  ],
+  "skills": [
+    "electronics",
+    "mechanical",
+    "cleaning"
+  ],
+  "description": "repair - electronic dinosaur",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 25092025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Kenner Jurassic Park electronic T-Rex — sound and mechanism.\n\nIdentified T-00030 — 2026-05-17.",
+  "googleReview": null
+}

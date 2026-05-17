@@ -11,10 +11,15 @@
   "threadUrl": null,
   "youtubeUrl": null,
   "youtubeShortUrl": null,
-  "tags": [],
-  "skills": [],
-  "description": "repair",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 12/04/2026.",
-  "repairDetails": "repair\n- Quote: 70-80 (repair)\n\nImported from timesheet CSV — 2026-05-17.",
+  "tags": [
+    "cat",
+    "plush"
+  ],
+  "skills": [
+    "sewing"
+  ],
+  "description": "repair - plush",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 12/04/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Companion Cat plush repair. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

@@ -11,10 +11,16 @@
   "threadUrl": null,
   "youtubeUrl": null,
   "youtubeShortUrl": null,
-  "tags": [],
-  "skills": [],
-  "description": "modifying",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 20082025.",
-  "repairDetails": "modifying\n- communication (modifying) — 0.50h\n\nTimesheet: income 100.3, materials 20, profit 57.3\n\nImported from timesheet CSV — 2026-05-17.",
+  "tags": [
+    "bear",
+    "sound module"
+  ],
+  "skills": [
+    "electronics",
+    "sewing"
+  ],
+  "description": "repair - sound module",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 20082025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Bumblebear sound module install per timesheet. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

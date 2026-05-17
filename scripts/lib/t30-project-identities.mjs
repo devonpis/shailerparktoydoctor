@@ -1,9 +1,14 @@
 /**
- * T-00030: Confirmed product identities for USB-scaffolded projects (photo review 2026-05-17).
+ * T-00030: Product identities (USB scaffolds + all legacy projects).
+ * Skip: 0000 template, 0001, 0002, 0003 Donald Duck.
  */
 
-/** @type {{ id: string, projectName: string, description: string, skills: string[], tags: string[], repairDetails: string }[]} */
-export const T30_IDENTITIES = [
+import { T30_0004_0035 } from './t30-identities-0004-0035.mjs';
+import { T30_0036_0055 } from './t30-identities-0036-0055.mjs';
+import { T30_0056_0077 } from './t30-identities-0056-0077.mjs';
+
+/** USB-ingest scaffolds 0078–0092 (photo review 2026-05-17). */
+export const T30_USB_IDENTITIES = [
   {
     id: '0078',
     projectName: 'Disney Pluto plush',
@@ -37,8 +42,7 @@ export const T30_IDENTITIES = [
     description: 'repair - plush',
     skills: ['sewing'],
     tags: ['plush', 'dog'],
-    repairDetails:
-      'Small tan plush dog (floppy ears).\n\nIdentified T-00030 — 2026-05-17.',
+    repairDetails: 'Small tan plush dog (floppy ears).\n\nIdentified T-00030 — 2026-05-17.',
   },
   {
     id: '0082',
@@ -64,8 +68,7 @@ export const T30_IDENTITIES = [
     description: 'repair - plush',
     skills: ['sewing', 'cleaning'],
     tags: ['plush', 'Paddington'],
-    repairDetails:
-      'Classic Paddington Bear plush (red coat, black hat).\n\nIdentified T-00030 — 2026-05-17.',
+    repairDetails: 'Classic Paddington Bear plush (red coat, black hat).\n\nIdentified T-00030 — 2026-05-17.',
   },
   {
     id: '0085',
@@ -73,8 +76,7 @@ export const T30_IDENTITIES = [
     description: 'repair - plush',
     skills: ['sewing', 'cleaning'],
     tags: ['plush', 'panda'],
-    repairDetails:
-      'Small vintage panda plush.\n\nIdentified T-00030 — 2026-05-17.',
+    repairDetails: 'Small vintage panda plush.\n\nIdentified T-00030 — 2026-05-17.',
   },
   {
     id: '0086',
@@ -91,8 +93,7 @@ export const T30_IDENTITIES = [
     description: 'repair - plush',
     skills: ['sewing', 'cleaning'],
     tags: ['plush', 'teddy'],
-    repairDetails:
-      'Vintage yellow/tan teddy with gold neck ribbon.\n\nIdentified T-00030 — 2026-05-17.',
+    repairDetails: 'Vintage yellow/tan teddy with gold neck ribbon.\n\nIdentified T-00030 — 2026-05-17.',
   },
   {
     id: '0088',
@@ -109,8 +110,7 @@ export const T30_IDENTITIES = [
     description: 'repair - plush',
     skills: ['sewing', 'cleaning'],
     tags: ['plush', 'teddy'],
-    repairDetails:
-      'Brown curly-fur teddy with pink satin neck ribbon.\n\nIdentified T-00030 — 2026-05-17.',
+    repairDetails: 'Brown curly-fur teddy with pink satin neck ribbon.\n\nIdentified T-00030 — 2026-05-17.',
   },
   {
     id: '0090',
@@ -139,4 +139,13 @@ export const T30_IDENTITIES = [
     repairDetails:
       'Buzz Lightyear action figure — cosmetic wear; separate client/job. USB folder Woody_n_Buzz (Buzz photos only).\n\nIdentified T-00030 — 2026-05-17.',
   },
+];
+
+export const T30_SKIP_IDS = new Set(['0000', '0001', '0002', '0003']);
+
+export const T30_IDENTITIES = [
+  ...T30_0004_0035,
+  ...T30_0036_0055,
+  ...T30_0056_0077,
+  ...T30_USB_IDENTITIES,
 ];

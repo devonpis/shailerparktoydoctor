@@ -1,6 +1,6 @@
 {
   "isTemplate": false,
-  "projectName": "atomizer",
+  "projectName": "Atomizer",
   "title": "",
   "startDate": "2025-06-25",
   "endDate": "2025-06-25",
@@ -11,10 +11,14 @@
   "threadUrl": null,
   "youtubeUrl": null,
   "youtubeShortUrl": null,
-  "tags": [],
-  "skills": [],
-  "description": "atomizer",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 25062025.",
-  "repairDetails": "- repair — 4.00h\n\nTimesheet: income 30, materials 10, profit 20\n\nImported from timesheet CSV — 2026-05-17.",
+  "tags": [
+    "atomizer"
+  ],
+  "skills": [
+    "electronics"
+  ],
+  "description": "repair - device",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 25062025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Atomizer repair per timesheet. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

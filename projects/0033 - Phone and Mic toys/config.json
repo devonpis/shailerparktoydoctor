@@ -11,10 +11,16 @@
   "threadUrl": null,
   "youtubeUrl": null,
   "youtubeShortUrl": null,
-  "tags": [],
-  "skills": [],
-  "description": "repair",
-  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 9092025.",
-  "repairDetails": "repair\n- communication (repair) — 0.50h — 09/09/2025 → 09/09/2025\n\nImported from timesheet CSV — 2026-05-17.",
+  "tags": [
+    "toy",
+    "phone",
+    "mic"
+  ],
+  "skills": [
+    "electronics"
+  ],
+  "description": "repair - toy electronics",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 9092025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Phone and mic toys per timesheet. No photos yet.\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

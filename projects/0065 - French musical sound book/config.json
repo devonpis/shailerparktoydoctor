@@ -1,0 +1,26 @@
+{
+  "isTemplate": false,
+  "projectName": "French musical sound book",
+  "title": "",
+  "startDate": "2026-04-01",
+  "endDate": "2026-04-02",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "book",
+    "music",
+    "sound book"
+  ],
+  "skills": [
+    "electronics"
+  ],
+  "description": "repair - sound book electronics",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 01/04/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "French musical sound book — battery contacts. No photos.\n\nIdentified T-00030 — 2026-05-17.",
+  "googleReview": null
+}

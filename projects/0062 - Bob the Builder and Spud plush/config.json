@@ -1,0 +1,28 @@
+{
+  "isTemplate": false,
+  "projectName": "Bob the Builder and Spud plush",
+  "title": "",
+  "startDate": "2026-01-22",
+  "endDate": "2026-01-22",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "Bob the Builder",
+    "Spud",
+    "plush"
+  ],
+  "skills": [
+    "electronics",
+    "cleaning",
+    "sewing"
+  ],
+  "description": "repair - talking plush electronics",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 22/01/2026. Same intake — two items.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Bob the Builder and Spud talking plush — electronics (merged 0062+0063).\n\nIdentified T-00030 — 2026-05-17.",
+  "googleReview": null
+}

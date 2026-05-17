@@ -1,0 +1,28 @@
+{
+  "isTemplate": false,
+  "projectName": "Santa Homer Simpson animatronic",
+  "title": "",
+  "startDate": "2025-12-01",
+  "endDate": "2025-12-01",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "Simpsons",
+    "Homer",
+    "Christmas"
+  ],
+  "skills": [
+    "mechanical",
+    "electronics",
+    "cleaning"
+  ],
+  "description": "repair - animatronic",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 01/12/2025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Santa Homer animatronic — drive mechanism and clean.\n\nIdentified T-00030 — 2026-05-17.",
+  "googleReview": null
+}

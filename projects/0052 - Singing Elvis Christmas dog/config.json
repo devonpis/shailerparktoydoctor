@@ -1,0 +1,27 @@
+{
+  "isTemplate": false,
+  "projectName": "Singing Elvis Christmas dog",
+  "title": "",
+  "startDate": "2025-12-01",
+  "endDate": "2026-01-12",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "dog",
+    "Christmas",
+    "animatronic"
+  ],
+  "skills": [
+    "electronics",
+    "soldering"
+  ],
+  "description": "repair - electronics",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 01/12/2025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Singing Elvis dog — motor control PCB.\n\nIdentified T-00030 — 2026-05-17.",
+  "googleReview": null
+}

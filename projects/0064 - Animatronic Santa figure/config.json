@@ -1,0 +1,27 @@
+{
+  "isTemplate": false,
+  "projectName": "Animatronic Santa figure",
+  "title": "",
+  "startDate": "2026-01-22",
+  "endDate": "2026-01-22",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "Santa",
+    "animatronic",
+    "Christmas"
+  ],
+  "skills": [
+    "mechanical",
+    "electronics"
+  ],
+  "description": "repair - animatronic",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 22/01/2026.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Animatronic Santa — motor/gear service (USB Santa_clock mislabel).\n\nIdentified T-00030 — 2026-05-17.",
+  "googleReview": null
+}

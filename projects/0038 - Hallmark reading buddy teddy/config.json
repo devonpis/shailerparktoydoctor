@@ -1,0 +1,28 @@
+{
+  "isTemplate": false,
+  "projectName": "Hallmark reading buddy teddy",
+  "title": "",
+  "startDate": "2025-10-09",
+  "endDate": "2025-10-09",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "Hallmark",
+    "teddy",
+    "interactive"
+  ],
+  "skills": [
+    "electronics",
+    "soldering",
+    "sewing"
+  ],
+  "description": "repair - electronics",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 9102025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Hallmark reading buddy teddy — PCB/speaker service.\n\nIdentified T-00030 — 2026-05-17.",
+  "googleReview": null
+}

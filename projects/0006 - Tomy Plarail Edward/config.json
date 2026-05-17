@@ -12,10 +12,16 @@
   "youtubeUrl": null,
   "youtubeShortUrl": null,
   "tags": [
-    "Vintage toy repair",
-    "Electronics"
+    "Tomy",
+    "Plarail",
+    "Thomas"
   ],
-  "description": "This old toy train belongs to my client who would like to pass his childhood toy to his grandchildren. Somehow the train stopped working. My client tried to fix it but didn't succeed and asked for our help. After our inspection, we found that the motor was disconnected and some wires were missing. There were also heaps of hairs and (carpet) fibres got stuck among the gears, covered with excessive lubricating grease. First, we cleaned up all those wheel and gears axial. Then…",
-  "itemDetails": "Tomy (Takara Tomy) Plarail / Thomas & Friends battery-operated Edward the Blue Engine (Engine No. 2). Edward: blue cab and side tanks, cream boiler, red running board/chassis, red funnel, yellow roof; yellow circle with red 2 on cab. Motorized chassis with blue drive wheels, internal white plastic gearbox, on/off and wiring to battery box; typical power: one AA (varies by year—1990s–2010s Plarail and TrackMaster/Fisher-Price revisions differ). Client childhood heirloom for grandchildren. Failure modes on aged units: disconnected motor leads, missing wires, hair/carpet fibre packed in axles, dried grease. Market: common Thomas motorised engine; many reissues (TS-02 etc.). Sources: Plarail/Thomas collector references.",
-  "repairDetails": "This old toy train belongs to my client who would like to pass his childhood toy to his grandchildren. Somehow the train stopped working. My client tried to fix it but didn't succeed and asked for our help. After our inspection, we found that the motor was disconnected and some wires were missing. There were also heaps of hairs and (carpet) fibres got stuck among the gears, covered with excessive lubricating grease. First, we cleaned up all those wheel and gears axial. Then we re-soldered all those wires and re-connected the motor with the switch and the battery.\n\nImported from legacy homepage patient story — 2026-05-16."
+  "description": "repair - train motor and wiring",
+  "itemDetails": "Tomy (Takara Tomy) Plarail / Thomas & Friends battery-operated Edward the Blue Engine (Engine No. 2). Edward: blue cab and side tanks, cream boiler, red running board/chassis, red funnel, yellow roof; yellow circle with red 2 on cab. Motorized chassis with blue drive wheels, internal white plastic gearbox, on/off and wiring to battery box; typical power: one AA (varies by year—1990s–2010s Plarail and TrackMaster/Fisher-Price revisions differ). Client childhood heirloom for grandchildren. Failure modes on aged units: disconnected motor leads, missing wires, hair/carpet fibre packed in axles, dried grease. Market: common Thomas motorised engine; many reissues (TS-02 etc.). Sources: Plarail/Thomas collector references.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "Tomy Plarail Edward engine — motor wires and gear clean.\n\nIdentified T-00030 — 2026-05-17.",
+  "skills": [
+    "electronics",
+    "soldering",
+    "mechanical"
+  ]
 }

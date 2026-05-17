@@ -1,0 +1,27 @@
+{
+  "isTemplate": false,
+  "projectName": "John Deere ride-on tractor",
+  "title": "",
+  "startDate": "2026-01-16",
+  "endDate": "2026-01-16",
+  "status": "WIP",
+  "webpageUrl": null,
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "ride-on",
+    "tractor",
+    "John Deere"
+  ],
+  "skills": [
+    "electronics",
+    "battery"
+  ],
+  "description": "repair - ride-on electronics",
+  "itemDetails": "Timesheet import (job metadata only; no client contact stored). Receive date: 01/12/2025.\n\nPhoto/product ID T-00030 — 2026-05-17.",
+  "repairDetails": "John Deere ride-on tractor — battery and electronics.\n\nIdentified T-00030 — 2026-05-17.",
+  "googleReview": null
+}
