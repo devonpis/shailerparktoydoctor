@@ -2,7 +2,7 @@
   const root = document.getElementById('patient-stories-root');
   if (!root) return;
 
-  const MAX_HIGHLIGHTS = 4;
+  const TILE_COUNT = 6;
   const skillsApi = window.SiteSkills;
 
   function escapeHtml(s) {
@@ -35,6 +35,18 @@
   function overlayBadges(project) {
     if (!skillsApi) return '';
     return skillsApi.overlayBadgesHtml(project.skills);
+  }
+
+  function hasPriority(priority) {
+    return typeof priority === 'number' && !Number.isNaN(priority);
+  }
+
+  function compareHighlights(a, b) {
+    if (b.priority !== a.priority) return b.priority - a.priority;
+    const da = a.endDate || '';
+    const db = b.endDate || '';
+    if (db !== da) return db.localeCompare(da);
+    return (a.id || '').localeCompare(b.id || '');
   }
 
   function leadStoryBlock(project, description) {
@@ -91,30 +103,37 @@
   function enrich(project) {
     return loadConfig(project).then((config) => {
       const merged = skillsApi ? skillsApi.withSkills(project, config) : { ...project };
-      return { ...merged, storyDescription: config.description || '' };
+      const priority =
+        config.priority !== undefined && config.priority !== null ? config.priority : null;
+      return {
+        ...merged,
+        storyDescription: config.description || '',
+        priority,
+      };
     });
   }
 
   fetch('/new/data/projects-index.json')
     .then((res) => res.json())
-    .then((projects) => {
-      const highlights = projects.slice(0, MAX_HIGHLIGHTS);
+    .then((projects) => Promise.all(projects.map(enrich)))
+    .then((enriched) => {
+      const highlights = enriched.filter((p) => hasPriority(p.priority)).sort(compareHighlights);
+
       if (!highlights.length) {
         root.innerHTML =
-          '<p>Repair stories will appear here when highlight projects are published.</p>';
+          '<p>Repair stories will appear here when projects have a <code>priority</code> set in their config.</p>';
         return;
       }
 
-      return Promise.all(highlights.map(enrich)).then((enriched) => {
-        const lead = enriched[0];
-        const tileSlots = [enriched[1], enriched[2], enriched[3]];
-        const leadHtml = leadStoryBlock(lead, lead.storyDescription || '');
-        const tileHtml = tileSlots
-          .map((project, i) => (project ? tileCard(project) : tilePlaceholder(i + 2)))
-          .join('');
-        root.innerHTML = renderLayout(leadHtml, tileHtml);
-        if (window.applyToyDoctorBold) window.applyToyDoctorBold(root);
-      });
+      const lead = highlights[0];
+      const tileProjects = highlights.slice(1, 1 + TILE_COUNT);
+      const leadHtml = leadStoryBlock(lead, lead.storyDescription || '');
+      const tileHtml = Array.from({ length: TILE_COUNT }, (_, i) => {
+        const project = tileProjects[i];
+        return project ? tileCard(project) : tilePlaceholder(i + 2);
+      }).join('');
+      root.innerHTML = renderLayout(leadHtml, tileHtml);
+      if (window.applyToyDoctorBold) window.applyToyDoctorBold(root);
     })
     .catch(() => {
       root.innerHTML = '<p>Could not load patient stories.</p>';

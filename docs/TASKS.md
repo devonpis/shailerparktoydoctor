@@ -50,6 +50,8 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00036 | Todo | Rename skill `plush` → `needlework` (after T-00035) | BR-031 |
 | T-00037 | Todo | Replace legacy homepage images 0004–0015 | BR-032 |
 | T-00038 | Todo | Update testimonials page (last before cutover) | BR-033 |
+| T-00039 | Todo | On-demand project image rotation (portrait/landscape) | BR-034 |
+| T-00040 | Done | Home highlight priority + six tiles | BR-015 |
 | — | — | Skill categories: four IDs only (`docs/project-skills.md`, BR-028) | BR-028 |
 
 ---
@@ -518,9 +520,36 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Goal** | Replace **edited/montaged** heroes from the old website with real repair photos for **0004–0015**. |
 | **Source** | USB ingest leftovers, owner files, or new photos — not `images/` marketing crops. |
 | **Naming** | `before`, `after`, `hero`, `WIP-###` per README; then `node scripts/optimize-project-images.mjs <id>`. |
+| **Progress** | **2026-05-17:** Owner photos for **0004–0007**, **0009**, **0013**, **0014** renamed via [`normalize-project-media-names.mjs`](../scripts/normalize-project-media-names.mjs); optimized **0004–0015**, **0093**; **0014** split → blue power unit + **0093** white shells. Still hero-only (no new shoots): **0008**, **0010–0012**, **0015**. |
 | **Depends on** | Owner/USB photos available; **T-00028** patterns |
 | **Related** | **T-00031** / owner dates for **0004–0014**; **T-00035** repair stories once images match job |
 | **Out of scope** | Re-importing entire legacy site HTML; changing **0016+** unless same issue found |
+
+---
+
+## T-00039 — On-demand project image rotation (portrait/landscape)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-034 |
+| **Goal** | When the owner asks (e.g. **“rotate `before.jpg` in 0009 clockwise”**), fix image orientation so portraits/landscapes display correctly on the site and in social crops. |
+| **Script** | `scripts/rotate-project-image.mjs` — e.g. `node scripts/rotate-project-image.mjs <project-id> <filename> --cw \| --ccw \| --180` (or `--degrees 90`). Use **sharp**; write in place or to same stem; preserve format when possible. |
+| **Agent** | On-demand only after explicit instruction; show before/after dimensions in reply; run **T-00027** optimize if file exceeds size rules after rotate. |
+| **Depends on** | **T-00027** (sharp installed) |
+| **Related** | **T-00028** ingest (does not auto-fix bad orientation); **T-00037** new photos may need rotation |
+| **Out of scope** | Batch auto-rotate all EXIF-oriented images without owner request; video rotation |
+
+---
+
+## T-00040 — Home highlight priority + six tiles
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-015 |
+| **Outcome** | Optional **`priority`** in `config.json` (template + README). Home **Some Of Our Patients' Stories**: highest priority = lead story; next six = `.highlight-tiles` (3×2 grid). [`new/js/home-patient-stories.js`](../new/js/home-patient-stories.js); rule [`.cursor/rules/home-highlight-priority.mdc`](../.cursor/rules/home-highlight-priority.mdc); [`docs/website-go-live.md`](website-go-live.md). |
+| **Out of scope** | Duplicating `priority` in `projects-index.json`; auto-assigning priorities |
 
 ---
 

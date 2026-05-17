@@ -133,7 +133,7 @@ Example:
 }
 ```
 
-Optional later: `"featured": true` for home page highlights.
+Home highlights use optional **`priority`** in each project’s **`config.json`** (not in this index): higher number ranks higher; top entry is the lead story, next six are tiles. See [`.cursor/rules/home-highlight-priority.mdc`](../.cursor/rules/home-highlight-priority.mdc).
 
 ---
 

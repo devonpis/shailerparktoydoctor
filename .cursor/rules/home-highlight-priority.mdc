@@ -1,0 +1,30 @@
+---
+description: Home page patient-story highlights use optional priority in project config.json
+globs:
+  - "**/projects/**/config.json"
+  - new/js/home-patient-stories.js
+  - new/css/site.css
+---
+
+# Home highlight priority
+
+The preview home page section **Some Of Our Patients' Stories** (`new/index.html`, `#patient-stories-root`) shows **one lead story** (full-width image + description) plus **six** smaller tiles.
+
+## `priority` in `config.json`
+
+| Value | Effect |
+|-------|--------|
+| **Omitted** or **`null`** | Project is **not** eligible for home highlights (gallery/index only). |
+| **Number** | Eligible; **higher number ranks higher**. |
+
+Selection (`new/js/home-patient-stories.js`):
+
+1. Load all entries from `new/data/projects-index.json`.
+2. Merge each row with its `projects/<folder>/config.json` (including `priority`).
+3. Keep only projects with a numeric `priority` (including `0`).
+4. Sort by **`priority` descending**, then **`endDate` descending** as tiebreaker.
+5. **#1** → lead block; **#2–#7** → the six tiles. Fewer than seven → remaining tile slots show placeholders.
+
+Do **not** use `projects-index.json` for highlight curation — **`priority` lives only in per-project `config.json`** unless the owner later asks to duplicate it in the index.
+
+When the owner asks to feature a repair on the home page, set or raise **`priority`** in that project's `config.json` (and ensure the project is **`DONE`** and listed in `projects-index.json`).
