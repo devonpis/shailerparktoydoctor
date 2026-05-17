@@ -535,10 +535,11 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Done |
 | **Requirements** | BR-034 |
 | **Goal** | When the owner asks (e.g. **“rotate `before.jpg` in 0009 clockwise”**), fix image orientation so portraits/landscapes display correctly on the site and in social crops. |
-| **Scripts** | [`rotate-project-image.mjs`](../scripts/rotate-project-image.mjs); [`publish-webpage.mjs`](../scripts/publish-webpage.mjs) runs rotate → optimize → validate → go-live checklist. Lib: [`scripts/lib/rotate-image.mjs`](../scripts/lib/rotate-image.mjs). |
+| **Scripts** | [`rotate-project-image.mjs`](../scripts/rotate-project-image.mjs); [`fix-project-image-orientation.mjs`](../scripts/fix-project-image-orientation.mjs) (`--all --exif-only` or `--vision` with `OPENAI_API_KEY`); [`publish-webpage.mjs`](../scripts/publish-webpage.mjs). Lib: [`scripts/lib/rotate-image.mjs`](../scripts/lib/rotate-image.mjs). |
+| **Outcome** | Batch **EXIF** pass fixed **69** images repo-wide (2026-05-17). No-EXIF sideways shots: manual `rotate-project-image.mjs` or `--vision` on batch script. **0001** `hero.jpeg`: was sideways → CW left upside-down → corrected with **`--180`**. |
 | **Webpage workflow** | **`publish <id> to webpage`**: `publish-webpage.mjs` with `--rotate` / `--exif-orient` when needed, then HTML + gallery ([`website-go-live.md`](website-go-live.md)). |
 | **Depends on** | **T-00027** (sharp) |
-| **Out of scope** | Batch auto-rotate every project without owner request; video rotation |
+| **Out of scope** | Video rotation |
 
 ---
 

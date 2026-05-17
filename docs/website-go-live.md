@@ -44,6 +44,13 @@ node scripts/rotate-project-image.mjs <id> <filename> --cw | --ccw | --180
 node scripts/rotate-project-image.mjs <id> --exif --all
 ```
 
+**Batch EXIF + optional vision** (all projects):
+
+```bash
+node scripts/fix-project-image-orientation.mjs --all --exif-only
+node scripts/fix-project-image-orientation.mjs --all --vision   # needs OPENAI_API_KEY
+```
+
 Rotation **bakes pixels** (EXIF orientation stripped). Run **before** optimize when both apply. The script does **not** create HTML — it prints a checklist for `index.html`, gallery index, `webpageUrl`, and `sitemap.xml`.
 
 Agent flow for **`publish <id> to webpage`**: after owner confirms → run `publish-webpage.mjs` (with any `--rotate` / `--exif-orient` the owner requested) → author/update **`index.html`** → gallery + sitemap + `webpageUrl` → commit/push when approved.
