@@ -36,6 +36,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 | T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
 | T-00024 | Todo | Website rebuild: SEO metadata completeness | BR-015 |
+| T-00025 | Todo | Scaffold project folders from CSV (duplicate merge) | BR-018 |
 
 ---
 
@@ -166,7 +167,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Status** | Done |
 | **Requirements** | BR-006, BR-015 |
 | **Goal** | Apply Prepbox block styling across `new/` pages: typography, borders, section rhythm, hero/services blocks; **mobile hamburger** nav; social icon styling; responsive pass (~375px+). **Owner:** final **colour tweaks** (e.g. secondary accent `#f5a623`) decided here, not in brief. |
-| **Outcome** | Legacy-aligned `site.css` (primary `#4caac9`, Lobster/Nunito, h2 bands, block padding on prose); shared `includes/` + `site-chrome.js` on all `/new/` pages and project template; home patient stories + doctors/skills; skill filters on gallery; platform social icons; responsive hero, stacked nav ≤500px; Donald Duck story page styled. |
+| **Outcome** | Legacy-aligned `site.css` (primary `#4caac9`, Lobster/Nunito, h2 bands, block padding on prose); shared `includes/` + `site-chrome.js` on all `/new/` pages and project template; home patient stories + doctors/skills; skill filters on gallery; platform social icons; responsive hero, stacked nav ≤500px; Donald Duck story page styled. Follow-on (commits through `0db6fec`): info box, 768px mobile rules, testimonials masonry, project story tags/videos/prose, CTA sizing, project card title/date-only, contact grid stack. **Closed** — further preview tweaks are ad hoc or **T-00016** cutover. |
 | **Depends on** | T-00012, T-00017 |
 | **Out of scope** | Project story HTML (T-00013); contact Maps content (**T-00022**); cutover (T-00016) |
 
@@ -292,3 +293,20 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-017 |
 | **Outcome** | [`scripts/import-site-projects.mjs`](../scripts/import-site-projects.mjs) created **0004–0015** from [`index.html`](../index.html): four full patient stories + eight gallery items. Images copied from `images/` as `hero` (0014 also `after` for Tomy2). Full stories have shortened `description` (≤500) + full text in `repairDetails`. All imported as **`status: WIP`** with placeholder dates `2024-01-01` — owner should review copy, set real dates, add `before`/WIP photos if needed, then set **DONE** before publish. **0001–0003** untouched. |
 | **Related** | T-00017–T-00020 (wire DONE projects into new site), T-00008 (`business-info.md` for tone/tags). |
+
+---
+
+## T-00025 — Scaffold project folders from CSV (duplicate merge)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-018 |
+| **Goal** | Add a repeatable way to create many `projects/<id> - <name>/` entries from a **CSV** file instead of hand-copying the template each time. |
+| **CSV** | Document expected columns (minimum: **`id`** or auto-assign next free id, **`projectName`** or **`folder`**, optional `title`, `description`, `tags`, `skills`, `startDate`, `endDate`, `status`, `itemDetails`, `repairDetails`, image path hints). Provide an example file e.g. `docs/project-import.example.csv` or `data/project-import.example.csv`. |
+| **Duplicates** | Before writing folders: group rows that refer to the **same repair** — e.g. duplicate `id`, duplicate normalized folder name, or rows flagged with a shared **`mergeKey`** column. **Merge** into one record: fill empty fields from later rows; if two rows disagree on the same field, log a **conflict** and keep the first non-empty (or require owner resolution in dry-run report). Never create two folders for one merged group. |
+| **Script** | e.g. `scripts/scaffold-projects-from-csv.mjs` with `node scripts/scaffold-projects-from-csv.mjs <path.csv> [--dry-run] [--force-existing]`. Copy [`projects/0000 - template/config.json`](../projects/0000%20-%20template/config.json) defaults; set `isTemplate: false`. Do **not** create `index.html` or publish — scaffold only. |
+| **Safety** | Default: **skip** folders that already exist; `--dry-run` prints planned creates/merges only. Optional `--force-existing` only with explicit owner use (document risk). Do not clobber **0001–0003** without confirmation. |
+| **Depends on** | T-00011 (prior import patterns in [`import-site-projects.mjs`](../scripts/import-site-projects.mjs)) |
+| **Related** | T-00006 (`validate-publish.mjs` after owner fills content), T-00015 (go-live after `DONE`), README *Project management* |
+| **Out of scope** | Auto-publishing; downloading images from URLs; AI rewrite of copy; merging unrelated repairs that only share a vague name (merge rules must be conservative + reported) |

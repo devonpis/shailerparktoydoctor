@@ -118,3 +118,9 @@ The public site may be **rebuilt** for stronger visuals and SEO. **Analysis and 
 ## BR-017 — Migrate legacy site repairs into `projects/`
 
 Repair stories and gallery items currently embedded in [`index.html`](../index.html) (and assets under [`images/`](../images/)) should be extracted into `projects/<id> - <name>/` with `config.json` + images using the repo’s project conventions. Existing folders **0001–0003** are not replaced without owner review. See **T-00011**.
+
+---
+
+## BR-018 — Scaffold `projects/` from CSV (with duplicate merge)
+
+The owner may supply a **CSV** listing repairs to onboard in bulk. A script (or documented one-shot workflow) should create `projects/<id> - <name>/` folders from the template, writing `config.json` fields mapped from CSV columns. **Duplicate rows** (same project id, same folder name, or clearly the same repair under different spellings) must be **detected** and **merged** into one folder/config rather than creating conflicting copies. Merged output should prefer non-empty values, surface conflicts for human review, and support **`--dry-run`**. Must not overwrite existing project folders unless the owner explicitly opts in. See **T-00025**.
