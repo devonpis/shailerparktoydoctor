@@ -39,7 +39,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00025 | Done | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
 | T-00026 | Done | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
 | T-00027 | Done | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
-| T-00028 | In progress | USB photos: analyse, match projects, copy and rename | BR-022 |
+| T-00028 | Done | USB photos: analyse, match projects, copy and rename | BR-022 |
 | T-00029 | Todo | Review ambiguous timesheet imports (e.g. Sandy, client rows) | BR-023 |
 | T-00030 | Todo | Project identity: product info, rename folder & metadata | BR-024 |
 
@@ -360,8 +360,9 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-022 |
+| **Outcome** | [`scripts/ingest-usb-photos.mjs`](../scripts/ingest-usb-photos.mjs), [`scripts/lib/usb-folder-map.mjs`](../scripts/lib/usb-folder-map.mjs), [`docs/usb-photo-ingest.md`](usb-photo-ingest.md). Ingested 430 images from owner USB (subfolders only; root loose ignored). Scaffolded **0078–0092** for uncaptured jobs; separate **Woody** / **Woody_2** / **Woody_n_Buzz** clients; nested **Bob_n_Spud/Yoshi** → 0057, **Kangaroo** → 0059. Dry-run report in [`docs/reports/`](reports/). Roles: filename hints + capture-time WIP order; optimized via T-00027 before commit. **T-00030** for placeholder renames. |
 | **Goal** | Ingest repair photos from a **USB drive** (or folder path): detect which project each image belongs to, assign convention names (`before`, `after`, `hero`, `WIP-###`), and copy into the right `projects/<id> - <name>/` folder. |
 | **Inputs** | Owner supplies mount path (e.g. `/Volumes/USB_NAME` or `D:\`). Script scans recursively for image files (`.jpg`, `.jpeg`, `.png`, `.heic`, …). **Read-only** on USB; write only under `projects/`. |
 | **Matching** | **Timestamp:** EXIF capture time (fallback: file mtime), compared to each project’s `startDate`, `endDate`, and timesheet receive/repair windows in `config.json` / `repairDetails`. **Content:** classify or score images (before = damage/disassembly, after = finished, WIP = mid-repair, hero = best showcase) — vision model or documented heuristics; low-confidence matches flagged. **Name hints:** optional fuzzy match on folder names / `projectName` if USB uses job labels. |

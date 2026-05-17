@@ -151,6 +151,8 @@ Use the same idea for new repairs: descriptive stem + optional WIP index. Extens
 
 Before a **webpage** go-live, run `node scripts/optimize-project-images.mjs <id>` (see [`docs/website-go-live.md`](docs/website-go-live.md)) to compress large PNGs/JPEGs and fix HTML paths if filenames change.
 
+Bulk import from a USB stick: [`docs/usb-photo-ingest.md`](docs/usb-photo-ingest.md) (`scripts/ingest-usb-photos.mjs` — dry-run first, then `--apply`, then optimize).
+
 ---
 
 ## Intended repair → publish loop

@@ -1,7 +1,7 @@
 # USB ingest dry-run (2026-05-17)
 
 - **USB:** `/Volumes/NO NAME/Toy_doctor_photos`
-- **Mode:** dry-run (no copy)
+- **Mode:** APPLY (copy)
 - **Overwrite** before/after/hero: true
 - **Root loose files:** ignored
 - **Total files:** 430
