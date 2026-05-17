@@ -28,6 +28,8 @@
   --star-gold: #f59e0b;
   --h2-margin-top: 1.25rem;
   --h2-padding-y: 0.35rem;
+  --h2-outline-width: 6px;
+  --h2-outline-color: #fff;
 }
 
 *,
@@ -313,6 +315,9 @@ h2:not(.project-card__title) {
   font-weight: 700;
   font-style: normal;
   font-size: 1.75em;
+  text-shadow: none;
+  -webkit-text-stroke: var(--h2-outline-width) var(--h2-outline-color);
+  paint-order: stroke fill;
   background: linear-gradient(
     to right,
     color-mix(in srgb, var(--primary) 16%, transparent) 0%,
@@ -389,7 +394,11 @@ h5 {
   border: 1px solid color-mix(in srgb, var(--primary) 28%, #d8e8ee);
   border-left: 4px solid var(--primary);
   border-radius: 4px;
-  background: color-mix(in srgb, var(--primary) 10%, #f7fbfc);
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--primary) 16%, transparent) 0%,
+    transparent 100%
+  );
   box-sizing: border-box;
 }
 
@@ -488,6 +497,8 @@ h5 {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border: 6px solid var(--lobster-outline-color);
+  box-sizing: border-box;
 }
 
 .doctors-box > h3 {
@@ -508,11 +519,6 @@ h5 {
   gap: 1rem;
   width: 100%;
   margin: 0.75rem 0;
-}
-
-.doctor-skills .skill-badge--detail {
-  font-size: 0.85rem;
-  padding: 0.3rem 0.65rem;
 }
 
 .patient-stories {
@@ -995,10 +1001,6 @@ body[data-active-page='testimonials'] .quote-card p.stars {
   font-size: 1.2rem;
 }
 
-.doctor-skills .skill-badge--detail .skill-icon--emoji {
-  font-size: 1rem;
-}
-
 .project-card__body {
   padding: 1rem;
 }
@@ -1069,7 +1071,8 @@ h3.project-subtitle {
 }
 
 .project-tag-row .project-tag,
-.project-tag-row .skill-badge--detail {
+.project-tag-row .skill-badge--detail,
+.doctor-skills .skill-badge--detail {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -1086,35 +1089,41 @@ h3.project-subtitle {
   color: inherit;
 }
 
-.project-tag-row .skill-badge--detail .skill-icon--emoji {
+.project-tag-row .skill-badge--detail .skill-icon--emoji,
+.doctor-skills .skill-badge--detail .skill-icon--emoji {
   font-size: 1.05rem;
 }
 
-.project-tag-row .skill-badge--detail {
+.project-tag-row .skill-badge--detail,
+.doctor-skills .skill-badge--detail {
   border: 1px solid transparent;
   pointer-events: none;
   cursor: default;
 }
 
-.project-tag-row .skill-badge--detail.skill-badge--plush {
+.project-tag-row .skill-badge--detail.skill-badge--plush,
+.doctor-skills .skill-badge--detail.skill-badge--plush {
   background: var(--skill-plush-bg);
   border-color: var(--skill-plush-solid);
   color: var(--skill-plush-fg);
 }
 
-.project-tag-row .skill-badge--detail.skill-badge--electronic {
+.project-tag-row .skill-badge--detail.skill-badge--electronic,
+.doctor-skills .skill-badge--detail.skill-badge--electronic {
   background: var(--skill-electronic-bg);
   border-color: var(--skill-electronic-solid);
   color: var(--skill-electronic-fg);
 }
 
-.project-tag-row .skill-badge--detail.skill-badge--mechanical {
+.project-tag-row .skill-badge--detail.skill-badge--mechanical,
+.doctor-skills .skill-badge--detail.skill-badge--mechanical {
   background: var(--skill-mechanical-bg);
   border-color: var(--skill-mechanical-solid);
   color: var(--skill-mechanical-fg);
 }
 
-.project-tag-row .skill-badge--detail.skill-badge--paintjob {
+.project-tag-row .skill-badge--detail.skill-badge--paintjob,
+.doctor-skills .skill-badge--detail.skill-badge--paintjob {
   background: var(--skill-paintjob-bg);
   border-color: var(--skill-paintjob-solid);
   color: var(--skill-paintjob-fg);
@@ -1185,6 +1194,7 @@ h3.project-subtitle {
 @media (max-width: 768px) {
   :root {
     --lobster-outline-width: 4px;
+    --h2-outline-width: 4px;
   }
 
   .title-main {
