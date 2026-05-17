@@ -36,7 +36,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 | T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
 | T-00024 | Todo | Website rebuild: SEO metadata completeness | BR-015 |
-| T-00025 | Todo | Scaffold project folders from CSV (duplicate merge) | BR-018 |
+| T-00025 | Todo | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
 
 ---
 
@@ -301,12 +301,13 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | Field | Value |
 |-------|-------|
 | **Status** | Todo |
-| **Requirements** | BR-018 |
+| **Requirements** | BR-018, BR-019 |
 | **Goal** | Add a repeatable way to create many `projects/<id> - <name>/` entries from a **CSV** file instead of hand-copying the template each time. |
 | **CSV** | Document expected columns (minimum: **`id`** or auto-assign next free id, **`projectName`** or **`folder`**, optional `title`, `description`, `tags`, `skills`, `startDate`, `endDate`, `status`, `itemDetails`, `repairDetails`, image path hints). Provide an example file e.g. `docs/project-import.example.csv` or `data/project-import.example.csv`. |
 | **Duplicates** | Before writing folders: group rows that refer to the **same repair** — e.g. duplicate `id`, duplicate normalized folder name, or rows flagged with a shared **`mergeKey`** column. **Merge** into one record: fill empty fields from later rows; if two rows disagree on the same field, log a **conflict** and keep the first non-empty (or require owner resolution in dry-run report). Never create two folders for one merged group. |
 | **Script** | e.g. `scripts/scaffold-projects-from-csv.mjs` with `node scripts/scaffold-projects-from-csv.mjs <path.csv> [--dry-run] [--force-existing]`. Copy [`projects/0000 - template/config.json`](../projects/0000%20-%20template/config.json) defaults; set `isTemplate: false`. Do **not** create `index.html` or publish — scaffold only. |
 | **Safety** | Default: **skip** folders that already exist; `--dry-run` prints planned creates/merges only. Optional `--force-existing` only with explicit owner use (document risk). Do not clobber **0001–0003** without confirmation. |
+| **Privacy** | **No client PII** in generated `config.json` (no customer names, phones, emails from timesheet client rows). Allowed in repo: testimonial reviewer names + Google Maps / profile URLs per *client privacy* rule. |
 | **Depends on** | T-00011 (prior import patterns in [`import-site-projects.mjs`](../scripts/import-site-projects.mjs)) |
 | **Related** | T-00006 (`validate-publish.mjs` after owner fills content), T-00015 (go-live after `DONE`), README *Project management* |
 | **Out of scope** | Auto-publishing; downloading images from URLs; AI rewrite of copy; merging unrelated repairs that only share a vague name (merge rules must be conservative + reported) |

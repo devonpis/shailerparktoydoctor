@@ -123,4 +123,10 @@ Repair stories and gallery items currently embedded in [`index.html`](../index.h
 
 ## BR-018 — Scaffold `projects/` from CSV (with duplicate merge)
 
-The owner may supply a **CSV** listing repairs to onboard in bulk. A script (or documented one-shot workflow) should create `projects/<id> - <name>/` folders from the template, writing `config.json` fields mapped from CSV columns. **Duplicate rows** (same project id, same folder name, or clearly the same repair under different spellings) must be **detected** and **merged** into one folder/config rather than creating conflicting copies. Merged output should prefer non-empty values, surface conflicts for human review, and support **`--dry-run`**. Must not overwrite existing project folders unless the owner explicitly opts in. See **T-00025**.
+The owner may supply a **CSV** listing repairs to onboard in bulk. A script (or documented one-shot workflow) should create `projects/<id> - <name>/` folders from the template, writing `config.json` fields mapped from CSV columns. **Duplicate rows** (same project id, same folder name, or clearly the same repair under different spellings) must be **detected** and **merged** into one folder/config rather than creating conflicting copies. Merged output should prefer non-empty values, surface conflicts for human review, and support **`--dry-run`**. Must not overwrite existing project folders unless the owner explicitly opts in. **Do not** import customer names, phones, or emails from timesheets — see **BR-019**. See **T-00025**.
+
+---
+
+## BR-019 — No customer PII in the repository
+
+Customer-identifying information (names, phones, emails, addresses on repair jobs) must **not** appear in tracked project content, except **Google review author names** (and optional public Maps profile URLs) in `googleReview` / testimonials, and the **business** Google Maps listing link in site copy. Agents and import scripts must enforce this. See [`.cursor/rules/client-privacy-no-pii-in-repo.mdc`](../.cursor/rules/client-privacy-no-pii-in-repo.mdc).

@@ -7,6 +7,8 @@ alwaysApply: true
 
 Use the repository **README**, section *Project management*, for the full workflow. When working inside `**/projects/**/config.json` or publishing repair content:
 
+Respect the *client privacy* rule: **no customer names, phones, or emails** in project files — only testimonial reviewer names and Google Maps links where explicitly allowed.
+
 ## Explicit publish commands only
 
 Do **not** begin a publish-oriented workflow (preview for go-live, posting, or promoting a project on the **public** site) until the user says so in an **explicit** form, e.g.:

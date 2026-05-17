@@ -87,7 +87,8 @@ Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-
 | `itemDetails` | Optional — product/collectible facts (manufacturer, model, specs); for repair pages / SEO, not the social caption. Use **paragraph breaks** (`\n\n`); on the site, one `<p>` per paragraph (see [`docs/website-go-live.md`](docs/website-go-live.md)). |
 | `repairDetails` | Optional — technical repair log (symptoms, method, parts); for repair pages, not the social caption. Same paragraph rules as `itemDetails`. |
 | `tags` | Topic labels (**1–30**); appended as hashtags on social (see [`docs/publish-content-guards.md`](docs/publish-content-guards.md)) |
-| `googleReview` | Optional — customer’s **Google review** for this repair (`author`, `text`, `rating`, optional `profileUrl`, `date`, `featuredOnTestimonials`). See [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md). |
+| `googleReview` | Optional — customer’s **Google review** for this repair (`author`, `text`, `rating`, optional `profileUrl`, `date`, `featuredOnTestimonials`). See [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md). **Only** approved place for a **customer name** in project data (with optional Maps profile URL). |
+| *(privacy)* | **Do not** store other customer names, phones, or emails in `config.json`, HTML, or imports (e.g. timesheet client rows). See [`.cursor/rules/client-privacy-no-pii-in-repo.mdc`](.cursor/rules/client-privacy-no-pii-in-repo.mdc). |
 | Images / video | `before`, `after`, `hero`, `WIP-###`, or video files in the project folder |
 
 ### Google reviews (paste in chat)

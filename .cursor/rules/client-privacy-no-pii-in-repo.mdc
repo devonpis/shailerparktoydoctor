@@ -1,0 +1,34 @@
+---
+description: Do not store customer PII in the repo except approved testimonial names and Maps links
+alwaysApply: true
+---
+
+# Client privacy — no customer details in the repo
+
+Do **not** record **customer-identifying or contact information** in tracked files unless it falls under the **allowed exceptions** below.
+
+## Not allowed (examples)
+
+- Customer **names** on repair projects, timesheets, or `config.json` (e.g. “Bradley Gregory”, “Jane - janemblundy@gmail.com”)
+- **Phone numbers**, **email addresses**, **home addresses**
+- Client lines from spreadsheets pasted into `repairDetails`, `itemDetails`, `description`, HTML story pages, or import scripts
+- Committing CSV timesheets or exports that contain client contact columns
+
+When importing or scaffolding from CSV (e.g. **T-00025**), **strip or skip** client/contact rows; keep **job name, dates, tasks, and repair notes** only.
+
+## Allowed exceptions
+
+| What | Where |
+|------|--------|
+| **Reviewer display name** on testimonials | `new/testimonials.html` quote cards; optional `googleReview.author` on a project when the owner pastes a **Google review** for that repair |
+| **Google Maps / Google profile URLs** | Business Maps listing (e.g. contact page, testimonials CTA, [`docs/business-info.md`](../../docs/business-info.md)); optional `googleReview.profileUrl` when linking a reviewer's name to their public Maps contributor profile |
+| **Business contact info** | Site/marketing copy for **Shailer Park Toy Doctor** (business phone, email, address) — not customers |
+
+## Agents and scripts
+
+- **Do not** add client names from timesheets to `projects/**/config.json` or public HTML.
+- **Do not** paste full customer contact rows into chat commits or docs in the repo.
+- If the owner shares a timesheet with PII, use it **locally** for planning only; write **sanitized** `config.json` (toy/job name, repair summary, dates — no client fields).
+- Testimonial workflow: follow [`docs/website-testimonials-page-plan.md`](../../docs/website-testimonials-page-plan.md) — reviewer **name** + optional **Maps profile URL** only; no other customer PII.
+
+When unsure, **omit** the field and ask the owner.
