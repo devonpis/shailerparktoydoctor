@@ -1,9 +1,9 @@
 {
   "isTemplate": false,
-  "projectName": "Paddington Bear",
+  "projectName": "Disney Pluto plush",
   "title": "",
-  "startDate": "2026-01-05",
-  "endDate": "2026-01-08",
+  "startDate": "2026-03-02",
+  "endDate": "2026-03-03",
   "status": "WIP",
   "webpageUrl": null,
   "facebookUrl": null,
@@ -13,14 +13,15 @@
   "youtubeShortUrl": null,
   "tags": [
     "plush",
-    "Paddington"
+    "Disney",
+    "Pluto"
   ],
   "skills": [
     "sewing",
-    "cleaning"
+    "restuffing"
   ],
-  "description": "repair - plush",
+  "description": "repair - plush restuffing",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Classic Paddington Bear plush (red coat, black hat).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Disney Pluto plush — leg/body seam open; restuff and resew.\n\nUSB folder was labelled Godfy (mislabel).\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

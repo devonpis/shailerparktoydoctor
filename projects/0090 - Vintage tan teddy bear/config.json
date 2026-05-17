@@ -1,9 +1,9 @@
 {
   "isTemplate": false,
-  "projectName": "Paddington Bear",
+  "projectName": "Vintage tan teddy bear",
   "title": "",
-  "startDate": "2026-01-05",
-  "endDate": "2026-01-08",
+  "startDate": "2026-03-25",
+  "endDate": "2026-03-31",
   "status": "WIP",
   "webpageUrl": null,
   "facebookUrl": null,
@@ -13,14 +13,15 @@
   "youtubeShortUrl": null,
   "tags": [
     "plush",
-    "Paddington"
+    "teddy",
+    "vintage"
   ],
   "skills": [
     "sewing",
-    "cleaning"
+    "restuffing"
   ],
-  "description": "repair - plush",
+  "description": "repair - plush restuffing",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Classic Paddington Bear plush (red coat, black hat).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Vintage tan teddy — neck seam open, restuff. USB folder polar_bear was a mislabel.\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

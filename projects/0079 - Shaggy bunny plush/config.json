@@ -1,9 +1,9 @@
 {
   "isTemplate": false,
-  "projectName": "Paddington Bear",
+  "projectName": "Shaggy bunny plush",
   "title": "",
-  "startDate": "2026-01-05",
-  "endDate": "2026-01-08",
+  "startDate": "2025-12-11",
+  "endDate": "2025-12-14",
   "status": "WIP",
   "webpageUrl": null,
   "facebookUrl": null,
@@ -13,14 +13,14 @@
   "youtubeShortUrl": null,
   "tags": [
     "plush",
-    "Paddington"
+    "bunny"
   ],
   "skills": [
     "sewing",
-    "cleaning"
+    "restuffing"
   ],
   "description": "repair - plush",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Classic Paddington Bear plush (red coat, black hat).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Large shaggy two-tone bunny (tan/cream). USB folder Brown_ribbon_dog was a mislabel (rabbit, not dog).\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

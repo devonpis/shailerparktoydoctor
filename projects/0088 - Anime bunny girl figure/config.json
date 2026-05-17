@@ -1,9 +1,9 @@
 {
   "isTemplate": false,
-  "projectName": "Paddington Bear",
+  "projectName": "Anime bunny girl figure",
   "title": "",
-  "startDate": "2026-01-05",
-  "endDate": "2026-01-08",
+  "startDate": "2026-03-27",
+  "endDate": "2026-03-28",
   "status": "WIP",
   "webpageUrl": null,
   "facebookUrl": null,
@@ -12,15 +12,15 @@
   "youtubeUrl": null,
   "youtubeShortUrl": null,
   "tags": [
-    "plush",
-    "Paddington"
+    "figure",
+    "anime"
   ],
   "skills": [
-    "sewing",
-    "cleaning"
+    "figure repair",
+    "gluing"
   ],
-  "description": "repair - plush",
+  "description": "repair - figure",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Classic Paddington Bear plush (red coat, black hat).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Anime bunny-girl scale figure — detached bunny ear; glue/repair.\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

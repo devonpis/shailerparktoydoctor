@@ -1,6 +1,6 @@
 {
   "isTemplate": false,
-  "projectName": "Capybara Plush",
+  "projectName": "Capybara plush",
   "title": "",
   "startDate": "2026-02-16",
   "endDate": "2026-02-18",
@@ -11,10 +11,16 @@
   "threadUrl": null,
   "youtubeUrl": null,
   "youtubeShortUrl": null,
-  "tags": [],
-  "skills": [],
-  "description": "Repair project (USB ingest — not in timesheet CSV).",
-  "itemDetails": "USB folder: Capybara_Plush. Scaffolded 2026-05-17.",
-  "repairDetails": "Scaffolded for USB ingest (not in timesheet CSV). Photos pending copy from USB.\n\nSee T-00028 / T-00030 for rename and product details.",
+  "tags": [
+    "plush",
+    "capybara"
+  ],
+  "skills": [
+    "sewing",
+    "restuffing"
+  ],
+  "description": "repair - plush restuffing",
+  "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
+  "repairDetails": "Capybara plush — head detached; restuff and reattach.\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

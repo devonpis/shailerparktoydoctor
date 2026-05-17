@@ -41,7 +41,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00027 | Done | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
 | T-00028 | Done | USB photos: analyse, match projects, copy and rename | BR-022 |
 | T-00029 | Done | Review ambiguous timesheet imports (e.g. Sandy, client rows) | BR-023 |
-| T-00030 | Todo | Project identity: product info, rename folder & metadata | BR-024 |
+| T-00030 | Done | Project identity: product info, rename folder & metadata | BR-024 |
 | T-00031 | Todo | Project dates from EXIF (oldest/newest image) | BR-025 |
 | T-00032 | Todo | CSV metadata gap report for owner fill-in | BR-026 |
 
@@ -396,9 +396,10 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-024 |
 | **Goal** | For projects with placeholder names (USB ingest, CSV gaps, folders like `Godfy`, `Dog`, `anime figure`): identify the toy/product from photos and owner notes, then update `projectName`, folder `#### - Name`, and `config.json` fields (`title`, `description`, `itemDetails`, `tags`) — **owner confirm before rename** if ambiguous. |
+| **Outcome** | Photo review + [`scripts/apply-project-identities.mjs`](../scripts/apply-project-identities.mjs) / [`scripts/lib/t30-project-identities.mjs`](../scripts/lib/t30-project-identities.mjs). Renamed **0078–0092** (15 USB scaffolds): e.g. Godfy → **Disney Pluto plush**, Brown_ribbon_dog → **Shaggy bunny plush**, polar_bear → **Vintage tan teddy bear**, Woody_n_Buzz → **Buzz Lightyear figure**. Report: [`docs/reports/t30-project-identities-2026-05-17.md`](reports/t30-project-identities-2026-05-17.md). |
 | **Depends on** | T-00028 (images in folder help identification) |
 | **Related** | T-00029 (timesheet cleanup); **T-00031** (EXIF dates); **T-00032** (owner CSV after this + T-00031) |
 | **Out of scope** | Auto-publish; editing `index.html` unless requested |

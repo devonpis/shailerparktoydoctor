@@ -1,9 +1,9 @@
 {
   "isTemplate": false,
-  "projectName": "Paddington Bear",
+  "projectName": "Teddy in pink pajamas",
   "title": "",
-  "startDate": "2026-01-05",
-  "endDate": "2026-01-08",
+  "startDate": "2026-04-17",
+  "endDate": "2026-04-22",
   "status": "WIP",
   "webpageUrl": null,
   "facebookUrl": null,
@@ -13,14 +13,13 @@
   "youtubeShortUrl": null,
   "tags": [
     "plush",
-    "Paddington"
+    "teddy"
   ],
   "skills": [
-    "sewing",
-    "cleaning"
+    "sewing"
   ],
-  "description": "repair - plush",
+  "description": "repair - plush eyes",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Classic Paddington Bear plush (red coat, black hat).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Teddy bear in pink pajamas and nightcap — replace safety eyes.\n\nUSB folder PJ_Teddy (pajamas, not PJ Masks).\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }

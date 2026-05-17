@@ -38,7 +38,7 @@ Ingest photos from an external volume into `projects/<id> - <name>/` using conve
    node scripts/optimize-project-images.mjs --all
    ```
 
-6. **Rename / product info** (T-00030) for placeholder project names when ready.
+6. **Rename / product info** (T-00030): `node scripts/apply-project-identities.mjs` — see [`docs/reports/t30-project-identities-2026-05-17.md`](reports/t30-project-identities-2026-05-17.md).
 
 ## Rules
 

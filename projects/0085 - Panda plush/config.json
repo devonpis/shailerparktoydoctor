@@ -1,9 +1,9 @@
 {
   "isTemplate": false,
-  "projectName": "Paddington Bear",
+  "projectName": "Panda plush",
   "title": "",
-  "startDate": "2026-01-05",
-  "endDate": "2026-01-08",
+  "startDate": "2026-03-25",
+  "endDate": "2026-03-28",
   "status": "WIP",
   "webpageUrl": null,
   "facebookUrl": null,
@@ -13,7 +13,7 @@
   "youtubeShortUrl": null,
   "tags": [
     "plush",
-    "Paddington"
+    "panda"
   ],
   "skills": [
     "sewing",
@@ -21,6 +21,6 @@
   ],
   "description": "repair - plush",
   "itemDetails": "Repair photos in repo. Product identified T-00030 — 2026-05-17.",
-  "repairDetails": "Classic Paddington Bear plush (red coat, black hat).\n\nIdentified T-00030 — 2026-05-17.",
+  "repairDetails": "Small vintage panda plush.\n\nIdentified T-00030 — 2026-05-17.",
   "googleReview": null
 }
