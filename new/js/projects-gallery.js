@@ -44,11 +44,9 @@
     const name = escapeHtml(project.projectName || project.title || 'Project');
     const img = escapeHtml(project.thumbnail || project.hero || '');
     const url = escapeHtml(project.url || '#');
-    const subtitle =
-      project.title && project.projectName
-        ? `<p class="project-card__meta">${escapeHtml(project.title)}</p>`
-        : '';
-    const date = project.endDate ? `<p class="project-card__meta">${escapeHtml(project.endDate)}</p>` : '';
+    const date = project.endDate
+      ? `<p class="project-card__meta project-card__date">${escapeHtml(project.endDate)}</p>`
+      : '';
     const badges = overlayBadgesHtml(project.skills);
     return `
       <a href="${url}" class="project-card">
@@ -58,7 +56,6 @@
         </div>
         <div class="project-card__body">
           <h2 class="project-card__title">${name}</h2>
-          ${subtitle}
           ${date}
         </div>
       </a>`;

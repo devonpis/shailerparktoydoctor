@@ -61,10 +61,6 @@
     const name = escapeHtml(project.projectName || project.title || 'Project');
     const img = escapeHtml(project.thumbnail || '');
     const url = escapeHtml(project.url || '#');
-    const meta =
-      project.title && project.projectName
-        ? `<p class="project-card__meta">${escapeHtml(project.title)}</p>`
-        : '';
     const badges = overlayBadges(project);
     return `
       <a href="${url}" class="project-card">
@@ -74,7 +70,6 @@
         </div>
         <div class="project-card__body">
           <h3 class="project-card__title">${name}</h3>
-          ${meta}
         </div>
       </a>`;
   }

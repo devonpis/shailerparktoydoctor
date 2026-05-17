@@ -1007,6 +1007,7 @@ body[data-active-page='testimonials'] .quote-card p.stars {
   margin: 0;
   font-size: 1.15rem;
   font-weight: 700;
+  line-height: 1.2;
   color: var(--primary);
 }
 
@@ -1014,6 +1015,10 @@ body[data-active-page='testimonials'] .quote-card p.stars {
   margin: 0.35rem 0 0;
   font-size: 0.9rem;
   color: #666;
+}
+
+.project-card__date {
+  font-style: italic;
 }
 
 /* —— Individual project story pages —— */
