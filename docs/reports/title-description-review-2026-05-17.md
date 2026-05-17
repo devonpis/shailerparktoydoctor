@@ -6,22 +6,18 @@ Draft **`title`** (≤500 chars, headline) and **`description`** (≤500 chars, 
 
 **Excluded (publish-ready):** 0002, 0003.
 
-**87** project(s) in scope.
+**83** project(s) in scope.
 
 | ID | Needs | Photos | itemDetails | repairDetails | projectName |
 |----|-------|--------|-------------|---------------|-------------|
 | 0001 | title | 6 | yes | yes | Saielle of the Willow Tree |
-| 0004 | description | 1 | yes | yes | Gemmy Rocky Balboa |
-| 0005 | description | 1 | yes | yes | Vintage giant Smurf plush |
-| 0006 | description | 1 | yes | yes | Tomy Plarail Edward |
-| 0007 | description | 1 | yes | yes | Patchwork teddy bear with heart |
+| 0005 | description | 8 | yes | yes | Vintage giant Smurf plush |
+| 0006 | description | 6 | yes | yes | Tomy Plarail Edward |
 | 0008 | description | 1 | yes | yes | Large floppy brown cream dog |
-| 0009 | description | 14 | yes | yes | Hey Duggee interactive plush |
+| 0009 | description | 22 | yes | yes | Hey Duggee interactive plush |
 | 0010 | description | 1 | yes | yes | Guitar Hero World Tour guitar |
 | 0011 | description | 1 | yes | yes | Ahsoka Tano Legacy lightsabers |
-| 0012 | description | 1 | yes | yes | Jakks First Order Stormtrooper Battle Buddy |
-| 0013 | description | 1 | yes | yes | Press-heart talking bear |
-| 0014 | description | 2 | yes | yes | Tomy Big Loader power unit |
+| 0014 | description | 7 | yes | yes | Tomy Big Loader blue power unit |
 | 0015 | description | 1 | yes | yes | Anpanman Kotoba Zukan DX |
 | 0016 | description + title | 6 | yes | — | Grey bashful bunny plush |
 | 0017 | description + title | 0 | — | — | Soft jacket repair |
@@ -92,7 +88,7 @@ Draft **`title`** (≤500 chars, headline) and **`description`** (≤500 chars, 
 | 0085 | description + title | 3 | yes | — | Vintage giant panda plush |
 | 0086 | description + title | 7 | yes | — | Disney Tigger plush |
 | 0087 | description + title | 3 | yes | — | Curly sherpa teddy gold organza bow |
-| 0088 | description + title | 7 | yes | — | Yui Yuigahama Bunny Ver 1/4 FREEing |
+| 0088 | description + title | 8 | yes | — | Yui Yuigahama Bunny Ver 1/4 FREEing |
 | 0089 | description + title | 1 | yes | — | Brown sherpa teddy pink ribbon |
 | 0090 | description + title | 6 | yes | — | Cream teddy blue satin bow |
 | 0091 | description + title | 4 | yes | — | Woody doll Toy Story |
@@ -102,3 +98,8 @@ Draft **`title`** (≤500 chars, headline) and **`description`** (≤500 chars, 
 
 - **0002** — excluded — publish-ready description and title
 - **0003** — excluded — publish-ready description and title
+- **0004** — already proper title and description
+- **0007** — already proper title and description
+- **0012** — already proper title and description
+- **0013** — already proper title and description
+- **0093** — already proper title and description

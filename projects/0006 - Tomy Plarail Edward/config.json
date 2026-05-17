@@ -1,7 +1,7 @@
 {
   "isTemplate": false,
   "projectName": "Tomy Plarail Edward",
-  "title": "Tomy Plarail Edward — motor and wiring",
+  "title": "Tomy Plarail Edward — motor rewire and gearbox clean",
   "startDate": "2024-01-01",
   "endDate": "2024-01-01",
   "status": "WIP",
@@ -16,7 +16,7 @@
     "Plarail",
     "Thomas"
   ],
-  "description": "Tomy Plarail Edward — electronics repair, soldering, and mechanical repair.",
+  "description": "Childhood Plarail Edward would not run for the grandchildren — the motor had come loose, wires were missing, and fibres clogged the gears. We cleaned the axles, re-soldered the harness, and Edward runs on the track again.",
   "itemDetails": "Tomy (Takara Tomy) Plarail / Thomas & Friends battery-operated Edward the Blue Engine (Engine No. 2). Edward: blue cab and side tanks, cream boiler, red running board/chassis, red funnel, yellow roof; yellow circle with red 2 on cab. Motorized chassis with blue drive wheels, internal white plastic gearbox, on/off and wiring to battery box; typical power: one AA (varies by year—1990s–2010s Plarail and TrackMaster/Fisher-Price revisions differ). Client childhood heirloom for grandchildren. Failure modes on aged units: disconnected motor leads, missing wires, hair/carpet fibre packed in axles, dried grease. Market: common Thomas motorised engine; many reissues (TS-02 etc.). Sources: Plarail/Thomas collector references.",
   "repairDetails": "This old toy train belongs to my client who would like to pass his childhood toy to his grandchildren. Somehow the train stopped working. My client tried to fix it but didn't succeed and asked for our help. After our inspection, we found that the motor was disconnected and some wires were missing. There were also heaps of hairs and (carpet) fibres got stuck among the gears, covered with excessive lubricating grease. First, we cleaned up all those wheel and gears axial. Then we re-soldered all those wires and re-connected the motor with the switch and the battery.",
   "skills": [

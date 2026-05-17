@@ -35,7 +35,7 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00021 | Done | Website rebuild: testimonials page (plan) | BR-015 |
 | T-00022 | Done | Website rebuild: contact page (legacy + Maps embed) | BR-006, BR-015 |
 | T-00023 | Done | Google reviews: manual paste workflow (config + story + testimonials) | BR-015 |
-| T-00024 | Todo | Website rebuild: SEO metadata completeness (after T-00032) | BR-015 |
+| T-00024 | In progress | Website rebuild: SEO metadata completeness (after T-00032) | BR-015 |
 | T-00025 | Done | Scaffold project folders from CSV (duplicate merge) | BR-018, BR-019 |
 | T-00026 | Done | Social publish: image cap + priority selection (WIP last) | BR-020, BR-012 |
 | T-00027 | Done | Project image optimize (batch + on-demand, PNG→JPEG, HTML paths) | BR-021 |
@@ -45,10 +45,10 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00031 | Done | Project dates from EXIF (oldest/newest image) | BR-025 |
 | T-00032 | Done | CSV metadata gap report for owner fill-in | BR-026 |
 | T-00033 | Done | Fill itemDetails summaries (Donald char budgets) | BR-027 |
-| T-00034 | Todo | Review title & description from images + metadata | BR-029 |
+| T-00034 | In progress | Review title & description from images + metadata | BR-029 |
 | T-00035 | Todo | Import owner CSV; polish repairDetails & description | BR-030 |
 | T-00036 | Done | Rename skill `plush` → `needlework` (after T-00035) | BR-031 |
-| T-00037 | Todo | Replace legacy homepage images 0004–0015 | BR-032 |
+| T-00037 | Done | Replace legacy homepage images 0004–0015 | BR-032 |
 | T-00038 | Todo | Update testimonials page (last before cutover) | BR-033 |
 | T-00039 | Done | On-demand project image rotation (portrait/landscape) | BR-034 |
 | T-00040 | Done | Home highlight importance + six tiles | BR-015 |
@@ -255,9 +255,10 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | In progress |
 | **Requirements** | BR-015 |
 | **Goal** | Close gaps vs [`website-design-brief.md`](website-design-brief.md) SEO checklist and [`website-project-page-wireframe.md`](website-project-page-wireframe.md) per-page SEO — so every **indexable** page has correct `<title>`, meta description, canonical, HTTPS Open Graph, and structured data where specified. |
+| **Progress** | **2026-05-17:** Published stories **0001**, **0003** + [`index.html.example`](../projects/0000%20-%20template/index.html.example) — added `og:type` article; **0001** `og:image` and hero use `after.jpeg`. Marketing `/new/` pages still pending. |
 | **Checklist** | **Marketing (`/new/` until cutover):** add `link rel="canonical"` and `og:title`, `og:description`, `og:image`, `og:url`, `og:type` on home, projects index, testimonials, contact (contact already has `LocalBusiness` JSON-LD — add same on home); keep `noindex` on preview until **T-00016**. **Project stories:** ensure template [`index.html.example`](../projects/0000%20-%20template/index.html.example) includes full OG block like [0003 Donald Duck](../projects/0003%20-%20Donald%20Duck/index.html); add `og:type` on story pages; verify title `{projectName} — Shailer Park Toy Doctor` and description ≤ ~160 chars for each DONE page. **Sitemap:** remove `/new/*` URLs (conflicts with `robots.txt` `Disallow: /new/`); list only public URLs; add production marketing paths after cutover. **Cutover (with T-00016):** remove `noindex` from marketing pages; canonicals and OG URLs use `https://sptoydoctor.com.au/` paths (not `/new/`). **Legacy root** (`index.html`, `contact.html`, `reviews.html`): fix `lang="en-AU"`, HTTPS Open Graph URLs, or archive at cutover. **Accessibility/SEO:** one primary `<h1>` per page (header site title vs page headline); image `alt` from project titles on story/gallery images. |
 | **Depends on** | T-00012, T-00017, T-00019, **T-00035** (owner CSV import + generated copy), **T-00034** (titles) |
 | **Related** | T-00013 (sitemap), T-00016 (cutover + de-index preview), T-00022 (contact JSON-LD pattern) |
@@ -468,9 +469,10 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | In progress |
 | **Requirements** | BR-029 |
 | **Goal** | For each in-scope project, draft or refine **`title`** and **`description`** using **repair photos** (before/after/WIP/hero), **`itemDetails`**, and **`repairDetails`** when present. Match quality of **0002** / **0003** (story leads, not skill-list stubs). |
+| **Progress** | **2026-05-17:** Batch updated **0004–0015** and **0093** via [`apply-title-description-batch.mjs`](../scripts/apply-title-description-batch.mjs); expanded `repairDetails` where legacy stubs (**0009**, **0013**, **0014**, **0093**). **83** projects still in scope repo-wide — see [`title-description-review-2026-05-17.md`](reports/title-description-review-2026-05-17.md). |
 | **Exclude** | **0002**, **0003** — already publish-ready. **0001** — description OK; **title** only if still empty/generic. Projects already passing [`scripts/lib/title-description-quality.mjs`](../scripts/lib/title-description-quality.mjs) heuristics. |
 | **Script** | [`scripts/report-title-description-review.mjs`](../scripts/report-title-description-review.mjs) → [`docs/reports/title-description-review-<date>.md`](reports/) + `.csv` |
 | **Depends on** | T-00030, T-00033; photos in folder (T-00028); **T-00035** for `description` on CSV-filled rows |
@@ -516,12 +518,12 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | Done |
 | **Requirements** | BR-032 |
 | **Goal** | Replace **edited/montaged** heroes from the old website with real repair photos for **0004–0015**. |
 | **Source** | USB ingest leftovers, owner files, or new photos — not `images/` marketing crops. |
 | **Naming** | `before`, `after`, `hero`, `WIP-###` per README; then `node scripts/optimize-project-images.mjs <id>`. |
-| **Progress** | **2026-05-17:** Owner photos for **0004–0007**, **0009**, **0013**, **0014** renamed via [`normalize-project-media-names.mjs`](../scripts/normalize-project-media-names.mjs); optimized **0004–0015**, **0093**; **0014** split → blue power unit + **0093** white shells. Still hero-only (no new shoots): **0008**, **0010–0012**, **0015**. |
+| **Outcome** | **2026-05-17:** Owner photos for **0004–0007**, **0009**, **0013**, **0014** renamed and optimized; **0004–0015**, **0093** batch optimized; **0014** split → blue power unit + **0093** white shells. Remaining hero-only (no new shoots): **0008**, **0010–0012**, **0015** — accepted until owner supplies photos. |
 | **Depends on** | Owner/USB photos available; **T-00028** patterns |
 | **Related** | **T-00031** / owner dates for **0004–0014**; **T-00035** repair stories once images match job |
 | **Out of scope** | Re-importing entire legacy site HTML; changing **0016+** unless same issue found |

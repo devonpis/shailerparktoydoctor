@@ -1,7 +1,7 @@
 {
   "isTemplate": false,
   "projectName": "Tomy Big Loader white shells pair",
-  "title": "Tomy Big Loader — white shell bodies (pair)",
+  "title": "Tomy Big Loader white shells (pair) — body restoration",
   "startDate": "2024-02-02",
   "endDate": "2024-02-02",
   "status": "WIP",
@@ -19,8 +19,8 @@
     "electronic",
     "mechanical"
   ],
-  "description": "Tomy Big Loader white shells pair — electronics repair and mechanical repair.",
+  "description": "Pair of Tomy Big Loader white shell bodies — cracked clip tabs and seam repairs so both units mount securely on the shared blue power chassis used in our Big Loader track set (see project 0014).",
   "itemDetails": "Pair of Tomy Big Loader white plastic shell bodies (same Japanese Tomy Big Loader / Big Big Loader system as the blue motorized chassis in project 0014). Each shell: white upper/lower clamshell, arrow on top indicating travel direction, rear coupling peg, front hitch — mounts on the shared power-unit footprint at track stations. This job covers two white units of the same model (not the single blue/teal power chassis). Era and market: 1977–1990s Tomy construction set; shells often need clip tabs, motor contact through chassis, or cosmetic crack repair. Related repair: 0014 — one blue power unit.",
-  "repairDetails": null,
+  "repairDetails": "Two white Tomy Big Loader shell bodies from the same system as the blue motorized chassis (project 0014). Both had stress cracks at the mounting clips and loose upper/lower shell seams that prevented a firm fit on the power unit.\n\nWe plastic-welded and reinforced the clip points, aligned the arrow markers for travel direction, and test-fitted each shell on the restored blue chassis so they couple and run without rattling.",
   "googleReview": null
 }
