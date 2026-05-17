@@ -193,3 +193,21 @@ Repair folders may use **working labels** from USB export or timesheet gaps (e.g
 3. **Avoid** customer PII in filenames or committed metadata.
 
 Depends on images being present (often after **T-00028** USB ingest). Does not auto-publish or edit story HTML unless requested. Implementation: **T-00030**.
+
+---
+
+## BR-025 — Project dates from image capture time (EXIF)
+
+When `config.json` lacks reliable **`startDate`** / **`endDate`** (empty, template default, or USB/timesheet scaffold placeholders), the repo should derive dates from **repair images** in the project folder:
+
+1. **Read** capture time per image: EXIF `DateTimeOriginal` (or equivalent), then `IMG_YYYYMMDD_*` filename, then file mtime.
+2. **Set** `startDate` = oldest capture (date only); `endDate` = newest capture (date only).
+3. **Preserve** owner-verified timesheet dates unless explicitly overridden (`--force` or confirmed import).
+
+Implementation: **T-00031**. Feeds accurate rows into owner metadata CSV (**T-00032**).
+
+---
+
+## BR-026 — Owner metadata gap CSV (fill-in workflow)
+
+After product naming (**T-00030**) and EXIF dates (**T-00031**), the owner (or partner) needs a single **CSV report** of projects missing or stub metadata: **`repairDetails`**, **`description`**, **`skills`**, **`tags`**, **`title`**, and related fields. The file must be safe to share (no client phone/email in rows), easy to open in Excel/Sheets, and structured so filled columns can be imported back into `config.json` in a follow-up step. Implementation: **T-00032**.

@@ -42,6 +42,8 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00028 | Done | USB photos: analyse, match projects, copy and rename | BR-022 |
 | T-00029 | Todo | Review ambiguous timesheet imports (e.g. Sandy, client rows) | BR-023 |
 | T-00030 | Todo | Project identity: product info, rename folder & metadata | BR-024 |
+| T-00031 | Todo | Project dates from EXIF (oldest/newest image) | BR-025 |
+| T-00032 | Todo | CSV metadata gap report for owner fill-in | BR-026 |
 
 ---
 
@@ -399,5 +401,33 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Requirements** | BR-024 |
 | **Goal** | For projects with placeholder names (USB ingest, CSV gaps, folders like `Godfy`, `Dog`, `anime figure`): identify the toy/product from photos and owner notes, then update `projectName`, folder `#### - Name`, and `config.json` fields (`title`, `description`, `itemDetails`, `tags`) — **owner confirm before rename** if ambiguous. |
 | **Depends on** | T-00028 (images in folder help identification) |
-| **Related** | T-00029 (timesheet cleanup); README project naming |
+| **Related** | T-00029 (timesheet cleanup); **T-00031** (EXIF dates); **T-00032** (owner CSV after this + T-00031) |
 | **Out of scope** | Auto-publish; editing `index.html` unless requested |
+
+---
+
+## T-00031 — Project dates from EXIF (oldest / newest image)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-025 |
+| **Goal** | For each `projects/<id> - <name>/` folder with repair images, read **EXIF capture time** (fallback: `IMG_*` filename date, then file mtime). Set `config.json` **`startDate`** to the **oldest** image date and **`endDate`** to the **newest** (ISO `YYYY-MM-DD`) when dates are missing, placeholder, or clearly scaffold/USB defaults — **do not overwrite** trusted timesheet dates without `--force` or owner confirm. |
+| **Script** | e.g. `scripts/set-project-dates-from-images.mjs [--dry-run] [--all \| <id>…] [--force]` — report per project: image count, min/max capture, current vs proposed dates. |
+| **Depends on** | T-00028 (images present); optional after T-00027 (JPEG EXIF retained) |
+| **Related** | T-00030; **T-00032** (CSV should use updated dates) |
+| **Out of scope** | Changing `status`; GPS/PII in reports; editing non-`config.json` files |
+
+---
+
+## T-00032 — CSV metadata gap report for owner fill-in
+
+| Field | Value |
+|-------|-------|
+| **Status** | Todo |
+| **Requirements** | BR-026 |
+| **Goal** | Export a **spreadsheet-friendly CSV** (for owner / wife) listing projects that need human input: empty or stub **`repairDetails`**, **`description`**, **`skills`**, **`tags`**, **`title`**, weak **`projectName`** (USB placeholders), and any row flagged after **T-00030** / **T-00031**. Include current values + blank or “FILL IN” columns for updates. No customer PII in export. |
+| **Script** | e.g. `scripts/export-project-metadata-gaps.mjs [--output docs/reports/project-metadata-gaps-<date>.csv]` — optional `--import` later to merge filled CSV back into `config.json` (separate task or flag). |
+| **Depends on** | **T-00030** (names stable enough to label rows); **T-00031** (dates populated from EXIF) |
+| **Related** | T-00029 (timesheet cleanup); T-00028 ingest stubs |
+| **Out of scope** | Auto-writing repair prose without owner; publish; HTML |
