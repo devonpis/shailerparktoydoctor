@@ -1,4 +1,7 @@
 import { buildHashtagLine } from './hashtag.mjs';
+import { pickSocialTags, SOCIAL_HASHTAG_MAX } from './social-tags.mjs';
+
+export { SOCIAL_HASHTAG_MAX, pickSocialTags };
 import {
   THREADS_CAPTION_MAX,
   cleanThreadsSource,
@@ -20,7 +23,10 @@ export function buildThreadsCaption(config) {
 export function buildCaption(config, { includeHashtags = true } = {}) {
   const description = (config.description || '').trim();
   const parts = [description];
-  if (includeHashtags) parts.push(buildHashtagLine(config.tags));
+  if (includeHashtags) {
+    const { picked } = pickSocialTags(config.tags, config);
+    parts.push(buildHashtagLine(picked));
+  }
   const caption = parts.filter(Boolean).join('\n\n');
   if (caption.length > DESCRIPTION_MAX_CHARS) {
     throw new Error(

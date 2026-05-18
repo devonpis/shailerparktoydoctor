@@ -20,7 +20,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateSocialProject } from './validate-publish.mjs';
 import { loadEnv, requireEnv, tryLoadEnv } from './lib/load-env.mjs';
-import { buildCaption, buildThreadsCaption, THREADS_CAPTION_MAX } from './lib/caption.mjs';
+import {
+  buildCaption,
+  buildThreadsCaption,
+  pickSocialTags,
+  SOCIAL_HASHTAG_MAX,
+  THREADS_CAPTION_MAX,
+} from './lib/caption.mjs';
+import { buildHashtagLine } from './lib/hashtag.mjs';
 import { pickImage, publicImageUrl, SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
 import { selectImagesForSocialPublish } from './lib/select-social-images.mjs';
 import {
@@ -181,6 +188,7 @@ async function main() {
   } = pickResult;
   const caption = buildCaption(config);
   const threadsCaption = buildThreadsCaption(config);
+  const { picked: socialTags, omitted: socialTagsOmitted } = pickSocialTags(config.tags, config);
   let targets = resolveTargets(flags.target);
 
   const publicBaseUrl = resolvePublicBaseUrl(flags, env, projectFolderName);
@@ -220,6 +228,12 @@ async function main() {
   console.log(
     `Caption length: ${caption.length} (Threads ≤${THREADS_CAPTION_MAX}, no hashtags: ${threadsCaption.length})`
   );
+  console.log(
+    `Social hashtags (${socialTags.length}/${SOCIAL_HASHTAG_MAX} FB/IG): ${buildHashtagLine(socialTags) || '(none)'}`
+  );
+  if (socialTagsOmitted.length) {
+    console.log(`Tags on story page only (not social): ${socialTagsOmitted.join(', ')}`);
+  }
   console.log(`Targets: ${targets.join(', ')}`);
   if (publicBaseUrl) console.log(`Public image base: ${publicBaseUrl}`);
 

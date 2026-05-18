@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildHashtagLine } from './lib/hashtag.mjs';
+import { pickSocialTags, SOCIAL_HASHTAG_MAX } from './lib/social-tags.mjs';
 import {
   buildThreadsCaption,
   cleanThreadsSource,
@@ -117,8 +118,14 @@ function validateConfig(config, dir) {
     warnings.push('Video present without still images — social carousel may be video-only when supported.');
   }
 
-  const hashtagPreview = buildHashtagLine(config.tags);
+  const { picked: socialTags, omitted: socialTagsOmitted } = pickSocialTags(config.tags, config);
+  const hashtagPreview = buildHashtagLine(socialTags);
   const captionWithTags = [description, hashtagPreview].filter(Boolean).join('\n\n');
+  if (Array.isArray(config.tags) && config.tags.length > SOCIAL_HASHTAG_MAX) {
+    warnings.push(
+      `Social uses ${SOCIAL_HASHTAG_MAX} hashtags on Facebook/Instagram (picked: ${socialTags.join(', ')}). Omitted from social: ${socialTagsOmitted.join(', ')}. All tags remain on the repair page.`
+    );
+  }
   if (captionWithTags.length > LIMITS.descriptionMaxChars) {
     errors.push(
       `description + hashtags would be ${captionWithTags.length} characters; max ${LIMITS.descriptionMaxChars} for cross-platform social.`
@@ -136,7 +143,16 @@ function validateConfig(config, dir) {
     );
   }
 
-  return { errors, warnings, images: imageList, videos, captionWithTags, threadsCaption };
+  return {
+    errors,
+    warnings,
+    images: imageList,
+    videos,
+    captionWithTags,
+    threadsCaption,
+    socialTags,
+    socialTagsOmitted,
+  };
 }
 
 /** Social publish: DONE + presentable content + index.html + webpageUrl. */
@@ -191,7 +207,7 @@ function main() {
   const name = path.basename(result.dir);
   console.log(`Project: ${name}`);
   console.log(
-    `Limits: caption/title ≤${LIMITS.descriptionMaxChars} chars; tags ${LIMITS.tagsMin}–${LIMITS.tagsMax}`
+    `Limits: caption/title ≤${LIMITS.descriptionMaxChars} chars; tags ${LIMITS.tagsMin}–${LIMITS.tagsMax} (${SOCIAL_HASHTAG_MAX} on social FB/IG)`
   );
   if (result.images?.length) console.log(`Images: ${result.images.join(', ')}`);
   if (result.videos?.length) console.log(`Videos: ${result.videos.join(', ')}`);
