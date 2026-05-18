@@ -66,3 +66,11 @@ There is no shared Meta “tags” API field for all three — FB/IG use `descri
 After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **description length** (x/500), **Threads text** (≤200 rewritten, no hashtags), **social hashtags** (≤3 for FB/IG, which tags + story-only tags if more in config), **included** social images (x/10), **omitted** images when truncation applies, and validation **OK** or list failures.
 
 If validation fails, **do not** proceed to publish; report failures and ask the user to fix `config.json` or add media.
+
+## `itemDetails` tone (About this item)
+
+Product copy on repair pages should focus on **what the item is** — features, history, origin, materials, and how it works — not **resale value**, pricing, or “collector market” language that can feel judgmental to owners.
+
+- **Do:** manufacturer/era, licensed character, construction, typical mechanisms, label clues for identification.
+- **Avoid:** market value, eBay sold prices, USD/AUD ranges, “modest/affordable/premium resale,” buyer demand, sentimental vs monetary comparisons.
+- **Source:** [`scripts/lib/item-details-catalog.mjs`](../../scripts/lib/item-details-catalog.mjs); refresh with [`scripts/refresh-item-details-tone.mjs`](../../scripts/refresh-item-details-tone.mjs). After bulk edits, sync live story HTML prose via `publish-webpage.mjs` or `syncProjectStoryProseHtml` (see [`project-story-prose-html.mjs`](../../scripts/lib/project-story-prose-html.mjs)).

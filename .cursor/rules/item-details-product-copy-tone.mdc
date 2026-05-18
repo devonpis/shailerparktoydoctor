@@ -1,0 +1,34 @@
+---
+description: itemDetails (About this item) — features, history, origin; never resale/value judgment
+alwaysApply: true
+---
+
+# itemDetails product copy tone
+
+When writing or editing **`itemDetails`** in `projects/**/config.json`, [`scripts/lib/item-details-catalog.mjs`](../../scripts/lib/item-details-catalog.mjs), or story-page “About this item” prose:
+
+## Direction (owner-safe)
+
+Help readers understand **what the item is** — not what it is “worth.” Owners bring beloved toys; avoid copy that sounds like appraisal, downgrade, or collector pricing.
+
+**Lead with:**
+- Manufacturer, license, character, era or release window
+- Origin (country, brand line, retail channel type)
+- Materials, scale, mechanisms, typical features
+- How to identify the piece (tags, stamps, model codes, box art)
+
+**Do not lead with or emphasize:**
+- Market value, resale, eBay sold prices, USD/AUD ranges
+- “Modest / affordable / premium” value judgments
+- Buyer demand, collector premiums, “worth more if…”
+- Sentimental vs monetary comparisons (e.g. “value exceeds resale”)
+
+`repairDetails` may describe the owner’s story; **`itemDetails` stays factual product context.**
+
+## Tools
+
+- Tone pass: `node scripts/refresh-item-details-tone.mjs`
+- Fill from catalog: `node scripts/fill-project-item-details.mjs`
+- Sync live HTML prose: `publish-webpage.mjs` or `syncProjectStoryProseHtml` in [`project-story-prose-html.mjs`](../../scripts/lib/project-story-prose-html.mjs)
+
+See also *publish content guards* → `itemDetails` tone section.

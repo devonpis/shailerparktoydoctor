@@ -28,7 +28,7 @@ node scripts/validate-publish.mjs 0001
 | `projectName` | presentable name | (in readiness) | same |
 | `title` | presentable headline (not name-only) | same | same |
 | `description` | presentable lead (not skill stub) | same | same |
-| `itemDetails` | ≥150 chars, real product copy | same | same |
+| `itemDetails` | ≥150 chars, real product copy (features/history/origin — **no** resale or market-pricing tone; see [`scripts/lib/item-details-tone.mjs`](../scripts/lib/item-details-tone.mjs)) | same | same |
 | `repairDetails` | ≥2 paragraphs, no legacy/debug stub | same | same |
 | `skills` | non-empty; `needlework`, `electronic`, `mechanical`, `paintjob` | same | same |
 | `tags` | — | non-empty array | non-empty array |
