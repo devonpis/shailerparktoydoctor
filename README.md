@@ -166,6 +166,12 @@ See [`.cursor/rules/project-images-manual-rename.mdc`](.cursor/rules/project-ima
 
 Before a **webpage** go-live, run `node scripts/publish-webpage.mjs <id>` (rotate if needed → optimize → validate → checklist; see [`docs/website-go-live.md`](docs/website-go-live.md)). Use `--rotate <file> --cw|--ccw|--180` or `--exif-orient` for sideways photos. If the project has **`googleReview`**, publish syncs the review onto **`index.html`** and rebuilds **`new/testimonials.html`** with a **Repair:** link (`--no-story-review` / `--no-testimonials` to skip either step).
 
+Optimize / compress project photos (EXIF orientation baked by default so phone shots stay upright):
+
+```bash
+node scripts/optimize-project-images.mjs <id>
+```
+
 Bulk import from a USB stick: [`docs/usb-photo-ingest.md`](docs/usb-photo-ingest.md) (`scripts/ingest-usb-photos.mjs` — dry-run first, then `--apply`, then optimize).
 
 Repair dates from photos (EXIF): `node scripts/set-project-dates-from-images.mjs [--dry-run]` — see **T-00031** in [`docs/TASKS.md`](docs/TASKS.md).

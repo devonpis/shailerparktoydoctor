@@ -6,7 +6,7 @@
  * so images are not JPEG-recompressed twice.
  *
  * Rules:
- * - With --exif-orient: bake EXIF orientation (one encode; --orient-quality default 92)
+ * - EXIF orientation is baked by default; other EXIF (capture date, camera, etc.) is kept via withMetadata
  * - PNG > 500 KB → .jpg at 90%; scale to fit 1024×1024 when width or height > 1024
  * - JPEG/WebP/GIF > 500 KB and oversized → JPEG at 90%, scaled inside 1024×1024
  * - Updates index.html and projects-index.json when filenames change
@@ -15,12 +15,12 @@
  *   npm install
  *   node scripts/optimize-project-images.mjs --all [--dry-run]
  *   node scripts/optimize-project-images.mjs 0003 [--dry-run]
- *   node scripts/optimize-project-images.mjs 0003 --exif-orient
- *   node scripts/optimize-project-images.mjs 0003 --exif-orient --rotate after.jpg --cw
+ *   node scripts/optimize-project-images.mjs 0003 --rotate after.jpg --cw
  *
  * Options:
  *   --dry-run          Report only, no writes
- *   --exif-orient      Bake EXIF orientation (combined with optimize/rotate in one pass)
+ *   --no-exif-orient   Skip EXIF bake (not recommended — resize will ignore phone/camera rotation)
+ *   --exif-orient      Same as default (compatibility)
  *   --rotate <file> --cw|--ccw|--180   Manual rotation (repeatable; before resize in same pass)
  *   --quality N        JPEG quality for resize/convert (default: 90)
  *   --orient-quality N JPEG quality for orient-only writes (default: 92)
@@ -48,7 +48,7 @@ const PROJECTS_DIR = path.join(REPO_ROOT, 'projects');
 function parseArgs(argv) {
   const flags = {
     dryRun: false,
-    exifOrient: false,
+    exifOrient: true,
     quality: 90,
     orientQuality: 92,
     minBytes: 500 * 1024,
@@ -62,6 +62,7 @@ function parseArgs(argv) {
     if (a === '--dry-run') flags.dryRun = true;
     else if (a === '--all') flags.all = true;
     else if (a === '--exif-orient') flags.exifOrient = true;
+    else if (a === '--no-exif-orient') flags.exifOrient = false;
     else if (a === '--quality') flags.quality = Number(argv[++i]);
     else if (a === '--orient-quality') flags.orientQuality = Number(argv[++i]);
     else if (a === '--min-kb') flags.minBytes = Number(argv[++i]) * 1024;
@@ -78,7 +79,7 @@ function parseArgs(argv) {
   }
   if (!flags.all && !flags.targets.length) {
     throw new Error(
-      'Usage: node scripts/optimize-project-images.mjs --all | <project-id> […] [--exif-orient] [--rotate file --cw] [--dry-run]'
+      'Usage: node scripts/optimize-project-images.mjs --all | <project-id> […] [--no-exif-orient] [--rotate file --cw] [--dry-run]'
     );
   }
   return flags;
@@ -174,7 +175,8 @@ async function main() {
     `max ${flags.maxPx}px`,
     `JPEG ${flags.quality}%`,
   ];
-  if (flags.exifOrient) parts.push(`EXIF orient (${flags.orientQuality}% when orient-only)`);
+  if (flags.exifOrient) parts.push(`EXIF orient on (${flags.orientQuality}% when orient-only)`);
+  else parts.push('EXIF orient off (--no-exif-orient)');
   if (flags.rotations.length) parts.push(`${flags.rotations.length} manual rotation(s)`);
   console.log(`${parts.join('; ')} — one encode per file`);
 

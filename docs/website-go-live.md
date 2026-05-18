@@ -82,8 +82,9 @@ Or run the optimizer alone:
 
 ```bash
 node scripts/optimize-project-images.mjs <id>   # resize/convert only (no EXIF unless flagged)
-node scripts/optimize-project-images.mjs <id> --exif-orient   # EXIF + resize in one pass
-node scripts/optimize-project-images.mjs --all --exif-orient  # batch EXIF bake
+node scripts/optimize-project-images.mjs <id>                 # EXIF + resize in one pass (default)
+node scripts/optimize-project-images.mjs --all              # batch optimize (EXIF baked by default)
+node scripts/optimize-project-images.mjs <id> --no-exif-orient   # skip EXIF bake (rare)
 ```
 
 - **PNG &gt; 500 KB** → `.jpg` at **90%**; scaled to fit **1024×1024** when width or height &gt; 1024; source **`.png` deleted** after success.

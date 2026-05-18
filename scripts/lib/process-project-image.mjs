@@ -49,15 +49,18 @@ export async function planImageProcessing(filePath, flags, manualDegrees = null)
   const ext = path.extname(filePath).toLowerCase();
   const base = path.basename(filePath);
 
-  const needsExif = flags.exifOrient && orientation !== 1;
   const needsManual = manualDegrees != null;
-  const needsOrient = needsExif || needsManual;
 
   const overMin = stat.size > flags.minBytes;
   const pngConvert = ext === '.png' && overMin;
   const rasterResize =
     overMin && isOversized(width, height, flags.maxPx) && ['.jpg', '.jpeg', '.webp', '.gif'].includes(ext);
   const needsOptimize = pngConvert || rasterResize;
+
+  // Bake EXIF before resize/convert — resizing raw sensor pixels ignores orientation and looks rotated.
+  const needsExif =
+    orientation !== 1 && (flags.exifOrient !== false || needsOptimize);
+  const needsOrient = needsExif || needsManual;
 
   if (!needsOrient && !needsOptimize) return null;
 
@@ -114,6 +117,9 @@ export async function executeImagePlan(plan, flags) {
       withoutEnlargement: true,
     });
   }
+
+  // Keep EXIF/ICC/XMP (capture date, camera, etc.); rotate() above sets orientation to 1 in output.
+  pipeline = pipeline.withMetadata();
 
   const tmpPath = `${plan.to}.proc-tmp`;
   if (plan.outputJpeg) {
