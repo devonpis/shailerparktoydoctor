@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Hallmark reading buddy teddy",
-  "title": "",
+  "title": "Hallmark reading buddy — ear switch, board repair, and re-stitch",
   "startDate": "2025-10-09",
   "endDate": "2025-10-09",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0038%20-%20Hallmark%20reading%20buddy%20teddy/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -20,8 +20,8 @@
     "needlework",
     "electronic"
   ],
-  "description": "Hallmark reading buddy teddy — electronics repair, soldering, and sewing and fabric repair.",
-  "itemDetails": "Hallmark reading buddy teddy products sit within Hallmark's gift-and-keepsake category, where plush companions were often paired with books, cards, or seasonal messaging. This format was especially visible in late 1990s-2010s gift retail channels.\n\nThese bears are generally polyester plush with stitched features and, in some versions, a simple sound insert tied to storytelling themes.",
-  "repairDetails": null,
+  "description": "This Hallmark reading buddy teddy would not respond when squeezed — we repaired the ear trigger switch and circuit board, then opened and re-stitched the body so sound works again.",
+  "itemDetails": "Hallmark reading buddy teddy products sit within Hallmark's gift-and-keepsake category, where plush companions were often paired with books, cards, or seasonal messaging. This format was especially visible in late 1990s-2010s gift retail channels. These bears are generally polyester plush with stitched features and, in some versions, a simple sound insert tied to storytelling themes.",
+  "repairDetails": "The bear stopped triggering its voice because the switch in the ear was faulty and the circuit board needed attention. We repaired the ear trigger mechanism and serviced the board so playback is reliable again. The body was opened for access, then carefully stitched closed so the plush looks neat and the electronics stay protected inside.",
   "googleReview": null
 }

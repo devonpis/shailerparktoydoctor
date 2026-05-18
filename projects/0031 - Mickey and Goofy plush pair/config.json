@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Mickey and Goofy plush pair",
-  "title": "",
+  "title": "Mickey and Goofy plush — Goofy trousers and Mickey power contacts",
   "startDate": "2025-08-29",
   "endDate": "2025-08-29",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0031%20-%20Mickey%20and%20Goofy%20plush%20pair/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -17,10 +17,11 @@
     "Goofy"
   ],
   "skills": [
-    "needlework"
+    "needlework",
+    "electronic"
   ],
-  "description": "Mickey and Goofy plush pair — cleaning and refresh, sewing and fabric repair, and restuffing.",
-  "itemDetails": "This Mickey and Goofy plush pair is licensed Disney character merchandise from the long-running theme-park and retail plush ecosystem. Pairings of core Disney characters are common across 1990s to current-era releases from Disney Store and partner manufacturers.\n\nMost examples use polyester plush, embroidered facial features, and soft internal fill with occasional bean weighting.",
-  "repairDetails": null,
+  "description": "This licensed Mickey and Goofy plush pair needed fabric work on Goofy’s trousers and reliable power at Mickey’s battery contacts so both companions are display-ready again.",
+  "itemDetails": "This Mickey and Goofy plush pair is licensed Disney character merchandise from the long-running theme-park and retail plush ecosystem. Pairings of core Disney characters are common across 1990s to current-era releases from Disney Store and partner manufacturers. Most examples use polyester plush, embroidered facial features, and soft internal fill with occasional bean weighting.",
+  "repairDetails": "Goofy’s trousers had torn seams and worn fabric that needed rebuilding so the outfit sits neatly on the body again. We repaired the trouser fabric and stitching to match the original shape. Mickey’s sound or electronics would not trigger reliably because the battery contacts had oxidized and lost connection. We cleaned and renewed the contact path so power reaches the module consistently.",
   "googleReview": null
 }

@@ -153,6 +153,23 @@
     "endDate": "2026-01-09"
   },
   {
+    "id": "0044",
+    "folder": "0044 - Kosen white plush horse",
+    "projectName": "Kosen white plush horse",
+    "title": "Kosen plush horse — face patch, remade ear and brow, new eyes",
+    "tags": [
+      "horse",
+      "Kosen",
+      "plush"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0044%20-%20Kosen%20white%20plush%20horse/after.jpeg",
+    "url": "/projects/0044%20-%20Kosen%20white%20plush%20horse/",
+    "endDate": "2025-11-30"
+  },
+  {
     "id": "0043",
     "folder": "0043 - Verna 1960s vintage teddy",
     "projectName": "Verna 1960s vintage teddy",
@@ -189,6 +206,178 @@
     "thumbnail": "/projects/0042%20-%20Soft%20cloth%20baby%20doll/after.jpeg",
     "url": "/projects/0042%20-%20Soft%20cloth%20baby%20doll/",
     "endDate": "2025-10-30"
+  },
+  {
+    "id": "0041",
+    "folder": "0041 - Tonka Chuck and Friends trucks",
+    "projectName": "Tonka Chuck and Friends trucks",
+    "title": "Tonka Chuck trucks — corrosion cleanup, gearbox, and plastic rebuild",
+    "tags": [
+      "Tonka",
+      "trucks"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0041%20-%20Tonka%20Chuck%20and%20Friends%20trucks/after.jpeg",
+    "url": "/projects/0041%20-%20Tonka%20Chuck%20and%20Friends%20trucks/",
+    "endDate": "2025-10-23"
+  },
+  {
+    "id": "0040",
+    "folder": "0040 - Christmas toy train set",
+    "projectName": "Christmas toy train set",
+    "title": "Christmas toy train — motor alignment, carriage hooks, and track repair",
+    "tags": [
+      "train",
+      "Christmas"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0040%20-%20Christmas%20toy%20train%20set/after.jpeg",
+    "url": "/projects/0040%20-%20Christmas%20toy%20train%20set/",
+    "endDate": "2025-10-20"
+  },
+  {
+    "id": "0039",
+    "folder": "0039 - CoComelon Cece plush",
+    "projectName": "CoComelon Cece plush",
+    "title": "CoComelon Cece — new nose and dress, deep clean, and restuffing",
+    "tags": [
+      "CoComelon",
+      "Cece",
+      "doll"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0039%20-%20CoComelon%20Cece%20plush/after.jpeg",
+    "url": "/projects/0039%20-%20CoComelon%20Cece%20plush/",
+    "endDate": "2025-10-17"
+  },
+  {
+    "id": "0038",
+    "folder": "0038 - Hallmark reading buddy teddy",
+    "projectName": "Hallmark reading buddy teddy",
+    "title": "Hallmark reading buddy — ear switch, board repair, and re-stitch",
+    "tags": [
+      "Hallmark",
+      "teddy",
+      "interactive"
+    ],
+    "skills": [
+      "needlework",
+      "electronic"
+    ],
+    "thumbnail": "/projects/0038%20-%20Hallmark%20reading%20buddy%20teddy/after.jpeg",
+    "url": "/projects/0038%20-%20Hallmark%20reading%20buddy%20teddy/",
+    "endDate": "2025-10-09"
+  },
+  {
+    "id": "0037",
+    "folder": "0037 - Jellycat Blossom bunny",
+    "projectName": "Jellycat Blossom bunny",
+    "title": "Jellycat Blossom bunny — ears, paws, deep clean, and restuffing",
+    "tags": [
+      "Jellycat",
+      "bunny",
+      "plush"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0037%20-%20Jellycat%20Blossom%20bunny/after.jpeg",
+    "url": "/projects/0037%20-%20Jellycat%20Blossom%20bunny/",
+    "endDate": "2025-10-01"
+  },
+  {
+    "id": "0036",
+    "folder": "0036 - Brown sherpa teddy blue ribbon",
+    "projectName": "Brown sherpa teddy blue ribbon",
+    "title": "Sherpa teddy — deep clean, patch repair, new eyes, and restuffing",
+    "tags": [
+      "teddy",
+      "plush",
+      "sherpa"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0036%20-%20Brown%20sherpa%20teddy%20blue%20ribbon/after.jpeg",
+    "url": "/projects/0036%20-%20Brown%20sherpa%20teddy%20blue%20ribbon/",
+    "endDate": "2025-09-26"
+  },
+  {
+    "id": "0035",
+    "folder": "0035 - Jurassic Park electronic T Rex",
+    "projectName": "Jurassic Park electronic T-Rex",
+    "title": "Jurassic Park T-Rex — battery path and rubber skin rebuild",
+    "tags": [
+      "JurassicPark",
+      "Trex",
+      "dinosaur"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0035%20-%20Jurassic%20Park%20electronic%20T%20Rex/after.jpeg",
+    "url": "/projects/0035%20-%20Jurassic%20Park%20electronic%20T%20Rex/",
+    "endDate": "2025-09-25"
+  },
+  {
+    "id": "0034",
+    "folder": "0034 - Miniso radish plush",
+    "projectName": "Miniso radish plush",
+    "title": "Miniso radish plush — deep clean, tear repair, and fresh stuffing",
+    "tags": [
+      "Miniso",
+      "plush",
+      "radish"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0034%20-%20Miniso%20radish%20plush/after.jpeg",
+    "url": "/projects/0034%20-%20Miniso%20radish%20plush/",
+    "endDate": "2025-09-16"
+  },
+  {
+    "id": "0032",
+    "folder": "0032 - Kitchen witch on broomstick",
+    "projectName": "Kitchen witch on broomstick",
+    "title": "Kitchen witch — new shoes, broom, and a hang-up hook",
+    "tags": [
+      "witch",
+      "doll"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0032%20-%20Kitchen%20witch%20on%20broomstick/after.jpeg",
+    "url": "/projects/0032%20-%20Kitchen%20witch%20on%20broomstick/",
+    "endDate": "2025-08-30"
+  },
+  {
+    "id": "0031",
+    "folder": "0031 - Mickey and Goofy plush pair",
+    "projectName": "Mickey and Goofy plush pair",
+    "title": "Mickey and Goofy plush — Goofy trousers and Mickey power contacts",
+    "tags": [
+      "Disney",
+      "MickeyMouse",
+      "Goofy"
+    ],
+    "skills": [
+      "needlework",
+      "electronic"
+    ],
+    "thumbnail": "/projects/0031%20-%20Mickey%20and%20Goofy%20plush%20pair/after.jpeg",
+    "url": "/projects/0031%20-%20Mickey%20and%20Goofy%20plush%20pair/",
+    "endDate": "2025-08-29"
   },
   {
     "id": "0030",

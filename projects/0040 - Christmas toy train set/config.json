@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Christmas toy train set",
-  "title": "",
+  "title": "Christmas toy train — motor alignment, carriage hooks, and track repair",
   "startDate": "2025-10-20",
   "endDate": "2025-10-20",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0040%20-%20Christmas%20toy%20train%20set/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -19,8 +19,8 @@
     "electronic",
     "mechanical"
   ],
-  "description": "Christmas toy train set — mechanical repair and electronics repair.",
-  "itemDetails": "Christmas toy train sets are seasonal household display toys, often sold for around-tree layouts and festive village scenes since the late 20th century. They are commonly unbranded or store-branded, with many near-identical variants released each year.\n\nConstruction is usually molded plastic track and cars with a small battery motor and simple couplers, sometimes with lights or sound.",
-  "repairDetails": null,
+  "description": "A seasonal Christmas train set had slipped out of alignment — we repositioned the motor, repaired carriage hooks, and fixed the rail so the loop runs smoothly around the tree again.",
+  "itemDetails": "Christmas toy train sets are seasonal household display toys, often sold for around-tree layouts and festive village scenes since the late 20th century. They are commonly unbranded or store-branded, with many near-identical variants released each year. Construction is usually molded plastic track and cars with a small battery motor and simple couplers, sometimes with lights or sound.",
+  "repairDetails": "The motor had shifted out of position so the drive wheel no longer engaged the track reliably. We readjusted the motor mount and checked alignment through the gearbox path. Broken carriage coupling hooks were repaired so cars stay linked on the loop, and damaged rail sections were fixed so the train completes the circuit without derailing.",
   "googleReview": null
 }

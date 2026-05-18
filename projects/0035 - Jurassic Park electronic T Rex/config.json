@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Jurassic Park electronic T-Rex",
-  "title": "",
+  "title": "Jurassic Park T-Rex — battery path and rubber skin rebuild",
   "startDate": "2025-09-25",
   "endDate": "2025-09-25",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0035%20-%20Jurassic%20Park%20electronic%20T%20Rex/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -17,13 +17,12 @@
     "dinosaur"
   ],
   "skills": [
-    "needlework",
     "electronic",
     "mechanical"
   ],
-  "description": "Jurassic Park electronic T-Rex — electronics repair, mechanical repair, and cleaning and refresh.",
-  "itemDetails": "Jurassic Park electronic T-Rex toys are tied to the franchise merchandise cycles that began in the 1990s and continued through reboots and collector reissues. Different makers released electronic dinosaur variants across Kenner/Hasbro-era and later lines.\n\nTypical builds use molded PVC/ABS shells, geared movement or jaw action, and battery-powered roar sound modules.",
-  "repairDetails": null,
+  "description": "A family’s childhood electronic T-Rex had failed inside its rubber skin — we opened the shell, renewed corroded battery contacts and internal wiring, and reglued the skin so roar and movement work for the next generation.",
+  "itemDetails": "Jurassic Park electronic T-Rex toys are tied to the franchise merchandise cycles that began in the 1990s and continued through reboots and collector reissues. Different makers released electronic dinosaur variants across Kenner/Hasbro-era and later lines. Typical builds use molded PVC/ABS shells, geared movement or jaw action, and battery-powered roar sound modules.",
+  "repairDetails": "The dinosaur would not power on reliably. We opened the rubber skin to reach the battery box and found corroded contacts and a failed power lead inside the body. Contacts were replaced, the internal power wire was renewed, and the rubber skin was reglued and seated so the electronics and mechanical drive are enclosed cleanly again. The owner wanted their granddaughter to enjoy the same toy their daughter had loved.",
   "googleReview": {
     "quote": "We took our daughters 25 year old electronic dinosaur that she had as a child to Grace as it wasn't working and want our granddaughter to enjoy as much as her mum did. Grace did an awesome repair job and we would thoroughly recommend her services. Thanks Grace.",
     "authorName": "Bret H.",
