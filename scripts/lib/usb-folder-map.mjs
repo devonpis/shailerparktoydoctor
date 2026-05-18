@@ -33,7 +33,7 @@ export const USB_FOLDER_TO_PROJECT_DIR = {
   Kota_Triceratop: '0053 - Kota Dino',
   Lucy_dog: '0066 - Lucy dog',
   Lulla_doll: '0042 - Lulla doll',
-  Mattel_dolls: '0027 - Mattel dolls',
+  Mattel_dolls: '0027 - Mattel RC baby dolls',
   Mickey_Goofy: '0031 - Mickey n goofy',
   Monkey: '0021 - Monkey restuffing',
   My_Pal_Robot: '0095 - My Pal 2 robot',

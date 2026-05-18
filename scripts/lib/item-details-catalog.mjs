@@ -39,13 +39,10 @@ export const ITEM_DETAILS_BY_ID = {
     "Hamish yellow teddy bear is a classic named gift-teddy format, usually sold through card shops, florists, and boutique toy outlets from the 1990s onward. Named bears often come from small-run plush distributors where the character name helps differentiate otherwise similar body patterns.",
     "Typical materials are polyester plush, polyester fill, and plastic safety eyes or embroidered details depending on age grading. Resale value is usually sentimental-market level unless a verifiable brand label, limited production run, or complete tag set is present."
   ],
-  '0026': [
-    "A 2-metre lion display plush sits in the large-format promotional plush category used in retail window dressing, events, and themed interiors. These oversized animals became common from the late 1990s onward as commercial display pieces rather than standard play toys.",
-    "Construction generally uses synthetic fur fabric over a lightweight internal frame or dense fill, with stitched paw pads and reinforced seam zones. Market value depends more on visual impact and condition than brand, with transport cost and storage footprint strongly influencing resale."
-  ],
   '0027': [
-    "This Playmates dolls trio is from a mass-market doll tradition associated with Playmates Toys and adjacent 1990s-2000s fashion/character doll lines. Sets of three were commonly sold as themed companions or multi-pack value assortments in toy retail channels.",
-    "Typical build combines vinyl or plastic heads/limbs with synthetic rooted hair and stitched textile outfits. Collector value is moderate and rises when the dolls remain as an original matched group with intact accessories, original clothing, and visible maker marks."
+    "These are three separate Mattel battery remote-control baby dolls from the early 1990s — not a factory three-pack and not Playmates Amazing Babies. The line-up matches Mattel's RC toddler segment: a roller-blade skater, a motorized walker with joystick remote, and a gymnast-style doll with wired handset and leotard.",
+    "Baby Rollerblade (~1990–91) updated the 1980s Baby Skates concept with inline-style skates and motorized skating motion. Baby Walk 'n' Roll (~1992) put the same-era sculpt in a peach-and-teal walker base. The gymnast doll shares the baby face tooling but needs tag or box confirmation for the exact SKU.",
+    "Construction is vinyl bodies, rooted hair, C-cell motor packs, and tethered controllers. Vintage value depends on working electronics, intact remotes, and clean battery compartments rather than a matched 'set'."
   ],
   '0028': [
     "A vintage five-joint mohair teddy belongs to the classic articulated bear tradition, usually inspired by early 20th-century German and British bear-making patterns. Five-joint construction (head, arms, legs) is a key hallmark for older collector-style teddy design.",

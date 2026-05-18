@@ -208,6 +208,149 @@
     "endDate": "2025-08-23"
   },
   {
+    "id": "0027",
+    "folder": "0027 - Mattel RC baby dolls",
+    "projectName": "Mattel RC baby dolls",
+    "title": "Mattel RC babies — Jennie Gymnast, Baby Rollerblade, and Baby Walk 'n' Roll",
+    "tags": [
+      "Mattel",
+      "baby doll",
+      "RC",
+      "1990s",
+      "Baby Rollerblade",
+      "Jennie Gymnast",
+      "interactive"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0027%20-%20Mattel%20RC%20baby%20dolls/after.jpeg",
+    "url": "/projects/0027%20-%20Mattel%20RC%20baby%20dolls/",
+    "endDate": "2025-07-27"
+  },
+  {
+    "id": "0025",
+    "folder": "0025 - Hamish yellow teddy bear",
+    "projectName": "Hamish yellow teddy bear",
+    "title": "Hamish yellow teddy — full restoration after decades of love",
+    "tags": [
+      "teddy",
+      "yellow",
+      "restoration"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0025%20-%20Hamish%20yellow%20teddy%20bear/after.jpeg",
+    "url": "/projects/0025%20-%20Hamish%20yellow%20teddy%20bear/",
+    "endDate": "2025-06-26"
+  },
+  {
+    "id": "0022",
+    "folder": "0022 - Pokemon Pikachu 2 GS pair",
+    "projectName": "Pokemon Pikachu 2 GS pair",
+    "title": "Pokemon Pikachu 2 GS pair — circuit board repair and power filtering",
+    "tags": [
+      "Pokemon",
+      "Pikachu",
+      "handheld"
+    ],
+    "skills": [
+      "electronic"
+    ],
+    "thumbnail": "/projects/0022%20-%20Pokemon%20Pikachu%202%20GS%20pair/after.jpeg",
+    "url": "/projects/0022%20-%20Pokemon%20Pikachu%202%20GS%20pair/",
+    "endDate": "2025-05-20"
+  },
+  {
+    "id": "0021",
+    "folder": "0021 - Purple tie dye monkey plush",
+    "projectName": "Purple tie-dye monkey plush",
+    "title": "Purple tie-dye monkey — clean and restuff",
+    "tags": [
+      "monkey",
+      "plush",
+      "tie-dye"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0021%20-%20Purple%20tie%20dye%20monkey%20plush/after.jpeg",
+    "url": "/projects/0021%20-%20Purple%20tie%20dye%20monkey%20plush/",
+    "endDate": "2025-03-24"
+  },
+  {
+    "id": "0020",
+    "folder": "0020 - Christmas bear music box figurine",
+    "projectName": "Christmas bear music box figurine",
+    "title": "Christmas bear music box — deep clean and movement service",
+    "tags": [
+      "musicbox",
+      "Christmas",
+      "figurine"
+    ],
+    "skills": [
+      "needlework",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0020%20-%20Christmas%20bear%20music%20box%20figurine/after.jpeg",
+    "url": "/projects/0020%20-%20Christmas%20bear%20music%20box%20figurine/",
+    "endDate": "2024-02-13"
+  },
+  {
+    "id": "0019",
+    "folder": "0019 - Bear in giraffe onesie plush",
+    "projectName": "Bear in giraffe onesie plush",
+    "title": "Bear in giraffe onesie — new eyes, fabric tears, and hole repair",
+    "tags": [
+      "plush",
+      "bear",
+      "giraffe"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0019%20-%20Bear%20in%20giraffe%20onesie%20plush/after.jpeg",
+    "url": "/projects/0019%20-%20Bear%20in%20giraffe%20onesie%20plush/",
+    "endDate": "2024-02-12"
+  },
+  {
+    "id": "0018",
+    "folder": "0018 - Power Rangers Dino Megazord RC",
+    "projectName": "Power Rangers Dino Megazord RC",
+    "title": "Power Rangers Dino Megazord RC — controller board, switches, and cable",
+    "tags": [
+      "PowerRangers",
+      "Megazord",
+      "RC"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0018%20-%20Power%20Rangers%20Dino%20Megazord%20RC/after.jpeg",
+    "url": "/projects/0018%20-%20Power%20Rangers%20Dino%20Megazord%20RC/",
+    "endDate": "2025-02-08"
+  },
+  {
+    "id": "0016",
+    "folder": "0016 - Grey bashful bunny plush",
+    "projectName": "Grey bashful bunny plush",
+    "title": "Grey bashful bunny — deep clean, nose repair, and restuff",
+    "tags": [
+      "bunny",
+      "plush",
+      "bashful"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0016%20-%20Grey%20bashful%20bunny%20plush/after.jpeg",
+    "url": "/projects/0016%20-%20Grey%20bashful%20bunny%20plush/",
+    "endDate": "2025-02-09"
+  },
+  {
     "id": "0015",
     "folder": "0015 - Anpanman Kotoba Zukan DX",
     "projectName": "Anpanman Kotoba Zukan DX",
