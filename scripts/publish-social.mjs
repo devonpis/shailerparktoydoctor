@@ -2,7 +2,7 @@
 /**
  * Publish a repair project to Facebook, Instagram, and/or Threads (images only).
  *
- * Default: carousel of all project images (before → WIP-### → hero → after).
+ * Default: carousel in social order hero → after → before → WIP-### (webpage HTML uses before → WIP → after in the gallery).
  * Use --image after (etc.) for a single-image post.
  *
  * Usage:
@@ -209,6 +209,7 @@ async function main() {
     console.log(
       `Images for social (${imagePaths.length}/${total}, max ${SOCIAL_CAROUSEL_MAX}): ${includedNames}`
     );
+    console.log('Carousel order: hero → after → before → WIP-###');
     if (pickMethod && pickMethod !== 'all' && pickMethod !== 'single') {
       console.log(`Selection method: ${pickMethod}`);
     }

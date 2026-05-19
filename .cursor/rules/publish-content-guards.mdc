@@ -47,17 +47,27 @@ Also check **description + appended social hashtags** ≤ **500** characters tot
 ## Tags across Facebook, Instagram, Threads
 
 - One `tags` array in `config.json` is the source of truth for the **repair page** (all tags as chips) and gallery search (**1–30** in JSON).
-- **Social (FB + IG):** at most **3** hashtags per post — chosen by [`scripts/lib/social-tags.mjs`](../../scripts/lib/social-tags.mjs) (`pickSocialTags()`): prefer product/character/brand names over generic labels (`plush`, `vintage`, `repair`, etc.); tie-break by original order in `config.json`.
+- **Social (FB + IG):** at most **3** hashtags in the caption — if `config.tags` has more than three, use [`pickSocialTags()`](../../scripts/lib/social-tags.mjs) to choose the **most appropriate** three (product/character/brand over generic `plush`, `vintage`, `repair`, etc.); tie-break by original order in `config.json`. All tags still appear on the repair page.
 - **Threads:** **no hashtags**; post text is `buildThreadsCaption()` — ≤ **200** characters, **rewritten** from `description` via `rewriteForThreads()` (URLs stripped; no `…` truncation). See [`docs/publish-content-guards.md`](../../docs/publish-content-guards.md).
 - **Facebook / Instagram:** same caption string — `description` + the **3** social hashtags only.
 - Preview must list **social hashtags** (x/3) and **tags on story page only** when `config.tags` has more than three.
 
 There is no shared Meta “tags” API field for all three — FB/IG use `description` + picked hashtags; Threads uses the short summary only.
 
+## Image order: social vs webpage (different on purpose)
+
+| Channel | Order | Source |
+|---------|--------|--------|
+| **Webpage / HTML** (`publish-webpage.mjs`, `sync-project-story-images.mjs`) | WIP gallery: **before → WIP-### → after**; page hero / tile / OG: **hero → after → WIP → before** | [`listStoryGalleryImageNames()`](../../scripts/lib/project-media.mjs), [`pickFeaturedImageName()`](../../scripts/lib/project-media.mjs) — **leave as-is** |
+| **Social** (FB / IG / Threads carousel) | **hero → after → before → WIP-###** | [`listPublishImagePaths()`](../../scripts/lib/project-media.mjs) — **social only** |
+
+Do **not** apply social carousel order to story `index.html` or change webpage publish scripts to match social.
+
 ## Social carousel (max 10 images)
 
 - **Cap:** **10** images per unified FB / IG / Threads carousel (`SOCIAL_CAROUSEL_MAX`).
-- **When the folder has more than 10 images:** default **`--pick-images auto`** — **vision** (OpenAI, `OPENAI_API_KEY`) or **heuristic** scoring picks the best 10; falls back to **rules** (hero → before → after → WIP) on failure or `--no-ai`. Preview must show **selection method**, **included/omitted**, and any **notes** per omitted file.
+- **Carousel order (FB / IG / Threads):** **hero → after → before → WIP-###** (numeric). Implemented in [`listPublishImagePaths()`](../../scripts/lib/project-media.mjs); selection when &gt;10 keeps hero, after, before first, then WIPs.
+- **When the folder has more than 10 images:** default **`--pick-images auto`** — **vision** (OpenAI, `OPENAI_API_KEY`) or **heuristic** scoring picks the best 10; falls back to **rules** (hero → after → before → WIP) on failure or `--no-ai`. Preview must show **selection method**, **included/omitted**, **carousel order**, and any **notes** per omitted file.
 - **Webpage** publish is **not** capped.
 - **`--image after`** (etc.) = single-image post, no cap logic.
 

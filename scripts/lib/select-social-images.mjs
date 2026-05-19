@@ -13,7 +13,7 @@ import { selectImagesWithVision } from './social-image-vision.mjs';
  *   auto     — vision if OPENAI_API_KEY and > cap, else heuristic, else rules
  *   vision   — OpenAI vision (requires OPENAI_API_KEY)
  *   heuristic — local sharp scoring
- *   rules    — hero → before → after → WIP (T-00026 default)
+ *   rules    — hero → after → before → WIP (T-00026 default)
  */
 export async function selectImagesForSocialPublish(dir, config, options = {}) {
   const max = options.max ?? SOCIAL_CAROUSEL_MAX;
@@ -49,7 +49,7 @@ export async function selectImagesForSocialPublish(dir, config, options = {}) {
     return { ...selectImagesForSocial(dir, max), method: 'rules', summary: null, notes: {} };
   } catch (err) {
     console.warn(`Image selection (${mode}) failed: ${err.message}`);
-    console.warn('Falling back to rule-based selection (hero → before → after → WIP).');
+    console.warn('Falling back to rule-based selection (hero → after → before → WIP).');
     try {
       if (mode === 'vision') {
         return await selectImagesWithHeuristic(dir, max);

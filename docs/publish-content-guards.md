@@ -71,14 +71,25 @@ Preview and `publish-social.mjs` show both strings on dry-run. `validate-publish
 
 ---
 
+## Image order: social vs webpage (different on purpose)
+
+| Channel | Order | Do not mix |
+|---------|--------|------------|
+| **Webpage / HTML** | WIP gallery on story page: **before → WIP-### → after** (excludes `hero.*`). Page hero, gallery tile, OG: **hero → after → WIP-001 → before**. | [`listStoryGalleryImageNames()`](../scripts/lib/project-media.mjs), `publish-webpage.mjs`, `sync-project-story-images.mjs` — **unchanged** |
+| **Social carousel** | **hero → after → before → WIP-###** | [`listPublishImagePaths()`](../scripts/lib/project-media.mjs) — **social publish only** |
+
+Social order is for Meta carousels (lead with the showcase shot). Webpage order keeps a classic repair narrative in the gallery. Agents must **not** reorder webpage HTML to match social.
+
+---
+
 ## Social carousel: image count and priority
 
 | Item | Value |
 |------|-------|
 | **Max images** | **10** per post (`SOCIAL_CAROUSEL_MAX` in [`scripts/lib/project-media.mjs`](../scripts/lib/project-media.mjs)) |
-| **Webpage** | Unlimited — story `index.html` can show every image |
-| **Selection** (when folder has &gt; 10) | Keep **hero**, **before**, **after** (each if present), then **WIP-001**, **WIP-002**, … until the cap; **drop highest-numbered WIP** first |
-| **Carousel display order** | Story order: **before → WIP sequence → hero → after** (not the selection order above) |
+| **Webpage** | Unlimited — story `index.html` can show every image (webpage order above, not social order) |
+| **Selection** (when folder has &gt; 10) | Keep **hero**, **after**, **before** (each if present), then **WIP-001**, **WIP-002**, … until the cap; **drop highest-numbered WIP** first |
+| **Carousel display order** | **hero → after → before → WIP-###** (numeric WIP order). Same order when all images fit within the cap. |
 | **Single-image post** | `publish-social.mjs --image after` (or `hero` / `before`) — bypasses the cap |
 | **Preview / dry-run** | Lists **included** vs **omitted** filenames when truncation applies |
 | **Smart pick (&gt; 10)** | Default **`--pick-images auto`**: **OpenAI vision** if `OPENAI_API_KEY` in `.env`, else **local heuristic** (sharp clarity/size/role). Override: `--pick-images vision`, `heuristic`, or `rules` / `--no-ai` |
@@ -106,7 +117,9 @@ There is **no** single Meta API field that accepts `tags: []` for all three. **`
 
 ### How the three social tags are chosen
 
-When `config.tags` has more than three strings, `pickSocialTags()` scores each tag:
+Facebook and Instagram captions use **`description` + at most 3 hashtags** — never all tags from `config.json` when there are more than three.
+
+When `config.tags` has more than three strings, `pickSocialTags()` scores each tag and keeps the **three most appropriate** for social (agent judgement encoded in scoring):
 
 1. **Higher** if words overlap `projectName` or `title` (e.g. `Mattel`, `Pikachu`, `Megazord`).
 2. **Higher** for longer, specific labels (character lines, model names).

@@ -40,7 +40,7 @@ Respond with JSON only:
   "notes": { "omitted-filename.jpg": "short reason" }
 }
 
-"selected" must use exact filenames from the list, length <= ${max}, carousel order: before → WIP (numeric) → hero → after.`;
+"selected" must use exact filenames from the list, length <= ${max}, carousel order: hero → after → before → WIP (numeric).`;
 }
 
 function normalizeSelected(names, allowedBasenames) {
@@ -61,7 +61,7 @@ function storySort(included, storyOrder) {
 function ensureKeyStems(pickedNames, storyOrder, max) {
   const byPath = new Map(storyOrder.map((p) => [path.basename(p), p]));
   const set = new Set(pickedNames);
-  for (const stem of ['hero', 'before', 'after']) {
+  for (const stem of ['hero', 'after', 'before']) {
     const hit = storyOrder.find((p) => path.basename(p).toLowerCase().startsWith(stem));
     if (!hit) continue;
     const name = path.basename(hit);

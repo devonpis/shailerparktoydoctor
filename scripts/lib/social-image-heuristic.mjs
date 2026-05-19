@@ -36,7 +36,7 @@ export async function scoreImageForSocial(imagePath) {
 }
 
 function ensureKeyStems(pickedSet, storyOrder, max) {
-  for (const stem of ['hero', 'before', 'after']) {
+  for (const stem of ['hero', 'after', 'before']) {
     const hit = storyOrder.find((p) => path.basename(p).toLowerCase().startsWith(stem));
     if (!hit || pickedSet.has(hit)) continue;
     if (pickedSet.size >= max) {

@@ -54,7 +54,8 @@ export function pickPrimaryImage(dir) {
 export const SOCIAL_CAROUSEL_MAX = 10;
 
 /**
- * Story page “Work in progress” gallery: before → WIP-### → after.
+ * **Webpage / HTML** — “Work in progress” gallery order: before → WIP-### → after.
+ * Used by publish-webpage, scaffold, sync-project-story-images.mjs — not social.
  * Excludes hero.* only (before/after/WIP show even when also used as page hero).
  */
 export function listStoryGalleryImageNames(dir) {
@@ -85,16 +86,19 @@ export function storyGalleryImageAlt(name, index) {
   return 'Repair';
 }
 
-/** Story order for carousels: before → WIP sequence → hero → after. */
+/**
+ * **Social only** (FB / IG / Threads carousel) — display order: hero → after → before → WIP-###.
+ * Do not use for story index.html; webpage gallery uses listStoryGalleryImageNames().
+ */
 export function listPublishImagePaths(dir) {
   const names = listProjectImages(dir);
   const rank = (name) => {
     const lower = name.toLowerCase();
-    if (lower.startsWith('before')) return [0, 0, name];
+    if (lower.startsWith('hero')) return [0, 0, name];
+    if (lower.startsWith('after')) return [1, 0, name];
+    if (lower.startsWith('before')) return [2, 0, name];
     const wip = lower.match(/^wip-(\d+)/i);
-    if (wip) return [1, Number(wip[1]), name];
-    if (lower.startsWith('hero')) return [2, 0, name];
-    if (lower.startsWith('after')) return [3, 0, name];
+    if (wip) return [3, Number(wip[1]), name];
     return [4, 0, name];
   };
   return names
@@ -106,12 +110,12 @@ export function listPublishImagePaths(dir) {
     .map((n) => path.join(dir, n));
 }
 
-const SOCIAL_SELECTION_STEMS = ['hero', 'before', 'after'];
+const SOCIAL_SELECTION_STEMS = ['hero', 'after', 'before'];
 
 /**
  * Pick up to `max` images for social carousel.
- * Selection priority: hero → before → after → WIP-### (numeric).
- * Returned paths are re-sorted in story order (before → WIP → hero → after).
+ * Selection priority when over cap: hero → after → before → WIP-### (drop highest WIP first).
+ * Returned paths are in carousel order (hero → after → before → WIP).
  */
 export function selectImagesForSocial(dir, max = SOCIAL_CAROUSEL_MAX) {
   const storyOrder = listPublishImagePaths(dir);

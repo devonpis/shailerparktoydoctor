@@ -110,7 +110,7 @@ function validateConfig(config, dir) {
   const imageList = images?.length ? images : listMediaFiles(dir).images;
   if (imageList.length > SOCIAL_CAROUSEL_MAX) {
     warnings.push(
-      `Folder has ${imageList.length} images; social carousel uses at most ${SOCIAL_CAROUSEL_MAX} (hero → before → after → WIP). Webpage gallery is unlimited.`
+      `Folder has ${imageList.length} images; social carousel uses at most ${SOCIAL_CAROUSEL_MAX} (hero → after → before → WIP). Webpage gallery is unlimited and keeps before → WIP → after order.`
     );
   }
 

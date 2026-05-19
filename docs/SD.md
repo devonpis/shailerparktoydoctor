@@ -140,13 +140,13 @@ When posting **photos** to **Facebook, Instagram, and Threads** with one shared 
 If a project folder has **more** publishable images than the cap, **social** publish must **select** which files to upload using this **priority** (keep higher tiers first; drop lower tiers until within the cap):
 
 1. **`hero`**
-2. **`before`**
-3. **`after`**
+2. **`after`**
+3. **`before`**
 4. **`WIP-###`** (lowest priority — omit excess WIP shots first)
 
-Within a tier, preserve numeric WIP order. **Carousel display order** on the post may still follow story order (before → WIP → hero → after) for the **selected** set.
+Within WIP tier, preserve numeric order. **Carousel display order** on social posts is always **hero → after → before → WIP-###** for the **selected** set (same as [`listPublishImagePaths()`](../scripts/lib/project-media.mjs)).
 
-**Webpage** publishing has **no** image-count cap — all convention-named images may appear on the repair story page.
+**Webpage** publishing has **no** image-count cap — all convention-named images may appear on the repair story page. **Webpage image order is separate** and unchanged: WIP gallery **before → WIP → after**; hero/tile **hero → after → WIP → before** (see [`listStoryGalleryImageNames()`](../scripts/lib/project-media.mjs)). Do not align HTML publish with social carousel order.
 
 Selection rules, preview output, and script behaviour belong in [`docs/publish-content-guards.md`](publish-content-guards.md) and the publish workflow (**T-00026**).
 
