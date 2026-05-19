@@ -11,7 +11,7 @@ export const USB_FOLDER_TO_PROJECT_DIR = {
   Brown_ribbon_dog: '0079 - Tan shaggy dog brown ribbon',
   bunny: '0016 - Bunny cuddling toy',
   Bunny_towel: '0016 - Bunny cuddling toy',
-  Capybara_Plush: '0080 - Capybara Plush',
+  Capybara_Plush: '0080 - Capybara plush',
   Cece: '0039 - Cece doll',
   Dinotronic: '0035 - DinoTronic',
   Dog: '0081 - Terry cloth tan puppy plush',
