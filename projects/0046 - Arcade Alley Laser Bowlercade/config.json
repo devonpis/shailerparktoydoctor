@@ -1,0 +1,32 @@
+{
+  "isTemplate": false,
+  "projectName": "Arcade Alley Laser Bowlercade",
+  "title": "Laser Bowlercade — pin reload running smoothly",
+  "startDate": "2026-01-05",
+  "endDate": "2026-01-06",
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0046%20-%20Arcade%20Alley%20Laser%20Bowlercade/",
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "Arcade Alley",
+    "Bowlercade",
+    "bowling",
+    "electronic"
+  ],
+  "skills": [
+    "electronic",
+    "mechanical"
+  ],
+  "description": "Pins on this Arcade Alley Laser Bowlercade were stuck and would not reload. We reworked the plastic stud and rod so the motor can drive the reset mechanism without jamming.",
+  "itemDetails": "Arcade Alley Laser Bowlercade is a home tabletop bowling lane sold under the Arcade Alley brand (often JAKKS Pacific in recent retail). The set is a long plastic alley with nine pins, balls, and an automatic ball return — aimed at solo play or two-player scoring at home. Typical features include electronic scoring, automatic pin reset, and arcade-style sound effects. Identify the unit by Arcade Alley / Bowlercade branding on the lane shell and packaging; repair photos in this folder came from the workshop USB ingest folder Bowling_machine (Jan 2026).",
+  "repairDetails": "The Arcade Alley Laser Bowlercade would not reload bowling pins—the mechanism jammed and the motor could not overcome the load. The design puts high torque on the plastic stud and rod. We modified those parts to reduce friction and torque demand so the pin reset cycles smoothly again.",
+  "googleReview": {
+    "quote": "Thank you Grace and your family for fixing my son's electronic bowling alley, you have made a little boy so happy. Definitely recommend your services.",
+    "authorName": "Bradley G.",
+    "featuredOnTestimonials": true
+  }
+}

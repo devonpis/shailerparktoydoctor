@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Disney Tigger plush",
-  "title": "",
+  "title": "Disney Tigger — fabric and electronics restored",
   "startDate": "2025-11-19",
   "endDate": "2025-11-27",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0086%20-%20Disney%20Tigger%20plush/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -17,10 +17,11 @@
     "Tigger"
   ],
   "skills": [
-    "needlework"
+    "needlework",
+    "electronic"
   ],
-  "description": "Disney Tigger plush — sewing and cleaning.",
-  "itemDetails": "Disney Tigger plush is licensed Winnie the Pooh character merchandise from Disney's long-established plush programs. Tigger has been issued in many fabric and expression variants, so tags and production details are important for release-era matching.\n\nMost versions use striped polyester plush, embroidered face detailing, and soft fill with a shaped tail.",
-  "repairDetails": null,
+  "description": "Tigger needed plush repairs and electronic work. We fixed bad contacts and solder joints, reinforced wiring, and repaired cuts and tears after a deep clean.",
+  "itemDetails": "Disney Tigger plush is licensed Winnie the Pooh character merchandise from Disney's long-established plush programs. Tigger has been issued in many fabric and expression variants, so tags and production details are important for release-era matching. Most versions use striped polyester plush, embroidered face detailing, and soft fill with a shaped tail.",
+  "repairDetails": "This Disney Tigger plush had both fabric damage and electronic faults. We deep cleaned the plush, repaired internal circuit bad contacts, reinforced wiring and solder joints, and repaired cuts and tears in the fabric.",
   "googleReview": null
 }

@@ -57,6 +57,77 @@
     "endDate": "2024-02-02"
   },
   {
+    "id": "0092",
+    "folder": "0092 - Buzz Lightyear figure",
+    "projectName": "Buzz Lightyear figure",
+    "title": "Buzz Lightyear — board swap, joints, and touch-up",
+    "tags": [
+      "Toy Story",
+      "Buzz Lightyear",
+      "figure"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical",
+      "paintjob"
+    ],
+    "thumbnail": "/projects/0092%20-%20Buzz%20Lightyear%20figure/after.jpeg",
+    "url": "/projects/0092%20-%20Buzz%20Lightyear%20figure/",
+    "endDate": "2025-12-08"
+  },
+  {
+    "id": "0091",
+    "folder": "0091 - Woody doll Toy Story",
+    "projectName": "Woody doll Toy Story",
+    "title": "Woody doll — pull-string and contacts fixed",
+    "tags": [
+      "Toy Story",
+      "Woody",
+      "doll"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0091%20-%20Woody%20doll%20Toy%20Story/after.jpeg",
+    "url": "/projects/0091%20-%20Woody%20doll%20Toy%20Story/",
+    "endDate": "2025-11-13"
+  },
+  {
+    "id": "0090",
+    "folder": "0090 - Cream teddy blue satin bow",
+    "projectName": "Cream teddy blue satin bow",
+    "title": "Cream teddy — reinforced, restuffed, new bow",
+    "tags": [
+      "plush",
+      "teddy",
+      "vintage"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0090%20-%20Cream%20teddy%20blue%20satin%20bow/hero.jpeg",
+    "url": "/projects/0090%20-%20Cream%20teddy%20blue%20satin%20bow/",
+    "endDate": "2026-03-31"
+  },
+  {
+    "id": "0089",
+    "folder": "0089 - Brown sherpa teddy pink ribbon",
+    "projectName": "Brown sherpa teddy pink ribbon",
+    "title": "Brown sherpa teddy — clean and new ribbon",
+    "tags": [
+      "plush",
+      "teddy",
+      "sherpa"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0089%20-%20Brown%20sherpa%20teddy%20pink%20ribbon/after.jpeg",
+    "url": "/projects/0089%20-%20Brown%20sherpa%20teddy%20pink%20ribbon/",
+    "endDate": "2025-12-04"
+  },
+  {
     "id": "0088",
     "folder": "0088 - Yui Yuigahama Bunny Ver 1 4 FREEing",
     "projectName": "Yui Yuigahama Bunny Ver 1/4 FREEing",
@@ -77,6 +148,223 @@
     "endDate": "2026-03-28"
   },
   {
+    "id": "0087",
+    "folder": "0087 - Curly sherpa teddy gold organza bow",
+    "projectName": "Curly sherpa teddy gold organza bow",
+    "title": "Sherpa teddy — restuffed with a fresh bow",
+    "tags": [
+      "plush",
+      "teddy",
+      "sherpa"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0087%20-%20Curly%20sherpa%20teddy%20gold%20organza%20bow/after.jpeg",
+    "url": "/projects/0087%20-%20Curly%20sherpa%20teddy%20gold%20organza%20bow/",
+    "endDate": "2026-03-30"
+  },
+  {
+    "id": "0086",
+    "folder": "0086 - Disney Tigger plush",
+    "projectName": "Disney Tigger plush",
+    "title": "Disney Tigger — fabric and electronics restored",
+    "tags": [
+      "plush",
+      "Disney",
+      "Tigger"
+    ],
+    "skills": [
+      "needlework",
+      "electronic"
+    ],
+    "thumbnail": "/projects/0086%20-%20Disney%20Tigger%20plush/WIP-001.jpeg",
+    "url": "/projects/0086%20-%20Disney%20Tigger%20plush/",
+    "endDate": "2025-11-27"
+  },
+  {
+    "id": "0085",
+    "folder": "0085 - Vintage giant panda plush",
+    "projectName": "Vintage giant panda plush",
+    "title": "Vintage giant panda — cleaned and restuffed",
+    "tags": [
+      "plush",
+      "panda"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0085%20-%20Vintage%20giant%20panda%20plush/after.jpeg",
+    "url": "/projects/0085%20-%20Vintage%20giant%20panda%20plush/",
+    "endDate": "2026-03-28"
+  },
+  {
+    "id": "0084",
+    "folder": "0084 - Paddington Bear",
+    "projectName": "Paddington Bear",
+    "title": "Paddington Bear — deep clean and restuff",
+    "tags": [
+      "plush",
+      "Paddington"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0084%20-%20Paddington%20Bear/after.jpeg",
+    "url": "/projects/0084%20-%20Paddington%20Bear/",
+    "endDate": "2026-01-08"
+  },
+  {
+    "id": "0083",
+    "folder": "0083 - Teddy in pink pajamas",
+    "projectName": "Teddy in pink pajamas",
+    "title": "Pink pajama teddy — nose repair and restuff",
+    "tags": [
+      "plush",
+      "teddy"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0083%20-%20Teddy%20in%20pink%20pajamas/after.jpeg",
+    "url": "/projects/0083%20-%20Teddy%20in%20pink%20pajamas/",
+    "endDate": "2026-04-22"
+  },
+  {
+    "id": "0082",
+    "folder": "0082 - Elephant baby lovey blanket",
+    "projectName": "Elephant baby lovey blanket",
+    "title": "Elephant lovey — new trim, fabric, and stitches",
+    "tags": [
+      "plush",
+      "lovey",
+      "elephant"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0082%20-%20Elephant%20baby%20lovey%20blanket/after.jpeg",
+    "url": "/projects/0082%20-%20Elephant%20baby%20lovey%20blanket/",
+    "endDate": "2025-12-09"
+  },
+  {
+    "id": "0081",
+    "folder": "0081 - Terry cloth tan puppy plush",
+    "projectName": "Terry cloth tan puppy plush",
+    "title": "Terry-cloth puppy — new eyes and restuff",
+    "tags": [
+      "plush",
+      "dog"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0081%20-%20Terry%20cloth%20tan%20puppy%20plush/after.jpeg",
+    "url": "/projects/0081%20-%20Terry%20cloth%20tan%20puppy%20plush/",
+    "endDate": "2026-04-22"
+  },
+  {
+    "id": "0080",
+    "folder": "0080 - Capybara plush",
+    "projectName": "Capybara plush",
+    "title": "Capybara plush — head on, stuffing restored",
+    "tags": [
+      "plush",
+      "capybara"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0080%20-%20Capybara%20plush/after.jpeg",
+    "url": "/projects/0080%20-%20Capybara%20plush/",
+    "endDate": "2026-02-18"
+  },
+  {
+    "id": "0079",
+    "folder": "0079 - Tan shaggy dog brown ribbon",
+    "projectName": "Tan shaggy dog brown ribbon",
+    "title": "Shaggy tan dog — deep clean refresh",
+    "tags": [
+      "plush",
+      "dog"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0079%20-%20Tan%20shaggy%20dog%20brown%20ribbon/after.jpeg",
+    "url": "/projects/0079%20-%20Tan%20shaggy%20dog%20brown%20ribbon/",
+    "endDate": "2025-12-14"
+  },
+  {
+    "id": "0078",
+    "folder": "0078 - Disney Pluto plush",
+    "projectName": "Disney Pluto plush",
+    "title": "Disney Pluto — tears closed and restuffed",
+    "tags": [
+      "plush",
+      "Disney",
+      "Pluto"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0078%20-%20Disney%20Pluto%20plush/hero.jpeg",
+    "url": "/projects/0078%20-%20Disney%20Pluto%20plush/",
+    "endDate": "2026-03-03"
+  },
+  {
+    "id": "0076",
+    "folder": "0076 - Sleeping tan teddy blue pillow",
+    "projectName": "Sleeping tan teddy blue pillow",
+    "title": "Sleeping teddy — battery contacts renewed",
+    "tags": [
+      "teddy",
+      "plush",
+      "pillow"
+    ],
+    "skills": [
+      "electronic"
+    ],
+    "thumbnail": "/projects/0076%20-%20Sleeping%20tan%20teddy%20blue%20pillow/after.jpeg",
+    "url": "/projects/0076%20-%20Sleeping%20tan%20teddy%20blue%20pillow/",
+    "endDate": "2026-05-14"
+  },
+  {
+    "id": "0074",
+    "folder": "0074 - Jellycat Bashful bunnies yellow and navy",
+    "projectName": "Jellycat Bashful bunnies yellow and navy",
+    "title": "Jellycat Bashful bunnies — limbs reattached, restuffed",
+    "tags": [
+      "Jellycat",
+      "bunny",
+      "plush"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0074%20-%20Jellycat%20Bashful%20bunnies%20yellow%20and%20navy/WIP-001.jpeg",
+    "url": "/projects/0074%20-%20Jellycat%20Bashful%20bunnies%20yellow%20and%20navy/",
+    "endDate": "2026-05-08"
+  },
+  {
+    "id": "0067",
+    "folder": "0067 - Dakin stroller huggers with music box",
+    "projectName": "Dakin stroller huggers with music box",
+    "title": "Dakin giraffe huggers — wind-up music box serviced",
+    "tags": [
+      "Dakin",
+      "music box",
+      "plush"
+    ],
+    "skills": [
+      "needlework",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0067%20-%20Dakin%20stroller%20huggers%20with%20music%20box/after.jpeg",
+    "url": "/projects/0067%20-%20Dakin%20stroller%20huggers%20with%20music%20box/",
+    "endDate": "2026-04-14"
+  },
+  {
     "id": "0066",
     "folder": "0066 - Lucy dalmatian plush dog",
     "projectName": "Lucy dalmatian plush dog",
@@ -92,6 +380,76 @@
     "thumbnail": "/projects/0066%20-%20Lucy%20dalmatian%20plush%20dog/after.jpeg",
     "url": "/projects/0066%20-%20Lucy%20dalmatian%20plush%20dog/",
     "endDate": "2026-04-05"
+  },
+  {
+    "id": "0062",
+    "folder": "0062 - Bob the Builder and Spud plush",
+    "projectName": "Bob the Builder and Spud plush",
+    "title": "Bob and Spud — switches, wiring, and plush refresh",
+    "tags": [
+      "Bob the Builder",
+      "Spud",
+      "plush"
+    ],
+    "skills": [
+      "needlework",
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0062%20-%20Bob%20the%20Builder%20and%20Spud%20plush/after.jpeg",
+    "url": "/projects/0062%20-%20Bob%20the%20Builder%20and%20Spud%20plush/",
+    "endDate": "2026-01-22"
+  },
+  {
+    "id": "0059",
+    "folder": "0059 - Brown kangaroo plush tan pouch",
+    "projectName": "Brown kangaroo plush tan pouch",
+    "title": "Kangaroo plush — tail tears mended and restuffed",
+    "tags": [
+      "kangaroo",
+      "plush"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0059%20-%20Brown%20kangaroo%20plush%20tan%20pouch/after.jpeg",
+    "url": "/projects/0059%20-%20Brown%20kangaroo%20plush%20tan%20pouch/",
+    "endDate": "2026-01-19"
+  },
+  {
+    "id": "0058",
+    "folder": "0058 - John Deere ride on tractor",
+    "projectName": "John Deere ride-on tractor",
+    "title": "John Deere ride-on — electronics back on the job",
+    "tags": [
+      "ride-on",
+      "tractor",
+      "John Deere"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0058%20-%20John%20Deere%20ride%20on%20tractor/after.jpeg",
+    "url": "/projects/0058%20-%20John%20Deere%20ride%20on%20tractor/",
+    "endDate": "2026-01-16"
+  },
+  {
+    "id": "0057",
+    "folder": "0057 - Yellow Yoshi plush",
+    "projectName": "Yellow Yoshi plush",
+    "title": "Yellow Yoshi — tears patched and restuffed",
+    "tags": [
+      "Yoshi",
+      "Nintendo",
+      "plush"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0057%20-%20Yellow%20Yoshi%20plush/after.jpeg",
+    "url": "/projects/0057%20-%20Yellow%20Yoshi%20plush/",
+    "endDate": "2026-01-17"
   },
   {
     "id": "0055",
@@ -134,6 +492,23 @@
     "endDate": "2025-10-30"
   },
   {
+    "id": "0052",
+    "folder": "0052 - Singing Elvis Christmas dog",
+    "projectName": "Singing Elvis Christmas dog",
+    "title": "Singing Elvis dog — power path restored",
+    "tags": [
+      "dog",
+      "Christmas",
+      "animatronic"
+    ],
+    "skills": [
+      "electronic"
+    ],
+    "thumbnail": "/projects/0052%20-%20Singing%20Elvis%20Christmas%20dog/after.jpeg",
+    "url": "/projects/0052%20-%20Singing%20Elvis%20Christmas%20dog/",
+    "endDate": "2026-01-12"
+  },
+  {
     "id": "0051",
     "folder": "0051 - Harold singing reindeer",
     "projectName": "Harold singing reindeer",
@@ -151,6 +526,61 @@
     "thumbnail": "/projects/0051%20-%20Harold%20singing%20reindeer/after.jpeg",
     "url": "/projects/0051%20-%20Harold%20singing%20reindeer/",
     "endDate": "2026-01-09"
+  },
+  {
+    "id": "0050",
+    "folder": "0050 - Toy Story Woody pull string doll",
+    "projectName": "Toy Story Woody pull-string doll",
+    "title": "Woody pull-string — sound box springs back to life",
+    "tags": [
+      "Toy Story",
+      "Woody",
+      "doll"
+    ],
+    "skills": [
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0050%20-%20Toy%20Story%20Woody%20pull%20string%20doll/after.jpeg",
+    "url": "/projects/0050%20-%20Toy%20Story%20Woody%20pull%20string%20doll/",
+    "endDate": "2026-05-06"
+  },
+  {
+    "id": "0046",
+    "folder": "0046 - Arcade Alley Laser Bowlercade",
+    "projectName": "Arcade Alley Laser Bowlercade",
+    "title": "Laser Bowlercade — pin reload running smoothly",
+    "tags": [
+      "Arcade Alley",
+      "Bowlercade",
+      "bowling",
+      "electronic"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0046%20-%20Arcade%20Alley%20Laser%20Bowlercade/hero.jpeg",
+    "url": "/projects/0046%20-%20Arcade%20Alley%20Laser%20Bowlercade/",
+    "endDate": "2026-01-06"
+  },
+  {
+    "id": "0045",
+    "folder": "0045 - Beanie Boo husky plush",
+    "projectName": "Beanie Boo husky plush",
+    "title": "Beanie Boo husky — eyes back, nose tears mended",
+    "tags": [
+      "husky",
+      "dog",
+      "plush",
+      "Ty",
+      "Beanie Boo"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0045%20-%20Beanie%20Boo%20husky%20plush/after.jpeg",
+    "url": "/projects/0045%20-%20Beanie%20Boo%20husky%20plush/",
+    "endDate": "2025-12-02"
   },
   {
     "id": "0044",
@@ -762,6 +1192,23 @@
     "thumbnail": "/projects/0003%20-%20Donald%20Duck/after.jpeg",
     "url": "/projects/0003%20-%20Donald%20Duck/",
     "endDate": "2026-05-06"
+  },
+  {
+    "id": "0002",
+    "folder": "0002 - Venom",
+    "projectName": "Hot Toys Venom",
+    "title": "Hot Toys Venom — arm reassembly",
+    "tags": [
+      "Figure restoration",
+      "Hot Toys",
+      "Venom"
+    ],
+    "skills": [
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0002%20-%20Venom/after.jpeg",
+    "url": "/projects/0002%20-%20Venom/",
+    "endDate": "2026-05-15"
   },
   {
     "id": "0001",

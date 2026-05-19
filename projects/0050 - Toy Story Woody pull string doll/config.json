@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Toy Story Woody pull-string doll",
-  "title": "",
+  "title": "Woody pull-string — sound box springs back to life",
   "startDate": "2026-01-05",
   "endDate": "2026-05-06",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0050%20-%20Toy%20Story%20Woody%20pull%20string%20doll/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -17,12 +17,10 @@
     "doll"
   ],
   "skills": [
-    "needlework",
-    "electronic",
     "mechanical"
   ],
-  "description": "Toy Story Woody pull-string doll — electronics repair, mechanical repair, and cleaning and refresh.",
-  "itemDetails": "Toy Story Woody pull-string dolls are licensed Pixar/Disney products, with major production by Thinkway Toys across multiple film generations. The pull-string voice format became iconic from the original 1995 Toy Story release onward.\n\nConstruction usually combines a soft body with molded plastic head/hands/boots, stitched costume textiles, and an internal voice pull-cord module.",
-  "repairDetails": null,
+  "description": "Woody’s pull string no longer fired the sound box. We repaired the spring mechanism inside the pull-string housing so phrases play when the cord is pulled.",
+  "itemDetails": "Toy Story Woody pull-string dolls are licensed Pixar/Disney products, with major production by Thinkway Toys across multiple film generations. The pull-string voice format became iconic from the original 1995 Toy Story release onward. Construction usually combines a soft body with molded plastic head/hands/boots, stitched costume textiles, and an internal voice pull-cord module.",
+  "repairDetails": "This Toy Story Woody pull-string doll would not pull or trigger the sound box when the cord was drawn. We repaired the spring mechanism inside the pull-string housing so the voice box triggers reliably again.",
   "googleReview": null
 }

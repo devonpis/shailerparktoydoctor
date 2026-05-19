@@ -7,7 +7,7 @@
 export const USB_FOLDER_TO_PROJECT_DIR = {
   bear_pillow: '0076 - Froggie pillow',
   Bob_n_Spud: '0062 - Bob and Spud',
-  Bowling_machine: '0046 - Bowing machine',
+  Bowling_machine: '0046 - Arcade Alley Laser Bowlercade',
   Brown_ribbon_dog: '0079 - Tan shaggy dog brown ribbon',
   bunny: '0016 - Bunny cuddling toy',
   Bunny_towel: '0016 - Bunny cuddling toy',

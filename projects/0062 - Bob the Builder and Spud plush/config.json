@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Bob the Builder and Spud plush",
-  "title": "",
+  "title": "Bob and Spud — switches, wiring, and plush refresh",
   "startDate": "2026-01-22",
   "endDate": "2026-01-22",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0062%20-%20Bob%20the%20Builder%20and%20Spud%20plush/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -18,10 +18,11 @@
   ],
   "skills": [
     "needlework",
-    "electronic"
+    "electronic",
+    "mechanical"
   ],
-  "description": "Bob the Builder and Spud plush — electronics repair, cleaning and refresh, and sewing and fabric repair.",
-  "itemDetails": "Bob the Builder and Spud plush toys are licensed character merchandise from the Bob the Builder franchise era that was especially strong in the late 1990s and 2000s. Character pairings were commonly sold as companion plush sets for preschool audiences.\n\nTypical construction uses polyester plush and fill with embroidered or printed facial details, and some variants include sound modules.",
-  "repairDetails": null,
+  "description": "Bob needed a hand switch repair; Spud needed board work, new battery contacts, and wiring after vinegar cleaning had corroded the metal parts. We restored both Builder pals for play.",
+  "itemDetails": "Bob the Builder and Spud plush toys are licensed character merchandise from the Bob the Builder franchise era that was especially strong in the late 1990s and 2000s. Character pairings were commonly sold as companion plush sets for preschool audiences. Typical construction uses polyester plush and fill with embroidered or printed facial details, and some variants include sound modules.",
+  "repairDetails": "Two Bob the Builder plush mates came in together: Bob and Spud. On Bob we repaired the hand switch. On Spud we repaired the electronic circuit board, replaced battery contacts and corroded wiring—the metal parts had been cleaned with vinegar earlier, which had accelerated corrosion. Both figures were cleaned and checked after electrical work.",
   "googleReview": null
 }

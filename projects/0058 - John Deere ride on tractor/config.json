@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "John Deere ride-on tractor",
-  "title": "",
+  "title": "John Deere ride-on — electronics back on the job",
   "startDate": "2026-01-16",
   "endDate": "2026-01-16",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0058%20-%20John%20Deere%20ride%20on%20tractor/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -17,10 +17,11 @@
     "John Deere"
   ],
   "skills": [
-    "electronic"
+    "electronic",
+    "mechanical"
   ],
-  "description": "John Deere ride-on tractor — electronics repair and battery and power repair.",
-  "itemDetails": "John Deere ride-on tractor toys are licensed child ride-ons produced across multiple manufacturers (including pedal and battery-powered variants) from the late 20th century onward. They mirror real John Deere styling and are a long-standing farm-toy category.\n\nCommon construction uses heavy-duty molded plastic body panels, steel axles, rubber/plastic wheels, and in powered models a 6V/12V battery drive system.",
-  "repairDetails": null,
+  "description": "This ride-on tractor needed electronic repair. We opened the shell as required, fixed the circuit board, and put the unit back together for reliable play.",
+  "itemDetails": "John Deere ride-on tractor toys are licensed child ride-ons produced across multiple manufacturers (including pedal and battery-powered variants) from the late 20th century onward. They mirror real John Deere styling and are a long-standing farm-toy category. Common construction uses heavy-duty molded plastic body panels, steel axles, rubber/plastic wheels, and in powered models a 6V/12V battery drive system.",
+  "repairDetails": "This John Deere ride-on tractor had electronic faults that needed board-level work. We partially disassembled the toy for access, repaired the circuit board, and reassembled so drive and features work again.",
   "googleReview": null
 }

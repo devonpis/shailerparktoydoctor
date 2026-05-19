@@ -1,11 +1,11 @@
 {
   "isTemplate": false,
   "projectName": "Woody doll Toy Story",
-  "title": "",
+  "title": "Woody doll — pull-string and contacts fixed",
   "startDate": "2025-11-01",
   "endDate": "2025-11-13",
-  "status": "WIP",
-  "webpageUrl": null,
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0091%20-%20Woody%20doll%20Toy%20Story/",
   "facebookUrl": null,
   "instagramUrl": null,
   "threadUrl": null,
@@ -17,11 +17,11 @@
     "doll"
   ],
   "skills": [
-    "needlework",
-    "electronic"
+    "electronic",
+    "mechanical"
   ],
-  "description": "Woody doll Toy Story — sewing and electronics.",
-  "itemDetails": "Woody doll (Toy Story) is licensed Disney-Pixar character merchandise, with major pull-string and poseable versions produced over multiple film eras by approved toy partners. Woody remains one of the franchise's most collectible core characters.\n\nConstruction typically combines textile body and costume parts with molded plastic head/hands/boots, plus internal voice or pose mechanisms depending on release.",
-  "repairDetails": null,
+  "description": "Woody’s pull string and battery contacts both failed. We repaired the spring box mechanism and the corroded contacts so the doll speaks reliably again.",
+  "itemDetails": "Woody doll (Toy Story) is licensed Disney-Pixar character merchandise, with major pull-string and poseable versions produced over multiple film eras by approved toy partners. Woody remains one of the franchise's most collectible core characters. Construction typically combines textile body and costume parts with molded plastic head/hands/boots, plus internal voice or pose mechanisms depending on release.",
+  "repairDetails": "This Woody pull-string doll would not trigger the sound box, and the battery path was corroded. We repaired the spring mechanism in the pull-string housing and cleaned or replaced corroded battery contacts so voice and power work together again.",
   "googleReview": null
 }
