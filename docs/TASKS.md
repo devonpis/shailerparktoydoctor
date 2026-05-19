@@ -4,7 +4,7 @@ Work is **driven by this backlog**. Each task maps to [`SD.md`](SD.md) requireme
 
 **Task IDs:** `T-` plus **five digits**, zero-padded (e.g. `T-00001`, `T-00042`).
 
-**Statuses:** `Todo` · `In progress` · `Done` · `Blocked`
+**Statuses:** `Todo` · `In progress` · `Done` · `Blocked` · `Cancelled`
 
 When a task is **Done**, mark it here in the same change set as the implementation (or immediately after), so the list stays truthful.
 
@@ -46,7 +46,8 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | T-00032 | Done | CSV metadata gap report for owner fill-in | BR-026 |
 | T-00033 | Done | Fill itemDetails summaries (Donald char budgets) | BR-027 |
 | T-00034 | Done | Review title & description from images + metadata | BR-029 |
-| T-00035 | Todo | Import owner CSV; polish repairDetails & description | BR-030 |
+| T-00035 | Cancelled | Import owner CSV; polish repairDetails & description (deferred) | BR-030 |
+| T-00045 | Done | Engineering wrap-up: maintenance mode, runbook, smoke tests | BR-008 |
 | T-00036 | Done | Rename skill `plush` → `needlework` (after T-00035) | BR-031 |
 | T-00037 | Done | Replace legacy homepage images 0004–0015 | BR-032 |
 | T-00038 | Done | Update testimonials page (last before cutover) | BR-033 |
@@ -356,20 +357,20 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 ---
 
-## T-00026 — Social publish: image cap + priority selection (WIP last)
+## T-00026 — Social publish: image cap + carousel order (closed)
 
 | Field | Value |
 |-------|-------|
 | **Status** | Done |
 | **Requirements** | BR-020, BR-012 |
-| **Goal** | When a project has more images than the **cross-platform social cap**, publish only up to the limit using **hero → before → after → WIP** priority. **Webpage** publish remains unlimited. |
-| **Cap** | **10** images per carousel (lowest of FB / IG / Threads for this repo’s unified flow; see BR-020). Centralize constant in [`scripts/lib/social-publish.mjs`](../scripts/lib/social-publish.mjs) / [`scripts/lib/project-media.mjs`](../scripts/lib/project-media.mjs). |
-| **Selection** | `selectImagesForSocial()` (rules) + `selectImagesForSocialPublish()` — when &gt; cap: **`--pick-images auto`** uses OpenAI vision if `OPENAI_API_KEY`, else heuristic scoring; `--no-ai` / `rules` = hero → before → after → WIP. Story display order unchanged. |
-| **Workflow** | Wired in [`scripts/publish-social.mjs`](../scripts/publish-social.mjs). **Dry-run** lists method, **included** vs **omitted**, and per-file notes. Shipped in `321c1a8`. |
-| **Docs** | Extend [`docs/publish-content-guards.md`](publish-content-guards.md) with image-cap table and priority; update [`.cursor/rules/publish-content-guards.mdc`](../.cursor/rules/publish-content-guards.mdc) preview checklist. |
-| **Depends on** | T-00006, T-00007 (existing publish stack) |
-| **Related** | T-00027 (smaller files help Meta fetch; separate concern) |
-| **Out of scope** | Changing webpage gallery limits; video carousel limits; per-platform different caps in one run |
+| **Goal** | When a project has more images than the **cross-platform social cap**, publish only up to the limit. **Carousel display order (social):** **hero → after → before → WIP-###**. **Webpage** gallery stays **before → WIP → after** (hero excluded from WIP grid); page hero/OG: **hero → after → WIP → before**. |
+| **Cap** | **10** images per carousel — `SOCIAL_CAROUSEL_MAX` in [`scripts/lib/project-media.mjs`](../scripts/lib/project-media.mjs). |
+| **Selection when over cap** | Priority to **keep:** hero → after → before → WIP (lowest WIP numbers first); drop highest WIP numbers first. `selectImagesForSocial()` + `selectImagesForSocialPublish()` — when &gt; cap: **`--pick-images auto`** uses OpenAI vision if `OPENAI_API_KEY`, else heuristic; `--no-ai` / `rules` use the priority above. |
+| **Workflow** | [`listPublishImagePaths()`](../scripts/lib/project-media.mjs) defines social order; wired in [`scripts/publish-social.mjs`](../scripts/publish-social.mjs). **Dry-run** lists method, **included** vs **omitted**, and per-file notes. |
+| **Docs** | [`docs/publish-content-guards.md`](publish-content-guards.md), [`.cursor/rules/publish-content-guards.mdc`](../.cursor/rules/publish-content-guards.mdc), BR-020 in SD.md. |
+| **Depends on** | T-00006, T-00007 |
+| **Related** | T-00027 (smaller files help Meta fetch) |
+| **Out of scope** | Changing webpage gallery order to match social; video carousel; per-platform different caps in one run |
 
 ---
 
@@ -492,16 +493,24 @@ When a task is **Done**, mark it here in the same change set as the implementati
 
 | Field | Value |
 |-------|-------|
-| **Status** | Todo |
+| **Status** | **Cancelled** (deferred) |
 | **Requirements** | BR-030 |
-| **Goal** | When the filled **T-00032** CSV returns from owner: merge into `config.json`, then produce publish-ready copy. |
-| **Import** | `repairDetails_FILL_IN`, `skills_FILL_IN`; optional `startDate` / `endDate` if filled. Script e.g. `scripts/import-project-metadata-csv.mjs <path.csv> [--dry-run]`. Match rows by **`id`**. |
-| **repairDetails** | From owner draft → **presentable** website prose (paragraphs, same **char tiers** as `itemDetails`: short ≤200, standard ~600, full ~1000 — see [`item-details-budget.mjs`](../scripts/lib/item-details-budget.mjs)). |
-| **description** | Generate ≤500 char **social/website lead** from `projectName`, `itemDetails`, polished `repairDetails`, `skills` (style of **0002** / **0003**, not `Name — sewing and cleaning`). |
-| **skills** | Apply `skills_FILL_IN`; normalize via [`normalize-project-skills.mjs`](../scripts/normalize-project-skills.mjs) (maps to `needlework` after **T-00036**). |
-| **Depends on** | **T-00032** (CSV sent; owner returns filled file) |
-| **Blocks** | **T-00036** (rename plush → needlework); **T-00034** / **T-00024** for updated metadata |
-| **Out of scope** | `title` rewrites (T-00034); image replacement (**T-00037**); auto-publish |
+| **Goal** | *(Deferred)* Bulk import from **T-00032** CSV + auto-generate `description` / polish `repairDetails`. |
+| **Outcome** | **2026-05:** Owner will provide metadata **in batch** via chat and direct `config.json` edits instead of a round-trip import script. **T-00032** export remains available (`export-project-metadata-gaps.mjs`). Re-open this task if a filled spreadsheet import is needed later. |
+| **Still available** | Per-project agent edits; [`polish-project-metadata.mjs`](../scripts/polish-project-metadata.mjs); [`apply-repair-details-policy.mjs`](../scripts/apply-repair-details-policy.mjs); **T-00036** `needlework` rename (done). |
+| **Out of scope (while cancelled)** | `import-project-metadata-csv.mjs`; auto-publish |
+
+---
+
+## T-00045 — Engineering wrap-up: maintenance mode
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-008 |
+| **Goal** | Close active engineering; document **on-demand** owner workflow; add light regression tests for publish libs. |
+| **Outcome** | [`docs/owner-runbook.md`](owner-runbook.md) (one-page cheat sheet). **T-00035** cancelled (batch metadata in chat). **T-00026** task body updated (social vs webpage image order). `npm test` — smoke tests under [`test/`](../test/). Explicit `publish <id> to …` + preview + confirm unchanged. |
+| **Out of scope** | New features (video-to-social, batch publish, CSV import); HTML/site rebuild |
 
 ---
 

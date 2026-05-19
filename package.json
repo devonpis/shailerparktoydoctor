@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "optimize-images": "node scripts/optimize-project-images.mjs --all"
+    "optimize-images": "node scripts/optimize-project-images.mjs --all",
+    "test": "node --test test/*.test.mjs"
   },
   "devDependencies": {
     "sharp": "^0.33.5"

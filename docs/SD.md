@@ -243,14 +243,14 @@ Report: `node scripts/report-title-description-review.mjs` → [`docs/reports/`]
 
 ## BR-030 — Import owner metadata CSV and generate publish copy
 
-After **T-00032** fill-in CSV is returned:
+**Status:** **Deferred** — **T-00035** cancelled (2026-05). Owner updates metadata **in batch** via chat and `config.json` edits. **T-00032** gap export (`export-project-metadata-gaps.mjs`) remains for optional spreadsheet fill-in; no import script until re-scoped.
+
+When/if CSV import is built:
 
 1. **Import** `repairDetails_FILL_IN` and `skills_FILL_IN` (and optional date columns) into matching `projects/<id>/config.json` rows.
 2. **Polish** owner draft **`repairDetails`** into presentable website copy using the same tier budgets as **`itemDetails`** ([`scripts/lib/item-details-budget.mjs`](../scripts/lib/item-details-budget.mjs) — short / standard / full).
 3. **Generate** **`description`** (≤500 chars, social/website lead) from **`projectName`**, **`itemDetails`**, polished **`repairDetails`**, and **`skills`** — not skill-list stubs.
-4. **Normalize** **`skills`** to canonical IDs (see BR-028; after **T-00036**, `needlework` replaces `plush`).
-
-Implementation: **T-00035**. Blocks **T-00034** description pass for CSV-filled projects; **T-00024** SEO should run after this.
+4. **Normalize** **`skills`** to canonical IDs (see BR-028; **`needlework`** — **T-00036** done).
 
 ---
 

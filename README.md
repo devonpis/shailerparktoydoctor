@@ -77,6 +77,8 @@ mindmap
 
 ## Project management (config + publishing)
 
+**Owner cheat sheet:** [`docs/owner-runbook.md`](docs/owner-runbook.md) — DONE checklist, publish commands, image sync, explicit publish phrases.
+
 Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-%20template/config.json) (see template keys). This file is the **single source of truth** for promotion state.
 
 ### Content fields (required before publish)
