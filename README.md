@@ -2,7 +2,7 @@
 
 Static site and publishing workflow for **Shailer Park Toy Doctor** (toy repair / restoration). Business URLs and contact details: [`docs/business-info.md`](docs/business-info.md) (e.g. **https://sptoydoctor.com.au/**).
 
-**AI agent entry point:** start here → **[`docs/SD.md`](docs/SD.md)** (requirements) + **[`docs/TASKS.md`](docs/TASKS.md)** (backlog) → per-repair **[`projects/0000 - template/config.json`](projects/0000%20-%20template/config.json)**. Cursor rules under [`.cursor/rules/`](.cursor/rules/) cover **task-driven commits**, **human confirmation** (publish, secrets, commit, push), and **project lifecycle** (`DONE` gate, URL bookkeeping, **no `*.html` edits unless you ask for HTML work**).
+**AI agent entry point:** start here → **[`docs/SD.md`](docs/SD.md)** (requirements) + **[`docs/TASKS.md`](docs/TASKS.md)** (backlog) → per-repair **[`projects/0000 - template/config.json`](projects/0000%20-%20template/config.json)**. Ask **“what can I do?”** or **“commands”** for the action menu ([`docs/owner-runbook.md`](docs/owner-runbook.md)). Cursor rules under [`.cursor/rules/`](.cursor/rules/) cover **task-driven commits**, **human confirmation** (publish, secrets, commit, push), and **project lifecycle** (`DONE` gate, URL bookkeeping, **no `*.html` edits unless you ask for HTML work**).
 
 ---
 
@@ -96,13 +96,13 @@ Each repair is a folder under `projects/` with [`config.json`](projects/0000%20-
 | *(privacy)* | **Do not** store other customer names, phones, or emails in `config.json`, HTML, or imports (e.g. timesheet client rows). See [`.cursor/rules/client-privacy-no-pii-in-repo.mdc`](.cursor/rules/client-privacy-no-pii-in-repo.mdc). |
 | Images / video | `before`, `after`, `hero`, `WIP-###`, or video files in the project folder |
 
-### Google reviews (paste in chat)
+### Testimonials / Google reviews (paste in chat)
 
-When you copy a review from Google Maps, paste it and say which project (e.g. **`add google review to 0003`**). The agent maps the review to a project, then runs:
+When you copy a review from Google Maps, paste it and say which project (e.g. **`add testimonial to 0003`** or **`add google review to 0003`**). For general shop praise with no repair, say **`add testimonial`** only. The agent maps repair-linked reviews to a project, then runs:
 
 `node scripts/apply-google-review.mjs <id> --author "…" --quote "…" [--profile-url …]`
 
-That updates **`config.json`**, regens **`index.html`** when it exists, and rebuilds **`new/testimonials.html`** (with a **Repair:** link when the story page exists). Skips automatically if that review is already on the testimonials page (`--force` to override). General reviews with no project → `data/testimonials-standalone.json` + `node scripts/sync-testimonials-html.mjs`. Details: [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md) and [`.cursor/rules/google-review-testimonial-workflow.mdc`](.cursor/rules/google-review-testimonial-workflow.mdc).
+That updates **`config.json`**, regens **`index.html`** when it exists, and rebuilds **`testimonials.html`** (with a **Repair:** link when the story page exists). Skips automatically if that review is already on the testimonials page (`--force` to override). General reviews with no project → `data/testimonials-standalone.json` + `node scripts/sync-testimonials-html.mjs`. Details: [`docs/website-testimonials-page-plan.md`](docs/website-testimonials-page-plan.md) and [`.cursor/rules/google-review-testimonial-workflow.mdc`](.cursor/rules/google-review-testimonial-workflow.mdc).
 
 Before any publish, run: `node scripts/validate-publish.mjs <project-id>` — must exit **0**. For social (after explicit `publish …` + confirm in chat): push `main`, then `node scripts/publish-social.mjs <project-id> --use-site --wait-for-site` for Instagram/Threads (polls until all project images are live; `--image after` optional; Facebook can run without `--use-site`).
 

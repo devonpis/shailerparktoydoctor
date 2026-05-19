@@ -1,0 +1,27 @@
+---
+description: When owner asks what they can do, commands, or how to use the repo — reply with the action menu from docs/owner-runbook.md
+alwaysApply: true
+---
+
+# Owner help — “what can I do?” / commands
+
+When the owner asks **what they can do**, **available commands**, **how this project works**, **help**, or similar (with no other specific task), reply with a **short structured menu** — do not start publish, commit, or HTML work from that question alone.
+
+Include **testimonials** in the menu: **`add testimonial to <id>`** (repair-linked Google review), **`add testimonial`** (standalone shop praise), **`update testimonials`** (rebuild page). Treat **`add testimonial`** the same as **`add google review`** (see google-review rule).
+
+**Source of truth:** [`docs/owner-runbook.md`](../../docs/owner-runbook.md) (section *What can I do?*).
+
+## Reply shape
+
+1. One sentence: this repo manages repair stories + publish to **website** and **social** (explicit commands + confirm for go-live).
+2. **Say in chat** — bullet list of natural phrases (replace `<id>` with their project number).
+3. **Everyday edits** — bullets (config, images, status, batch copy in chat).
+4. **After you approve** — commit / push; agent runs scripts.
+5. Point to [`docs/owner-runbook.md`](../../docs/owner-runbook.md) for full steps.
+
+Keep the menu **scannable** (~15–25 lines). If they named a project id, mention that id in examples.
+
+## Do not
+
+- Treat “what can I do?” as permission to publish or commit.
+- Dump every script flag unless they ask for technical detail.

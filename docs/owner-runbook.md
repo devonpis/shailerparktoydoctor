@@ -6,6 +6,56 @@ One-page reference for day-to-day work. Agents follow the same steps; publishing
 
 ---
 
+## What can I do? (action menu)
+
+Agents should show this menu when you ask **“what can I do?”**, **“commands”**, **“help”**, or similar.
+
+### Say in chat (natural commands)
+
+| You say | What happens |
+|---------|----------------|
+| **Update project 0020** — paste `repairDetails`, fix `title`, add tags | Agent edits `config.json` (and images if you attach/rename files). No publish unless you ask. |
+| **publish 0020 to webpage** | Preview → your **yes** → story page, gallery, sitemap (`status` must be **DONE**). |
+| **publish 0020 to social media** | Preview → **yes** → FB + IG + Threads (needs live `webpageUrl` first). |
+| **publish 0020 to social media and webpage** | Webpage first, then social (same confirm flow). |
+| **add testimonial to 0020** / **add google review to 0020** | Paste Google review (quote + reviewer name) → `googleReview` in `config.json`, story block if live, [`testimonials.html`](../testimonials.html) card with **Repair:** link when the story exists. |
+| **add testimonial** / **add google review** | General shop praise **with no repair** → `data/testimonials-standalone.json` + rebuild testimonials page (no project folder). |
+| **update testimonials** | Rebuild [`testimonials.html`](../testimonials.html) from all project reviews + standalone list (`sync-testimonials-html.mjs`). |
+| **I renamed images in 0020** | Agent runs `sync-project-story-images.mjs` (not auto-rename). |
+| **rotate before.jpg in 0020 clockwise** | Fix orientation, then webpage sync if needed. |
+| **set 0020 on home highlights** / **importance** | Home lead or tile slots. |
+| **commit and push** | Only after you explicitly approve the commit message. |
+
+Casual “it’s ready to post” does **not** publish — use **`publish <id> to …`** above.
+
+### Everyday edits (you or agent)
+
+- **New repair:** copy `projects/0000 - template/`, add photos (`before`, `after`, `hero`, `WIP-001` …), fill `config.json`, keep **`status`: `"WIP"`**.
+- **Mark ready:** you set **`status`** to **`"DONE"`** after `validate-done-readiness.mjs` passes.
+- **Batch copy:** send metadata for several ids in one message; no CSV import script (export gaps: `export-project-metadata-gaps.mjs`).
+- **Check before publish:** `validate-publish.mjs` / `validate-done-readiness.mjs`.
+- **Optimize photos:** `optimize-project-images.mjs <id>`.
+- **Tests (engineering):** `npm test`.
+
+### Needs your explicit yes (agents won’t do alone)
+
+- Publishing to **website** or **social**
+- **git commit** / **git push**
+- Creating or editing **`*.html`** (unless you asked for HTML work)
+- Reposting when `facebookUrl` / `instagramUrl` / `threadUrl` is already set
+
+### Testimonials (paste in chat)
+
+| Command | Use when |
+|---------|----------|
+| **`add testimonial to <id>`** | Review is about a **specific repair** — paste quote (+ reviewer name from Google). Same as `add google review to <id>`. |
+| **`add testimonial`** | **General** praise (shop overall, no toy/repair to link) — standalone card only. |
+| **`update testimonials`** | Rebuild the public testimonials page after config/standalone edits. |
+
+**Privacy:** reviewer name in repo = **first name + last initial** only (e.g. `Howard C.`). No customer phone/email. Details: [`website-testimonials-page-plan.md`](website-testimonials-page-plan.md).
+
+---
+
 ## 1. New or in-progress repair
 
 | Step | You / agent |
@@ -78,7 +128,8 @@ node scripts/sync-home-highlights.mjs
 |------|---------|
 | Check publish copy | `node scripts/validate-publish.mjs <id>` |
 | Optimize photos | `node scripts/optimize-project-images.mjs <id>` |
-| Google review | Paste in chat: `add google review to <id>` — or `node scripts/apply-google-review.mjs <id> …` |
+| Testimonial / Google review | `add testimonial to <id>` or `add google review to <id>` — paste quote + name. General praise only: `add testimonial`. Script: `apply-google-review.mjs` |
+| Refresh testimonials page | `node scripts/sync-testimonials-html.mjs` |
 | Metadata gaps CSV | `node scripts/export-project-metadata-gaps.mjs` |
 | Rotate one file | `node scripts/rotate-project-image.mjs <id> <file> --cw` |
 | Social dry-run only | `node scripts/publish-social.mjs <id> --dry-run` |

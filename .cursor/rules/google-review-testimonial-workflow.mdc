@@ -5,7 +5,13 @@ alwaysApply: false
 
 # Google review and testimonials workflow
 
-When the user pastes a Google Maps review or asks to **update testimonial(s)**:
+When the user pastes a Google Maps review or asks to **add testimonial**, **add google review**, or **update testimonial(s)**:
+
+| Chat phrase | Action |
+|-------------|--------|
+| `add testimonial to <id>` / `add google review to <id>` | Project `googleReview` + story + testimonials page |
+| `add testimonial` / `add google review` (no id) | Standalone → `data/testimonials-standalone.json` + sync |
+| `update testimonials` | `sync-testimonials-html.mjs` only |
 
 ## 0. Skip if already on testimonials page
 
