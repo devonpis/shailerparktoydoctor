@@ -106,6 +106,7 @@ node scripts/publish-social.mjs <id> --use-site --wait-for-site --write-config  
 - **FB/IG caption:** `description` + **3** hashtags (picked from `tags`).
 - **Threads:** short rewrite of `description` (≤200 chars, no hashtags).
 - **Carousel:** up to **10** images, order **hero → after → before → WIP** (webpage gallery order is different — that’s OK).
+- **Caption preview:** Agent shows the **full social post text** before go-live. You may **revise the message only** (not `repairDetails` / story page copy). Approved text → `publish-social.mjs --caption-file …` (optional `--threads-caption-file …`).
 
 ---
 

@@ -22,6 +22,13 @@ export function buildThreadsCaption(config) {
 
 export function buildCaption(config, { includeHashtags = true } = {}) {
   const description = (config.description || '').trim();
+  return buildCaptionFromBody(description, config, { includeHashtags });
+}
+
+/** FB/IG body + picked hashtags from config (does not change config.json). */
+export function buildCaptionFromBody(body, config, { includeHashtags = true } = {}) {
+  const description = (body || '').trim();
+  if (!description) throw new Error('Social caption body is empty.');
   const parts = [description];
   if (includeHashtags) {
     const { picked } = pickSocialTags(config.tags, config);
@@ -34,4 +41,16 @@ export function buildCaption(config, { includeHashtags = true } = {}) {
     );
   }
   return caption;
+}
+
+/** Threads post text override (no hashtags; must be ≤ THREADS_CAPTION_MAX). */
+export function buildThreadsCaptionFromBody(body) {
+  const text = (body || '').trim();
+  if (!text) throw new Error('Threads caption is empty.');
+  if (text.length > THREADS_CAPTION_MAX) {
+    throw new Error(
+      `Threads caption is ${text.length} chars (max ${THREADS_CAPTION_MAX}). Shorten before publish.`
+    );
+  }
+  return text;
 }

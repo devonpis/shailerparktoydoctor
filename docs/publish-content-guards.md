@@ -136,7 +136,22 @@ When `config.tags` has more than three strings, `pickSocialTags()` scores each t
 2. Append **three** social hashtags from `pickSocialTags(config.tags)` (not the full array).
 3. Verify **final** string length ≤ **500** before posting to any social channel.
 
-If hashtags would push the caption over 500 characters, **shorten `description`** before publish (you cannot add a fourth social hashtag).
+If hashtags would push the caption over 500 characters, **shorten the social post body** before publish (you cannot add a fourth social hashtag).
+
+### Social post text preview (owner may revise message only)
+
+Before live publish, show the **full FB/IG caption** and **Threads text** in chat. The owner can rewrite tone (e.g. first-person “we”, owner satisfaction) **without** changing `config.json` `description` / `repairDetails` / `itemDetails` unless they ask.
+
+After approval:
+
+```bash
+node scripts/publish-social.mjs <id> --caption-file path/to/fb-ig-body.txt \
+  [--threads-caption-file path/to/threads.txt] \
+  --use-site --wait-for-site --write-config
+```
+
+- **`--caption-file`** — FB/IG body only; script appends up to 3 hashtags from `config.tags`.
+- **`--threads-caption-file`** — optional; if omitted and `--caption-file` is set, Threads uses `rewriteForThreads()` on that body.
 
 ---
 

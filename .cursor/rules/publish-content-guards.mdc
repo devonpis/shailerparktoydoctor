@@ -73,7 +73,15 @@ Do **not** apply social carousel order to story `index.html` or change webpage p
 
 ## Preview summary must include
 
-After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **description length** (x/500), **Threads text** (≤200 rewritten, no hashtags), **social hashtags** (≤3 for FB/IG, which tags + story-only tags if more in config), **included** social images (x/10), **omitted** images when truncation applies, and validation **OK** or list failures.
+After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **full proposed FB/IG caption** (body + hashtags), **full Threads text** (≤200, no hashtags), caption source note (`config.json` draft vs owner-revised), **social hashtags** (≤3 for FB/IG, which tags + story-only tags if more in config), **included** social images (x/10), **omitted** images when truncation applies, and validation **OK** or list failures.
+
+**Social post text vs project copy:** Preview is the owner’s chance to **edit the social message only**. Do **not** update `config.json` `description` / `repairDetails` / `itemDetails` for caption tweaks unless they ask. After approval, use:
+
+```bash
+node scripts/publish-social.mjs <id> --caption-file <fb-ig-body.txt> [--threads-caption-file <threads.txt>] --use-site --wait-for-site --write-config
+```
+
+`--caption-file` = FB/IG body (hashtags appended from `config.tags`). `--threads-caption-file` optional; else Threads text is rewritten from the caption file body.
 
 If validation fails, **do not** proceed to publish; report failures and ask the user to fix `config.json` or add media.
 

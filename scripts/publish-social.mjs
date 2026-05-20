@@ -22,10 +22,13 @@ import { validateSocialProject } from './validate-publish.mjs';
 import { loadEnv, requireEnv, tryLoadEnv } from './lib/load-env.mjs';
 import {
   buildCaption,
+  buildCaptionFromBody,
   buildThreadsCaption,
+  buildThreadsCaptionFromBody,
   pickSocialTags,
   SOCIAL_HASHTAG_MAX,
   THREADS_CAPTION_MAX,
+  rewriteForThreads,
 } from './lib/caption.mjs';
 import { buildHashtagLine } from './lib/hashtag.mjs';
 import { pickImage, publicImageUrl, SOCIAL_CAROUSEL_MAX } from './lib/project-media.mjs';
@@ -67,10 +70,14 @@ function parseArgs(argv) {
     waitForSite: 0,
     imageStem: null,
     pickImages: 'auto',
+    captionFile: null,
+    threadsCaptionFile: null,
   };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--dry-run') flags.dryRun = true;
+    else if (a === '--caption-file') flags.captionFile = argv[++i];
+    else if (a === '--threads-caption-file') flags.threadsCaptionFile = argv[++i];
     else if (a === '--no-ai') flags.pickImages = 'rules';
     else if (a === '--pick-images') flags.pickImages = argv[++i];
     else if (a === '--write-config') flags.writeConfig = true;
@@ -87,7 +94,7 @@ function parseArgs(argv) {
   }
   if (!positional[0]) {
     throw new Error(
-      'Usage: node scripts/publish-social.mjs <project-id> [--dry-run] [--target …] [--use-site] [--wait-for-site [maxSeconds]] [--image after|hero|before] [--pick-images auto|vision|heuristic|rules] [--no-ai] [--public-base-url URL] [--write-config] [--force]'
+      'Usage: node scripts/publish-social.mjs <project-id> [--dry-run] [--caption-file <path>] [--threads-caption-file <path>] [--target …] [--use-site] [--wait-for-site [maxSeconds]] [--image after|hero|before] [--pick-images auto|vision|heuristic|rules] [--no-ai] [--public-base-url URL] [--write-config] [--force]'
     );
   }
   if (!TARGETS.includes(flags.target)) {
@@ -186,8 +193,20 @@ async function main() {
     summary: pickSummary,
     notes: pickNotes,
   } = pickResult;
-  const caption = buildCaption(config);
-  const threadsCaption = buildThreadsCaption(config);
+  const captionSource = flags.captionFile ? 'override (--caption-file)' : 'config.json description';
+  const threadsSource = flags.threadsCaptionFile
+    ? 'override (--threads-caption-file)'
+    : flags.captionFile
+      ? 'rewrite from caption-file'
+      : 'config.json description';
+  const caption = flags.captionFile
+    ? buildCaptionFromBody(fs.readFileSync(flags.captionFile, 'utf8'), config)
+    : buildCaption(config);
+  const threadsCaption = flags.threadsCaptionFile
+    ? buildThreadsCaptionFromBody(fs.readFileSync(flags.threadsCaptionFile, 'utf8'))
+    : flags.captionFile
+      ? rewriteForThreads(fs.readFileSync(flags.captionFile, 'utf8'))
+      : buildThreadsCaption(config);
   const { picked: socialTags, omitted: socialTagsOmitted } = pickSocialTags(config.tags, config);
   let targets = resolveTargets(flags.target);
 
@@ -226,6 +245,8 @@ async function main() {
       }
     }
   }
+  console.log(`Caption source (FB/IG): ${captionSource}`);
+  console.log(`Threads source: ${threadsSource}`);
   console.log(
     `Caption length: ${caption.length} (Threads ≤${THREADS_CAPTION_MAX}, no hashtags: ${threadsCaption.length})`
   );

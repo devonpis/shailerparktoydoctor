@@ -6,3 +6,6 @@
 .env.*.local
 
 node_modules/
+
+# One-off social caption drafts for publish-social.mjs (not story page copy)
+**/.social-caption-*.txt
