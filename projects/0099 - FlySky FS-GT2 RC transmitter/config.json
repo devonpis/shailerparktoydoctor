@@ -1,0 +1,31 @@
+{
+  "isTemplate": false,
+  "projectName": "FlySky FS-GT2 RC transmitter",
+  "title": "FlySky FS-GT2 — antenna hinge back on duty",
+  "startDate": "2026-05-19",
+  "endDate": "2026-05-19",
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0099%20-%20FlySky%20FS-GT2%20RC%20transmitter/",
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "tags": [
+    "FlySky",
+    "FS-GT2",
+    "RC",
+    "transmitter",
+    "2.4GHz",
+    "radio control"
+  ],
+  "skills": [
+    "electronic",
+    "mechanical"
+  ],
+  "description": "A well-used FlySky FS-GT2 pistol-grip transmitter arrived with a broken antenna and a snapped plastic hinge clip. We reattached the antenna with a suitable bolt and nut so it folds and stands upright again.",
+  "itemDetails": "FlySky FS-GT2 is a classic entry-level 2-channel pistol-grip transmitter for RC cars and boats, sold in black, silver, or orange shells. The label reads “FS-GT2 DIGITAL PROPORTIONAL RADIO CONTROL SYSTEM” with FlySky branding and CE marking. It uses 2.4 GHz AFHDS radio (GFSK modulation, 1024-step stick resolution), an external single antenna, DSC and CHG ports on the top shell, and eight AA cells (12 V). Typical range is on the order of 100–200 m ground range per manufacturer specs. Identify the unit by the FS-GT2 model marking and flysky-cn.com URL on the rear label; it pairs with FlySky receivers such as the FS-GR3E in hobby bundles.",
+  "repairDetails": "The antenna stalk had failed at the base hinge—the plastic clip that holds the antenna upright was broken, so the antenna would not stay mounted or fold correctly. We cleared the broken clip material, aligned the hinge points, and reattached the antenna with a suitable bolt and nut through the pivot so the stalk is secure again and can be raised for use.",
+  "googleReview": null,
+  "importance": null
+}
