@@ -1,5 +1,23 @@
 [
   {
+    "id": "0100",
+    "folder": "0100 - Vintage honey-brown plush bunny",
+    "projectName": "Vintage honey-brown plush bunny",
+    "title": "Honey-brown bunny — deep clean and tear repair",
+    "tags": [
+      "bunny",
+      "plush",
+      "vintage",
+      "restoration"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0100%20-%20Vintage%20honey-brown%20plush%20bunny/after.jpeg",
+    "url": "/projects/0100%20-%20Vintage%20honey-brown%20plush%20bunny/",
+    "endDate": "2026-05-23"
+  },
+  {
     "id": "0099",
     "folder": "0099 - FlySky FS-GT2 RC transmitter",
     "projectName": "FlySky FS-GT2 RC transmitter",
