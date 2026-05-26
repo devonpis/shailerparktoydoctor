@@ -95,14 +95,18 @@ Then **commit & push** `main` (GitHub Pages → [sptoydoctor.com.au](https://spt
 
 Requires **`DONE`**, story on site, and **`webpageUrl`** set. Non-null `facebookUrl` / `instagramUrl` / `threadUrl` = already posted — don’t repost without saying so.
 
-**Say in chat:** `publish <id> to social media` (or `… and webpage` if both) → preview → **yes**.
+**Say in chat:** `publish <id> to social media` (or `… and webpage` if both) → **preview in chat** → **yes** → go live.
+
+Agents **always** dry-run first — even for “publish oldest to social” / “publish to media”. You should see the **full FB/IG + Threads text** and image list before anything posts.
 
 ```bash
 node scripts/validate-publish.mjs <id>
 git push   # site images must be live first
-node scripts/publish-social.mjs <id> --use-site --wait-for-site --dry-run   # preview
-node scripts/publish-social.mjs <id> --use-site --wait-for-site --write-config   # after confirm
+node scripts/publish-social.mjs <id> --use-site --wait-for-site --dry-run   # preview (agent shows output in chat)
+node scripts/publish-social.mjs <id> --use-site --wait-for-site --write-config   # only after your yes
 ```
+
+**Pick oldest for social:** among `DONE` + live story + empty `facebookUrl`/`instagramUrl`/`threadUrl` — sort by **`endDate`** (oldest first), not project id.
 
 - **FB/IG caption:** `description` + **3** hashtags (picked from `tags`).
 - **Threads:** short rewrite of `description` (≤200 chars, no hashtags).
@@ -146,7 +150,7 @@ These **start** a publish workflow; casual “it’s ready” does **not**.
 - `publish 0039 to social media`
 - `publish 0039 to social media and webpage`
 
-Agent shows a **preview** (status, URLs, caption length, hashtags, images) and waits for **yes** before go-live.
+Agent **always** runs `--dry-run` and shows a **preview** (status, URLs, **full captions**, hashtags, images) and waits for **yes** before go-live — including “publish oldest to social” requests.
 
 ---
 

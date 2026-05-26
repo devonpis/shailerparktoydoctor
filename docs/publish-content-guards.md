@@ -18,6 +18,15 @@ node scripts/validate-publish.mjs 0001
 | 2 | **Webpage publish** — `status` must be `"DONE"` | `node scripts/publish-webpage.mjs <id>` |
 | 3 | **Social publish** — `DONE` + `index.html` + `webpageUrl` | `node scripts/publish-social.mjs <id>` |
 
+### Agent flow for social (preview before every post)
+
+1. `validate-publish.mjs <id>`
+2. **`publish-social.mjs <id> --dry-run --target all --use-site`** — show full output in chat (FB/IG caption, Threads text, images).
+3. **Wait for owner yes** (or caption-file edits). Never skip this step for “publish oldest to social” / “publish to media”.
+4. `publish-social.mjs <id> --use-site --wait-for-site --write-config` (plus `--caption-file` if they revised wording).
+
+**Oldest eligible project:** `endDate` ascending (not project id); must have live `webpageUrl` and null social URL fields.
+
 ---
 
 ## Required in `projects/<id>/config.json`

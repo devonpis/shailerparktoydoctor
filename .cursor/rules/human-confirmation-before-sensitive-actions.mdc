@@ -22,6 +22,17 @@ Casual messages (“0001 is ready”, “we should post this”) **do not** coun
 
 **Social caption preview (required):** Show the **full FB/Instagram caption** and **Threads text** in the preview (from `config.json` `description` as a starting draft, or a workshop-voice rewrite). The owner may **revise only the social post message** — **do not** change `config.json` `description`, `title`, `repairDetails`, or `itemDetails` unless they explicitly ask. After they approve wording (or send edits), publish with `publish-social.mjs --caption-file` / `--threads-caption-file` (or their revised text in chat). Say clearly: *story page copy stays in config; this text is for social only.*
 
+### Social publish — always preview first (no exceptions)
+
+Even when the owner says **“publish oldest to social”**, **“publish to media”**, or combines **pick project + publish** in one message:
+
+1. **Select** the project (for “oldest”: **`endDate` ascending**, then `startDate`, then id — **not** folder number).
+2. Run `validate-publish.mjs` → **`publish-social.mjs <id> --dry-run --target all --use-site`** (or `--dry-run` alone if only checking copy).
+3. Post a **preview in chat**: project id/folder, **`endDate`**, targets, full **FB/IG caption** (with hashtags), full **Threads** text, included/omitted images, validation OK/warns.
+4. **Stop.** Ask for a clear **yes** (or caption edits). **Do not** run `publish-social.mjs` without `--dry-run` in the same turn.
+
+Bundled wording (“find oldest and publish”) is an **explicit publish intent**, not approval to go live. Treat “auto preview” as: **always dry-run and show the post before any API publish** — never skip straight to `--write-config`.
+
 ## Blocked without a clear “yes”
 
 Do **not** run or complete these unless the user has just **confirmed in the same conversation** (e.g. “yes, publish”, “approved, commit and push”), **in addition to** any requirement above:

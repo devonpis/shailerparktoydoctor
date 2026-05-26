@@ -71,6 +71,14 @@ Do **not** apply social carousel order to story `index.html` or change webpage p
 - **Webpage** publish is **not** capped.
 - **`--image after`** (etc.) = single-image post, no cap logic.
 
+## Social publish — dry-run before live (always)
+
+After an explicit `publish <id> to social media` (including “publish oldest to social” / “publish to media”):
+
+1. Run `publish-social.mjs <id> --dry-run --target all --use-site` and show **full** FB/IG + Threads caption and image list in chat.
+2. **Stop** for owner **yes** — do **not** run live `publish-social.mjs` in the same turn.
+3. Pick “oldest” by **`endDate`** ascending, not folder id.
+
 ## Preview summary must include
 
 After validation passes, the publish **preview** should show: project id, targets, `status`, URL fields, **title**, **full proposed FB/IG caption** (body + hashtags), **full Threads text** (≤200, no hashtags), caption source note (`config.json` draft vs owner-revised), **social hashtags** (≤3 for FB/IG, which tags + story-only tags if more in config), **included** social images (x/10), **omitted** images when truncation applies, and validation **OK** or list failures.
