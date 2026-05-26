@@ -190,7 +190,16 @@ Array of objects; **only DONE** repairs.
 | `tags` | yes | String array for search/filter |
 | `thumbnail` | yes | Path to thumb image (hero → after → before → WIP-001 rule) |
 | `url` | yes | Story path, e.g. `/projects/0003%20-%20Donald%20Duck/` |
-| `endDate` | yes | ISO date `YYYY-MM-DD`; shown on tile |
+| `endDate` | yes | ISO `YYYY-MM-DD` in JSON (from `config.json`); **display** on gallery tiles and story pages as AU long date (e.g. `6 May 2026`) |
+
+### Projects gallery (`/projects/`)
+
+[`js/projects-gallery.js`](../js/projects-gallery.js) loads `data/projects-index.json`, merges `endDate` from each project’s `config.json`, then:
+
+- **Sort:** `endDate` descending (newest repair first); tie-break by project `id` descending.
+- **Tile date:** `endDate` only, formatted with `en-AU` long date — same convention as story `<p class="project-meta">` from [`scaffold-project-story-html.mjs`](../scripts/scaffold-project-story-html.mjs).
+
+Home highlight tiles do not show dates (ranked by `importance` in `config.json`). Social “oldest unpublished” picks use **`endDate`**, not project id.
 
 Example:
 

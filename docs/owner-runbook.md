@@ -35,6 +35,7 @@ Casual “it’s ready to post” does **not** publish — use **`publish <id> t
 - **Batch copy:** send metadata for several ids in one message; no CSV import script (export gaps: `export-project-metadata-gaps.mjs`).
 - **Check before publish:** `validate-publish.mjs` / `validate-done-readiness.mjs`.
 - **Optimize photos:** `optimize-project-images.mjs <id>`.
+- **Projects gallery dates:** `endDate` in `config.json` (ISO); `/projects/` tiles sort newest first and show the same AU date as the story page ([`website-go-live.md`](website-go-live.md) — *Projects gallery*).
 - **Tests (engineering):** `npm test`.
 
 ### Needs your explicit yes (agents won’t do alone)

@@ -15,6 +15,14 @@
       .replace(/"/g, '&quot;');
   }
 
+  /** Match story pages (scaffold-project-story-html.mjs): endDate as AU long date. */
+  function formatAuDate(iso) {
+    if (!iso) return '';
+    const d = new Date(`${iso}T12:00:00`);
+    if (Number.isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
   function loadConfig(project) {
     const folder = encodeURIComponent(project.folder || '');
     return fetch(`/projects/${folder}/config.json`)
@@ -45,8 +53,9 @@
     const name = escapeHtml(project.projectName || project.title || 'Project');
     const img = escapeHtml(project.thumbnail || project.hero || '');
     const url = escapeHtml(project.url || '#');
-    const date = project.endDate
-      ? `<p class="project-card__meta project-card__date">${escapeHtml(project.endDate)}</p>`
+    const dateLabel = formatAuDate(project.endDate);
+    const date = dateLabel
+      ? `<p class="project-card__meta project-card__date">${escapeHtml(dateLabel)}</p>`
       : '';
     const badges = overlayBadgesHtml(project.skills);
     return `

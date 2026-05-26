@@ -75,7 +75,7 @@ This is **not** a judgement of quality — it documents the baseline for rebuild
 | **JS** | Plain `.js` only; **React via CDN** (e.g. [esm.sh](https://esm.sh)) for `/repairs/` gallery only — optional [htm](https://esm.sh/htm@3) for readable templates **without** a bundler |
 | **Marketing pages** | Static HTML from **Prepbox** Tailwind template ([FreeStack #33](https://freestacktemplates.io/tailwind/prepbox-ecommerce-vibrant_block-template)) — see [`website-design-brief.md`](website-design-brief.md) |
 | **Repair stories** | One **static** `projects/<id> - <name>/index.html` per **DONE** project (same folder as `config.json` + images; filled from config + template) |
-| **Projects gallery** | `projects/index.html` + `js/projects-gallery.js` (or equivalent) reads **`data/projects-index.json`** — tile index at `/projects/`; story pages at `/projects/<folder>/` |
+| **Projects gallery** | `projects/index.html` + [`js/projects-gallery.js`](../js/projects-gallery.js) reads **`data/projects-index.json`** — tiles at `/projects/`, sorted by **`endDate` desc**, date shown as AU long format (matches story page); story pages at `/projects/<folder>/` |
 | **Source of truth** | `projects/<id> - <name>/` holds **config**, **images**, and **public story HTML**; social publish `--use-site` image URLs unchanged (`/projects/<folder>/hero.jpg`) |
 | **Scaling** | No generator script required; add HTML + JSON entry per DONE repair (agent can assist). Accept more copy-paste as catalog grows. |
 

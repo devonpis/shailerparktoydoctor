@@ -249,8 +249,8 @@ WIP folders stay **out** of the JSON so they never appear as tiles.
 
 | System | Link |
 |--------|------|
-| **Gallery index** | Tile → this story’s `url`; label = **`projectName`**. |
-| **Home featured** | Same entries; three highlighted until real picks. |
+| **Gallery index** | Tile → this story’s `url`; label = **`projectName`**; date = **`endDate`** (AU format on tile via [`projects-gallery.js`](../js/projects-gallery.js); ISO in JSON). Tiles sorted **newest `endDate` first**. |
+| **Home featured** | Same entries; three highlighted until real picks (`importance`, not date on tile). |
 
 ---
 
@@ -277,4 +277,5 @@ WIP folders stay **out** of the JSON so they never appear as tiles.
 |------|--------|
 | 2026-05-16 | Initial wireframe; owner: two-level nav, ← All projects, summary from description, full story = repairDetails + itemDetails, YouTube embeds |
 | 2026-05-16 | title = slogan, projectName = tile/filter name; endDate only; thumbnail order hero→after→before→WIP; links under tags; gallery index explained; mobile v1 |
+| 2026-05-26 | Gallery tiles: endDate AU format + sort desc (projects-gallery.js); JSON keeps ISO |
 | 2026-05-16 | `<title>` = projectName only (owner) |
