@@ -95,6 +95,7 @@
         </div>
         <div class="project-card__body">
           <h3 class="project-card__title" title="${name}">${name}</h3>
+          <p class="project-card__cta">Read full story →</p>
         </div>
       </a>`;
   }

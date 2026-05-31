@@ -1088,6 +1088,17 @@ body[data-active-page='testimonials'] .quote-card p.stars {
   font-style: italic;
 }
 
+.project-card__cta {
+  margin: 0.1rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.project-card:hover .project-card__cta {
+  text-decoration: underline;
+}
+
 /* —— Individual project story pages —— */
 .project-back {
   margin: 0 0 1.5rem;

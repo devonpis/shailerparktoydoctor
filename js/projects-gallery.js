@@ -67,6 +67,7 @@
         <div class="project-card__body">
           <h2 class="project-card__title" title="${name}">${name}</h2>
           ${date}
+          <p class="project-card__cta">Read full story →</p>
         </div>
       </a>`;
   }
