@@ -42,8 +42,8 @@ The site does **not** fetch reviews in real time. **Paste the review text in cha
 
 - `add testimonial to 0003` / `add google review to 0003` — map project, then run apply script (below)
 - `add testimonial` / `add google review` — paste only; add to `data/testimonials-standalone.json` + sync
-- `update testimonials` — rebuild `testimonials.html` from config + standalone data
-- `update the review count on testimonials` (e.g. change intro line via `--intro`)
+- `update testimonials` — rebuild `testimonials.html` from config + standalone data (intro date → current month/year automatically)
+- `update the review count on testimonials` — edit copy in `testimonials.html` or pass `--intro` to `sync-testimonials-html.mjs` for a custom line
 
 Do **not** rely on `refresh testimonials from Google` alone — Maps HTML is not a dependable source for full review text.
 

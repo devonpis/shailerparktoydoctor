@@ -4,12 +4,13 @@
  *
  * Usage:
  *   node scripts/sync-testimonials-html.mjs [--dry-run]
- *   node scripts/sync-testimonials-html.mjs --intro "From Google Reviews. Updated on Google Maps, May 2026."
+ *   node scripts/sync-testimonials-html.mjs --intro "Custom intro line."
  */
 
 import fs from 'node:fs';
 import {
   buildTestimonialsHtml,
+  buildTestimonialsIntroLine,
   dedupeReviewEntries,
   loadProjectReviews,
   loadStandaloneReviews,
@@ -18,10 +19,8 @@ import {
 } from './lib/testimonials-html.mjs';
 import { reviewFingerprint } from './lib/google-review.mjs';
 
-const DEFAULT_INTRO = 'From Google Reviews. Updated on Google Maps, May 2026.';
-
 function parseArgs(argv) {
-  const flags = { dryRun: false, intro: DEFAULT_INTRO };
+  const flags = { dryRun: false, intro: buildTestimonialsIntroLine() };
   for (let i = 2; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--dry-run') flags.dryRun = true;

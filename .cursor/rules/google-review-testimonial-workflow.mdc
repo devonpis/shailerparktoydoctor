@@ -56,7 +56,12 @@ Rebuild testimonials only:
 
 ```bash
 node scripts/sync-testimonials-html.mjs
-node scripts/sync-testimonials-html.mjs --intro "From Google Reviews. Updated on Google Maps, May 2026."
+```
+
+Default intro uses **today’s month/year** (en-AU), e.g. `From Google Reviews. Updated on Google Maps, June 2026.` — set on every `sync-testimonials-html.mjs` / `apply-google-review.mjs` / `publish-webpage.mjs` testimonials rebuild. Override only when needed:
+
+```bash
+node scripts/sync-testimonials-html.mjs --intro "Custom intro line."
 ```
 
 If `authorName` was stripped from configs, restore from `data/google-review-author-names.json`:
@@ -72,7 +77,7 @@ node scripts/apply-google-review.mjs --sync-all
 |------|------|--------|
 | Config | `projects/<folder>/config.json` | `googleReview`: `quote`, `authorName` (partial, e.g. `Howard C.`), optional `profileUrl`, `featuredOnTestimonials`, `featuredOrder` |
 | Story | `projects/<folder>/index.html` | `<blockquote class="project-review">` footer `— First L.` |
-| Testimonials | `new/testimonials.html` | `— First L.` on its own line (no link; `profileUrl` for dedupe only) |
+| Testimonials | `testimonials.html` | Intro line month/year refreshed on each sync; `— First L.` on cards (no link; `profileUrl` for dedupe only) |
 | Repair link | Testimonials card | If `webpageUrl` or `index.html` exists: **Repair: {title}** → project page |
 
 ## 4. `googleReview` schema (canonical)

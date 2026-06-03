@@ -132,6 +132,12 @@ export function renderQuoteCard({ review, config, dirName, hasIndex }) {
 ${repairBlock}${renderQuoteCardAuthor(review)}      </article>`;
 }
 
+/** Intro for testimonials.html — month/year from sync run (en-AU). */
+export function buildTestimonialsIntroLine(date = new Date()) {
+  const monthYear = date.toLocaleString('en-AU', { month: 'long', year: 'numeric' });
+  return `From Google Reviews. Updated on Google Maps, ${monthYear}.`;
+}
+
 export function buildTestimonialsHtml({ introLine, cardsHtml }) {
   return `<!DOCTYPE html>
 <html lang="en-AU">
