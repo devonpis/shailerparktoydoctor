@@ -4,12 +4,8 @@
 
   const skillsApi = window.SiteSkills;
 
-  /** Baked by scripts/sync-home-highlights.mjs — only enhance (skills crop, brand bold). */
-  if (root.querySelector('.patient-stories-layout')) {
-    if (skillsApi?.applyProjectTileImages) skillsApi.applyProjectTileImages(root);
-    if (window.applyToyDoctorBold) window.applyToyDoctorBold(root);
-    return;
-  }
+  /** Baked by sync-home-highlights.mjs (portrait crop + Toy Doctor bold). */
+  if (root.querySelector('.patient-stories-layout')) return;
 
   const TILE_COUNT = 6;
 

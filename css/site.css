@@ -592,6 +592,11 @@ h5 {
   max-width: 100%;
   max-height: 800px;
   height: auto;
+}
+
+.patient-stories__media img.is-portrait,
+.patient-story--lead .patient-stories__media img.is-portrait {
+  object-position: top center;
   margin-left: 0;
   margin-right: auto;
 }

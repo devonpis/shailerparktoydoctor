@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
- * Add or update projects-index.json entries for DONE projects.
+ * Add or update projects-index.json entries for DONE projects, then rebake projects/index.html tiles.
  *
  * Usage:
  *   node scripts/sync-projects-gallery-index.mjs <id> [id …]
  *   node scripts/sync-projects-gallery-index.mjs --all
+ *   node scripts/sync-projects-gallery-index.mjs --html-only   # rebake gallery HTML from JSON only
  */
 
 import fs from 'node:fs';
@@ -12,6 +13,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { resolveProjectDir, REPO_ROOT, PROJECTS_DIR, projectIdFromDir } from './lib/resolve-project-dir.mjs';
 import { pickPrimaryImage } from './lib/project-media.mjs';
+import { syncProjectsGalleryHtml } from './lib/projects-gallery-html.mjs';
+import { clearPortraitCache } from './lib/project-tile-image.mjs';
 import { INDEX_JSON_PATHS } from './lib/update-project-path-refs.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -62,12 +65,21 @@ function syncIndexFile(indexPath, entries) {
   return merged.length;
 }
 
-function main() {
+async function main() {
   const argv = process.argv.slice(2);
+  const htmlOnly = argv.includes('--html-only');
   const all = argv.includes('--all');
   const ids = all ? listAllPublishedIds() : argv.filter((a) => !a.startsWith('--'));
+
+  if (htmlOnly) {
+    clearPortraitCache();
+    const { count } = await syncProjectsGalleryHtml();
+    console.log(`OK projects/index.html (${count} tiles, pre-rendered)`);
+    return;
+  }
+
   if (!ids.length) {
-    console.error('Usage: node scripts/sync-projects-gallery-index.mjs <id> [id …] | --all');
+    console.error('Usage: node scripts/sync-projects-gallery-index.mjs <id> [id …] | --all | --html-only');
     process.exit(1);
   }
 
@@ -87,6 +99,13 @@ function main() {
     const count = syncIndexFile(p, entries);
     console.log(`OK ${path.relative(REPO_ROOT, p)} (${count} projects)`);
   }
+
+  clearPortraitCache();
+  const { count } = await syncProjectsGalleryHtml();
+  console.log(`OK projects/index.html (${count} tiles, pre-rendered)`);
 }
 
-main();
+main().catch((e) => {
+  console.error(e.message || e);
+  process.exit(1);
+});

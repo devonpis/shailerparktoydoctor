@@ -45,6 +45,8 @@ import {
   sanitizeConfigProseInPlace,
   syncProjectStoryProseHtml,
 } from './lib/project-story-prose-html.mjs';
+import { syncProjectStorySkillsHtml } from './lib/project-story-skills-html.mjs';
+import { syncProjectStoryBrandHtml } from './lib/project-story-brand-html.mjs';
 import { INDEX_JSON_PATHS } from './lib/update-project-path-refs.mjs';
 import { validateProject } from './validate-publish.mjs';
 
@@ -224,6 +226,36 @@ function runSyncStoryProse(dir, config, flags) {
     return;
   }
   const r = syncProjectStoryProseHtml(dir, config, { dryRun: false });
+  if (r.skipped) console.log(`  skipped (${r.action})`);
+  else if (r.changed) console.log(`  OK: ${r.action}`);
+  else console.log(`  OK: ${r.action}`);
+}
+
+function runSyncStoryBrand(dir, config, flags) {
+  const htmlPath = path.join(dir, 'index.html');
+  if (!fs.existsSync(htmlPath)) return;
+
+  console.log('\n--- Story page brand bold (project-lead) ---');
+  if (flags.dryRun) {
+    console.log('  [dry-run] would bake Toy Doctor bold in project-lead');
+    return;
+  }
+  const r = syncProjectStoryBrandHtml(dir, config, { dryRun: false });
+  if (r.skipped) console.log(`  skipped (${r.action})`);
+  else if (r.changed) console.log(`  OK: ${r.action}`);
+  else console.log(`  OK: ${r.action}`);
+}
+
+function runSyncStorySkills(dir, config, flags) {
+  const htmlPath = path.join(dir, 'index.html');
+  if (!fs.existsSync(htmlPath)) return;
+
+  console.log('\n--- Story page skill badges ---');
+  if (flags.dryRun) {
+    console.log('  [dry-run] would sync #project-skills-root from config');
+    return;
+  }
+  const r = syncProjectStorySkillsHtml(dir, config, { dryRun: false });
   if (r.skipped) console.log(`  skipped (${r.action})`);
   else if (r.changed) console.log(`  OK: ${r.action}`);
   else console.log(`  OK: ${r.action}`);
@@ -430,6 +462,8 @@ async function main() {
   runSyncWorkInProgressGallery(dir, config, flags);
   runSyncStoryGoogleReview(dir, config, flags);
   runSyncStoryProse(dir, config, flags);
+  runSyncStoryBrand(dir, config, flags);
+  runSyncStorySkills(dir, config, flags);
   runSyncTestimonialsIfNeeded(dir, config, flags);
 
   printChecklist(dir, config, projectId);

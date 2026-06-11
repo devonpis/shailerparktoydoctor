@@ -6,25 +6,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { REPO_ROOT, PROJECTS_DIR, resolveProjectDir, projectIdFromDir } from './resolve-project-dir.mjs';
 import { normalizeSkills } from './normalize-skills.mjs';
+import { boldToyDoctorInHtmlFragment, bakeToyDoctorBoldInParagraphs } from './brand-text-html.mjs';
+import { buildTileImgTagForUrl } from './project-tile-image.mjs';
+import { overlayBadgesHtml } from './skill-badges-html.mjs';
 
 export const TILE_COUNT = 6;
 export const HOME_INDEX_PATH = path.join(REPO_ROOT, 'index.html');
 export const HIGHLIGHTS_START = '<!-- sync-home-highlights:start';
 export const HIGHLIGHTS_END = '<!-- sync-home-highlights:end -->';
-
-const SKILL_EMOJI = {
-  needlework: '🧸',
-  electronic: '⚡',
-  mechanical: '🔧',
-  paintjob: '🖌️',
-};
-
-const SKILL_LABELS = {
-  needlework: 'Needlework',
-  electronic: 'Electronic',
-  mechanical: 'Mechanical',
-  paintjob: 'Paint',
-};
 
 const PROJECTS_INDEX_PATH = path.join(REPO_ROOT, 'data/projects-index.json');
 
@@ -66,18 +55,7 @@ export function compareHighlights(a, b) {
   return (a.id || '').localeCompare(b.id || '');
 }
 
-export function overlayBadgesHtml(skills) {
-  const list = normalizeSkills(skills);
-  if (!list.length) return '';
-  const items = list
-    .map((id) => {
-      const emoji = SKILL_EMOJI[id] || '';
-      const label = SKILL_LABELS[id] || id;
-      return `<span class="skill-badge skill-badge--icon-only skill-badge--${id}" title="${escapeHtml(label)}"><span class="skill-icon skill-icon--emoji" aria-hidden="true">${emoji}</span></span>`;
-    })
-    .join('');
-  return `<div class="skill-badges skill-badges--overlay">${items}</div>`;
-}
+export { overlayBadgesHtml };
 
 export function loadProjectsIndex() {
   if (!fs.existsSync(PROJECTS_INDEX_PATH)) {
@@ -111,17 +89,18 @@ export function selectHighlights(enrichedRows) {
   return enrichedRows.filter((p) => hasImportance(p.importance)).sort(compareHighlights);
 }
 
-export function renderLeadStoryBlock(project, description) {
+export async function renderLeadStoryBlock(project, description) {
   const name = escapeHtml(project.projectName || project.title || 'Project');
-  const img = escapeHtml(project.thumbnail || '');
+  const thumb = project.thumbnail || '';
   const url = escapeHtml(project.url || '#');
-  const body = linkifyDescription(description);
+  const body = boldToyDoctorInHtmlFragment(linkifyDescription(description));
   const badges = overlayBadgesHtml(project.skills);
+  const imgTag = await buildTileImgTagForUrl(thumb, name);
   return `
       <div class="jw-element-imagetext-text patient-story patient-story--lead">
         <div class="patient-stories">
           <div class="patient-stories__media">
-            <img src="${img}" alt="${name}" loading="lazy" />
+            ${imgTag}
             ${badges}
           </div>
         </div>
@@ -131,15 +110,16 @@ export function renderLeadStoryBlock(project, description) {
       </div>`;
 }
 
-export function renderTileCard(project) {
+export async function renderTileCard(project) {
   const name = escapeHtml(project.projectName || project.title || 'Project');
-  const img = escapeHtml(project.thumbnail || '');
+  const thumb = project.thumbnail || '';
   const url = escapeHtml(project.url || '#');
   const badges = overlayBadgesHtml(project.skills);
+  const imgTag = await buildTileImgTagForUrl(thumb, name);
   return `
       <a href="${url}" class="project-card">
         <div class="project-card__media">
-          <img src="${img}" alt="${name}" loading="lazy" />
+          ${imgTag}
           ${badges}
         </div>
         <div class="project-card__body">
@@ -159,7 +139,7 @@ export function renderTilePlaceholder(n) {
       </div>`;
 }
 
-export function renderHighlightsInnerHtml(highlights) {
+export async function renderHighlightsInnerHtml(highlights) {
   if (!highlights.length) {
     return `
       <p>Repair stories will appear here when projects have an <code>importance</code> set in their config.</p>`;
@@ -167,11 +147,14 @@ export function renderHighlightsInnerHtml(highlights) {
 
   const lead = highlights[0];
   const tileProjects = highlights.slice(1, 1 + TILE_COUNT);
-  const leadHtml = renderLeadStoryBlock(lead, lead.storyDescription || '');
-  const tileHtml = Array.from({ length: TILE_COUNT }, (_, i) => {
-    const project = tileProjects[i];
-    return project ? renderTileCard(project) : renderTilePlaceholder(i + 2);
-  }).join('');
+  const leadHtml = await renderLeadStoryBlock(lead, lead.storyDescription || '');
+  const tileParts = await Promise.all(
+    Array.from({ length: TILE_COUNT }, async (_, i) => {
+      const project = tileProjects[i];
+      return project ? renderTileCard(project) : renderTilePlaceholder(i + 2);
+    })
+  );
+  const tileHtml = tileParts.join('');
 
   const rankNote = highlights
     .slice(0, 1 + TILE_COUNT)
@@ -189,10 +172,11 @@ ${leadHtml}
       ${HIGHLIGHTS_END}`;
 }
 
-export function buildHighlightsFromDisk() {
+export async function buildHighlightsFromDisk() {
   const rows = loadProjectsIndex().map(enrichProjectRow);
   const highlights = selectHighlights(rows);
-  return { highlights, html: renderHighlightsInnerHtml(highlights) };
+  const html = await renderHighlightsInnerHtml(highlights);
+  return { highlights, html };
 }
 
 export function formatHighlightsList(highlights) {
@@ -236,6 +220,38 @@ export function patchHomeIndex(innerHtml) {
   if (replacement === m[0]) return false;
   const next = page.replace(m[0], replacement);
   if (next === page) return false;
+  fs.writeFileSync(HOME_INDEX_PATH, next);
+  return true;
+}
+
+const HOME_DEPRECATED_SCRIPTS = [
+  'brand-text.js',
+  'site-chrome.js',
+  'home-patient-stories.js',
+  'home-doctors-skills.js',
+  'home-featured.js',
+  'skills.js',
+];
+
+function stripHomeDeprecatedScripts(html) {
+  let next = html;
+  for (const file of HOME_DEPRECATED_SCRIPTS) {
+    const re = new RegExp(`\\s*<script src="/js/${file.replace('.', '\\.')}" defer><\\/script>\\n?`, 'g');
+    next = next.replace(re, '\n');
+  }
+  return next;
+}
+
+/** Bold “Toy Doctor” in home page-main <p> blocks; drop client enhancement scripts. */
+export function bakeHomeIndexStaticEnhancements() {
+  let html = fs.readFileSync(HOME_INDEX_PATH, 'utf8');
+  const mainRe = /(<main class="page-main">)([\s\S]*?)(<\/main>)/;
+  const m = html.match(mainRe);
+  if (!m) return false;
+  const bakedMain = bakeToyDoctorBoldInParagraphs(m[2]);
+  let next = html.replace(m[0], `${m[1]}${bakedMain}${m[3]}`);
+  next = stripHomeDeprecatedScripts(next);
+  if (next === html) return false;
   fs.writeFileSync(HOME_INDEX_PATH, next);
   return true;
 }

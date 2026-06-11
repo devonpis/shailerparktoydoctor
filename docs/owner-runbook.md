@@ -83,7 +83,7 @@ Fix anything reported, then set **`status`: `"DONE"`** (you only — or `node sc
 ```bash
 node scripts/publish-webpage.mjs <id>
 # optional: --rotate <file> --cw|--ccw|--180  or  --exif-orient
-node scripts/sync-projects-gallery-index.mjs <id>
+node scripts/sync-projects-gallery-index.mjs <id>   # JSON + pre-rendered /projects/ tiles
 node scripts/sync-sitemap-project-urls.mjs <id>
 ```
 

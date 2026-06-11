@@ -10,6 +10,8 @@ import {
   reviewFingerprint,
 } from './google-review.mjs';
 import { googleAnalyticsHeadMarkup } from './google-analytics.mjs';
+import { buildSiteChrome } from './site-chrome-html.mjs';
+import { boldToyDoctorInText } from './brand-text-html.mjs';
 
 function unescapeHtml(s) {
   return String(s ?? '')
@@ -127,7 +129,7 @@ export function renderQuoteCard({ review, config, dirName, hasIndex }) {
   return `      <article class="quote-card">
         <p class="stars" aria-hidden="true">★★★★★</p>
         <p>
-          ${escapeHtml(review.quote)}
+          ${boldToyDoctorInText(escapeHtml(review.quote))}
         </p>
 ${repairBlock}${renderQuoteCardAuthor(review)}      </article>`;
 }
@@ -139,6 +141,7 @@ export function buildTestimonialsIntroLine(date = new Date()) {
 }
 
 export function buildTestimonialsHtml({ introLine, cardsHtml }) {
+  const { headerBlock, footerBlock } = buildSiteChrome('testimonials');
   return `<!DOCTYPE html>
 <html lang="en-AU">
   <head>
@@ -158,7 +161,7 @@ ${googleAnalyticsHeadMarkup()}
     <link rel="stylesheet" href="/css/site.css" />
   </head>
   <body data-active-page="testimonials">
-    <div id="site-header"></div>
+${headerBlock}
 
     <main class="page-main">
       <h1>What our customers say</h1>
@@ -174,10 +177,8 @@ ${cardsHtml}
       </div>
     </main>
 
-    <div id="site-footer"></div>
+${footerBlock}
 
-    <script src="/js/brand-text.js" defer></script>
-    <script src="/js/site-chrome.js" defer></script>
   </body>
 </html>
 `;

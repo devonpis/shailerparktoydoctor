@@ -13,7 +13,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { listMediaReferenceFiles } from './lib/list-media-reference-files.mjs';
 import { INDEX_JSON_PATHS } from './lib/list-media-reference-files.mjs';
-import { listProjectImages, pickPrimaryImage } from './lib/project-media.mjs';
+import { pickPrimaryImage } from './lib/project-media.mjs';
+import { syncProjectsGalleryHtml } from './lib/projects-gallery-html.mjs';
 import { REPO_ROOT, PROJECTS_DIR } from './lib/resolve-project-dir.mjs';
 
 function parseArgs(argv) {
@@ -96,6 +97,10 @@ function main() {
       `${dryRun ? '[dry-run] ' : ''}gallery thumbnails refreshed: ${thumbUpdates} row(s) in projects-index.json`
     );
     filePatches += 1;
+    if (!dryRun) {
+      const { count } = syncProjectsGalleryHtml();
+      console.log(`OK projects/index.html (${count} tiles, pre-rendered)`);
+    }
   }
 
   if (!urlPatches && !thumbUpdates) {
@@ -106,7 +111,9 @@ function main() {
         ? `\nDry run: ${urlPatches} file(s) would patch URLs; ${thumbUpdates} thumbnail(s) would refresh.`
         : `\nDone: patched ${urlPatches} file(s); refreshed ${thumbUpdates} gallery thumbnail(s).`
     );
-    console.log('Home (/) and projects gallery load images from projects-index.json.');
+    if (!dryRun && thumbUpdates) {
+      console.log('Home highlights use projects-index.json; /projects/ tiles are baked in projects/index.html.');
+    }
   }
 }
 

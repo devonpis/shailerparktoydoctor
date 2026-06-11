@@ -12,6 +12,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { googleAnalyticsHeadMarkup } from './lib/google-analytics.mjs';
+import { buildSiteChrome } from './lib/site-chrome-html.mjs';
+import { buildProjectSkillsRootHtml } from './lib/skill-badges-html.mjs';
 import { resolveProjectDir, PROJECTS_DIR, projectIdFromDir } from './lib/resolve-project-dir.mjs';
 import {
   buildWorkInProgressSectionHtml,
@@ -23,6 +25,8 @@ import {
   updateProjectStoryMeta,
 } from './lib/project-story-meta.mjs';
 import { renderProjectReviewBlock } from './lib/project-google-review-html.mjs';
+import { buildProjectLeadHtml } from './lib/project-story-brand-html.mjs';
+import { boldToyDoctorInText } from './lib/brand-text-html.mjs';
 import { publicProseFromConfig } from './lib/polish-metadata.mjs';
 
 function listPublishedIds() {
@@ -104,7 +108,7 @@ function paragraphBlock(paragraphs) {
   return paragraphs
     .map(
       (p) => `        <p>
-          ${escapeHtml(p)}
+          ${boldToyDoctorInText(escapeHtml(p))}
         </p>`
     )
     .join('\n');
@@ -136,8 +140,8 @@ function buildHtml(config, folder, dir) {
   const tags = (config.tags || []).map(formatTagLabel).filter(Boolean);
   const headline = (config.title || config.projectName || folder).trim();
   const subtitle = (config.projectName || folder).trim();
-  const lead = (config.description || '').trim();
   const dateAu = formatAuDate(config.endDate);
+  const leadBlock = buildProjectLeadHtml(config.description);
   const tagLis = tags.map((t) => `          <li class="project-tag">${escapeHtml(t)}</li>`).join('\n');
 
   let videoSection = '';
@@ -167,6 +171,8 @@ ${blocks.join('\n')}
 ${paragraphBlock(itemParas)}`
       : '';
 
+  const { headerBlock, footerBlock } = buildSiteChrome('projects');
+
   return `<!DOCTYPE html>
 <html lang="en-AU">
   <head>
@@ -191,7 +197,7 @@ ${googleAnalyticsHeadMarkup()}
     <link rel="stylesheet" href="/css/site.css" />
   </head>
   <body data-active-page="projects" data-project-folder="${escapeHtml(folder)}">
-    <div id="site-header"></div>
+${headerBlock}
 
     <main class="page-main">
       <p class="project-back">
@@ -210,16 +216,14 @@ ${googleAnalyticsHeadMarkup()}
       <h1>${escapeHtml(headline)}</h1>
       <h3 class="project-subtitle">${escapeHtml(subtitle)}</h3>
       <div class="project-tag-row">
-        <div id="project-skills-root"></div>
+        ${buildProjectSkillsRootHtml(config.skills)}
         <ul class="project-tags">
 ${tagLis}
         </ul>
       </div>
 
       <p class="project-meta">${escapeHtml(dateAu)}</p>
-      <p class="project-lead text-lead">
-        ${escapeHtml(lead)}
-      </p>
+${leadBlock}
 ${reviewBlock}${wipBlock}${videoSection}
       <section class="project-prose">
         <h2 class="jw-heading-100">The repair</h2>
@@ -232,12 +236,9 @@ ${itemBlock}
       </div>
     </main>
 
-    <div id="site-footer"></div>
+${footerBlock}
 
-    <script src="/js/brand-text.js" defer></script>
-    <script src="/js/site-chrome.js" defer></script>
     <script src="/js/skills.js" defer></script>
-    <script src="/js/project-page-skills.js" defer></script>
   </body>
 </html>
 `;

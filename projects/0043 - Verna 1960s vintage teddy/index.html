@@ -29,9 +29,70 @@
     <link rel="stylesheet" href="/css/site.css" />
   </head>
   <body data-active-page="projects" data-project-folder="0043 - Verna 1960s vintage teddy">
-    <div id="site-header"></div>
+        <!-- sync-site-chrome:header -->
+    <div id="site-header">
+      <h1 class="title-main">Shailer Park Toy Doctor</h1>
 
-    <main class="page-main">
+      <div class="menu-container">
+        <nav class="menu jw-menu-copy" aria-label="Main">
+          <ul class="jw-menu jw-menu-horizontal">
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/" data-nav="home"><span>Home</span></a>
+            </li>
+            <li class="jw-menu-item jw-menu-is-active">
+              <a class="jw-menu-link" href="/projects/" data-nav="projects" aria-current="page"><span>Projects</span></a>
+            </li>
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/testimonials.html" data-nav="testimonials"><span>Testimonials</span></a>
+            </li>
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/contact.html" data-nav="contact"><span>Contact</span></a>
+            </li>
+          </ul>
+        </nav>
+              <ul class="social-icons" aria-label="Social media">
+          <li>
+            <a
+              class="social-icons__link social-icons__link--facebook"
+              href="https://www.facebook.com/profile.php?id=61589652126144"
+              aria-label="Facebook"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 320 512" fill="currentColor" aria-hidden="true"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--instagram"
+              href="https://www.instagram.com/sptoydoctor/"
+              aria-label="Instagram"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--threads"
+              href="https://www.threads.com/@sptoydoctor"
+              aria-label="Threads"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--youtube"
+              href="https://www.youtube.com/@SpToyDoctor"
+              aria-label="YouTube"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /sync-site-chrome:header -->
+
+<main class="page-main">
       <p class="project-back">
         <a href="/projects/">← All projects</a>
       </p>
@@ -48,7 +109,9 @@
       <h1>Verna golden mohair teddy — clean, mend, and paw restoration</h1>
       <h3 class="project-subtitle">Verna 1960s vintage teddy</h3>
       <div class="project-tag-row">
-        <div id="project-skills-root"></div>
+        <div id="project-skills-root">
+        <div class="project-skills" aria-label="Repair skills"><span class="skill-badge skill-badge--detail skill-badge--needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span><span class="skill-badge__label">Needlework</span></span><span class="skill-badge skill-badge--detail skill-badge--paintjob"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span><span class="skill-badge__label">Paint</span></span></div>
+      </div>
         <ul class="project-tags">
           <li class="project-tag">Verna</li>
           <li class="project-tag">Teddy</li>
@@ -59,7 +122,7 @@
       </div>
 
       <p class="project-meta">24 November 2025</p>
-      <p class="project-lead text-lead">
+                  <p class="project-lead text-lead">
         Verna, a 1960s golden mohair teddy, arrived with decomposing stuffing, tears, and tired glass eyes. We emptied and cleaned the bear, repaired fabric throughout, polished and reset the eyes, reinforced nose and mouth stitching, and reconditioned the leather paw pads so she displays beautifully again.
       </p>
 
@@ -149,7 +212,7 @@
         </div>
       </section>
 
-            <section class="project-prose">
+                        <section class="project-prose">
         <h2 class="jw-heading-100">The repair</h2>
         <p>
           Verna is a golden vintage teddy with mohair pile that had held decades of love — the stuffing inside was decomposing and the body had holes and tears that needed careful work. We opened the bear and removed the old fill, then deep-cleaned the mohair and lining. Fabric repairs were worked through the body, the glass eyes were removed for polishing and set back securely, and stitching at the nose and mouth was reinforced. The leather paw pads were reconditioned and repainted where wear had dulled the finish. Fresh stuffing went back in and the bear was closed so Verna sits upright with her original charm restored.
@@ -164,11 +227,69 @@
       </div>
     </main>
 
-    <div id="site-footer"></div>
-
-    <script src="/js/brand-text.js" defer></script>
-    <script src="/js/site-chrome.js" defer></script>
+        <!-- sync-site-chrome:footer -->
+    <div id="site-footer">
+      <footer class="site-footer">
+        <nav class="menu jw-menu-copy" aria-label="Footer">
+          <ul class="jw-menu jw-menu-horizontal">
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/" data-nav="home"><span>Home</span></a>
+            </li>
+            <li class="jw-menu-item jw-menu-is-active">
+              <a class="jw-menu-link" href="/projects/" data-nav="projects" aria-current="page"><span>Projects</span></a>
+            </li>
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/testimonials.html" data-nav="testimonials"><span>Testimonials</span></a>
+            </li>
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/contact.html" data-nav="contact"><span>Contact</span></a>
+            </li>
+          </ul>
+        </nav>
+              <ul class="social-icons" aria-label="Social media">
+          <li>
+            <a
+              class="social-icons__link social-icons__link--facebook"
+              href="https://www.facebook.com/profile.php?id=61589652126144"
+              aria-label="Facebook"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 320 512" fill="currentColor" aria-hidden="true"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--instagram"
+              href="https://www.instagram.com/sptoydoctor/"
+              aria-label="Instagram"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--threads"
+              href="https://www.threads.com/@sptoydoctor"
+              aria-label="Threads"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--youtube"
+              href="https://www.youtube.com/@SpToyDoctor"
+              aria-label="YouTube"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </li>
+        </ul>
+        <p>6 Thistlerow Street, Shailer Park QLD 4128 — appointment only</p>
+        <p><a href="mailto:sptoydoctor@gmail.com">sptoydoctor@gmail.com</a> · <a href="tel:+61424653833">(61) 0424 653 833</a> (SMS preferred)</p>
+        <p>© 2026 Shailer Park Toy Doctor</p>
+      </footer>
+    </div>
+    <!-- /sync-site-chrome:footer -->
     <script src="/js/skills.js" defer></script>
-    <script src="/js/project-page-skills.js" defer></script>
   </body>
 </html>

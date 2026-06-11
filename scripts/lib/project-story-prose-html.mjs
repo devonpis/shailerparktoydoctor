@@ -4,6 +4,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { boldToyDoctorInText } from './brand-text-html.mjs';
 import { publicProseFromConfig } from './polish-metadata.mjs';
 
 function escapeHtml(s) {
@@ -25,7 +26,7 @@ function paragraphBlock(paragraphs) {
   return paragraphs
     .map(
       (p) => `        <p>
-          ${escapeHtml(p)}
+          ${boldToyDoctorInText(escapeHtml(p))}
         </p>`
     )
     .join('\n');

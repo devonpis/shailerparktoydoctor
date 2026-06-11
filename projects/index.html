@@ -26,21 +26,997 @@
     <link rel="stylesheet" href="/css/site.css" />
   </head>
   <body data-active-page="projects">
-    <div id="site-header"></div>
+        <!-- sync-site-chrome:header -->
+    <div id="site-header">
+      <h1 class="title-main">Shailer Park Toy Doctor</h1>
 
-    <main class="page-main">
+      <div class="menu-container">
+        <nav class="menu jw-menu-copy" aria-label="Main">
+          <ul class="jw-menu jw-menu-horizontal">
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/" data-nav="home"><span>Home</span></a>
+            </li>
+            <li class="jw-menu-item jw-menu-is-active">
+              <a class="jw-menu-link" href="/projects/" data-nav="projects" aria-current="page"><span>Projects</span></a>
+            </li>
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/testimonials.html" data-nav="testimonials"><span>Testimonials</span></a>
+            </li>
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/contact.html" data-nav="contact"><span>Contact</span></a>
+            </li>
+          </ul>
+        </nav>
+              <ul class="social-icons" aria-label="Social media">
+          <li>
+            <a
+              class="social-icons__link social-icons__link--facebook"
+              href="https://www.facebook.com/profile.php?id=61589652126144"
+              aria-label="Facebook"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 320 512" fill="currentColor" aria-hidden="true"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--instagram"
+              href="https://www.instagram.com/sptoydoctor/"
+              aria-label="Instagram"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--threads"
+              href="https://www.threads.com/@sptoydoctor"
+              aria-label="Threads"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--youtube"
+              href="https://www.youtube.com/@SpToyDoctor"
+              aria-label="YouTube"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /sync-site-chrome:header -->
+
+<main class="page-main">
       <h1>Projects</h1>
       <p>
         Browse toys we have finished repairing. Each card opens the full story — photos, videos, and what we
         did to bring it back to life.
       </p>
-      <div id="projects-root"></div>
+      <div id="projects-root">
+      <!-- sync-projects-gallery:start -->
+      <div class="gallery-toolbar">
+        <div class="skill-filters" role="group" aria-label="Filter by skill"><button type="button" class="skill-filter skill-filter--all is-active" data-skill="all" aria-pressed="true">All</button><button type="button" class="skill-filter skill-filter--needlework" data-skill="needlework" aria-pressed="false"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span><span>Needlework</span></button><button type="button" class="skill-filter skill-filter--electronic" data-skill="electronic" aria-pressed="false"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span><span>Electronic</span></button><button type="button" class="skill-filter skill-filter--mechanical" data-skill="mechanical" aria-pressed="false"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span><span>Mechanical</span></button><button type="button" class="skill-filter skill-filter--paintjob" data-skill="paintjob" aria-pressed="false"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span><span>Paint</span></button></div>
+      </div>
+      <div id="gallery-grid" class="project-grid">
+      <a href="/projects/0105%20-%20Vintage%20white%20terry%20plush%20puppy/" class="project-card" data-skills="needlework paintjob">
+        <div class="project-card__media">
+          <img src="/projects/0105%20-%20Vintage%20white%20terry%20plush%20puppy/hero.jpeg" alt="Vintage white terry plush puppy" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--paintjob" title="Paint"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Vintage white terry plush puppy">Vintage white terry plush puppy</h2>
+          <p class="project-card__meta project-card__date">7 June 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0104%20-%20Vintage%20tan%20plush%20puppy%20dog/" class="project-card" data-skills="needlework paintjob">
+        <div class="project-card__media">
+          <img src="/projects/0104%20-%20Vintage%20tan%20plush%20puppy%20dog/after.jpeg" alt="Vintage tan plush puppy dog" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--paintjob" title="Paint"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Vintage tan plush puppy dog">Vintage tan plush puppy dog</h2>
+          <p class="project-card__meta project-card__date">7 June 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0102%20-%20Vintage%20white%20plush%20teddy%20bear/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0102%20-%20Vintage%20white%20plush%20teddy%20bear/hero.jpeg" alt="Vintage white plush teddy bear" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Vintage white plush teddy bear">Vintage white plush teddy bear</h2>
+          <p class="project-card__meta project-card__date">30 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0103%20-%20Large%20yellow%20plush%20dog/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0103%20-%20Large%20yellow%20plush%20dog/after.jpeg" alt="Large yellow plush dog" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Large yellow plush dog">Large yellow plush dog</h2>
+          <p class="project-card__meta project-card__date">27 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0101%20-%20White%20press-heart%20talking%20teddy/" class="project-card" data-skills="needlework electronic">
+        <div class="project-card__media">
+          <img src="/projects/0101%20-%20White%20press-heart%20talking%20teddy/after.jpeg" alt="White press-heart talking teddy" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="White press-heart talking teddy">White press-heart talking teddy</h2>
+          <p class="project-card__meta project-card__date">23 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0100%20-%20Vintage%20honey-brown%20plush%20bunny/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0100%20-%20Vintage%20honey-brown%20plush%20bunny/after.jpeg" alt="Vintage honey-brown plush bunny" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Vintage honey-brown plush bunny">Vintage honey-brown plush bunny</h2>
+          <p class="project-card__meta project-card__date">23 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0099%20-%20FlySky%20FS-GT2%20RC%20transmitter/" class="project-card" data-skills="mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0099%20-%20FlySky%20FS-GT2%20RC%20transmitter/hero.jpeg" alt="FlySky FS-GT2 RC transmitter" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="FlySky FS-GT2 RC transmitter">FlySky FS-GT2 RC transmitter</h2>
+          <p class="project-card__meta project-card__date">19 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0001%20-%20Saielle%20of%20the%20Willow%20Tree/" class="project-card" data-skills="mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0001%20-%20Saielle%20of%20the%20Willow%20Tree/hero.jpeg" alt="Saielle of the Willow Tree" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Saielle of the Willow Tree">Saielle of the Willow Tree</h2>
+          <p class="project-card__meta project-card__date">16 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0002%20-%20Venom/" class="project-card" data-skills="mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0002%20-%20Venom/hero.jpeg" alt="Hot Toys Venom" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Hot Toys Venom">Hot Toys Venom</h2>
+          <p class="project-card__meta project-card__date">15 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0076%20-%20Sleeping%20tan%20teddy%20blue%20pillow/" class="project-card" data-skills="electronic">
+        <div class="project-card__media">
+          <img src="/projects/0076%20-%20Sleeping%20tan%20teddy%20blue%20pillow/after.jpeg" alt="Sleeping tan teddy blue pillow" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Sleeping tan teddy blue pillow">Sleeping tan teddy blue pillow</h2>
+          <p class="project-card__meta project-card__date">14 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0074%20-%20Jellycat%20Bashful%20bunnies%20yellow%20and%20navy/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0074%20-%20Jellycat%20Bashful%20bunnies%20yellow%20and%20navy/WIP-001.jpeg" alt="Jellycat Bashful bunnies yellow and navy" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Jellycat Bashful bunnies yellow and navy">Jellycat Bashful bunnies yellow and navy</h2>
+          <p class="project-card__meta project-card__date">8 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0050%20-%20Toy%20Story%20Woody%20pull%20string%20doll/" class="project-card" data-skills="mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0050%20-%20Toy%20Story%20Woody%20pull%20string%20doll/after.jpeg" alt="Toy Story Woody pull-string doll" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Toy Story Woody pull-string doll">Toy Story Woody pull-string doll</h2>
+          <p class="project-card__meta project-card__date">6 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0003%20-%20Donald%20Duck/" class="project-card" data-skills="mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0003%20-%20Donald%20Duck/after.jpeg" alt="Vintage Illco Donald Duck wind up" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Vintage Illco Donald Duck wind up">Vintage Illco Donald Duck wind up</h2>
+          <p class="project-card__meta project-card__date">6 May 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0083%20-%20Teddy%20in%20pink%20pajamas/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0083%20-%20Teddy%20in%20pink%20pajamas/after.jpeg" alt="Teddy in pink pajamas" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Teddy in pink pajamas">Teddy in pink pajamas</h2>
+          <p class="project-card__meta project-card__date">22 April 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0081%20-%20Terry%20cloth%20tan%20puppy%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0081%20-%20Terry%20cloth%20tan%20puppy%20plush/after.jpeg" alt="Terry cloth tan puppy plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Terry cloth tan puppy plush">Terry cloth tan puppy plush</h2>
+          <p class="project-card__meta project-card__date">22 April 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0067%20-%20Dakin%20stroller%20huggers%20with%20music%20box/" class="project-card" data-skills="needlework mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0067%20-%20Dakin%20stroller%20huggers%20with%20music%20box/after.jpeg" alt="Dakin stroller huggers with music box" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Dakin stroller huggers with music box">Dakin stroller huggers with music box</h2>
+          <p class="project-card__meta project-card__date">14 April 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0066%20-%20Lucy%20dalmatian%20plush%20dog/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0066%20-%20Lucy%20dalmatian%20plush%20dog/after.jpeg" alt="Lucy dalmatian plush dog" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Lucy dalmatian plush dog">Lucy dalmatian plush dog</h2>
+          <p class="project-card__meta project-card__date">5 April 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0090%20-%20Cream%20teddy%20blue%20satin%20bow/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0090%20-%20Cream%20teddy%20blue%20satin%20bow/hero.jpeg" alt="Cream teddy blue satin bow" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Cream teddy blue satin bow">Cream teddy blue satin bow</h2>
+          <p class="project-card__meta project-card__date">31 March 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0087%20-%20Curly%20sherpa%20teddy%20gold%20organza%20bow/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0087%20-%20Curly%20sherpa%20teddy%20gold%20organza%20bow/after.jpeg" alt="Curly sherpa teddy gold organza bow" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Curly sherpa teddy gold organza bow">Curly sherpa teddy gold organza bow</h2>
+          <p class="project-card__meta project-card__date">30 March 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0088%20-%20Yui%20Yuigahama%20Bunny%20Ver%201%204%20FREEing/" class="project-card" data-skills="paintjob">
+        <div class="project-card__media">
+          <img src="/projects/0088%20-%20Yui%20Yuigahama%20Bunny%20Ver%201%204%20FREEing/hero.jpeg" alt="Yui Yuigahama Bunny Ver 1/4 FREEing" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--paintjob" title="Paint"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Yui Yuigahama Bunny Ver 1/4 FREEing">Yui Yuigahama Bunny Ver 1/4 FREEing</h2>
+          <p class="project-card__meta project-card__date">28 March 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0085%20-%20Vintage%20giant%20panda%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0085%20-%20Vintage%20giant%20panda%20plush/after.jpeg" alt="Vintage giant panda plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Vintage giant panda plush">Vintage giant panda plush</h2>
+          <p class="project-card__meta project-card__date">28 March 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0078%20-%20Disney%20Pluto%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0078%20-%20Disney%20Pluto%20plush/hero.jpeg" alt="Disney Pluto plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Disney Pluto plush">Disney Pluto plush</h2>
+          <p class="project-card__meta project-card__date">3 March 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0080%20-%20Capybara%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0080%20-%20Capybara%20plush/after.jpeg" alt="Capybara plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Capybara plush">Capybara plush</h2>
+          <p class="project-card__meta project-card__date">18 February 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0062%20-%20Bob%20the%20Builder%20and%20Spud%20plush/" class="project-card" data-skills="needlework electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0062%20-%20Bob%20the%20Builder%20and%20Spud%20plush/after.jpeg" alt="Bob the Builder and Spud plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Bob the Builder and Spud plush">Bob the Builder and Spud plush</h2>
+          <p class="project-card__meta project-card__date">22 January 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0059%20-%20Brown%20kangaroo%20plush%20tan%20pouch/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0059%20-%20Brown%20kangaroo%20plush%20tan%20pouch/after.jpeg" alt="Brown kangaroo plush tan pouch" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Brown kangaroo plush tan pouch">Brown kangaroo plush tan pouch</h2>
+          <p class="project-card__meta project-card__date">19 January 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0057%20-%20Yellow%20Yoshi%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0057%20-%20Yellow%20Yoshi%20plush/after.jpeg" alt="Yellow Yoshi plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Yellow Yoshi plush">Yellow Yoshi plush</h2>
+          <p class="project-card__meta project-card__date">17 January 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0058%20-%20John%20Deere%20ride%20on%20tractor/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0058%20-%20John%20Deere%20ride%20on%20tractor/after.jpeg" alt="John Deere ride-on tractor" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="John Deere ride-on tractor">John Deere ride-on tractor</h2>
+          <p class="project-card__meta project-card__date">16 January 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0052%20-%20Singing%20Elvis%20Christmas%20dog/" class="project-card" data-skills="electronic">
+        <div class="project-card__media">
+          <img src="/projects/0052%20-%20Singing%20Elvis%20Christmas%20dog/after.jpeg" alt="Singing Elvis Christmas dog" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Singing Elvis Christmas dog">Singing Elvis Christmas dog</h2>
+          <p class="project-card__meta project-card__date">12 January 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0051%20-%20Harold%20singing%20reindeer/" class="project-card" data-skills="needlework electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0051%20-%20Harold%20singing%20reindeer/after.jpeg" alt="Harold singing reindeer" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Harold singing reindeer">Harold singing reindeer</h2>
+          <p class="project-card__meta project-card__date">9 January 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0084%20-%20Paddington%20Bear/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0084%20-%20Paddington%20Bear/after.jpeg" alt="Paddington Bear" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Paddington Bear">Paddington Bear</h2>
+          <p class="project-card__meta project-card__date">8 January 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0046%20-%20Arcade%20Alley%20Laser%20Bowlercade/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0046%20-%20Arcade%20Alley%20Laser%20Bowlercade/hero.jpeg" alt="Arcade Alley Laser Bowlercade" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Arcade Alley Laser Bowlercade">Arcade Alley Laser Bowlercade</h2>
+          <p class="project-card__meta project-card__date">6 January 2026</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0079%20-%20Tan%20shaggy%20dog%20brown%20ribbon/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0079%20-%20Tan%20shaggy%20dog%20brown%20ribbon/after.jpeg" alt="Tan shaggy dog brown ribbon" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Tan shaggy dog brown ribbon">Tan shaggy dog brown ribbon</h2>
+          <p class="project-card__meta project-card__date">14 December 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0082%20-%20Elephant%20baby%20lovey%20blanket/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0082%20-%20Elephant%20baby%20lovey%20blanket/after.jpeg" alt="Elephant baby lovey blanket" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Elephant baby lovey blanket">Elephant baby lovey blanket</h2>
+          <p class="project-card__meta project-card__date">9 December 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0092%20-%20Buzz%20Lightyear%20figure/" class="project-card" data-skills="electronic mechanical paintjob">
+        <div class="project-card__media">
+          <img src="/projects/0092%20-%20Buzz%20Lightyear%20figure/after.jpeg" alt="Buzz Lightyear figure" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span><span class="skill-badge skill-badge--icon-only skill-badge--paintjob" title="Paint"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Buzz Lightyear figure">Buzz Lightyear figure</h2>
+          <p class="project-card__meta project-card__date">8 December 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0089%20-%20Brown%20sherpa%20teddy%20pink%20ribbon/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0089%20-%20Brown%20sherpa%20teddy%20pink%20ribbon/after.jpeg" alt="Brown sherpa teddy pink ribbon" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Brown sherpa teddy pink ribbon">Brown sherpa teddy pink ribbon</h2>
+          <p class="project-card__meta project-card__date">4 December 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0045%20-%20Beanie%20Boo%20husky%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0045%20-%20Beanie%20Boo%20husky%20plush/after.jpeg" alt="Beanie Boo husky plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Beanie Boo husky plush">Beanie Boo husky plush</h2>
+          <p class="project-card__meta project-card__date">2 December 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0055%20-%20Santa%20Homer%20Simpson%20animatronic/" class="project-card" data-skills="needlework electronic mechanical paintjob">
+        <div class="project-card__media">
+          <img src="/projects/0055%20-%20Santa%20Homer%20Simpson%20animatronic/after.jpeg" alt="Santa Homer Simpson animatronic" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span><span class="skill-badge skill-badge--icon-only skill-badge--paintjob" title="Paint"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Santa Homer Simpson animatronic">Santa Homer Simpson animatronic</h2>
+          <p class="project-card__meta project-card__date">1 December 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0044%20-%20Kosen%20white%20plush%20horse/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0044%20-%20Kosen%20white%20plush%20horse/after.jpeg" alt="Kosen white plush horse" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Kosen white plush horse">Kosen white plush horse</h2>
+          <p class="project-card__meta project-card__date">30 November 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0086%20-%20Disney%20Tigger%20plush/" class="project-card" data-skills="needlework electronic">
+        <div class="project-card__media">
+          <img src="/projects/0086%20-%20Disney%20Tigger%20plush/after.jpeg" alt="Disney Tigger plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Disney Tigger plush">Disney Tigger plush</h2>
+          <p class="project-card__meta project-card__date">27 November 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0043%20-%20Verna%201960s%20vintage%20teddy/" class="project-card" data-skills="needlework paintjob">
+        <div class="project-card__media">
+          <img src="/projects/0043%20-%20Verna%201960s%20vintage%20teddy/after.jpeg" alt="Verna 1960s vintage teddy" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--paintjob" title="Paint"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Verna 1960s vintage teddy">Verna 1960s vintage teddy</h2>
+          <p class="project-card__meta project-card__date">24 November 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0091%20-%20Woody%20doll%20Toy%20Story/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0091%20-%20Woody%20doll%20Toy%20Story/after.jpeg" alt="Woody doll Toy Story" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Woody doll Toy Story">Woody doll Toy Story</h2>
+          <p class="project-card__meta project-card__date">13 November 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0053%20-%20Playskool%20Kota%20Triceratops/" class="project-card" data-skills="needlework electronic mechanical paintjob">
+        <div class="project-card__media">
+          <img src="/projects/0053%20-%20Playskool%20Kota%20Triceratops/hero.jpeg" alt="Playskool Kota Triceratops" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span><span class="skill-badge skill-badge--icon-only skill-badge--paintjob" title="Paint"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Playskool Kota Triceratops">Playskool Kota Triceratops</h2>
+          <p class="project-card__meta project-card__date">30 October 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0042%20-%20Soft%20cloth%20baby%20doll/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0042%20-%20Soft%20cloth%20baby%20doll/after.jpeg" alt="Lulla soft cloth baby doll" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Lulla soft cloth baby doll">Lulla soft cloth baby doll</h2>
+          <p class="project-card__meta project-card__date">30 October 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0041%20-%20Tonka%20Chuck%20and%20Friends%20trucks/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0041%20-%20Tonka%20Chuck%20and%20Friends%20trucks/after.jpeg" alt="Tonka Chuck and Friends trucks" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Tonka Chuck and Friends trucks">Tonka Chuck and Friends trucks</h2>
+          <p class="project-card__meta project-card__date">23 October 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0040%20-%20Christmas%20toy%20train%20set/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0040%20-%20Christmas%20toy%20train%20set/after.jpeg" alt="Christmas toy train set" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Christmas toy train set">Christmas toy train set</h2>
+          <p class="project-card__meta project-card__date">20 October 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0039%20-%20CoComelon%20Cece%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0039%20-%20CoComelon%20Cece%20plush/after.jpeg" alt="CoComelon Cece plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="CoComelon Cece plush">CoComelon Cece plush</h2>
+          <p class="project-card__meta project-card__date">17 October 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0038%20-%20Hallmark%20reading%20buddy%20teddy/" class="project-card" data-skills="needlework electronic">
+        <div class="project-card__media">
+          <img src="/projects/0038%20-%20Hallmark%20reading%20buddy%20teddy/after.jpeg" alt="Hallmark reading buddy teddy" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Hallmark reading buddy teddy">Hallmark reading buddy teddy</h2>
+          <p class="project-card__meta project-card__date">9 October 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0037%20-%20Jellycat%20Blossom%20bunny/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0037%20-%20Jellycat%20Blossom%20bunny/after.jpeg" alt="Jellycat Blossom bunny" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Jellycat Blossom bunny">Jellycat Blossom bunny</h2>
+          <p class="project-card__meta project-card__date">1 October 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0036%20-%20Brown%20sherpa%20teddy%20blue%20ribbon/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0036%20-%20Brown%20sherpa%20teddy%20blue%20ribbon/after.jpeg" alt="Brown sherpa teddy blue ribbon" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Brown sherpa teddy blue ribbon">Brown sherpa teddy blue ribbon</h2>
+          <p class="project-card__meta project-card__date">26 September 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0035%20-%20Jurassic%20Park%20electronic%20T%20Rex/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0035%20-%20Jurassic%20Park%20electronic%20T%20Rex/after.jpeg" alt="Jurassic Park electronic T-Rex" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Jurassic Park electronic T-Rex">Jurassic Park electronic T-Rex</h2>
+          <p class="project-card__meta project-card__date">25 September 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0034%20-%20Miniso%20radish%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0034%20-%20Miniso%20radish%20plush/after.jpeg" alt="Miniso radish plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Miniso radish plush">Miniso radish plush</h2>
+          <p class="project-card__meta project-card__date">16 September 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0032%20-%20Kitchen%20witch%20on%20broomstick/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0032%20-%20Kitchen%20witch%20on%20broomstick/after.jpeg" alt="Kitchen witch on broomstick" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Kitchen witch on broomstick">Kitchen witch on broomstick</h2>
+          <p class="project-card__meta project-card__date">30 August 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0031%20-%20Mickey%20and%20Goofy%20plush%20pair/" class="project-card" data-skills="needlework electronic">
+        <div class="project-card__media">
+          <img src="/projects/0031%20-%20Mickey%20and%20Goofy%20plush%20pair/after.jpeg" alt="Mickey and Goofy plush pair" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Mickey and Goofy plush pair">Mickey and Goofy plush pair</h2>
+          <p class="project-card__meta project-card__date">29 August 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0094%20-%20Ducksley/" class="project-card" data-skills="needlework electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0094%20-%20Ducksley/after.jpeg" alt="Russ Ducksley singing duck" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Russ Ducksley singing duck">Russ Ducksley singing duck</h2>
+          <p class="project-card__meta project-card__date">26 August 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0030%20-%20KFC%20Chicky%20footballer%20figurines/" class="project-card" data-skills="paintjob">
+        <div class="project-card__media">
+          <img src="/projects/0030%20-%20KFC%20Chicky%20footballer%20figurines/after.jpeg" alt="KFC Chicky footballer figurines" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--paintjob" title="Paint"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🖌️</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="KFC Chicky footballer figurines">KFC Chicky footballer figurines</h2>
+          <p class="project-card__meta project-card__date">23 August 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0027%20-%20Mattel%20RC%20baby%20dolls/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0027%20-%20Mattel%20RC%20baby%20dolls/after.jpeg" alt="Mattel RC baby dolls" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Mattel RC baby dolls">Mattel RC baby dolls</h2>
+          <p class="project-card__meta project-card__date">27 July 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0098%20-%20Lion%20mascot%20costume%20transform/" class="project-card" data-skills="needlework mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0098%20-%20Lion%20mascot%20costume%20transform/after.jpeg" alt="Lion mascot costume transform" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Lion mascot costume transform">Lion mascot costume transform</h2>
+          <p class="project-card__meta project-card__date">6 July 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0025%20-%20Hamish%20yellow%20teddy%20bear/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0025%20-%20Hamish%20yellow%20teddy%20bear/after.jpeg" alt="Hamish yellow teddy bear" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Hamish yellow teddy bear">Hamish yellow teddy bear</h2>
+          <p class="project-card__meta project-card__date">26 June 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0015%20-%20Anpanman%20Kotoba%20Zukan%20DX/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0015%20-%20Anpanman%20Kotoba%20Zukan%20DX/hero.jpeg" alt="Anpanman Kotoba Zukan DX" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Anpanman Kotoba Zukan DX">Anpanman Kotoba Zukan DX</h2>
+          <p class="project-card__meta project-card__date">25 June 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0022%20-%20Pokemon%20Pikachu%202%20GS%20pair/" class="project-card" data-skills="electronic">
+        <div class="project-card__media">
+          <img src="/projects/0022%20-%20Pokemon%20Pikachu%202%20GS%20pair/after.jpeg" alt="Pokemon Pikachu 2 GS pair" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Pokemon Pikachu 2 GS pair">Pokemon Pikachu 2 GS pair</h2>
+          <p class="project-card__meta project-card__date">20 May 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0021%20-%20Purple%20tie%20dye%20monkey%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0021%20-%20Purple%20tie%20dye%20monkey%20plush/after.jpeg" alt="Purple tie-dye monkey plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Purple tie-dye monkey plush">Purple tie-dye monkey plush</h2>
+          <p class="project-card__meta project-card__date">24 March 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0016%20-%20Grey%20bashful%20bunny%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0016%20-%20Grey%20bashful%20bunny%20plush/after.jpeg" alt="Grey bashful bunny plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Grey bashful bunny plush">Grey bashful bunny plush</h2>
+          <p class="project-card__meta project-card__date">9 February 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0018%20-%20Power%20Rangers%20Dino%20Megazord%20RC/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0018%20-%20Power%20Rangers%20Dino%20Megazord%20RC/after.jpeg" alt="Power Rangers Dino Megazord RC" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Power Rangers Dino Megazord RC">Power Rangers Dino Megazord RC</h2>
+          <p class="project-card__meta project-card__date">8 February 2025</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0006%20-%20Tomy%20Plarail%20Edward/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0006%20-%20Tomy%20Plarail%20Edward/after.jpeg" alt="Tomy Plarail Edward" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Tomy Plarail Edward">Tomy Plarail Edward</h2>
+          <p class="project-card__meta project-card__date">15 September 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0020%20-%20Christmas%20bear%20music%20box%20figurine/" class="project-card" data-skills="mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0020%20-%20Christmas%20bear%20music%20box%20figurine/after.jpeg" alt="Christmas bear music box figurine" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Christmas bear music box figurine">Christmas bear music box figurine</h2>
+          <p class="project-card__meta project-card__date">13 February 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0019%20-%20Bear%20in%20giraffe%20onesie%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0019%20-%20Bear%20in%20giraffe%20onesie%20plush/after.jpeg" alt="Bear in giraffe onesie plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Bear in giraffe onesie plush">Bear in giraffe onesie plush</h2>
+          <p class="project-card__meta project-card__date">12 February 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0093%20-%20Tomy%20Big%20Loader%20white%20shells%20pair/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0093%20-%20Tomy%20Big%20Loader%20white%20shells%20pair/hero.jpeg" alt="Tomy Big Loader white shells pair" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Tomy Big Loader white shells pair">Tomy Big Loader white shells pair</h2>
+          <p class="project-card__meta project-card__date">2 February 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0014%20-%20Tomy%20Big%20Loader%20blue%20power%20unit/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0014%20-%20Tomy%20Big%20Loader%20blue%20power%20unit/after.jpeg" alt="Tomy Big Loader blue power unit" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Tomy Big Loader blue power unit">Tomy Big Loader blue power unit</h2>
+          <p class="project-card__meta project-card__date">2 February 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0013%20-%20Press%20heart%20talking%20bear/" class="project-card" data-skills="needlework electronic">
+        <div class="project-card__media">
+          <img src="/projects/0013%20-%20Press%20heart%20talking%20bear/hero.jpeg" alt="Press-heart talking bear" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Press-heart talking bear">Press-heart talking bear</h2>
+          <p class="project-card__meta project-card__date">1 January 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0012%20-%20Jakks%20First%20Order%20Stormtrooper%20Battle%20Buddy/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0012%20-%20Jakks%20First%20Order%20Stormtrooper%20Battle%20Buddy/hero.jpeg" alt="Jakks First Order Stormtrooper Battle Buddy" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Jakks First Order Stormtrooper Battle Buddy">Jakks First Order Stormtrooper Battle Buddy</h2>
+          <p class="project-card__meta project-card__date">1 January 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0011%20-%20Ahsoka%20Tano%20Legacy%20lightsabers/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0011%20-%20Ahsoka%20Tano%20Legacy%20lightsabers/hero.jpeg" alt="Ahsoka Tano Legacy lightsabers" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Ahsoka Tano Legacy lightsabers">Ahsoka Tano Legacy lightsabers</h2>
+          <p class="project-card__meta project-card__date">1 January 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0010%20-%20Guitar%20Hero%20World%20Tour%20guitar/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0010%20-%20Guitar%20Hero%20World%20Tour%20guitar/hero.jpeg" alt="Guitar Hero World Tour guitar" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Guitar Hero World Tour guitar">Guitar Hero World Tour guitar</h2>
+          <p class="project-card__meta project-card__date">1 January 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0009%20-%20Hey%20Duggee%20interactive%20plush/" class="project-card" data-skills="needlework electronic">
+        <div class="project-card__media">
+          <img src="/projects/0009%20-%20Hey%20Duggee%20interactive%20plush/hero.jpeg" alt="Hey Duggee interactive plush" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Hey Duggee interactive plush">Hey Duggee interactive plush</h2>
+          <p class="project-card__meta project-card__date">1 January 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0008%20-%20Large%20floppy%20brown%20cream%20dog/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0008%20-%20Large%20floppy%20brown%20cream%20dog/hero.jpeg" alt="Large floppy brown cream dog" loading="lazy" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Large floppy brown cream dog">Large floppy brown cream dog</h2>
+          <p class="project-card__meta project-card__date">1 January 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0007%20-%20Patchwork%20teddy%20bear%20with%20heart/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0007%20-%20Patchwork%20teddy%20bear%20with%20heart/hero.jpeg" alt="Patchwork teddy bear with heart" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Patchwork teddy bear with heart">Patchwork teddy bear with heart</h2>
+          <p class="project-card__meta project-card__date">1 January 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0005%20-%20Vintage%20giant%20Smurf%20plush/" class="project-card" data-skills="needlework">
+        <div class="project-card__media">
+          <img src="/projects/0005%20-%20Vintage%20giant%20Smurf%20plush/after.jpeg" alt="Vintage giant Smurf plush" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--needlework" title="Needlework"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🧸</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Vintage giant Smurf plush">Vintage giant Smurf plush</h2>
+          <p class="project-card__meta project-card__date">1 January 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      <a href="/projects/0004%20-%20Gemmy%20Rocky%20Balboa/" class="project-card" data-skills="electronic mechanical">
+        <div class="project-card__media">
+          <img src="/projects/0004%20-%20Gemmy%20Rocky%20Balboa/hero.jpeg" alt="Gemmy Rocky Balboa" loading="lazy" class="is-portrait" />
+          <div class="skill-badges skill-badges--overlay"><span class="skill-badge skill-badge--icon-only skill-badge--electronic" title="Electronic"><span class="skill-icon skill-icon--emoji" aria-hidden="true">⚡</span></span><span class="skill-badge skill-badge--icon-only skill-badge--mechanical" title="Mechanical"><span class="skill-icon skill-icon--emoji" aria-hidden="true">🔧</span></span></div>
+        </div>
+        <div class="project-card__body">
+          <h2 class="project-card__title" title="Gemmy Rocky Balboa">Gemmy Rocky Balboa</h2>
+          <p class="project-card__meta project-card__date">1 January 2024</p>
+          <p class="project-card__cta">Read full story →</p>
+        </div>
+      </a>
+      </div>
+      <p id="gallery-empty" class="gallery-empty" hidden>No projects match this skill.</p>
+      <!-- sync-projects-gallery:end -->
+      </div>
     </main>
 
-    <div id="site-footer"></div>
-
-    <script src="/js/brand-text.js" defer></script>
-    <script src="/js/site-chrome.js" defer></script>
+        <!-- sync-site-chrome:footer -->
+    <div id="site-footer">
+      <footer class="site-footer">
+        <nav class="menu jw-menu-copy" aria-label="Footer">
+          <ul class="jw-menu jw-menu-horizontal">
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/" data-nav="home"><span>Home</span></a>
+            </li>
+            <li class="jw-menu-item jw-menu-is-active">
+              <a class="jw-menu-link" href="/projects/" data-nav="projects" aria-current="page"><span>Projects</span></a>
+            </li>
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/testimonials.html" data-nav="testimonials"><span>Testimonials</span></a>
+            </li>
+            <li class="jw-menu-item">
+              <a class="jw-menu-link" href="/contact.html" data-nav="contact"><span>Contact</span></a>
+            </li>
+          </ul>
+        </nav>
+              <ul class="social-icons" aria-label="Social media">
+          <li>
+            <a
+              class="social-icons__link social-icons__link--facebook"
+              href="https://www.facebook.com/profile.php?id=61589652126144"
+              aria-label="Facebook"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 320 512" fill="currentColor" aria-hidden="true"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--instagram"
+              href="https://www.instagram.com/sptoydoctor/"
+              aria-label="Instagram"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--threads"
+              href="https://www.threads.com/@sptoydoctor"
+              aria-label="Threads"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a>
+          </li>
+          <li>
+            <a
+              class="social-icons__link social-icons__link--youtube"
+              href="https://www.youtube.com/@SpToyDoctor"
+              aria-label="YouTube"
+              rel="noopener noreferrer"
+              target="_blank"
+              ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </li>
+        </ul>
+        <p>6 Thistlerow Street, Shailer Park QLD 4128 — appointment only</p>
+        <p><a href="mailto:sptoydoctor@gmail.com">sptoydoctor@gmail.com</a> · <a href="tel:+61424653833">(61) 0424 653 833</a> (SMS preferred)</p>
+        <p>© 2026 Shailer Park Toy Doctor</p>
+      </footer>
+    </div>
+    <!-- /sync-site-chrome:footer -->
     <script src="/js/skills.js" defer></script>
     <script src="/js/projects-gallery.js" defer></script>
   </body>

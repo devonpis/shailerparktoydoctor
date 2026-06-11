@@ -59,7 +59,7 @@ Rotation and resize share **one sharp pipeline** per file (`optimize-project-ima
 
 **`publish-webpage.mjs`** (T-00024 story SEO): if **`index.html`** is missing, runs **`scaffold-project-story-html.mjs`** first (body + head tags from `config.json`). On existing pages, syncs the **Work in progress** gallery (before → WIP → after, excludes `hero.*` only). Then syncs **SEO meta** from current images: `<title>`, meta description, canonical, Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`), and **project-hero** (`hero` → `after` → `WIP-001` → `before`). Sets **`webpageUrl`** in config if empty. Use `--no-meta` to skip. Edit prose in `config.json` (`repairDetails`, `itemDetails`) before scaffold, or hand-edit `index.html` after (re-run publish to refresh meta/hero only).
 
-Agent flow for **`publish <id> to webpage`**: after owner confirms → `publish-webpage.mjs` (images + validate + scaffold if needed + SEO meta) → **`sync-testimonials-html.mjs`** when the project has **`googleReview`** and a live story URL (`webpageUrl` or `index.html`) so the testimonials quote card gets a **Repair:** link → `sync-projects-gallery-index.mjs <id>` → sitemap → commit/push when approved. Optional: `scaffold-project-story-html.mjs <id> --force` to regenerate body from config without re-optimizing images.
+Agent flow for **`publish <id> to webpage`**: after owner confirms → `publish-webpage.mjs` (images + validate + scaffold if needed + SEO meta) → **`sync-testimonials-html.mjs`** when the project has **`googleReview`** and a live story URL (`webpageUrl` or `index.html`) so the testimonials quote card gets a **Repair:** link → **`sync-projects-gallery-index.mjs <id>`** (updates `data/projects-index.json` **and** rebakes pre-rendered tiles in **`projects/index.html`**) → sitemap → commit/push when approved. New story scaffolds include **static** header/footer from `includes/` (no `site-chrome.js`). After editing `includes/site-header.html`, `site-footer.html`, or `social-icons.html`, run **`node scripts/sync-site-chrome.mjs`**. Optional: `scaffold-project-story-html.mjs <id> --force` to regenerate body from config without re-optimizing images.
 
 **Google review (required for testimonials):** `publish-webpage.mjs` does **not** invent reviews. If `config.json` has **`googleReview": null`**, the story page will have **no** review block and **`new/testimonials.html` will not** get a card for that repair (checklist shows `[ ] googleReview + testimonials`). After you map a Google review, run:
 
@@ -115,14 +115,14 @@ Create **`projects/<folder>/index.html`** from [`projects/0000 - template/index.
 
 ### 2. Register in the projects gallery
 
-Add or update an entry in **`projects-index.json`** (see schema below).
+Run **`node scripts/sync-projects-gallery-index.mjs <id>`** (or `--all`). This:
 
-| Phase | File path |
-|-------|-----------|
-| **Preview** (`/new/projects/` gallery) | [`new/data/projects-index.json`](../new/data/projects-index.json) |
-| **After cutover** | [`data/projects-index.json`](../data/projects-index.json) at site root |
+1. Adds or updates the row in **`data/projects-index.json`** (used by home highlights / featured scripts).
+2. Rebakes **pre-rendered** project cards inside **`projects/index.html`** between `<!-- sync-projects-gallery:start -->` … `<!-- sync-projects-gallery:end -->`**.
 
-Keep both files **in sync** until **T-00016** removes `new/` prefix paths.
+Skill filtering on `/projects/` stays client-side ([`js/projects-gallery.js`](../js/projects-gallery.js) shows/hides baked tiles; no JSON fetch for the grid).
+
+To refresh gallery HTML only (after hand-editing JSON): **`node scripts/sync-projects-gallery-index.mjs --html-only`**.
 
 ### 3. Set `webpageUrl`
 
@@ -194,10 +194,11 @@ Array of objects; **only DONE** repairs.
 
 ### Projects gallery (`/projects/`)
 
-[`js/projects-gallery.js`](../js/projects-gallery.js) loads `data/projects-index.json`, merges `endDate` from each project’s `config.json`, then:
+[`scripts/lib/projects-gallery-html.mjs`](../scripts/lib/projects-gallery-html.mjs) (via `sync-projects-gallery-index.mjs`) bakes tiles into [`projects/index.html`](../projects/index.html):
 
 - **Sort:** `endDate` descending (newest repair first); tie-break by project `id` descending.
 - **Tile date:** `endDate` only, formatted with `en-AU` long date — same convention as story `<p class="project-meta">` from [`scaffold-project-story-html.mjs`](../scripts/scaffold-project-story-html.mjs).
+- **Skills:** each card has `data-skills` for filter buttons; [`js/projects-gallery.js`](../js/projects-gallery.js) toggles visibility only (same layout and filter bar as before).
 
 Home highlight tiles do not show dates (ranked by `importance` in `config.json`). Social “oldest unpublished” picks use **`endDate`**, not project id.
 

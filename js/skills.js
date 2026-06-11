@@ -129,7 +129,7 @@
     else img.addEventListener('load', apply, { once: true });
   }
 
-  /** Square project tiles: portrait sources crop from top; landscape stays centered. */
+  /** @deprecated Portrait crop is baked via sync-home-highlights / sync-projects-gallery-index. */
   function applyProjectTileImages(root = document) {
     root
       .querySelectorAll('.project-card__media img, .product-tile > .product-tile__img')

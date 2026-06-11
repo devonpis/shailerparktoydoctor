@@ -14,12 +14,14 @@
  */
 
 import {
+  bakeHomeIndexStaticEnhancements,
   buildHighlightsFromDisk,
   formatHighlightsList,
   patchHomeIndex,
   setProjectImportance,
   loadProjectsIndex,
 } from './lib/home-highlights.mjs';
+import { clearPortraitCache } from './lib/project-tile-image.mjs';
 import { resolveProjectDir } from './lib/resolve-project-dir.mjs';
 
 function parseSetArg(raw) {
@@ -77,7 +79,7 @@ function applyConfigUpdates(flags) {
   }
 }
 
-function main() {
+async function main() {
   const flags = parseArgs(process.argv);
 
   if (flags.sets.length || flags.clears.length) {
@@ -90,19 +92,25 @@ function main() {
     }
   }
 
-  const { highlights, html } = buildHighlightsFromDisk();
+  clearPortraitCache();
+  const { highlights, html } = await buildHighlightsFromDisk();
   console.log(formatHighlightsList(highlights));
 
   if (flags.list) return;
 
   if (flags.dryRun) {
-    console.log('\n[dry-run] would update index.html #patient-stories-root');
+    console.log('\n[dry-run] would update index.html #patient-stories-root + baked bold/portrait');
     return;
   }
 
   const changed = patchHomeIndex(html);
+  const baked = bakeHomeIndexStaticEnhancements();
   if (changed) console.log('\nWrote index.html — patient stories highlight section');
+  else if (baked) console.log('\nWrote index.html — home page-main bold + scripts');
   else console.log('\nindex.html highlights already current');
 }
 
-main();
+main().catch((e) => {
+  console.error(e.message || e);
+  process.exit(1);
+});

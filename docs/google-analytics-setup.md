@@ -89,7 +89,7 @@ You now have a **GA4 property** (not Universal Analytics — UA was sunset in 20
 
 **Implementation pattern for this repo:**
 
-1. Put the snippet in a small include, e.g. [`includes/google-analytics.html`](../includes/google-analytics.html), **or** duplicate the two `<script>` blocks in each page’s `<head>` (includes are not auto-injected into `<head>` today — header/footer load via [`js/site-chrome.js`](../js/site-chrome.js) in the body).
+1. Put the snippet in a small include, e.g. [`includes/google-analytics.html`](../includes/google-analytics.html), **or** duplicate the two `<script>` blocks in each page’s `<head>`. Header/footer are **baked static HTML** via [`scripts/sync-site-chrome.mjs`](../scripts/sync-site-chrome.mjs) (not loaded by JS).
 2. Update [`projects/0000 - template/index.html.example`](../projects/0000%20-%20template/index.html.example) and [`scripts/publish-webpage.mjs`](../scripts/publish-webpage.mjs) so **new** story pages get the tag.
 3. Optionally run a one-shot script to backfill existing story `index.html` files.
 4. Record the Measurement ID in [`business-info.md`](business-info.md) (ID only).

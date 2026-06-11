@@ -1,5 +1,6 @@
 /**
- * Bold "Toy Doctor" in body copy (not headings, header, or footer).
+ * @deprecated Toy Doctor bold is baked at build time (sync-home-highlights, sync-project-story-brand, testimonials).
+ * Kept for pages that still load this script (e.g. contact.html).
  */
 (function (global) {
   const PHRASE = 'Toy Doctor';

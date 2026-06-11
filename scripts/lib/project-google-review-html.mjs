@@ -4,6 +4,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { boldToyDoctorInText } from './brand-text-html.mjs';
 import {
   escapeHtml,
   normalizeGoogleReview,
@@ -28,7 +29,7 @@ export function renderProjectReviewBlock(review) {
   if (!n) return '';
   return [
     '      <blockquote class="project-review">',
-    `        <p>“${escapeHtml(n.quote)}”</p>`,
+    `        <p>“${boldToyDoctorInText(escapeHtml(n.quote))}”</p>`,
     `        <footer>${escapeHtml(reviewerAttributionLine(review))}</footer>`,
     '      </blockquote>',
     '',
@@ -59,6 +60,18 @@ export function parseProjectReviewFromHtml(html) {
   return normalizeGoogleReview({ quote });
 }
 
+function normalizeReviewBlockHtml(block) {
+  return String(block || '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function reviewBlockInHtml(html, config) {
+  const m = html.match(/<blockquote class="project-review">[\s\S]*?<\/blockquote>/);
+  if (!m) return '';
+  return m[0];
+}
+
 export function projectStoryReviewStatus(html, config) {
   const configReview = normalizeGoogleReview(config.googleReview);
   const htmlReview = parseProjectReviewFromHtml(html);
@@ -73,12 +86,12 @@ export function projectStoryReviewStatus(html, config) {
   if (!htmlReview) {
     return { needsSync: true, configReview, htmlReview: null, inSync: false };
   }
+  const expected = normalizeReviewBlockHtml(renderProjectReviewBlock(config.googleReview));
+  const actual = normalizeReviewBlockHtml(reviewBlockInHtml(html, config));
+  const blockMatch = expected === actual;
   const quoteMatch = reviewFingerprintsMatch(configReview, htmlReview);
   const attributionMatch = projectReviewAttributionInSync(html, configReview);
-  const layoutMatch = /      <blockquote class="project-review">\n        <p>[\s\S]*?<\/blockquote>/.test(
-    html
-  );
-  const inSync = quoteMatch && attributionMatch && layoutMatch;
+  const inSync = blockMatch && quoteMatch && attributionMatch;
   return { needsSync: !inSync, configReview, htmlReview, inSync };
 }
 
