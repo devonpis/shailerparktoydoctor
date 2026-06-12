@@ -89,6 +89,22 @@ export function loadStandaloneReviews() {
   return list.map((r) => normalizeGoogleReview(r)).filter(Boolean);
 }
 
+/** Newest repair / review first; tie-break featuredOrder, then project id. */
+export function compareTestimonialEntries(a, b) {
+  const aDate = a.config?.endDate || '';
+  const bDate = b.config?.endDate || '';
+  const dateCmp = bDate.localeCompare(aDate);
+  if (dateCmp !== 0) return dateCmp;
+
+  const aFeatured = a.review.featuredOrder ?? 0;
+  const bFeatured = b.review.featuredOrder ?? 0;
+  if (aFeatured !== bFeatured) return bFeatured - aFeatured;
+
+  const aId = a.projectId || '';
+  const bId = b.projectId || '';
+  return bId.localeCompare(aId, undefined, { numeric: true });
+}
+
 export function loadProjectReviews() {
   const entries = [];
   for (const dirName of fs.readdirSync(PROJECTS_DIR)) {
@@ -105,11 +121,18 @@ export function loadProjectReviews() {
       projectId: dirName.slice(0, 4),
       dirName,
       hasIndex,
-      sortKey: review.featuredOrder ?? Number(dirName.slice(0, 4)),
     });
   }
-  entries.sort((a, b) => b.sortKey - a.sortKey);
   return dedupeReviewEntries(entries);
+}
+
+/** Project + standalone cards, newest first (endDate), deduped. */
+export function loadTestimonialEntries() {
+  const projectEntries = loadProjectReviews();
+  const standaloneEntries = loadStandaloneReviews()
+    .filter((review) => review.featuredOnTestimonials !== false)
+    .map((review) => ({ review }));
+  return dedupeReviewEntries([...projectEntries, ...standaloneEntries]).sort(compareTestimonialEntries);
 }
 
 function renderQuoteCardAuthor(review) {

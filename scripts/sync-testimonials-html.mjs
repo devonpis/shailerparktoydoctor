@@ -11,13 +11,10 @@ import fs from 'node:fs';
 import {
   buildTestimonialsHtml,
   buildTestimonialsIntroLine,
-  dedupeReviewEntries,
-  loadProjectReviews,
-  loadStandaloneReviews,
+  loadTestimonialEntries,
   renderQuoteCard,
   TESTIMONIALS_HTML_PATH,
 } from './lib/testimonials-html.mjs';
-import { reviewFingerprint } from './lib/google-review.mjs';
 
 function parseArgs(argv) {
   const flags = { dryRun: false, intro: buildTestimonialsIntroLine() };
@@ -33,34 +30,17 @@ function parseArgs(argv) {
 
 function main() {
   const flags = parseArgs(process.argv);
-  const projectEntries = loadProjectReviews();
-  const standaloneRaw = loadStandaloneReviews();
-  const standaloneEntries = dedupeReviewEntries(
-    standaloneRaw.map((review) => ({ review }))
+  const entries = loadTestimonialEntries();
+  const projectCount = entries.filter((e) => e.config).length;
+  const standaloneCount = entries.length - projectCount;
+  const cards = entries.map((e) =>
+    renderQuoteCard({
+      review: e.review,
+      config: e.config,
+      dirName: e.dirName,
+      hasIndex: e.hasIndex,
+    })
   );
-  const pageFingerprints = new Set();
-  const projectCards = [];
-  for (const e of projectEntries) {
-    const fp = reviewFingerprint(e.review);
-    if (fp) pageFingerprints.add(fp);
-    projectCards.push(
-      renderQuoteCard({
-        review: e.review,
-        config: e.config,
-        dirName: e.dirName,
-        hasIndex: e.hasIndex,
-      })
-    );
-  }
-  const standaloneCards = [];
-  for (const e of standaloneEntries) {
-    const fp = reviewFingerprint(e.review);
-    if (fp && pageFingerprints.has(fp)) continue;
-    if (fp) pageFingerprints.add(fp);
-    standaloneCards.push(renderQuoteCard({ review: e.review }));
-  }
-
-  const cards = [...projectCards, ...standaloneCards];
 
   const html = buildTestimonialsHtml({
     introLine: flags.intro,
@@ -69,14 +49,14 @@ function main() {
 
   if (flags.dryRun) {
     console.log(
-      `Would write ${TESTIMONIALS_HTML_PATH} (${projectCards.length} project + ${standaloneCards.length} standalone cards)`
+      `Would write ${TESTIMONIALS_HTML_PATH} (${projectCount} project + ${standaloneCount} standalone cards, newest first)`
     );
     return;
   }
 
   fs.writeFileSync(TESTIMONIALS_HTML_PATH, html);
   console.log(
-    `Wrote ${TESTIMONIALS_HTML_PATH} — ${projectCards.length} project review(s), ${standaloneCards.length} standalone`
+    `Wrote ${TESTIMONIALS_HTML_PATH} — ${projectCount} project review(s), ${standaloneCount} standalone (newest first)`
   );
 }
 
