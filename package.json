@@ -3,10 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "serve . -l 8080",
     "optimize-images": "node scripts/optimize-project-images.mjs --all",
     "test": "node --test test/*.test.mjs"
   },
   "devDependencies": {
+    "serve": "^14.2.4",
     "sharp": "^0.33.5"
   }
 }
