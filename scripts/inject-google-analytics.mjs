@@ -9,7 +9,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ensureGoogleAnalyticsInHtml } from './lib/google-analytics.mjs';
+import { refreshGoogleAnalyticsInHtml } from './lib/google-analytics.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -44,7 +44,7 @@ let skipped = 0;
 for (const filePath of collectPaths()) {
   const rel = path.relative(REPO_ROOT, filePath);
   const before = fs.readFileSync(filePath, 'utf8');
-  const after = ensureGoogleAnalyticsInHtml(before);
+  const after = refreshGoogleAnalyticsInHtml(before);
   if (after === before) {
     skipped += 1;
     continue;

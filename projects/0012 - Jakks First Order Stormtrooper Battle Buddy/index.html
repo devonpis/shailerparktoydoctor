@@ -2,13 +2,21 @@
 <html lang="en-AU">
   <head>
     <meta charset="utf-8" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3T7KLB9S7F"></script>
+    <!-- Google tag (gtag.js) — loads on sptoydoctor.com.au only -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-3T7KLB9S7F');
+      (function () {
+        var h = location.hostname;
+        if (!/^(www\.)?sptoydoctor\.com\.au$/i.test(h)) return;
+        var id = 'G-3T7KLB9S7F';
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', id);
+      })();
     </script>
     <title>Jakks First Order Stormtrooper Battle Buddy — Shailer Park Toy Doctor</title>
     <meta name="description" content="Jakks 48-inch First Order Stormtrooper Battle Buddy — battery contact repair after a long disassembly of the giant figure so motion Shailer Park toy repair." />
