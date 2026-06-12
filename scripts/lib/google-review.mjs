@@ -84,9 +84,16 @@ export function googleReviewForConfig(review) {
   };
 }
 
-/** Public repair page href for testimonial “Repair: …” link. */
+/** Site-root path for testimonial “Repair: …” link (not a full https URL). */
 export function repairPageHrefSync(config, projectDirName, hasIndexHtml) {
-  if (config.webpageUrl) return config.webpageUrl;
+  if (config.webpageUrl) {
+    try {
+      const pathname = new URL(config.webpageUrl).pathname;
+      return pathname.endsWith('/') ? pathname : `${pathname}/`;
+    } catch {
+      /* fall through */
+    }
+  }
   if (!hasIndexHtml) return null;
   return `/projects/${encodeURIComponent(projectDirName)}/`;
 }
