@@ -6,7 +6,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { buildProjectSkillsRootHtml } from './skill-badges-html.mjs';
 
-const SKILLS_ROOT_RE = /<div id="project-skills-root">[\s\S]*?<\/div>/;
+// Match full #project-skills-root (optional nested .project-skills) — not the first inner </div>.
+const SKILLS_ROOT_RE =
+  /<div id="project-skills-root">\s*(?:<div class="project-skills"[\s\S]*?<\/div>\s*)?<\/div>/;
 
 export function syncProjectStorySkillsHtml(dir, config, { dryRun = false } = {}) {
   const htmlPath = path.join(dir, 'index.html');
