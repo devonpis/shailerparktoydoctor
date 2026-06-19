@@ -169,6 +169,7 @@ export async function publishInstagram({
       access_token: userToken,
     }
   );
+  await waitForIgContainer(graphVersion, parent.id, userToken, 'carousel');
   const published = await graphPost(
     `https://graph.facebook.com/${graphVersion}/${igUserId}/media_publish`,
     { creation_id: parent.id, access_token: userToken }
