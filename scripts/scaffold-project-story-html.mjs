@@ -238,6 +238,7 @@ ${itemBlock}
 
 ${footerBlock}
 
+    <script src="/js/site-notice-banner.js" defer></script>
     <script src="/js/skills.js" defer></script>
   </body>
 </html>

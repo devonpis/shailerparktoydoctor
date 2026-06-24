@@ -45,6 +45,24 @@ body {
   line-height: 1.7;
 }
 
+.site-notice-banner {
+  background: color-mix(in srgb, var(--primary) 14%, #fff8e6);
+  border-bottom: 2px solid var(--primary);
+  color: #1a4d5c;
+  margin: -10px -10px 1.25rem;
+  padding: 0.85rem 1.25rem;
+  width: calc(100% + 20px);
+  box-sizing: border-box;
+}
+
+.site-notice-banner p {
+  margin: 0 auto;
+  max-width: var(--content-max);
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 p {
   margin: 0 0 1.25em;
 }
