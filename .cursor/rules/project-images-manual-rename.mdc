@@ -10,6 +10,13 @@ globs:
 
 # Project images — manual renames (do not auto-rename)
 
+## Owner default: no auto `hero`
+
+When ingesting or normalizing loose `IMG_*` photos, assign only **`before`**, **`after`**, and **`WIP-###`** sorted by **capture time**. **Do not** auto-create **`hero.jpeg`** from a WIP — the owner names `hero` manually when they want that shot on the story page and gallery tile.
+
+- **`normalize-project-media-names.mjs`** — default is **no hero**; use **`--hero`** only if the owner explicitly asks to promote one.
+- After normalize or a mistaken auto-hero: fold `hero` into the WIP sequence by capture time, delete the `hero` filename, then **`sync-project-story-images.mjs`** (page hero falls back to **`after` → WIP-001 → `before`**).
+
 When the owner says they **updated / renamed images**, **reordered WIPs**, or **renamed files manually** in `projects/<folder>/`:
 
 ## Do
@@ -41,8 +48,9 @@ That syncs **`index.html`**: Work in progress gallery + project-hero + Open Grap
 |--------------|-------|-------|
 | “I renamed the files” | `normalize-project-media-names.mjs` then `publish-webpage.mjs` | `sync-project-story-images.mjs` |
 | “Update images on the page” (after manual folder edit) | Renumber WIPs / create `hero.jpeg` from a WIP | Sync HTML from disk |
-| USB ingest / messy loose `IMG_*` files | — | `normalize-project-media-names.mjs` **only when asked** |
+| USB ingest / messy loose `IMG_*` files | normalize + auto `hero` | `normalize-project-media-names.mjs` **only when asked** — **WIP by time, no hero** unless `--hero` |
+| Agent scaffolded new project from USB | promote mid-sequence shot to `hero` | `before` / `after` + `WIP-001…` by capture time only |
 
 ## Page hero
 
-Story hero / OG use files on disk: **`hero` → `after` → first `WIP-###` → `before`**. If the owner wants a specific shot on top without renaming, they can name it **`hero.jpeg`** themselves — the agent must not rename files for them.
+Story hero / OG use files on disk: **`hero` → `after` → first `WIP-###` → `before`**. **`hero` is owner-only** — rename a file to **`hero.jpeg`** yourself when you want it; agents must not pick or promote one during ingest/normalize.

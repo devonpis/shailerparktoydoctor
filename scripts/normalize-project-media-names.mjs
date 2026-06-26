@@ -9,6 +9,9 @@
  * Usage:
  *   node scripts/normalize-project-media-names.mjs 0004 0005 [--dry-run]
  *   node scripts/normalize-project-media-names.mjs --range 4 15 [--dry-run]
+ *
+ * Default: before / after / WIP-### by capture time — no auto hero.
+ * Use --hero only when the owner wants one loose photo promoted to hero.jpeg.
  */
 
 import fs from 'node:fs';
@@ -24,10 +27,11 @@ const CANON_RE = /^(before|after|hero|WIP-\d{3})\.(jpe?g|png|webp|gif)$/i;
 const IMG_EXT_RE = /\.(jpe?g|png|webp|gif)$/i;
 
 function parseArgs(argv) {
-  const flags = { dryRun: false, range: null, ids: [] };
+  const flags = { dryRun: false, range: null, ids: [], assignHero: false };
   for (let i = 2; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--dry-run') flags.dryRun = true;
+    else if (a === '--hero') flags.assignHero = true;
     else if (a === '--range') {
       flags.range = [Number(argv[++i]), Number(argv[++i])];
     } else if (!a.startsWith('--')) {
@@ -66,7 +70,7 @@ function isLegacyHeroPng(name, nonLegacyCount) {
   return name.toLowerCase() === 'hero.png' && nonLegacyCount > 0;
 }
 
-async function planProject(dir) {
+async function planProject(dir, { assignHero = false } = {}) {
   const files = fs
     .readdirSync(dir)
     .filter((n) => IMG_EXT_RE.test(n) && n !== 'config.json');
@@ -129,7 +133,7 @@ async function planProject(dir) {
   if (!slots.after && remaining.length) {
     slots.after = remaining.pop();
   }
-  if (!slots.hero && remaining.length) {
+  if (assignHero && !slots.hero && remaining.length) {
     const heroCand = remaining.find((f) => f.hint === 'hero');
     if (heroCand) {
       slots.hero = heroCand;
@@ -189,7 +193,7 @@ function applyPlans(dir, plans, dryRun) {
 }
 
 async function main() {
-  const { dryRun, range, ids } = parseArgs(process.argv);
+  const { dryRun, range, ids, assignHero } = parseArgs(process.argv);
   let targetIds = ids;
   if (range) {
     const [lo, hi] = range;
@@ -205,7 +209,7 @@ async function main() {
 
   for (const id of targetIds) {
     const dir = projectDir(id);
-    const plans = await planProject(dir);
+    const plans = await planProject(dir, { assignHero });
     applyPlans(dir, plans, dryRun);
   }
   if (dryRun) console.log('\n(dry run — no files changed)');

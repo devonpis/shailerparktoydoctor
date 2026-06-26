@@ -164,7 +164,7 @@ Use the same idea for new repairs: descriptive stem + optional WIP index. Extens
 node scripts/sync-project-story-images.mjs <id>
 ```
 
-See [`.cursor/rules/project-images-manual-rename.mdc`](.cursor/rules/project-images-manual-rename.mdc). Use `normalize-project-media-names.mjs` only when you explicitly want capture-time auto-renaming (e.g. messy USB imports).
+See [`.cursor/rules/project-images-manual-rename.mdc`](.cursor/rules/project-images-manual-rename.mdc). Use `normalize-project-media-names.mjs` only when you explicitly want capture-time auto-renaming (e.g. messy USB imports). Default: **`before` / `after` / `WIP-###` by time — no auto `hero`**; add `--hero` only if you want one photo promoted. Name **`hero.jpeg`** yourself when you want that shot on the story page.
 
 Before a **webpage** go-live, run `node scripts/publish-webpage.mjs <id>` (rotate if needed → optimize → validate → checklist; see [`docs/website-go-live.md`](docs/website-go-live.md)). Use `--rotate <file> --cw|--ccw|--180` or `--exif-orient` for sideways photos. If the project has **`googleReview`**, publish syncs the review onto **`index.html`** and rebuilds **`new/testimonials.html`** with a **Repair:** link (`--no-story-review` / `--no-testimonials` to skip either step).
 
