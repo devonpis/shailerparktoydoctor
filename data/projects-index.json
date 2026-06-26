@@ -1,5 +1,104 @@
 [
   {
+    "id": "0111",
+    "folder": "0111 - Green frog pillow plush",
+    "projectName": "Green frog pillow plush",
+    "title": "Green frog pillow plush - deep clean and tear repairs",
+    "tags": [
+      "frog",
+      "pillow",
+      "plush",
+      "cushion",
+      "repair"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0111%20-%20Green%20frog%20pillow%20plush/after.jpeg",
+    "url": "/projects/0111%20-%20Green%20frog%20pillow%20plush/",
+    "endDate": "2026-05-12"
+  },
+  {
+    "id": "0110",
+    "folder": "0110 - Joy for All companion cat",
+    "projectName": "Joy for All companion cat",
+    "title": "Joy for All companion cat - circuit board, speaker, and skin reattachment",
+    "tags": [
+      "JoyForAll",
+      "companioncat",
+      "roboticpet",
+      "animatronic",
+      "electronic"
+    ],
+    "skills": [
+      "needlework",
+      "electronic"
+    ],
+    "thumbnail": "/projects/0110%20-%20Joy%20for%20All%20companion%20cat/after.jpeg",
+    "url": "/projects/0110%20-%20Joy%20for%20All%20companion%20cat/",
+    "endDate": "2026-06-22"
+  },
+  {
+    "id": "0109",
+    "folder": "0109 - Pastel narwhal plush pair",
+    "projectName": "Pastel narwhal plush pair",
+    "title": "Pastel narwhal plush pair - deep clean and eye replacement",
+    "tags": [
+      "narwhal",
+      "plush",
+      "pastel",
+      "safetyeyes",
+      "restoration"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0109%20-%20Pastel%20narwhal%20plush%20pair/after.jpeg",
+    "url": "/projects/0109%20-%20Pastel%20narwhal%20plush%20pair/",
+    "endDate": "2026-06-25"
+  },
+  {
+    "id": "0108",
+    "folder": "0108 - Toy Story Lost Episodes Jessie doll",
+    "projectName": "Toy Story Lost Episodes Jessie doll",
+    "title": "Toy Story Lost Episodes Jessie - deep clean, outfit repaint, and sound module assessment",
+    "tags": [
+      "ToyStory",
+      "Jessie",
+      "Disney",
+      "doll",
+      "restoration"
+    ],
+    "skills": [
+      "needlework",
+      "electronic",
+      "paintjob"
+    ],
+    "thumbnail": "/projects/0108%20-%20Toy%20Story%20Lost%20Episodes%20Jessie%20doll/after.jpeg",
+    "url": "/projects/0108%20-%20Toy%20Story%20Lost%20Episodes%20Jessie%20doll/",
+    "endDate": "2026-06-25"
+  },
+  {
+    "id": "0107",
+    "folder": "0107 - Brown white puppy plush",
+    "projectName": "Brown white puppy plush",
+    "title": "Brown and white puppy plush - deep clean, fabric reinforcement, and nose restoration",
+    "tags": [
+      "dog",
+      "puppy",
+      "plush",
+      "vintage",
+      "restoration"
+    ],
+    "skills": [
+      "needlework",
+      "paintjob"
+    ],
+    "thumbnail": "/projects/0107%20-%20Brown%20white%20puppy%20plush/after.jpeg",
+    "url": "/projects/0107%20-%20Brown%20white%20puppy%20plush/",
+    "endDate": "2026-06-14"
+  },
+  {
     "id": "0106",
     "folder": "0106 - Tan cream floppy dog plush",
     "projectName": "Tan cream floppy dog plush",
