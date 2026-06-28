@@ -25,6 +25,10 @@
   "description": "This Hasbro Joy for All companion cat is a distinctive animatronic pet, not an ordinary stuffed toy. We opened and detached the plush skin, replaced the circuit board and speaker, then reattached the skin and stitched the cat closed so it could respond again.",
   "itemDetails": "The Hasbro Joy for All Companion Pet Cat is an interactive animatronic companion pet designed to look, feel, and sound like a real cat. The line is known for soft brushable fur, cat-like movements and sounds, touch and motion sensors, and VibraPurr technology that creates a purring vibration. Inside the plush body is a structured electronic mechanism rather than loose stuffing alone. The cat typically uses multiple sensors around the head, cheeks, belly, and back, an internal speaker, motorised movement parts, and a battery compartment with ON, MUTE, and OFF settings. That combination of realistic fur around sensors, motors, and a speaker is what makes this product unlike a typical plush toy.",
   "repairDetails": "The Joy for All companion cat is a unique product — a lifelike animatronic pet with electronics inside the plush body, not just fibre fill. The fault was in that internal mechanism rather than the outer fabric alone. We carefully cut open the skin, detached it from the internal frame, and exposed the electronics without damaging the fur panels. The failed circuit board and speaker were replaced, then the skin was reattached around the mechanism and stitched closed so the cat could purr and respond again while keeping its soft companion-pet appearance.",
-  "googleReview": null,
+  "googleReview": {
+    "quote": "My grandma has recently gotten dementia and always talks about wanting a cat again. The toy cats for dementia patients ranged from $250-$350. We were thrilled to finally find one second hand, only to discover it made no sound. Since the new are so expensive, we saw no harm in trying to get this one fixed.\n\nGrace has been amazing. We posted it to her, and her communication and speed was beyond excellent. She also posted it back really quickly, which means we can give it to my grandma on her birthday in fully working order. I can definitely recommend, and will send any other toys to Grace in the future!",
+    "authorName": "Rose B.",
+    "featuredOnTestimonials": true
+  },
   "importance": null
 }
