@@ -1,5 +1,25 @@
 [
   {
+    "id": "0116",
+    "folder": "0116 - Mrs Claus",
+    "projectName": "Animated Mrs Claus with candle",
+    "title": "Mrs Claus motionette — new motor and deep clean",
+    "tags": [
+      "Mrs Claus",
+      "Christmas",
+      "animatronic",
+      "Telco",
+      "Motionette"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0116%20-%20Mrs%20Claus/after.jpeg",
+    "url": "/projects/0116%20-%20Mrs%20Claus/",
+    "endDate": "2026-06-12"
+  },
+  {
     "id": "0115",
     "folder": "0115 - brown doggy",
     "projectName": "Tan floppy-eared plush dog",
