@@ -1,5 +1,25 @@
 [
   {
+    "id": "0118",
+    "folder": "0118 - santa doll yellow glasses",
+    "projectName": "Animated Santa with yellow glasses",
+    "title": "Santa motionette — gears realigned, glasses repaired",
+    "tags": [
+      "Santa",
+      "Christmas",
+      "animatronic",
+      "Vivendi",
+      "Motionette"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0118%20-%20santa%20doll%20yellow%20glasses/after.jpeg",
+    "url": "/projects/0118%20-%20santa%20doll%20yellow%20glasses/",
+    "endDate": "2026-07-21"
+  },
+  {
     "id": "0117",
     "folder": "0117 - santa doll static",
     "projectName": "Victorian Santa display doll",
