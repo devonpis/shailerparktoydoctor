@@ -1,5 +1,25 @@
 [
   {
+    "id": "0119",
+    "folder": "0119 - santa clock",
+    "projectName": "Animated Santa with grandfather clock",
+    "title": "Santa clock — motor replaced and rewired",
+    "tags": [
+      "Santa",
+      "Christmas",
+      "clock",
+      "animatronic",
+      "Holiday Creations"
+    ],
+    "skills": [
+      "electronic",
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0119%20-%20santa%20clock/after.jpeg",
+    "url": "/projects/0119%20-%20santa%20clock/",
+    "endDate": "2026-01-23"
+  },
+  {
     "id": "0118",
     "folder": "0118 - santa doll yellow glasses",
     "projectName": "Animated Santa with yellow glasses",
