@@ -1,5 +1,23 @@
 [
   {
+    "id": "0122",
+    "folder": "0122 - snoopy",
+    "projectName": "Snoopy plush",
+    "title": "Snoopy — deep clean, nose patch, and restuff",
+    "tags": [
+      "Snoopy",
+      "Peanuts",
+      "plush",
+      "dog"
+    ],
+    "skills": [
+      "needlework"
+    ],
+    "thumbnail": "/projects/0122%20-%20snoopy/after.jpeg",
+    "url": "/projects/0122%20-%20snoopy/",
+    "endDate": "2026-09-05"
+  },
+  {
     "id": "0121",
     "folder": "0121 - Frieren staff",
     "projectName": "Frieren staff",
