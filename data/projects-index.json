@@ -1,5 +1,44 @@
 [
   {
+    "id": "0121",
+    "folder": "0121 - Frieren staff",
+    "projectName": "Frieren staff",
+    "title": "Frieren staff — remade joint, removable head",
+    "tags": [
+      "Frieren",
+      "anime",
+      "figure",
+      "staff",
+      "accessory"
+    ],
+    "skills": [
+      "mechanical",
+      "paintjob"
+    ],
+    "thumbnail": "/projects/0121%20-%20Frieren%20staff/after.jpeg",
+    "url": "/projects/0121%20-%20Frieren%20staff/",
+    "endDate": "2026-09-05"
+  },
+  {
+    "id": "0120",
+    "folder": "0120 - cocomelon school bus",
+    "projectName": "CoComelon Musical Learning Bus",
+    "title": "CoComelon Learning Bus — battery contacts free of rust",
+    "tags": [
+      "CoComelon",
+      "school bus",
+      "learning",
+      "Just Play",
+      "electronic"
+    ],
+    "skills": [
+      "electronic"
+    ],
+    "thumbnail": "/projects/0120%20-%20cocomelon%20school%20bus/after.jpeg",
+    "url": "/projects/0120%20-%20cocomelon%20school%20bus/",
+    "endDate": "2026-09-02"
+  },
+  {
     "id": "0119",
     "folder": "0119 - santa clock",
     "projectName": "Animated Santa with grandfather clock",
