@@ -7,7 +7,10 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const FFMPEG = process.env.FFMPEG || `${process.env.HOME}/.local/bin/ffmpeg`;
 
@@ -21,34 +24,6 @@ function run(cmd, args, quiet = false) {
     throw new Error(`${cmd} failed: ${r.stderr || r.stdout || r.status}`);
   }
   return quiet ? `${r.stderr || ''}${r.stdout || ''}` : r.stdout || '';
-}
-
-function detectCrop(video, sec) {
-  const log = run(
-    FFMPEG,
-    [
-      '-nostdin',
-      '-ss',
-      String(sec),
-      '-i',
-      video,
-      '-frames:v',
-      '30',
-      '-vf',
-      'cropdetect=limit=16:round=2:reset=0',
-      '-f',
-      'null',
-      '-',
-    ],
-    true,
-  );
-  const lines = log.split('\n');
-  let crop = '';
-  for (const line of lines) {
-    const m = line.match(/crop=([0-9:]+)/);
-    if (m) crop = m[1];
-  }
-  return crop;
 }
 
 function parsePairs(argv) {
@@ -78,10 +53,8 @@ function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   for (const { sec, name } of pairs) {
-    const crop = detectCrop(video, sec);
-    const vf = crop ? `crop=${crop}` : 'null';
     const out = path.join(outDir, `${name}.jpeg`);
-    console.log(`\n${name} @ ${sec}s  crop=${crop || 'none'}`);
+    console.log(`\n${name} @ ${sec}s`);
     run(FFMPEG, [
       '-nostdin',
       '-y',
@@ -91,14 +64,18 @@ function main() {
       video,
       '-frames:v',
       '1',
-      '-vf',
-      vf,
       '-q:v',
       '2',
       out,
     ]);
   }
   console.log(`\nWrote ${pairs.length} images → ${outDir}`);
+
+  const cropPy = path.join(__dirname, 'crop-pillarbox-images.py');
+  if (fs.existsSync(cropPy)) {
+    console.log('\nPillarbox crop (portrait shots with black side bars)…');
+    run('python3', [cropPy, outDir], false);
+  }
 }
 
 main();

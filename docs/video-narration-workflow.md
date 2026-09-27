@@ -120,7 +120,7 @@ node scripts/compress-video-for-upload.mjs "/path/to/My Movie 1.mp4"
 
 ### 6b. Story photos from the finished video (optional)
 
-Extract **`before`**, **`after`**, and **`WIP-001…`** stills into a new `projects/<id>/` folder; auto-crop letterbox when present:
+Extract **`before`**, **`after`**, and **`WIP-001…`** stills into a new `projects/<id>/` folder. Portrait shots with black side bars are auto-cropped via [`crop-pillarbox-images.py`](../scripts/crop-pillarbox-images.py); landscape frames are left full width:
 
 ```bash
 node scripts/extract-video-frames.mjs "/path/to/My Movie 1-upload.mp4" \
