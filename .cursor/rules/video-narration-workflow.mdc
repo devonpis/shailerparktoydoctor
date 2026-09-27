@@ -1,0 +1,57 @@
+---
+description: Long-form repair video with kid narration — montage, Whisper sync, iMovie polish, YouTube compress (outside-repo media)
+globs: docs/video-narration-workflow.md,scripts/compress-video-for-upload.mjs
+alwaysApply: false
+---
+
+# Video narration workflow (long-form YouTube)
+
+Use when the owner works on a **repair documentary video** with **kid voice-over**, **iMovie export**, or **YouTube upload** — media usually lives **outside** this git repo (e.g. `~/Downloads/toy repair/<name>/`).
+
+**Full guide:** [`docs/video-narration-workflow.md`](../../docs/video-narration-workflow.md)
+
+## Do not
+
+- Commit raw **`*.mp4` / `VID_*` / large exports** to this repo unless the owner explicitly asks.
+- Apply **social carousel image order** to long montage scripts (webpage/social rules differ).
+- **Upload to YouTube** or post video without explicit owner instruction.
+- Infer **`status: DONE`** or publish website/social from video work alone.
+
+## Reference implementation
+
+**Sylvester the Cat** — `/Users/devon/Downloads/toy repair/silvester the cat/`
+
+| Artifact | Role |
+|----------|------|
+| `export/build-smart-montage.mjs` | Chronological 1080p montage from `IMG_*` / `VID_*` |
+| `export/narration-alignment-map.json` | Beats: `videoSec`, `slotSec`, `scriptHint` |
+| `narrative.m4a` | Owner’s one-take kid narration |
+| `export/transcribe-narration.py` | Whisper → `transcript.json` |
+| `export/merge-narration.mjs` | Transcript keyword align → mux (smooth mode) |
+| `My Movie 1.mp4` | iMovie master (large) |
+| `My Movie 1-upload.mp4` | Upload copy (~5 Mbps) |
+
+## When owner asks to sync narration
+
+1. Confirm `narrative.m4a` and base montage MP4 exist in the **local project folder**.
+2. Run `node export/merge-narration.mjs` (re-transcribes if m4a is newer).
+3. Report **`alignment-report.json`** — flag missing beats and bleed/overlap.
+4. If choppy: recommend **manual iMovie** using `narration-work/clips-for-manual-edit/`.
+5. Auto sync is a **draft**; publish-quality usually needs human nudge.
+
+## When owner asks to compress for upload
+
+```bash
+node scripts/compress-video-for-upload.mjs "/absolute/path/to/export.mp4"
+```
+
+Default output: sibling `*-upload.mp4` (1080p H.264 ~5M, AAC 128k, faststart).
+
+## When owner asks for YouTube copy
+
+Draft **title**, **description** (with **chapters** from alignment map), and **tags** in chat only — owner uploads manually.
+
+## ffmpeg notes
+
+- Binaries: prefer `$HOME/.local/bin/ffmpeg` and `ffprobe`.
+- In shell loops: always **`-nostdin`** (avoids path corruption on macOS).

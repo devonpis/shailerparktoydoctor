@@ -655,3 +655,28 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Depends on** | **T-00030** (names stable enough to label rows); **T-00031** (Done — EXIF for **0015+**; **0004–0014** dates via owner CSV) |
 | **Related** | T-00029 (timesheet cleanup); T-00028 ingest stubs; **T-00024** (SEO metadata — **after** this task); **T-00034** (title/description) |
 | **Out of scope** | Auto-writing repair prose without owner; publish; HTML; CSV import → **T-00035** |
+
+---
+
+## T-00046 — Long-form repair video + kid narration workflow (docs)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-014, BR-008 |
+| **Goal** | Document the **Sylvester-style** long YouTube repair video workflow (montage, Whisper narration sync, iMovie polish, upload compress) so owner and agents can repeat it without re-discovering steps. |
+| **Outcome** | [`docs/video-narration-workflow.md`](video-narration-workflow.md); [`.cursor/rules/video-narration-workflow.mdc`](../.cursor/rules/video-narration-workflow.mdc); [`scripts/compress-video-for-upload.mjs`](../scripts/compress-video-for-upload.mjs); owner-runbook links. Reference scripts remain in local Sylvester `export/` (media outside git). |
+| **Reference** | `/Users/devon/Downloads/toy repair/silvester the cat/` |
+| **Out of scope** | Automated YouTube upload; committing raw video to git; moving montage/merge scripts into repo (future optional) |
+
+---
+
+## T-00047 — Project 0123: vintage giant Sylvester the Cat plush
+
+| Field | Value |
+|-------|-------|
+| **Status** | In progress |
+| **Requirements** | BR-002, BR-014 |
+| **Goal** | Scaffold **`0123 - Vintage giant Sylvester the Cat plush`** from the finished repair video: story images + `config.json`. |
+| **Outcome** | **`before`**, **`after`**, **WIP-001…010** from `My Movie 1-upload.mp4` via [`extract-video-frames.mjs`](../scripts/extract-video-frames.mjs); config with item/repair copy. **`status`: WIP** until owner sets DONE / adds `youtubeUrl`. |
+| **Out of scope** | Story HTML, publish, raw video in git |

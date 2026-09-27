@@ -2,7 +2,7 @@
 
 One-page reference for day-to-day work. Agents follow the same steps; publishing always needs an **explicit** command and your **yes** after preview.
 
-**Full detail:** [`README.md`](../README.md) · [`publish-content-guards.md`](publish-content-guards.md) · [`website-go-live.md`](website-go-live.md) · Meta tokens: [`meta-local-api-setup.md`](meta-local-api-setup.md)
+**Full detail:** [`README.md`](../README.md) · [`publish-content-guards.md`](publish-content-guards.md) · [`website-go-live.md`](website-go-live.md) · Meta tokens: [`meta-local-api-setup.md`](meta-local-api-setup.md) · Long repair video + kid narration: [`video-narration-workflow.md`](video-narration-workflow.md)
 
 ---
 
@@ -25,6 +25,7 @@ Agents should show this menu when you ask **“what can I do?”**, **“command
 | **rotate before.jpg in 0020 clockwise** | Fix orientation, then webpage sync if needed. |
 | **set 0020 on home highlights** / **importance** | Home lead or tile slots. |
 | **commit and push** | Only after you explicitly approve the commit message. |
+| **Re-merge narration** / **compress video for YouTube** | Long-form repair video (local folder, not in git) — see [`video-narration-workflow.md`](video-narration-workflow.md). |
 
 Casual “it’s ready to post” does **not** publish — use **`publish <id> to …`** above.
 
