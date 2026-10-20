@@ -680,3 +680,15 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Goal** | Scaffold **`0123 - Vintage giant Sylvester the Cat plush`** from the finished repair video: story images + `config.json`. |
 | **Outcome** | **`before`**, **`after`**, **WIP-001…010** from `My Movie 1-upload.mp4` via [`extract-video-frames.mjs`](../scripts/extract-video-frames.mjs); config with item/repair copy. **`status`: WIP** until owner sets DONE / adds `youtubeUrl`. |
 | **Out of scope** | Story HTML, publish, raw video in git |
+
+---
+
+## T-00048 — Project 0126: Mr Jones custom iguana plush
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-002, BR-014 |
+| **Goal** | Add **0126** Mr Jones custom iguana plush — story page, gallery, YouTube link, owner WIP photos. |
+| **Outcome** | `config.json` (DONE, needlework, youtubeUrl), `index.html`, before/after/WIP gallery, sitemap + projects index. |
+| **Out of scope** | Raw long-form video in git |
