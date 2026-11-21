@@ -1,0 +1,31 @@
+{
+  "isTemplate": false,
+  "projectName": "Duplo My First Train engine",
+  "title": "Duplo engine stalls with a carriage — split motor gear",
+  "startDate": "2026-08-09",
+  "endDate": "2026-09-11",
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0127%20-%20Duplo%20My%20First%20Train%20engine/",
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=M11WEiBHRTI",
+  "youtubeShortUrl": "https://www.youtube.com/shorts/dOCw4ZkoE1M",
+  "tags": [
+    "Duplo",
+    "LEGO",
+    "My First Train",
+    "10507",
+    "train engine",
+    "gear repair",
+    "mechanical"
+  ],
+  "skills": [
+    "mechanical"
+  ],
+  "description": "This Duplo engine ran on its own, then stuck as soon as a carriage was hooked on. A nylon gear on the motor had split, so under load the motor stalled. A brass gear went on the same shaft, the shell went back together, and the train pulls the carriage around the track.",
+  "itemDetails": "LEGO DUPLO My First Train, set 10507 (2013). The red steam-style engine carries the printed locomotive number 4281 on both sides of the cab (element 98456pb02). It is a battery locomotive for three AA cells, with a green start/stop button, a black fuel button, and an auto-stop that cuts in after about two minutes without play. The body is a red shell, a blue cab roof, and a black boiler front with yellow lamp prints. Drive goes from a small motor through a gearbox to the wheels. DUPLO train track does not carry power, so this is not a 9V train. The full set also includes a passenger wagon, a small station, two figures, and a loop of track. This repair is the motorized engine.",
+  "repairDetails": "The engine ran smoothly by itself. With any carriage coupled on, it stuck and could hardly move. The chassis screws come out first. The shell then has to be prised off four tongues, two at the front and two at the rear. The rear pair are the tight ones. One rear tongue cracked while the shell was being opened. The shell still seats, and the crack does not stop the engine running. Inside, the gearbox comes out until the motor pinion is visible. The white nylon gear on the 2 mm motor shaft is split along a tooth. It is a 9-tooth pinion of 0.45 module, an uncommon size. A 0.4 module brass gear with a similar tooth count and the same shaft hole meshes well enough to drive the train. The brass gear goes on the motor, the gearbox and shell go back together, and the carriage is coupled for a run. The engine pulls it around the oval without stalling.",
+  "googleReview": null,
+  "importance": null
+}

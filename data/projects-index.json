@@ -1,5 +1,26 @@
 [
   {
+    "id": "0127",
+    "folder": "0127 - Duplo My First Train engine",
+    "projectName": "Duplo My First Train engine",
+    "title": "Duplo engine stalls with a carriage — split motor gear",
+    "tags": [
+      "Duplo",
+      "LEGO",
+      "My First Train",
+      "10507",
+      "train engine",
+      "gear repair",
+      "mechanical"
+    ],
+    "skills": [
+      "mechanical"
+    ],
+    "thumbnail": "/projects/0127%20-%20Duplo%20My%20First%20Train%20engine/hero.jpeg",
+    "url": "/projects/0127%20-%20Duplo%20My%20First%20Train%20engine/",
+    "endDate": "2026-09-11"
+  },
+  {
     "id": "0126",
     "folder": "0126 - Mr Jones custom iguana plush",
     "projectName": "Mr Jones custom iguana plush",
@@ -19,7 +40,7 @@
     "skills": [
       "needlework"
     ],
-    "thumbnail": "/projects/0126%20-%20Mr%20Jones%20custom%20iguana%20plush/after.jpg",
+    "thumbnail": "/projects/0126%20-%20Mr%20Jones%20custom%20iguana%20plush/after.jpeg",
     "url": "/projects/0126%20-%20Mr%20Jones%20custom%20iguana%20plush/",
     "endDate": "2026-10-01"
   },
