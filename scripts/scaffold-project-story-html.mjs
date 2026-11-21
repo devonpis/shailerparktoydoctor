@@ -147,10 +147,18 @@ function buildHtml(config, folder, dir) {
   let videoSection = '';
   const ytMain = youtubeEmbedId(config.youtubeUrl);
   const ytShort = youtubeEmbedId(config.youtubeShortUrl);
-  if (ytMain || ytShort) {
+  // Optional extras beyond the two standard slots: full videos follow the main video, Shorts follow the Short.
+  const extras = (config.additionalYoutubeUrls || [])
+    .map((url) => ({ id: youtubeEmbedId(url), isShort: /\/shorts\//.test(url) }))
+    .filter((v) => v.id);
+  const extraVideos = extras.filter((v) => !v.isShort);
+  const extraShorts = extras.filter((v) => v.isShort);
+  if (ytMain || ytShort || extras.length) {
     const blocks = [];
     if (ytMain) blocks.push(buildVideoIframe(ytMain, subtitle, 'full video'));
-    if (ytShort) blocks.push(buildVideoIframe(ytShort, subtitle, 'short'));
+    extraVideos.forEach((v, i) => blocks.push(buildVideoIframe(v.id, subtitle, `video ${i + 2}`)));
+    if (ytShort) blocks.push(buildVideoIframe(ytShort, subtitle, extraShorts.length ? 'short 1' : 'short'));
+    extraShorts.forEach((v, i) => blocks.push(buildVideoIframe(v.id, subtitle, `short ${i + (ytShort ? 2 : 1)}`)));
     videoSection = `
       <section class="project-section">
         <h2 class="jw-heading-100">Videos</h2>
