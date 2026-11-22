@@ -1,0 +1,42 @@
+{
+  "isTemplate": false,
+  "projectName": "Tickle Me Elmo TMX robotic plush",
+  "title": "Tickle Me Elmo TMX back on his feet — new board, brass gear, rewired sensor",
+  "startDate": "2026-06-12",
+  "endDate": "2026-10-03",
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0130%20-%20Tickle%20Me%20Elmo%20TMX%20robotic%20plush/",
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=AKwzNjq8ijs",
+  "youtubeShortUrl": "https://www.youtube.com/shorts/tHj0Y_QXdX8",
+  "additionalYoutubeUrls": [
+    "https://www.youtube.com/watch?v=I2Ezv8JP8ts",
+    "https://www.youtube.com/shorts/_999rLEMtmY"
+  ],
+  "tags": [
+    "Tickle Me Elmo",
+    "T.M.X.",
+    "Elmo TMX",
+    "H9207",
+    "Fisher-Price",
+    "Mattel",
+    "Sesame Street",
+    "robotic toy",
+    "circuit board",
+    "gear repair",
+    "rotation sensor",
+    "plush restoration"
+  ],
+  "skills": [
+    "needlework",
+    "electronic",
+    "mechanical"
+  ],
+  "description": "This Tickle Me Elmo TMX arrived not working, with corrosion on his main board. A board from a second Elmo went in, a split motor gear was replaced with brass, and mismatched sensor wires were traced one by one. After a wash, new stitching and final fine-tuning, he can fall, kick and climb back to his feet again.",
+  "itemDetails": "T.M.X. Tickle Me Elmo, model H9207, is a Fisher-Price toy from Mattel based on the Sesame Street character. It was introduced in September 2006 for the tenth anniversary of Tickle Me Elmo. The name is commonly explained as Tickle Me Extreme or Tickle Me Ten. Elmo has three tickle spots, on his chin, tummy and foot. Pressing them in a row steps through longer routines of laughter and movement, with the fullest play on the third tickle. He runs on six AA batteries housed in his feet, and the on/off switch is under his right foot. Under the fur is a jointed plastic robot body with a main circuit board, speaker, hip motor and gearbox. A rotation sensor at the hip and an accelerometer help the toy track his position, so the motor can move him from lying down back to upright.",
+  "repairDetails": "This Elmo arrived not working. The first check found corrosion on the battery contacts, so the complete battery compartment was replaced with one from a second Elmo. Opening the body showed the bigger problem: corrosion around the microcontroller on the main board, and the board was dead. The board from the second Elmo was transplanted into the original toy. That meant reconnecting more than 30 wires by hand. Even with the new board fitted, his legs still did not move, so the fur and body came apart again. Inside the gearbox, the white nylon pinion on the motor shaft had split along its length. This small 8-tooth, 0.6 module gear takes the load when Elmo pulls himself upright. It was replaced with a brass gear, and the gearbox and legs went back together. He still did not work. The accelerometer tested fine, which left the rotation sensor. The replacement board's coloured cable did not match the wire order of the original rotation sensor, because the two Elmos were different versions. Each connection was traced until the correct order was found, and the sensor finally worked. Elmo's fur was washed and dried, then the chin, tummy and foot switches, stuffing and skin were refitted and the opening was stitched closed. On the first full test he rolled onto his right side during the third tickle and got stuck. His back was opened once more for a small fine-tuning adjustment. He now completes all three tickle routines, falling, kicking and climbing back to his feet.",
+  "googleReview": null,
+  "importance": null
+}
