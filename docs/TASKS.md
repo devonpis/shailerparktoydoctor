@@ -664,8 +664,8 @@ When a task is **Done**, mark it here in the same change set as the implementati
 |-------|-------|
 | **Status** | Done |
 | **Requirements** | BR-014, BR-008 |
-| **Goal** | Document the **Sylvester-style** long YouTube repair video workflow (montage, Whisper narration sync, iMovie polish, upload compress) so owner and agents can repeat it without re-discovering steps. |
-| **Outcome** | [`docs/video-narration-workflow.md`](video-narration-workflow.md); [`.cursor/rules/video-narration-workflow.mdc`](../.cursor/rules/video-narration-workflow.mdc); [`scripts/compress-video-for-upload.mjs`](../scripts/compress-video-for-upload.mjs); owner-runbook links. Reference scripts remain in local Sylvester `export/` (media outside git). |
+| **Goal** | Document a **generic** repair-video approach (picture, kid narration, optional music, YouTube copy, website project) so the next job is not copied from an earlier edit. |
+| **Outcome** | [`docs/video-narration-workflow.md`](video-narration-workflow.md) is the generic method. Each video’s clips, speed, and timing stay with that job. [`.cursor/rules/video-narration-workflow.mdc`](../.cursor/rules/video-narration-workflow.mdc); [`scripts/compress-video-for-upload.mjs`](../scripts/compress-video-for-upload.mjs). Raw video and one-off scripts stay outside git. |
 | **Reference** | `/Users/devon/Downloads/toy repair/silvester the cat/` |
 | **Out of scope** | Automated YouTube upload; committing raw video to git; moving montage/merge scripts into repo (future optional) |
 
@@ -692,3 +692,27 @@ When a task is **Done**, mark it here in the same change set as the implementati
 | **Goal** | Add **0126** Mr Jones custom iguana plush — story page, gallery, YouTube link, owner WIP photos. |
 | **Outcome** | `config.json` (DONE, needlework, youtubeUrl), `index.html`, before/after/WIP gallery, sitemap + projects index. |
 | **Out of scope** | Raw long-form video in git |
+
+---
+
+## T-00049 — Project 0127: Duplo My First Train engine
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-002, BR-003, BR-014 |
+| **Goal** | Scaffold **`0127 - Duplo My First Train engine`** from the finished repair video and bench photos. Leave it unpublished until the owner has client approval. |
+| **Outcome** | `config.json` with **`status`: WIP**, `youtubeUrl`, `youtubeShortUrl`. `before`, `after`, `WIP-001`…`WIP-005`, and `product-research.md`. No story HTML and no gallery entry. |
+| **Out of scope** | Webpage or social publish; raw video in git |
+
+---
+
+## T-00050 — Project 0128: Vintage black baby doll
+
+| Field | Value |
+|-------|-------|
+| **Status** | Done |
+| **Requirements** | BR-002, BR-003, BR-014 |
+| **Goal** | Scaffold **`0128 - Vintage black baby doll`** from the finished repair videos. Leave it unpublished until the client approves. |
+| **Outcome** | `config.json` with **`status`: WIP**, `youtubeUrl`, `youtubeShortUrl`. `before`, `after`, `WIP-001`…`WIP-009`, and `product-research.md`. No story HTML and no gallery entry. |
+| **Out of scope** | Webpage or social publish; raw video in git |
