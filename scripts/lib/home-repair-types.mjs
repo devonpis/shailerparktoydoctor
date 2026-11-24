@@ -36,6 +36,7 @@ export const REPAIR_TYPES = [
   { type: 'Action figure parts and joints', doctors: ['mechanical'], example: '0002' },
   { type: 'Remade parts with paint finish', doctors: ['mechanical', 'paintjob'], example: '0121' },
   { type: 'Paint matching and missing details', doctors: ['paintjob'], example: '0088' },
+  { type: 'Model kit and miniature painting', doctors: ['paintjob'], example: '0134' },
 ];
 
 function escapeHtml(s) {
