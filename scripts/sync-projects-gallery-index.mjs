@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import { resolveProjectDir, REPO_ROOT, PROJECTS_DIR, projectIdFromDir } from './lib/resolve-project-dir.mjs';
 import { pickPrimaryImage } from './lib/project-media.mjs';
 import { syncProjectsGalleryHtml } from './lib/projects-gallery-html.mjs';
+import { patchHomeRepairTypes } from './lib/home-repair-types.mjs';
 import { clearPortraitCache } from './lib/project-tile-image.mjs';
 import { INDEX_JSON_PATHS } from './lib/update-project-path-refs.mjs';
 
@@ -103,6 +104,9 @@ async function main() {
   clearPortraitCache();
   const { count } = await syncProjectsGalleryHtml();
   console.log(`OK projects/index.html (${count} tiles, pre-rendered)`);
+
+  const repairTypes = patchHomeRepairTypes(REPO_ROOT);
+  console.log(`${repairTypes.changed ? 'OK' : 'OK (unchanged)'} index.html repair types table (${repairTypes.total} projects)`);
 }
 
 main().catch((e) => {

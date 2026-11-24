@@ -579,6 +579,124 @@ h5 {
   height: auto;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Home: repair types summary (baked by scripts/sync-home-repair-types.mjs) */
+.repair-types {
+  margin: 1.25rem 0 2.5rem;
+}
+
+.repair-types__table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.repair-types__caption {
+  caption-side: bottom;
+  padding-top: 0.6rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-align: left;
+}
+
+.repair-types__table th,
+.repair-types__table td {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.repair-types__table thead th {
+  background: color-mix(in srgb, var(--primary) 14%, #fff);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.repair-types__table tbody th {
+  font-weight: 700;
+}
+
+.repair-types__table tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+.repair-types__table tbody tr:last-child th,
+.repair-types__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.repair-types__doctors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.repair-types__doctors .skill-badge {
+  width: 2.1rem;
+  height: 2.1rem;
+  box-shadow: none;
+}
+
+.repair-types__table a {
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .repair-types__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .repair-types__caption {
+    display: block;
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .repair-types__table,
+  .repair-types__table tbody,
+  .repair-types__table tr,
+  .repair-types__table th,
+  .repair-types__table td {
+    display: block;
+  }
+
+  .repair-types__table tbody tr {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.8rem 0.9rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .repair-types__table tbody th,
+  .repair-types__table tbody td {
+    padding: 0;
+    border: 0;
+  }
+
+  .repair-types__table tbody td:last-child::before {
+    content: "Example: ";
+    color: #6b7280;
+  }
+}
+
 .patient-stories-layout {
   margin-bottom: 0.5rem;
 }
@@ -666,6 +784,10 @@ h5 {
 .projects-cta {
   text-align: center;
   margin: 2.5rem 0 1rem;
+}
+
+.projects-cta + .jw-element-imagetext-text {
+  margin-top: 3.5rem;
 }
 
 .cta-button {
