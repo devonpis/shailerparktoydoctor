@@ -590,7 +590,7 @@ h5 {
 
 /* Home: repair types summary (baked by scripts/sync-home-repair-types.mjs) */
 .repair-types {
-  margin: 1.25rem 0 2.5rem;
+  margin: 1.25rem 0 0;
 }
 
 .repair-types__table {
