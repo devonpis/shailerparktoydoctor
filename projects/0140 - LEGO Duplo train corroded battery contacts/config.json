@@ -1,0 +1,32 @@
+{
+  "isTemplate": false,
+  "projectName": "LEGO Duplo train corroded battery contacts",
+  "title": "1993 LEGO Duplo train running again, with its corroded contacts tinned and soldered",
+  "startDate": "2026-11-16",
+  "endDate": "2026-11-19",
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0140%20-%20LEGO%20Duplo%20train%20corroded%20battery%20contacts/",
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=P22jywR7EgQ",
+  "youtubeShortUrl": "https://www.youtube.com/shorts/92Ti7onxl9M",
+  "additionalYoutubeUrls": [],
+  "tags": [
+    "lego duplo train",
+    "vintage lego",
+    "toy train repair",
+    "battery contact corrosion",
+    "soldering repair",
+    "cracked gear repair"
+  ],
+  "skills": [
+    "electronic",
+    "mechanical"
+  ],
+  "description": "This 1993 LEGO Duplo train engine had stopped running because of corroded battery contacts. The contacts were cleaned in rust remover, tinned with solder and soldered to the circuit board, and a cracked gear was melted back together. It now pulls a carriage around the track.",
+  "itemDetails": "This is a LEGO Duplo battery-powered train engine from 1993, with a green brick body, a yellow cab and blue wheels. It runs on Duplo track and can pull a carriage behind it. Inside, six spring contacts connect the batteries to its circuit board and motor.",
+  "repairDetails": "It looked like a simple problem: corroded battery contacts. But this engine uses a special kind of contact that is only pressed onto the circuit board, and when it was opened up, most of the six contacts were badly corroded. Each contact was taken out and soaked in rust remover for a few hours. That removed the corrosion but left bare copper, which would quickly corrode again. Without electroplating, each contact was tinned with solder instead, which seals the copper away from the air. Pressed-in contacts also become unreliable once they have been taken out and put back, so each one was soldered straight to the circuit board for a solid connection. There was also a small crack in one of the gears. This gear is very hard to find, so the crack was melted back together. After reassembly the engine was tested under load, pulling a carriage around the track, and it ran perfectly.",
+  "googleReview": null,
+  "importance": null
+}
