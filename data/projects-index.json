@@ -1,5 +1,24 @@
 [
   {
+    "id": "0141",
+    "folder": "0141 - Drone motor not spinning loose plug",
+    "projectName": "Drone motor not spinning loose plug",
+    "title": "Folding camera drone with one dead propeller, fixed by reconnecting a loose plug",
+    "tags": [
+      "toy drone",
+      "drone repair",
+      "motor not spinning",
+      "loose connector",
+      "electronics repair"
+    ],
+    "skills": [
+      "electronic"
+    ],
+    "thumbnail": "/projects/0141%20-%20Drone%20motor%20not%20spinning%20loose%20plug/after.jpeg",
+    "url": "/projects/0141%20-%20Drone%20motor%20not%20spinning%20loose%20plug/",
+    "endDate": "2026-11-11"
+  },
+  {
     "id": "0140",
     "folder": "0140 - LEGO Duplo train corroded battery contacts",
     "projectName": "LEGO Duplo train corroded battery contacts",

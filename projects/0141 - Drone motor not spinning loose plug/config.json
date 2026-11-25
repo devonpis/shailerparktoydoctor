@@ -1,0 +1,30 @@
+{
+  "isTemplate": false,
+  "projectName": "Drone motor not spinning loose plug",
+  "title": "Folding camera drone with one dead propeller, fixed by reconnecting a loose plug",
+  "startDate": "2026-11-09",
+  "endDate": "2026-11-11",
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0141%20-%20Drone%20motor%20not%20spinning%20loose%20plug/",
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "additionalYoutubeUrls": [],
+  "tags": [
+    "toy drone",
+    "drone repair",
+    "motor not spinning",
+    "loose connector",
+    "electronics repair"
+  ],
+  "skills": [
+    "electronic"
+  ],
+  "description": "One of this folding drone's four propellers would not spin. After opening the body with fine phone-repair screwdrivers, a motor plug was found loose inside. With it plugged back in and the drone reassembled, all four motors run again.",
+  "itemDetails": "This is a grey folding camera drone with four arms that fold against the body, a propeller on each arm and a handheld remote with a built-in screen. Inside, a small circuit board in the body connects to each motor through a wire and plug that runs along the arm.",
+  "repairDetails": "The problem was simple: one of the four propellers would not spin, while the other three worked correctly. To find out why, the drone had to be opened. It is not difficult, but the body is held together with many tiny screws, starting with a small screw at the back, and they need a fine screwdriver of the kind used for mobile phone repairs. Inside, the plug that connects one of the motors to the circuit board had come loose from its socket. It was plugged back in, the drone was carefully reassembled, and all four propellers now spin as they should.",
+  "googleReview": null,
+  "importance": null
+}
