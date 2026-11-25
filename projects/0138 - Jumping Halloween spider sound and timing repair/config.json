@@ -1,0 +1,32 @@
+{
+  "isTemplate": false,
+  "projectName": "Jumping Halloween spider sound and timing repair",
+  "title": "Giant jumping Halloween spider, with its sound restored and its jump timing fixed",
+  "startDate": "2026-10-22",
+  "endDate": "2026-10-29",
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0138%20-%20Jumping%20Halloween%20spider%20sound%20and%20timing%20repair/",
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=0VHBKnYXsnU",
+  "youtubeShortUrl": "https://www.youtube.com/shorts/B2w0dO2_hVU",
+  "additionalYoutubeUrls": [],
+  "tags": [
+    "halloween spider",
+    "animatronic repair",
+    "halloween prop repair",
+    "transistor replacement",
+    "cam timing fix",
+    "uv resin repair"
+  ],
+  "skills": [
+    "electronic",
+    "mechanical"
+  ],
+  "description": "This giant motion-activated spider jumped the moment it was switched on, could never reset and made no sound. A new speaker transistor brought its sound back, and a cam built up with UV resin fixed its jump timing.",
+  "itemDetails": "This is a giant motion-activated Halloween spider prop with long furry legs and a big fanged head. When its sensor sees someone, a motor in the body makes it jump forward with a scary sound, then it resets and waits for the next scare.",
+  "repairDetails": "The spider had two separate faults. For the sound, the transistor that drives the speaker on the circuit board had failed, so it was replaced and the sound came back. For the jumping, a motor turns a cam in the gearbox, and the cam presses a small limit switch that stops the motor. Over time the switch had bent, so the cam closed it too late. The spider jumped as soon as it was switched on and could not reset. A small gem sticker on the cam proved that a thicker cam fixes the timing. Hot glue worked as a stopgap, but for a lasting fix the tip of the cam was sanded so resin would grip, then built up with a little UV resin and hardened under a UV light. Now the cam closes the switch in time, and the spider waits for its sensor, jumps, plays its sound and resets.",
+  "googleReview": null,
+  "importance": null
+}
