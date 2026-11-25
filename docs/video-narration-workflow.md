@@ -117,7 +117,7 @@ Draft this in chat and save it to `<name>-youtube-upload-details.md`. The owner 
 - **Description:** a short story, then chapters (starting at `0:00`, each at least 10 seconds), then `https://sptoydoctor.com.au/`. Swap in the project page URL once it is live.
 - **Hashtags** at the end of the description. YouTube shows the first three above the title.
 - **Studio tags** with no `#`.
-- **Release plan:** the main video first, then the Shorts spaced a few days apart. Each Short links to the main video as its related video.
+- **Release plan:** the main video first, then the Shorts spaced a few days apart. Each Short links to the main video as its related video. Suggest dates and times from [youtube-release-schedule.md](youtube-release-schedule.md), and add each slot there once the owner schedules it.
 
 When the owner sends the links, store `youtubeUrl`, and store `youtubeShortUrl` plus `additionalYoutubeUrls` for the Shorts.
 
