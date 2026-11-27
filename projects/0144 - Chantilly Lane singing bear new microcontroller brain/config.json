@@ -1,0 +1,35 @@
+{
+  "isTemplate": false,
+  "projectName": "Chantilly Lane singing bear new microcontroller brain",
+  "title": "Dead Chantilly Lane singing bear brought back to life with a brand new microcontroller brain",
+  "startDate": "2026-05-02",
+  "endDate": "2026-10-20",
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0144%20-%20Chantilly%20Lane%20singing%20bear%20new%20microcontroller%20brain/",
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": "https://www.youtube.com/watch?v=sr4GC3BqHjE",
+  "youtubeShortUrl": "https://www.youtube.com/shorts/5BDNV_19xds",
+  "additionalYoutubeUrls": [],
+  "tags": [
+    "Chantilly Lane",
+    "singing bear",
+    "animatronic",
+    "microcontroller",
+    "STM32",
+    "MP3 module",
+    "battery corrosion",
+    "plush cleaning",
+    "new fur trim"
+  ],
+  "skills": [
+    "needlework",
+    "electronic"
+  ],
+  "description": "This Chantilly Lane singing bear arrived completely dead and quite dirty. Her tiny circuit board had corroded contacts, loose wires and a dead microcontroller, which would usually make her non-repairable. Instead, she got a brand new brain built around a Blue Pill STM32F103 board and an MP3 module, a cleaned and repaired skin, and new fur on her scarf.",
+  "itemDetails": "This is a Chantilly Lane animated plush bear with soft white fur, a pink scarf, a pink flower hat and long legs. Inside her body is a robot with a battery box, a speaker and a motor that moves her head. Pressing the button in her paw makes her sing \"I Hope You Dance\" while her head moves.",
+  "repairDetails": "When the bear arrived, she did not work at all and her skin was quite dirty. The robot inside was separated from the skin, the stuffing came out, and the skin was washed by hand and dried. Inside the robot, the tiny circuit board had disconnected wires, and battery leakage had corroded the contacts and the wiring. The corrosion was cleaned off, but the board stayed dead because its microcontroller had died. To bring her back to life, she was given a brand new brain. Her song was recorded from a video of the same bear model, cleaned up and stored on a JR6001 MP3 module. A Blue Pill development board with an STM32F103 microcontroller controls the MP3 module: when the paw button is pressed, it starts the song and the head motor, and it stops the motor when the song ends. The MP3 module is sensitive to voltage dips, so the motor is driven with PWM and a soft start, which keeps the 4.5-volt supply steady. After lots of trial and error and testing on a breadboard with the bear's own motor and speaker, the new board went into the robot. The skin got its own repairs: the torn mesh pads that hold the weight beads in the arms and legs were patched and the beads put back, the paw button was cleaned and re-soldered, then held securely in her palm with a little cloth bag sewn into the end of her paw. Every corroded battery contact was replaced. The clean skin was restuffed, the robot went back inside, every wire was joined, and she was tested again with everything in place. As a final touch, the old fluffy fur on her scarf, which had fallen apart over the years, was replaced with brand new fur. The whole repair took several months of work, on and off.",
+  "googleReview": null,
+  "importance": null
+}
