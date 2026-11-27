@@ -1,5 +1,25 @@
 [
   {
+    "id": "0142",
+    "folder": "0142 - Mercedes ride-on car dead motor controller",
+    "projectName": "Mercedes ride-on car dead motor controller",
+    "title": "Mercedes kids ride-on car that wouldn't drive, fixed with a new motor controller and the right 12-volt battery",
+    "tags": [
+      "kids ride-on car",
+      "mercedes ride-on",
+      "ride-on car repair",
+      "motor controller",
+      "over voltage",
+      "battery replacement"
+    ],
+    "skills": [
+      "electronic"
+    ],
+    "thumbnail": "/projects/0142%20-%20Mercedes%20ride-on%20car%20dead%20motor%20controller/after.jpeg",
+    "url": "/projects/0142%20-%20Mercedes%20ride-on%20car%20dead%20motor%20controller/",
+    "endDate": "2026-11-06"
+  },
+  {
     "id": "0141",
     "folder": "0141 - Drone motor not spinning loose plug",
     "projectName": "Drone motor not spinning loose plug",

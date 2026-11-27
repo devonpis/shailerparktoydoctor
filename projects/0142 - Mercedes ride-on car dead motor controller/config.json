@@ -1,0 +1,31 @@
+{
+  "isTemplate": false,
+  "projectName": "Mercedes ride-on car dead motor controller",
+  "title": "Mercedes kids ride-on car that wouldn't drive, fixed with a new motor controller and the right 12-volt battery",
+  "startDate": "2026-10-21",
+  "endDate": "2026-11-06",
+  "status": "DONE",
+  "webpageUrl": "https://sptoydoctor.com.au/projects/0142%20-%20Mercedes%20ride-on%20car%20dead%20motor%20controller/",
+  "facebookUrl": null,
+  "instagramUrl": null,
+  "threadUrl": null,
+  "youtubeUrl": null,
+  "youtubeShortUrl": null,
+  "additionalYoutubeUrls": [],
+  "tags": [
+    "kids ride-on car",
+    "mercedes ride-on",
+    "ride-on car repair",
+    "motor controller",
+    "over voltage",
+    "battery replacement"
+  ],
+  "skills": [
+    "electronic"
+  ],
+  "description": "This Mercedes kids ride-on car had lights and sounds but would not drive. Its 12-volt battery had been swapped for an 18-volt power tool battery, and the extra voltage killed the motor controller. A new controller, a 12-volt lead acid gel battery and a matching charger brought it back to life.",
+  "itemDetails": "This is a black Mercedes-AMG kids ride-on car with a seat for one child, a steering wheel with sounds, working headlights and two electric motors driving the rear wheels. Under the seat, a motor controller board takes power from a 12-volt battery and drives the motors from the pedal and the remote.",
+  "repairDetails": "When the car arrived, the radio and sounds worked but the car would not move. The original 12-volt battery had been replaced with an 18-volt power tool battery. That is a problem, because a fully charged 18-volt battery can reach about 20 volts, far more than the car's controller is designed for. After a few hours of tracing the circuit, the controller that drives the motors turned out to be dead. This kind of controller is quite durable, so it probably ran fine for the first few drives, but over time the voltage stress killed its power components, such as the MOSFETs that switch the motors. The whole motor controller was replaced, and the 18-volt battery was swapped for a normal 12-volt lead acid gel battery. With everything wired up and connected, the car drove again. Finally, a charger made for lead acid gel batteries was added, so the battery charges properly and the car keeps running.",
+  "googleReview": null,
+  "importance": null
+}
