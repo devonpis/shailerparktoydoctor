@@ -48,8 +48,10 @@ When suggesting a slot, give the date, the day and the time, and say which relea
 | 2026-12-23 | Wed | 6:30 pm | 0133 Vintage teddy bear | Short 2: taken apart and rebuilt | |
 | 2026-12-27 | Sun | 10:00 am | 0140 LEGO Duplo train | Main | [P22jywR7EgQ](https://www.youtube.com/watch?v=P22jywR7EgQ) |
 | 2026-12-27 | Sun | 6:30 pm | 0140 LEGO Duplo train | Short: not a simple fix | [92Ti7onxl9M](https://www.youtube.com/shorts/92Ti7onxl9M) |
+| 2027-01-03 | Sun | 10:00 am | Big brown bear | Main | [8dnzJpr16KM](https://www.youtube.com/watch?v=8dnzJpr16KM) |
+| 2027-01-03 | Sun | 6:30 pm | Big brown bear | Short: why iron inside a bear | [szQXrUrOTc0](https://www.youtube.com/shorts/szQXrUrOTc0) |
 
-**Next free repair slot:** Sun 3 Jan 2027, 10:00 am, followed by Short 1 at 6:30 pm and Short 2 on Wed 6 Jan at 6:30 pm.
+**Next free repair slot:** Sun 10 Jan 2027, 10:00 am, followed by Short 1 at 6:30 pm and Short 2 on Wed 13 Jan at 6:30 pm.
 
 Short links are left blank where it is not recorded which link is which Short. Add them as they are confirmed.
 
