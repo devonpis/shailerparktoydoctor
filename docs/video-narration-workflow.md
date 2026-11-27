@@ -73,7 +73,7 @@ ffmpeg and ffprobe live in `~/.local/bin`. Always pass **`-nostdin`** in loops, 
 
 **Outro:** the last caption is "Thanks for watching, and see you next time for the next repair!"
 
-**Music:** use the track the owner adds. If none is added, use a track from `Downloads/bgm/` and say so. The music runs under the whole video with a short fade in and a 3.5-second fade out. Loop it with crossfades only when it is shorter than the video. Loudness: about −16 LUFS for the main video, −14 LUFS for Shorts, with a limiter.
+**Music:** use the track the owner adds. If none is added, use the default café track, `Downloads/toy repair/Musicas Para O Dia a Dia - Café e Leitura.mp3` (about 2 hours), and say so. Take a random segment of it with `python3 -I scripts/pick-bgm-segment.py --length <video seconds + 5>`. Each Short gets its own pick. Save the printed start and seed in the video's `index.json`, so re-renders keep the same music. The music runs under the whole video with a short fade in and a 3.5-second fade out. Loop it with crossfades only when it is shorter than the video. Loudness: about −16 LUFS for the main video, −14 LUFS for Shorts, with a limiter.
 
 **Cuts:** times refer to the **current** picture. After each change, later times move. Keep a per-shot index (`index.json`) so feedback like "the slide at 1:37" maps to a shot.
 
@@ -133,6 +133,7 @@ Only when the owner asks. Follow the usual project flow: before, WIP and after p
 |---------|------------|
 | **Create the video for <repair>** | Steps 1 to 4: analysis, main preview, proposed Shorts, thumbnail. |
 | **Use this BGM** | Swap the music into the main video and the Shorts. |
+| **New music** | Pick another random segment of the default café track and re-render. |
 | **Remove the slide at 1:37** | Map the time to a shot through the index, cut it, and re-render. |
 | **Render final** | Main video at 1080p. |
 | **Prepare them** | YouTube titles, descriptions, tags and release plan. |
